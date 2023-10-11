@@ -78,7 +78,7 @@ public class Const {
             GSFActivity.class
     };
 
-    public 	static final int[][] TITLES = new int[][]{
+    public 	static final int[][] NAVIGATIONS = new int[][]{
             {R.string.setting},
 
             {R.string.setting,R.string.setting_network},

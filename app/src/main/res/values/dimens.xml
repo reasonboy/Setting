@@ -3,16 +3,16 @@
     <dimen name="textSize19">19sp</dimen>
     <dimen name="textSize20">20sp</dimen>
     <dimen name="textSize21">21sp</dimen>
-    <!-- 标题栏高度-->
-    <dimen name="title_layout_height">55dp</dimen>
-    <!-- 标题栏距离左边的距离-->
-    <dimen name="title_layout_marginLeft">32dp</dimen>
-    <!-- 字符与“>”图标的距离-->
-    <dimen name="title_layout_view_space">11dp</dimen>
-    <!-- 标题栏“>”图标大小-->
-    <dimen name="title_layout_iconSize">22dp</dimen>
-    <!-- 标题栏下划线粗细-->
-    <dimen name="title_layout_underline_height">1.5px</dimen>
+    <!-- 导航栏高度-->
+    <dimen name="navi_layout_height">55dp</dimen>
+    <!-- 导航栏距离左边的距离-->
+    <dimen name="navi_layout_marginLeft">32dp</dimen>
+    <!-- 导航栏字符与“>”图标的距离-->
+    <dimen name="navi_layout_view_space">11dp</dimen>
+    <!-- 导航栏“>”图标大小-->
+    <dimen name="navi_layout_iconSize">22dp</dimen>
+    <!-- 导航栏下划线粗细-->
+    <dimen name="navi_layout_underline_height">1.5px</dimen>
     <!-- 设置单项宽度-->
     <dimen name="setting_item_width">158dp</dimen>
     <!-- 设置单项高度-->

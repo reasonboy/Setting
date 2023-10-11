@@ -8,19 +8,19 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class TitleTextView extends LinearLayout {
+public class NavigationTextView extends LinearLayout {
 
     private Context mContext;
     private ViewGroup mLayout;
     private TextView mText;
     private View mUnderLine;
 
-    public TitleTextView(Context context) {
+    public NavigationTextView(Context context) {
         super(context);
         intView(context);
     }
 
-    public TitleTextView(Context context, AttributeSet attributeSet) {
+    public NavigationTextView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         intView(context);
     }
@@ -28,7 +28,7 @@ public class TitleTextView extends LinearLayout {
     private void intView(Context context) {
         mContext = context;
         LayoutInflater factory = LayoutInflater.from(context);
-        mLayout = (ViewGroup)factory.inflate(R.layout.titie_textview,this, false);
+        mLayout = (ViewGroup)factory.inflate(R.layout.navigation_textview,this, false);
         addView(mLayout);
         mText = mLayout.findViewById(R.id.text);
         mUnderLine = mLayout.findViewById(R.id.underline);

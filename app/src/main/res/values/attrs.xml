@@ -20,7 +20,7 @@
     </declare-styleable>
 
     <declare-styleable name="SettingItem">
-        <attr name="title" />
+        <attr name="title" format="string"/>
         <attr name="icon" format="reference"/>
     </declare-styleable>
 

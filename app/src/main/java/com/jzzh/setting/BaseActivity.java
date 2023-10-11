@@ -2,21 +2,17 @@ package com.jzzh.setting;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
-
-import androidx.annotation.RequiresApi;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class BaseActivity extends Activity implements TitleLayout.OnTitleClickListener {
+public class BaseActivity extends Activity implements NavigationLayout.OnNavigationClickListener {
 
-    private TitleLayout mTitleLayout;
+    private NavigationLayout mNavigationLayout;
     private int mIndex;
 
     @Override
@@ -30,20 +26,20 @@ public class BaseActivity extends Activity implements TitleLayout.OnTitleClickLi
         super.setContentView(R.layout.activity_base);
         FrameLayout frameContentView = (FrameLayout) findViewById(R.id.content_base);
         View.inflate(this, layoutResID, frameContentView);
-        mTitleLayout = findViewById(R.id.title_base);
-        mTitleLayout.setOnTitleClickListener(this);
+        mNavigationLayout = findViewById(R.id.navigation_base);
+        mNavigationLayout.setOnNavigationClickListener(this);
         mIndex = sequentialSearch(Const.ACTIVITIES,getClass());
-        int[] titleIds = Const.TITLES[mIndex];
-        setTitle(titleIds);
+        int[] navigationIds = Const.NAVIGATIONS[mIndex];
+        setNavigation(navigationIds);
     }
 
-    public void setTitle(int[] titleIds) {
-        mTitleLayout.setTitle(titleIds);
+    public void setNavigation(int[] navigationIds) {
+        mNavigationLayout.setNavigation(navigationIds);
     }
 
     @Override
-    public void onTitleClick(int srcId) {
-        int index = sequentialSearch(Const.TITLES,srcId);
+    public void onNavigationClick(int srcId) {
+        int index = sequentialSearch(Const.NAVIGATIONS,srcId);
         startActivity(Const.ACTIVITIES[index]);
     }
 
@@ -72,8 +68,8 @@ public class BaseActivity extends Activity implements TitleLayout.OnTitleClickLi
 
     public static int sequentialSearch(int[][] arr,int value){
         for (int i = 0; i < arr.length; i++) {
-            int[] title = arr[i];
-            if(title[title.length-1] == value) {
+            int[] navi = arr[i];
+            if(navi[navi.length-1] == value) {
                 return i;
             }
         }
@@ -113,14 +109,14 @@ public class BaseActivity extends Activity implements TitleLayout.OnTitleClickLi
     }
 
     private int getSuperIndex() {
-        int[] titleIds = Const.TITLES[mIndex];
-        int length = titleIds.length;
+        int[] navigationIds = Const.NAVIGATIONS[mIndex];
+        int length = navigationIds.length;
         if(length == 1) {//当前为Setting
             return -1;
         } else {
             int[] newArray = new int[length - 1];
-            System.arraycopy(titleIds, 0, newArray, 0, length - 1);
-            return sequentialSearch(Const.TITLES,newArray);
+            System.arraycopy(navigationIds, 0, newArray, 0, length - 1);
+            return sequentialSearch(Const.NAVIGATIONS,newArray);
         }
     }
 }

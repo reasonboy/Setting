@@ -7,10 +7,10 @@
     android:orientation="vertical"
     tools:context=".Setting">
 
-    <com.jzzh.setting.TitleLayout
-        android:id="@+id/title_base"
+    <com.jzzh.setting.NavigationLayout
+        android:id="@+id/navigation_base"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/title_layout_height"/>
+        android:layout_height="@dimen/navi_layout_height"/>
 
     <FrameLayout
         android:id="@+id/content_base"
