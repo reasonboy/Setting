@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jzzh.setting">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Setting">
+        <activity
+            android:name=".Setting"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".network.NetworkActivity" />
+        <activity android:name=".network.wifi.WifiActivity" />
+        <activity android:name=".network.bt.BtActivity" />
+        <activity android:name=".power.PowerActivity" />
+        <activity android:name=".power.AutoSleepActivity" />
+        <activity android:name=".power.AutoPowerOffActivity" />
+        <activity android:name=".display.DisplayActivity" />
+        <activity android:name=".display.RefreshActivity" />
+        <activity android:name=".display.PowerOffImageActivity" />
+        <activity android:name=".display.PowerOffImageDefaultActivity" />
+        <activity android:name=".display.PowerOffImageUserActivity" />
+        <activity android:name=".display.SleepImageActivity" />
+        <activity android:name=".display.SleepImageDefaultActivity" />
+        <activity android:name=".display.SleepImageUserActivity" />
+        <activity android:name=".display.HomeScreenUserActivity" />
+        <activity android:name=".display.WidgetTextActivity" />
+        <activity android:name=".light.LightActivity" />
+        <activity android:name=".language.LanguageAndKeyboardActivity" />
+        <activity android:name=".language.KeyboardManagerActivity" />
+        <activity android:name=".time.DateAndTimeActivity" />
+        <activity android:name=".time.TimeZoneActivity" />
+        <activity android:name=".lock.LockScreenActivity" />
+        <activity android:name=".task.TaskManagerActivity" />
+        <activity android:name=".device.DeviceActivity" />
+        <activity android:name=".device.DeviceInfoActivity" />
+        <activity android:name=".device.DeviceCertificationInfoActivity" />
+        <activity android:name=".device.SystemUpdateActivity" />
+        <activity android:name=".device.AppUpdateActivity" />
+        <activity android:name=".device.FactoryResetActivity" />
+        <activity android:name=".device.GSFActivity" />
+    </application>
+
+</manifest>

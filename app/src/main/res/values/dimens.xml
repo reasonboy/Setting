@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textSize19">19sp</dimen>
+    <dimen name="textSize20">20sp</dimen>
+    <dimen name="textSize21">21sp</dimen>
+    <!-- 标题栏高度-->
+    <dimen name="title_layout_height">55dp</dimen>
+    <!-- 标题栏距离左边的距离-->
+    <dimen name="title_layout_marginLeft">32dp</dimen>
+    <!-- 字符与“>”图标的距离-->
+    <dimen name="title_layout_view_space">11dp</dimen>
+    <!-- 标题栏“>”图标大小-->
+    <dimen name="title_layout_iconSize">22dp</dimen>
+    <!-- 标题栏下划线粗细-->
+    <dimen name="title_layout_underline_height">1.5px</dimen>
+    <!-- 设置单项宽度-->
+    <dimen name="setting_item_width">158dp</dimen>
+    <!-- 设置单项高度-->
+    <dimen name="setting_item_height">239dp</dimen>
+    <dimen name="setting_item_icon_size">53dp</dimen>
+    <dimen name="setting_item_text_size">19sp</dimen>
+    <dimen name="setting_item_icon_space_text">11dp</dimen>
+    <dimen name="setting_margin">74dp</dimen>
+    <dimen name="setting_item_space">26dp</dimen>
+
+    <dimen name="activity_marginTop">16dp</dimen>
+    <dimen name="setting_sub_item_height">60dp</dimen>
+    <dimen name="setting_sub_item_margin">48dp</dimen>
+    <dimen name="setting_sub_item_icon_size">22dp</dimen>
+
+</resources>

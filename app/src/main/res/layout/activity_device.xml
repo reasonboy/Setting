@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.jzzh.setting.SettingSubItem
+        android:id="@+id/setting_device_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_marginTop"
+        app:title="@string/setting_device_info"/>
+
+    <com.jzzh.setting.SettingSubItem
+        android:id="@+id/setting_device_certification_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:title="@string/setting_device_certification_info"/>
+
+    <com.jzzh.setting.SettingSubItem
+        android:id="@+id/setting_device_system_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:title="@string/setting_device_system_update"/>
+
+    <com.jzzh.setting.SettingSubItem
+        android:id="@+id/setting_device_app_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:title="@string/setting_device_app_update"/>
+
+    <com.jzzh.setting.SettingSubItem
+        android:id="@+id/setting_device_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:title="@string/setting_device_reset"/>
+
+    <com.jzzh.setting.SettingSubItem
+        android:id="@+id/setting_device_gsf_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:title="@string/setting_device_gsf_id"/>
+
+</LinearLayout>

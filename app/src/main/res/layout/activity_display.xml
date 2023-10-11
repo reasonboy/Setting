@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.jzzh.setting.SettingSubItem
+        android:id="@+id/setting_display_refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_marginTop"
+        app:title="@string/setting_display_refresh"/>
+
+    <com.jzzh.setting.SettingSubItem
+        android:id="@+id/setting_display_poi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:title="@string/setting_display_poi"/>
+
+    <com.jzzh.setting.SettingSubItem
+        android:id="@+id/setting_display_si"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:title="@string/setting_display_si"/>
+
+    <com.jzzh.setting.SettingSubItem
+        android:id="@+id/setting_display_home_screen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:title="@string/setting_display_home_screen"/>
+
+    <com.jzzh.setting.SettingSubItem
+        android:id="@+id/setting_display_widget_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:title="@string/setting_display_widget_text"/>
+
+</LinearLayout>

@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Setting</string>
+    <string name="setting">Setting</string>
+    <string name="setting_network">Network</string>
+    <string name="setting_network_wifi">Wifi</string>
+    <string name="setting_network_bt">BT(2.4GHz Wireless)</string>
+    <string name="setting_power">Power</string>
+    <string name="setting_power_auto_sleep">Auto Sleep Timeout</string>
+    <string name="setting_power_auto_power_off">Auto Power Off Timeout</string>
+    <string name="setting_display">Display</string>
+    <string name="setting_display_refresh">Refresh</string>
+    <string name="setting_display_poi">Power Off Image</string>
+    <string name="setting_display_poi_default">Default Image</string>
+    <string name="setting_display_poi_user">User Image</string>
+    <string name="setting_display_si">Sleep Image</string>
+    <string name="setting_display_si_default">Default Image</string>
+    <string name="setting_display_si_user">User Image</string>
+    <string name="setting_display_home_screen">Home Screen</string>
+    <string name="setting_display_widget_text">Widget Text</string>
+    <string name="setting_light">Light</string>
+    <string name="setting_language_and_keyboard">Language &amp; Keyboard</string>
+    <string name="setting_language_and_keyboard_km">Keyboard Manager</string>
+    <string name="setting_date_and_time">Date &amp; Time</string>
+    <string name="setting_date_and_time_tz">Time Zone</string>
+    <string name="setting_lock_screen">Lock Screen</string>
+    <string name="setting_task_manager">Task Manager</string>
+    <string name="setting_device">Device</string>
+    <string name="setting_device_info">Device Info</string>
+    <string name="setting_device_certification_info">Device Certification Info</string>
+    <string name="setting_device_system_update">System Update</string>
+    <string name="setting_device_app_update">App Update</string>
+    <string name="setting_device_reset">Factory Reset</string>
+    <string name="setting_device_gsf_id">GSF ID</string>
+</resources>

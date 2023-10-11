@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Setting">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/setting_margin"
+        android:layout_marginRight="@dimen/setting_margin">
+
+        <com.jzzh.setting.SettingItem
+            android:id="@+id/setting_network"
+            style="@style/SettingItemStyle"
+            app:icon="@drawable/setting_wifi"
+            app:title="@string/setting_network"/>
+        <com.jzzh.setting.SettingItem
+            android:id="@+id/setting_power"
+            style="@style/SettingItemStyle"
+            app:icon="@drawable/setting_power"
+            app:title="@string/setting_power"/>
+        <com.jzzh.setting.SettingItem
+            android:id="@+id/setting_display"
+            style="@style/SettingItemStyle"
+            app:icon="@drawable/setting_display"
+            app:title="@string/setting_display"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/setting_margin"
+        android:layout_marginRight="@dimen/setting_margin">
+
+        <com.jzzh.setting.SettingItem
+            android:id="@+id/setting_light"
+            style="@style/SettingItemStyle"
+            app:icon="@drawable/setting_light"
+            app:title="@string/setting_light"/>
+        <com.jzzh.setting.SettingItem
+            android:id="@+id/setting_language_and_keyboard"
+            style="@style/SettingItemStyle"
+            app:icon="@drawable/setting_language"
+            app:title="@string/setting_language_and_keyboard"/>
+        <com.jzzh.setting.SettingItem
+            android:id="@+id/setting_date_time"
+            style="@style/SettingItemStyle"
+            app:icon="@drawable/setting_date_time"
+            app:title="@string/setting_date_and_time"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/setting_margin"
+        android:layout_marginRight="@dimen/setting_margin">
+
+        <com.jzzh.setting.SettingItem
+            android:id="@+id/setting_lock_screen"
+            style="@style/SettingItemStyle"
+            app:icon="@drawable/setting_lock"
+            app:title="@string/setting_lock_screen"/>
+        <com.jzzh.setting.SettingItem
+            android:id="@+id/setting_task_manager"
+            style="@style/SettingItemStyle"
+            app:icon="@drawable/setting_taskmgr"
+            app:title="@string/setting_task_manager"/>
+        <com.jzzh.setting.SettingItem
+            android:id="@+id/setting_device"
+            style="@style/SettingItemStyle"
+            app:icon="@drawable/setting_device"
+            app:title="@string/setting_device"/>
+    </LinearLayout>
+</LinearLayout>
