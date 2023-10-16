@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/rectangle"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:layout_width="@dimen/zh_dialog_width"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zh_dialog_title_height">
+
+        <TextView
+            android:id="@+id/wifi_connect_dialog_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:text="@string/wifi_add_netword"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSize20" />
+    </RelativeLayout>
+
+    <View
+        android:background="@android:color/black"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0dip" />
+
+    <TextView
+        android:id="@+id/tv_signal_strength"
+        style="@style/WifiDetailTextViewStyle"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:visibility="gone"
+        android:text="@string/wifi_detail_signal_strength" />
+
+    <TextView
+        android:id="@+id/tv_password"
+        style="@style/WifiDetailTextViewStyle"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="35dp"
+        android:text="@string/wifi_dialog_password" />
+
+
+    <EditText
+        android:id="@+id/wifi_connect_connect_password"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="35dp"
+        style="@style/DialogEditTextStyle"
+        android:inputType="textPassword"
+        android:hint="@string/wifi_dialog_ed_hint" />
+
+    <LinearLayout
+        android:id="@+id/ll_enable_show_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            style="@style/DialogCheckBoxTextStyle"
+            android:text="@string/wifi_dialog_show_password"/>
+
+        <ImageView
+            android:id="@+id/wifi_connect_dialog_show_password"
+            style="@style/DialogCheckBoxImageStyle"
+            android:layout_marginLeft="200dp"
+            android:background="@drawable/check_off" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
+
+        <Button
+            android:id="@+id/wifi_connect_dialog_cancle"
+            style="@style/DialogButtonStyle"
+            android:text="@string/wifi_dialog_cancle" />
+        <Button
+            android:id="@+id/wifi_connect_dialog_connect"
+            style="@style/DialogButtonStyle"
+            android:layout_marginLeft="60dp"
+            android:text="@string/wifi_dialog_connect" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/wifi_delete_this_internet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginBottom="15dp"
+        android:autoLink="all"
+        android:text="@string/wifi_dialog_delete_internet_setting"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:visibility="gone" />
+</LinearLayout>

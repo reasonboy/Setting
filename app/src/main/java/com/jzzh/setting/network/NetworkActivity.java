@@ -1,12 +1,10 @@
 package com.jzzh.setting.network;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.jzzh.setting.BaseActivity;
 import com.jzzh.setting.R;
-import com.jzzh.setting.Setting;
 import com.jzzh.setting.network.bt.BtActivity;
 import com.jzzh.setting.network.wifi.WifiActivity;
 

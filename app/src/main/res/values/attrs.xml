@@ -28,4 +28,11 @@
         <attr name="title" />
     </declare-styleable>
 
+    <declare-styleable name="TitleLayout">
+        <attr name="title" />
+        <attr name="function_icon_1" format="reference"/>
+        <attr name="function_icon_2" format="reference"/>
+        <attr name="enable_checkBox" format="boolean"/>
+    </declare-styleable>
+
 </resources>

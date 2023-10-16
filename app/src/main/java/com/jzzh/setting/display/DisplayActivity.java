@@ -5,8 +5,6 @@ import android.view.View;
 
 import com.jzzh.setting.BaseActivity;
 import com.jzzh.setting.R;
-import com.jzzh.setting.network.bt.BtActivity;
-import com.jzzh.setting.network.wifi.WifiActivity;
 
 public class DisplayActivity extends BaseActivity  implements View.OnClickListener{
 
