@@ -84,4 +84,10 @@
     <string name="bt_connecting">Connecting…</string>
     <string name="bt_connect_success">Successfully connected!</string>
     <string name="bt_connect_fail_or_disconnect">Connection failed or disconnected!</string>
+    <string name="sleep_2min">2 minutes</string>
+    <string name="sleep_5min">5 minutes</string>
+    <string name="sleep_10min">10 minutes</string>
+    <string name="sleep_30min">30 minutes</string>
+    <string name="sleep_60min">60 minutes</string>
+    <string name="sleep_none">None</string>
 </resources>
