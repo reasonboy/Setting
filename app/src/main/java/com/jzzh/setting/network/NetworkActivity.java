@@ -5,7 +5,7 @@ import android.view.View;
 
 import com.jzzh.setting.BaseActivity;
 import com.jzzh.setting.R;
-import com.jzzh.setting.network.bt.BtActivity;
+import com.jzzh.setting.network.bt.BluetoothActivity;
 import com.jzzh.setting.network.wifi.WifiActivity;
 
 public class NetworkActivity extends BaseActivity  implements View.OnClickListener{
@@ -25,7 +25,7 @@ public class NetworkActivity extends BaseActivity  implements View.OnClickListen
                 startActivity(WifiActivity.class);
                 break;
             case R.id.setting_network_bt:
-                startActivity(BtActivity.class);
+                startActivity(BluetoothActivity.class);
                 break;
         }
     }

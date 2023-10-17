@@ -6,6 +6,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
@@ -44,7 +45,7 @@
 
         <activity android:name=".network.NetworkActivity" />
         <activity android:name=".network.wifi.WifiActivity" />
-        <activity android:name=".network.bt.BtActivity" />
+        <activity android:name=".network.bt.BluetoothActivity" />
         <activity android:name=".power.PowerActivity" />
         <activity android:name=".power.AutoSleepActivity" />
         <activity android:name=".power.AutoPowerOffActivity" />

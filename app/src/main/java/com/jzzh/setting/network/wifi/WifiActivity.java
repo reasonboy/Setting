@@ -1,6 +1,5 @@
 package com.jzzh.setting.network.wifi;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -23,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.jzzh.setting.BaseActivity;
 import com.jzzh.setting.PageIndication;
 import com.jzzh.setting.R;
 import com.jzzh.setting.ZhCheckBox;
@@ -33,7 +33,7 @@ import java.util.List;
 import java.util.Objects;
 
 
-public class WifiActivity extends Activity implements View.OnClickListener, PageIndication.OnPageChangeListener {
+public class WifiActivity extends BaseActivity implements View.OnClickListener, PageIndication.OnPageChangeListener {
 
     private WifiManager mWifiManager;
     private WifiUtils mWifiUtils;

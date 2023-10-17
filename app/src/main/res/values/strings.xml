@@ -32,6 +32,9 @@
     <string name="setting_device_reset">Factory Reset</string>
     <string name="setting_device_gsf_id">GSF ID</string>
 
+    <string name="settings_ok">OK</string>
+    <string name="settings_cancel">Cancel</string>
+
     <string name="page_prev">PREV</string>
     <string name="page_next">NEXT</string>
 
@@ -68,4 +71,17 @@
     <string name="wifi_dialog_wpa">WPA</string>
     <string name="wifi_dialog_show_password">show password</string>
     <string name="wifi_dialog_delete_internet_setting"><u>Delete this internet setting</u></string>
+    <string name="settings_bt_device_name">Device name:%1$s</string>
+    <string name="settings_bt_device_address">Bluetooth address:%1$s</string>
+    <string name="settings_bt_device_rename">Rename</string>
+    <string name="settings_bt_paired_device">Paired devices:</string>
+    <string name="settings_bt_available_device">Available Device:</string>
+    <string name="settings_bt_not_supported">Bluetooth not supported</string>
+    <string name="settings_bt_name_cannot_be_empty">Bluetooth name cannot be empty！</string>
+    <string name="settings_bt_pair">Pair</string>
+    <string name="settings_bt_disconnect">Disconnect</string>
+    <string name="settings_bt_insearch">Searching…</string>
+    <string name="connecting">Connecting…</string>
+    <string name="connect_success">Successfully connected!</string>
+    <string name="connect_fail_or_disconnect">Connection failed or disconnected!</string>
 </resources>

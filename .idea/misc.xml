@@ -53,7 +53,7 @@
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_auto_power_off.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_auto_sleep.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_base.xml" value="0.1" />
-        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_bt.xml" value="0.28396739130434784" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_bt.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_bt1.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_bt10.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_bt2.xml" value="0.271286231884058" />
@@ -82,8 +82,12 @@
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_power.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_refresh.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_setting.xml" value="0.19427083333333334" />
-        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_wifi.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_wifi.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/base_activity.xml" value="0.19427083333333334" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/bluetooth_activity.xml" value="0.1953125" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/bluetooth_device_item.xml" value="0.1953125" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/bluetooth_pair_dialog.xml" value="0.1953125" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/bluetooth_rename_dialog.xml" value="0.1953125" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/navigation_textview.xml" value="0.19427083333333334" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/page_indication.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/setting_item.xml" value="0.22" />

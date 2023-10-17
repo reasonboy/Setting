@@ -21,7 +21,7 @@ import com.jzzh.setting.language.KeyboardManagerActivity;
 import com.jzzh.setting.language.LanguageAndKeyboardActivity;
 import com.jzzh.setting.light.LightActivity;
 import com.jzzh.setting.lock.LockScreenActivity;
-import com.jzzh.setting.network.bt.BtActivity;
+import com.jzzh.setting.network.bt.BluetoothActivity;
 import com.jzzh.setting.network.NetworkActivity;
 import com.jzzh.setting.network.wifi.WifiActivity;
 import com.jzzh.setting.power.AutoPowerOffActivity;
@@ -40,7 +40,7 @@ public class Const {
 
             NetworkActivity.class,
             WifiActivity.class,
-            BtActivity.class,
+            BluetoothActivity.class,
 
             PowerActivity.class,
             AutoSleepActivity.class,
