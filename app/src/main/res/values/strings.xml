@@ -58,12 +58,12 @@
     <string name="wifi_saved">Saved</string>
     <string name="wifi_opening">Wi-Fi Opening…</string>
     <string name="wifi_closing">Wi-Fi Closing…</string>
-    <string name="wifi_scanning">Wi-Fi Scaning…</string>
+    <string name="wifi_scanning">Wi-Fi Scanning…</string>
     <string name="wifi_open_tips">To see the available networks, turn on WiFi.</string>
-    <string name="wifi_add_netword">Add Netword</string>
+    <string name="wifi_add_network">Add Network</string>
     <string name="wifi_dialog_password">password</string>
     <string name="wifi_dialog_ed_hint">Enter the password</string>
-    <string name="wifi_dialog_cancle">Cancel</string>
+    <string name="wifi_dialog_cancel">Cancel</string>
     <string name="wifi_dialog_connect">Connect</string>
     <string name="wifi_dialog_disconnect">Disconnect</string>
     <string name="wifi_dialog_none">None</string>

@@ -16,7 +16,7 @@
             android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/wifi_add_netword"
+            android:text="@string/wifi_add_network"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true" />
     </RelativeLayout>
@@ -67,7 +67,7 @@
         <Button
             android:id="@+id/wifi_disconnect_dialog_cancle"
             style="@style/DialogButtonStyle"
-            android:text="@string/wifi_dialog_cancle" />
+            android:text="@string/wifi_dialog_cancel" />
         <Button
             android:id="@+id/wifi_disconnect_dialog_disconnect"
             style="@style/DialogButtonStyle"
