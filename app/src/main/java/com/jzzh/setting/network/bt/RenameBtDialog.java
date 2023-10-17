@@ -49,7 +49,7 @@ public class RenameBtDialog extends Dialog implements View.OnClickListener{
                     mDialogCallback.callBackData(new String[]{mBtNameET.getText().toString()});
                     dismiss();
                 } else {
-                    Toast.makeText(mContext,mContext.getString(R.string.settings_bt_name_cannot_be_empty),Toast.LENGTH_LONG).show();
+                    Toast.makeText(mContext,mContext.getString(R.string.bt_name_cannot_be_empty),Toast.LENGTH_LONG).show();
                 }
                 break;
         }

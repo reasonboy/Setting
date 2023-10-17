@@ -33,7 +33,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/textSize20"
-                    android:text="@string/settings_bt_device_name"
+                    android:text="@string/bt_device_name"
                     android:textColor="@color/black"/>
 
                 <TextView
@@ -41,7 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/textSize19"
-                    android:text="@string/settings_bt_device_address"
+                    android:text="@string/bt_device_address"
                     android:textColor="@color/black"/>
             </LinearLayout>
 
@@ -61,7 +61,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/settings_bt_device_rename"
+                    android:text="@string/bt_device_rename"
                     android:layout_gravity="center_vertical"
                     android:textColor="@color/black"
                     android:textSize="@dimen/textSize20"
@@ -78,7 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/listview_item_height"
             android:gravity="center_vertical"
-            android:text="@string/settings_bt_paired_device"
+            android:text="@string/bt_paired_device"
             android:layout_marginLeft="52dp"
             android:textColor="@color/black"
             android:textStyle="bold"
@@ -103,7 +103,7 @@
                 android:layout_marginLeft="52dp"
                 android:layout_centerVertical="true"
                 android:textStyle="bold"
-                android:text="@string/settings_bt_available_device"
+                android:text="@string/bt_available_device"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textSize19"/>
 
@@ -118,7 +118,7 @@
                     android:id="@+id/bt_available_insearch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/settings_bt_insearch"
+                    android:text="@string/bt_searching"
                     android:visibility="gone"
                     android:textColor="@color/black"
                     android:textSize="20sp"/>

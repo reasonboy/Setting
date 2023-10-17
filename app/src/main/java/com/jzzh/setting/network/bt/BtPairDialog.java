@@ -37,9 +37,9 @@ public class BtPairDialog extends Dialog implements View.OnClickListener{
         mDefine = findViewById(R.id.bt_pair_dialog_define);
         mDefine.setOnClickListener(this);
         if(mType == Type.PAIR) {
-            mDefine.setText(mContext.getString(R.string.settings_bt_pair));
+            mDefine.setText(mContext.getString(R.string.bt_pair));
         } else {
-            mDefine.setText(mContext.getString(R.string.settings_bt_disconnect));
+            mDefine.setText(mContext.getString(R.string.bt_disconnect));
         }
     }
 

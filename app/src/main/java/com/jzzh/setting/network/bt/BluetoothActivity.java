@@ -50,7 +50,7 @@ public class BluetoothActivity extends BaseActivity implements View.OnClickListe
         //get BluetoothAdapter
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if(mBluetoothAdapter == null) {
-            Toast.makeText(this,getString(R.string.settings_bt_not_supported),Toast.LENGTH_LONG).show();
+            Toast.makeText(this,getString(R.string.bt_not_supported),Toast.LENGTH_LONG).show();
             finish();
         }
         //init BtSwitch
@@ -71,9 +71,9 @@ public class BluetoothActivity extends BaseActivity implements View.OnClickListe
         mDeviceAddress = findViewById(R.id.bt_device_address);
         Log.v("xml_log_bt",mBluetoothAdapter.getName()+"--"+mBluetoothAdapter.getAddress());
         mDeviceName.setText(
-                String.format(getString(R.string.settings_bt_device_name),mBluetoothAdapter.getName()));
+                String.format(getString(R.string.bt_device_name),mBluetoothAdapter.getName()));
         mDeviceAddress.setText(
-                String.format(getString(R.string.settings_bt_device_address),mBluetoothAdapter.getAddress()));
+                String.format(getString(R.string.bt_device_address),mBluetoothAdapter.getAddress()));
         findViewById(R.id.bt_device_rename).setOnClickListener(this);
         //PairedListView
         mPairedListView = findViewById(R.id.bt_paired_device_listview);
@@ -120,7 +120,7 @@ public class BluetoothActivity extends BaseActivity implements View.OnClickListe
                         Log.e("TAG","pairedDevice onItemClick");
                         BluetoothActivity.ViewHolder viewHolder=(BluetoothActivity.ViewHolder)view.getTag();
                         viewHolder.btAddress.setVisibility(View.VISIBLE);
-                        viewHolder.btAddress.setText(getString(R.string.connecting));
+                        viewHolder.btAddress.setText(getString(R.string.bt_connecting));
                         pairedDevice.connectGatt(BluetoothActivity.this, false, new BluetoothGattCallback() {
                             @Override
                             public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {
@@ -131,10 +131,10 @@ public class BluetoothActivity extends BaseActivity implements View.OnClickListe
                                         viewHolder.btAddress.setVisibility(View.GONE);
                                         if (newState == BluetoothProfile.STATE_CONNECTED){
                                             Log.e("TAG","连接 STATE_CONNECTED");
-                                            Toast.makeText(BluetoothActivity.this,R.string.connect_success,Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(BluetoothActivity.this,R.string.bt_connect_success,Toast.LENGTH_SHORT).show();
                                         }else if(newState==BluetoothProfile.STATE_DISCONNECTED){
                                             Log.e("TAG","连接 STATE_DISCONNECTED");
-                                            Toast.makeText(BluetoothActivity.this,R.string.connect_fail_or_disconnect,Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(BluetoothActivity.this,R.string.bt_connect_fail_or_disconnect,Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 });
@@ -327,9 +327,9 @@ public class BluetoothActivity extends BaseActivity implements View.OnClickListe
     private void initSelfInfo() {
         Log.v("xml_log_bt",mBluetoothAdapter.getName()+"--"+mBluetoothAdapter.getAddress());
         mDeviceName.setText(
-                String.format(getString(R.string.settings_bt_device_name),mBluetoothAdapter.getName()));
+                String.format(getString(R.string.bt_device_name),mBluetoothAdapter.getName()));
         mDeviceAddress.setText(
-                String.format(getString(R.string.settings_bt_device_address),mBluetoothAdapter.getAddress()));
+                String.format(getString(R.string.bt_device_address),mBluetoothAdapter.getAddress()));
     }
 
     /**
@@ -348,7 +348,7 @@ public class BluetoothActivity extends BaseActivity implements View.OnClickListe
                     new RenameBtDialog(this, R.style.ZhDialog, mBluetoothAdapter.getName(), new RenameBtDialog.DialogCallback() {
                         @Override
                         public void callBackData(String[] data) {
-                            mDeviceName.setText(String.format(getString(R.string.settings_bt_device_name), data[0]));
+                            mDeviceName.setText(String.format(getString(R.string.bt_device_name), data[0]));
                             mBluetoothAdapter.setName(data[0]);
                         }
                     }).show();
