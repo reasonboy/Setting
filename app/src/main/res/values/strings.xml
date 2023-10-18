@@ -92,4 +92,10 @@
     <string name="power_30min">30 minutes</string>
     <string name="power_60min">60 minutes</string>
     <string name="power_none">None</string>
+    <string name="refresh_none">None</string>
+    <string name="refresh_1view">1 View</string>
+    <string name="refresh_5view">5 View</string>
+    <string name="refresh_10view">10 View</string>
+    <string name="refresh_15view">15 View</string>
+    <string name="refresh_20view">20 View</string>
 </resources>
