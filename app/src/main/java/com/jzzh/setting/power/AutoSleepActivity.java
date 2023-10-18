@@ -44,12 +44,12 @@ public class AutoSleepActivity extends BaseActivity implements AdapterView.OnIte
 
     private void initData() {
         mListData = new ArrayList<>();
-        mListData.add(new ASData(getString(R.string.sleep_2min),SLEEP_2_MIN));
-        mListData.add(new ASData(getString(R.string.sleep_5min),SLEEP_5_MIN));
-        mListData.add(new ASData(getString(R.string.sleep_10min),SLEEP_10_MIN));
-        mListData.add(new ASData(getString(R.string.sleep_30min),SLEEP_30_MIN));
-        mListData.add(new ASData(getString(R.string.sleep_60min),SLEEP_60_MIN));
-        mListData.add(new ASData(getString(R.string.sleep_none),SLEEP_NONE));
+        mListData.add(new ASData(getString(R.string.power_2min),SLEEP_2_MIN));
+        mListData.add(new ASData(getString(R.string.power_5min),SLEEP_5_MIN));
+        mListData.add(new ASData(getString(R.string.power_10min),SLEEP_10_MIN));
+        mListData.add(new ASData(getString(R.string.power_30min),SLEEP_30_MIN));
+        mListData.add(new ASData(getString(R.string.power_60min),SLEEP_60_MIN));
+        mListData.add(new ASData(getString(R.string.power_none),SLEEP_NONE));
     }
 
     public int getSelectedPosition() {
