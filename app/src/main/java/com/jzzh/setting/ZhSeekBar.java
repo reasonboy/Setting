@@ -18,6 +18,7 @@ public class ZhSeekBar extends View {
     private Bitmap mBackground;//滑动条
     private int mEnableColor,mDisableColor,mFrontColor,mBackgroundColor;
     private float mThumbSize,mWidthBg,mHeightBg;//小球直径，滑动条长度，滑动条高度
+    private int mTouchableHeight;//触控区域(也就是控件的高度)
     private int mMaxValue,mMinValue,mCurValue;
     private float mSlideDistance;
     private float mBgX,mBgY;//滑动条X,Y左上角坐标
@@ -38,6 +39,10 @@ public class ZhSeekBar extends View {
         mThumbSize = typedArray.getDimensionPixelOffset(R.styleable.ZhSeekBar_thumb_size, 0);
         mWidthBg = typedArray.getDimensionPixelOffset(R.styleable.ZhSeekBar_bg_width, 0);
         mHeightBg = typedArray.getDimensionPixelOffset(R.styleable.ZhSeekBar_bg_height, 0);
+        mTouchableHeight = typedArray.getDimensionPixelOffset(R.styleable.ZhSeekBar_touchable_height, 0);
+        if(mTouchableHeight < mThumbSize) {
+            mTouchableHeight = (int)mThumbSize;
+        }
         mMaxValue = typedArray.getInteger(R.styleable.ZhSeekBar_max_value,0);
         mMinValue = typedArray.getInteger(R.styleable.ZhSeekBar_min_value,0);
         mCurValue = typedArray.getInteger(R.styleable.ZhSeekBar_default_value,-1);
@@ -53,7 +58,7 @@ public class ZhSeekBar extends View {
     private void viewOrganize() {
         mRadius = mThumbSize / 2;
         mBgX = mRadius;
-        mBgY = (mThumbSize - mHeightBg) / 2;
+        mBgY = (mTouchableHeight - mHeightBg) / 2;
     }
 
     private void updateView() {
@@ -121,7 +126,7 @@ public class ZhSeekBar extends View {
         super.onDraw(canvas);
         canvas.save();
         canvas.drawBitmap(mBackground, mBgX, mBgY, null);
-        canvas.drawCircle(mRadius + mSlideDistance,mRadius,mRadius,mPaint);
+        canvas.drawCircle(mRadius + mSlideDistance,mTouchableHeight/2,mRadius,mPaint);
         canvas.restore();
     }
 
@@ -152,7 +157,7 @@ public class ZhSeekBar extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         // TODO Auto-generated method stub
-        this.setMeasuredDimension((int)(mThumbSize+mWidthBg), (int)mThumbSize);
+        this.setMeasuredDimension((int)(mThumbSize+mWidthBg), mTouchableHeight);
     }
 
     public interface OnZhSeekBarChangeListener {

@@ -98,4 +98,7 @@
     <string name="refresh_10view">10 View</string>
     <string name="refresh_15view">15 View</string>
     <string name="refresh_20view">20 View</string>
+    <string name="light_setting">Light Setting</string>
+    <string name="light_warm">Warm Light</string>
+    <string name="light_cold">Cold Light</string>
 </resources>

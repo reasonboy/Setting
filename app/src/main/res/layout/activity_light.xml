@@ -6,4 +6,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.jzzh.setting.TitleLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_marginTop"
+        app:title="@string/light_setting"/>
+    <com.jzzh.setting.light.AdjustLayout
+        android:id="@+id/adjust_warm_light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/soft_light_warm"
+        app:title="@string/light_warm"/>
+    <com.jzzh.setting.light.AdjustLayout
+        android:id="@+id/adjust_cold_light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/soft_light_cold"
+        app:title="@string/light_cold"/>
 </LinearLayout>

@@ -7,6 +7,7 @@
         <attr name="thumb_size" format="dimension"/>
         <attr name="bg_width" format="dimension"/>
         <attr name="bg_height" format="dimension"/>
+        <attr name="touchable_height" format="dimension"/>
         <attr name="max_value" format="integer"/>
         <attr name="min_value" format="integer"/>
         <attr name="default_value" format="integer"/>
@@ -33,6 +34,11 @@
         <attr name="function_icon_1" format="reference"/>
         <attr name="function_icon_2" format="reference"/>
         <attr name="enable_checkBox" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="AdjustLayout">
+        <attr name="icon" />
+        <attr name="title" />
     </declare-styleable>
 
 </resources>
