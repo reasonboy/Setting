@@ -6,53 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.jzzh.setting.TitleLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_marginTop"
-        app:title="@string/wifi_setting"
-        app:function_icon_1="@drawable/reset"
-        app:function_icon_2="@drawable/plus"
-        app:enable_checkBox="true"/>
-
-    <LinearLayout
-        android:id="@+id/wifi_content"
+    <FrameLayout
+        android:id="@+id/fragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="52dp"
-        android:layout_marginRight="52dp"
-        android:orientation="vertical"
-        android:visibility="visible">
-
-        <ListView
-            android:id="@+id/wifi_listview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:divider="@null"
-            android:listSelector="@android:color/transparent"
-            android:overScrollMode="never"
-            android:scrollbars="none" />
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <include
-                layout="@layout/page_indication"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center_horizontal"
-                android:layout_marginBottom="@dimen/page_indication_marginBottom" />
-        </FrameLayout>
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/wifi_tips"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/wifi_open_tips"
-        android:textColor="@color/black"
-        android:textSize="20dp" />
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

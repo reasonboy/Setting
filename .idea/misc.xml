@@ -104,6 +104,7 @@
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/bluetooth_device_item.xml" value="0.1953125" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/bluetooth_pair_dialog.xml" value="0.1953125" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/bluetooth_rename_dialog.xml" value="0.1953125" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/buletooth_fragment.xml" value="0.21979166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/navigation_textview.xml" value="0.19427083333333334" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/page_indication.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/select_item.xml" value="0.23229166666666667" />
@@ -115,6 +116,7 @@
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/wifi_add_dialog.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/wifi_connect_dialog.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/wifi_disconnect_dialog.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/wifi_fragment.xml" value="0.21979166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/wifi_item.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/zh_adjust_layout.xml" value="0.23229166666666667" />
       </map>
