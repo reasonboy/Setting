@@ -47,8 +47,20 @@
         </activity>
 
         <activity android:name=".network.NetworkActivity" />
-        <activity android:name=".network.wifi.WifiActivity" />
-        <activity android:name=".network.bt.BluetoothActivity" />
+        <activity android:name=".network.wifi.WifiActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="Setting.network.wifi.WifiActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".network.bt.BluetoothActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="Setting.network.bt.BluetoothActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".power.PowerActivity" />
         <activity android:name=".power.AutoSleepActivity" />
         <activity android:name=".power.AutoPowerOffActivity" />
@@ -68,7 +80,13 @@
         <activity android:name=".time.DateAndTimeActivity" />
         <activity android:name=".time.TimeZoneActivity" />
         <activity android:name=".lock.LockScreenActivity" />
-        <activity android:name=".task.TaskManagerActivity" />
+        <activity android:name=".task.TaskManagerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="Setting.task.TaskManagerActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".device.DeviceActivity" />
         <activity android:name=".device.DeviceInfoActivity" />
         <activity android:name=".device.DeviceCertificationInfoActivity" />
