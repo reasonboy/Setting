@@ -69,4 +69,12 @@
         <item name="android:textSize">@dimen/textSize19</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
+    <style name="Theme.Wifi.SetupWizard" parent="@android:style/Theme.Holo.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:background">@android:color/white</item>
+
+        <item name="android:fontFamily">nanum-square</item>
+    </style>
 </resources>
