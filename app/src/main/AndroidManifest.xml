@@ -76,6 +76,20 @@
         <activity android:name=".device.AppUpdateActivity" />
         <activity android:name=".device.FactoryResetActivity" />
         <activity android:name=".device.GSFActivity" />
+
+        <activity android:name=".setupwizard.WifiSetupWizardActivity"
+            android:exported="true"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustNothing"
+            android:theme="@style/Theme.Wifi.SetupWizard">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="com.inno.action.WIFI_SETUPWIZARD"/>
+                <action android:name="android.net.wifi.PICK_WIFI_NETWORK"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
