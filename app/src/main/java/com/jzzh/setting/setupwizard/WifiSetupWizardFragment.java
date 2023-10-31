@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.inno.spacesetupwizardlib.SetupWizardFragment;
 import com.jzzh.setting.R;
+import com.jzzh.setting.network.wifi.WifiFragment;
 
 public class WifiSetupWizardFragment extends SetupWizardFragment {
     public static WifiSetupWizardFragment newInstance() {
@@ -55,12 +56,10 @@ public class WifiSetupWizardFragment extends SetupWizardFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_wifi_setupwizard, container, false);
 
-        /*  add settings's wifi page
         getFragmentManager()
                 .beginTransaction()
                 .replace(R.id.wizard_wifi_list, new WifiFragment())
                 .commit();
-        */
 
         mIntentFilter = new IntentFilter();
         mIntentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
