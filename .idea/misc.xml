@@ -90,6 +90,7 @@
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_display_widget_text.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_gsf.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_keyboard_manager.xml" value="0.271286231884058" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_language_and_keyboard.xml" value="0.21979166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_light.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_network.xml" value="0.28396739130434784" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_power.xml" value="0.271286231884058" />
@@ -105,9 +106,14 @@
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/bluetooth_pair_dialog.xml" value="0.1953125" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/bluetooth_rename_dialog.xml" value="0.1953125" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/buletooth_fragment.xml" value="0.21979166666666666" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/fragment_wifi_setupwizard.xml" value="0.21510416666666668" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/keyboard_layout.xml" value="0.21510416666666668" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/language_layout.xml" value="0.21510416666666668" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/list_item_c.xml" value="0.21510416666666668" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/navigation_textview.xml" value="0.19427083333333334" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/page_indication.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/select_item.xml" value="0.23229166666666667" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/select_listview.xml" value="0.21510416666666668" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/setting_item.xml" value="0.22" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/setting_sub_item.xml" value="0.28396739130434784" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/task_item.xml" value="1.0" />

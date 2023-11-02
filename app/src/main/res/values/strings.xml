@@ -104,4 +104,9 @@
     <string name="task_memory_usage">Memory Usage:%1$s</string>
     <string name="task_choose">Choose</string>
     <string name="task_all_clean">All Clean</string>
+    <string name="language_setting">Language Setting</string>
+    <string name="language_ko">Korean</string>
+    <string name="language_en">English</string>
+    <string name="keyboard_setting">Keyboard Setting</string>
+    <string name="keyboard_msg">Default keyboard can not disable</string>
 </resources>
