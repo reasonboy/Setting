@@ -1,10 +1,18 @@
 package com.jzzh.setting;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
+
+import com.jzzh.setting.network.bt.BluetoothActivity;
+import com.jzzh.setting.network.wifi.WifiActivity;
+import com.jzzh.setting.task.TaskManagerActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,11 +22,30 @@ public class BaseActivity extends Activity implements NavigationLayout.OnNavigat
 
     private NavigationLayout mNavigationLayout;
     private int mIndex;
+    private StartActivityReceiver mReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityCollector.addActivity(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mReceiver = new StartActivityReceiver();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("zhihe.action.START_ACTIVITY_SETTING");
+        intentFilter.addAction("zhihe.action.START_ACTIVITY_WIFI");
+        intentFilter.addAction("zhihe.action.START_ACTIVITY_BT");
+        intentFilter.addAction("zhihe.action.START_ACTIVITY_TASK");
+        registerReceiver(mReceiver,intentFilter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(mReceiver);
     }
 
     @Override
@@ -117,6 +144,23 @@ public class BaseActivity extends Activity implements NavigationLayout.OnNavigat
             int[] newArray = new int[length - 1];
             System.arraycopy(navigationIds, 0, newArray, 0, length - 1);
             return sequentialSearch(Const.NAVIGATIONS,newArray);
+        }
+    }
+
+    private class StartActivityReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            Log.v("xml_log_sr","action = " + action);
+            if("zhihe.action.START_ACTIVITY_SETTING".equals(action)) {
+                startActivity(Setting.class);
+            } else if("zhihe.action.START_ACTIVITY_WIFI".equals(action)) {
+                startActivity(WifiActivity.class);
+            } else if("zhihe.action.START_ACTIVITY_BT".equals(action)) {
+                startActivity(BluetoothActivity.class);
+            } else if("zhihe.action.START_ACTIVITY_TASK".equals(action)) {
+                startActivity(TaskManagerActivity.class);
+            }
         }
     }
 }

@@ -40,8 +40,9 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="zhihe.action.START_ACTIVITY_SETTING" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
@@ -49,14 +50,14 @@
         <activity android:name=".network.wifi.WifiActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="Setting.network.wifi.WifiActivity" />
+                <action android:name="zhihe.action.START_ACTIVITY_WIFI" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".network.bt.BluetoothActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="Setting.network.bt.BluetoothActivity" />
+                <action android:name="zhihe.action.START_ACTIVITY_BT" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -82,7 +83,7 @@
         <activity android:name=".task.TaskManagerActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="Setting.task.TaskManagerActivity" />
+                <action android:name="zhihe.action.START_ACTIVITY_TASK" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
