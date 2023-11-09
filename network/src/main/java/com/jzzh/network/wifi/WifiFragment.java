@@ -29,7 +29,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.jzzh.network.R;
-import com.jzzh.network.TitleLayout;
+import com.jzzh.network.NetTitleLayout;
 import com.jzzh.tools.PageIndication;
 import com.jzzh.tools.ZhCheckBox;
 
@@ -45,7 +45,7 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
     private WifiUtils mWifiUtils;
     private WifiBroadcaster mWifiBroadcaster;
     private List<ScanResult> mResultList = new ArrayList<ScanResult>();
-    private TitleLayout mTitleLayout;
+    private NetTitleLayout mNetTitleLayout;
     private ZhCheckBox mWifiSwitch;
     private ImageView mWifiAdd;
     private ListView mWifiListView;
@@ -54,7 +54,7 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
     private WifiAdapter mWifiAdapter;
     private WifiHandler mHandler;
     private PageIndication mPageIndication;
-    private int mCurPage = 1,mTotalPage,mListViewItemNum = 11;
+    private int mCurPage = 1,mTotalPage,mListViewItemNum = 10;
     private String mCurConnectSSID;
     private static final int SCAN_INTERVAL = 20000; //每10秒扫描一次
     private static final int START_SCAN = 0;
@@ -76,7 +76,7 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
         intentFilter.addAction(WifiManager.SUPPLICANT_STATE_CHANGED_ACTION);
         intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
         mContext.registerReceiver(mWifiBroadcaster,intentFilter);
-        mTitleLayout = view.findViewById(R.id.title_layout);
+        mNetTitleLayout = view.findViewById(R.id.title_layout);
         ImageView exit = view.findViewById(R.id.title_exit);
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,7 +138,7 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
     }
 
     public void showTitleLayoutExit() {
-        mTitleLayout.showExit();
+        mNetTitleLayout.showExit();
     }
 
     private AdapterView.OnItemClickListener mOnItemClickListener = new AdapterView.OnItemClickListener() {

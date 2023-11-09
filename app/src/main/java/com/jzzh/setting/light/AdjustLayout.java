@@ -13,8 +13,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.jzzh.setting.R;
-import com.jzzh.setting.ZhCheckBox;
-import com.jzzh.setting.ZhSeekBar;
+import com.jzzh.tools.ZhCheckBox;
+import com.jzzh.tools.ZhSeekBar;
 
 public class AdjustLayout extends LinearLayout implements ZhCheckBox.OnZhCheckedChangeListener,
         ZhSeekBar.OnZhSeekBarChangeListener,View.OnClickListener{

@@ -5,9 +5,9 @@ import android.os.Bundle;
 
 import androidx.fragment.app.FragmentTransaction;
 
+import com.jzzh.network.bt.BluetoothFragment;
 import com.jzzh.setting.BaseActivity;
 import com.jzzh.setting.R;
-import com.jzzh.setting.network.wifi.WifiFragment;
 
 public class BluetoothActivity extends BaseActivity {
 
