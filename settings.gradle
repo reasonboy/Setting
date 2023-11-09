@@ -12,3 +12,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Setting"
 include ':app'
+include ':network'
+include ':Tools'
+include ':wifi'
+include ':bluetooth'

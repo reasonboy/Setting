@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TitleLayout">
+        <attr name="title" />
+        <attr name="function_icon_1" format="reference"/>
+        <attr name="function_icon_2" format="reference"/>
+        <attr name="function_icon_3" format="reference"/>
+        <attr name="enable_checkBox" format="boolean"/>
+    </declare-styleable>
+</resources>

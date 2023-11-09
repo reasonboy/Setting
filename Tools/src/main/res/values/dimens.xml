@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textSize19">19sp</dimen>
+    <dimen name="textSize20">20sp</dimen>
+    <dimen name="textSize21">21sp</dimen>
+    <dimen name="page_size">10dp</dimen>
+    <dimen name="page_indication_marginBottom">30dp</dimen>
+</resources>

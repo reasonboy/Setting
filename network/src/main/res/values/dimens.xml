@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textSize19">19sp</dimen>
+    <dimen name="textSize20">20sp</dimen>
+    <dimen name="textSize21">21sp</dimen>
+
+    <dimen name="title_layout_height">60dp</dimen>
+    <dimen name="title_layout_margin">48dp</dimen>
+    <dimen name="title_layout_icon_size">22dp</dimen>
+    <dimen name="title_layout_icon_space">18dp</dimen>
+    <dimen name="title_layout_underline_height">1.5px</dimen>
+    <dimen name="title_layout_underline_width">642dp</dimen>
+
+    <dimen name="zh_dialog_width">400dp</dimen>
+    <dimen name="zh_dialog_title_height">50dp</dimen>
+    <dimen name="listview_item_height">71dp</dimen>
+</resources>

@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProject/Setting/Bluetoothsetting/src/main/res/layout/activity_main.xml" value="0.11510416666666666" />
+        <entry key="..\:/AndroidStudioProject/Setting/Tools/src/main/res/drawable/switch_off.xml" value="0.18802083333333333" />
+        <entry key="..\:/AndroidStudioProject/Setting/Tools/src/main/res/drawable/switch_on.xml" value="0.18802083333333333" />
+        <entry key="..\:/AndroidStudioProject/Setting/Tools/src/main/res/layout/page_indication.xml" value="0.171875" />
+        <entry key="..\:/AndroidStudioProject/Setting/Tools/src/main/res/layout/task_item.xml" value="0.171875" />
+        <entry key="..\:/AndroidStudioProject/Setting/WifiSetting/src/main/res/layout/activity_main.xml" value="0.11510416666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.21041666666666667" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable-v24/negative_rectangle.xml" value="0.18489583333333334" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable-v24/rectangle.xml" value="0.18489583333333334" />
@@ -20,6 +26,7 @@
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable/g_check_off.xml" value="0.21041666666666667" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable/g_check_on.xml" value="0.21041666666666667" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable/ic_launcher_background.xml" value="0.21041666666666667" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable/ic_launcher_setting.xml" value="0.1984375" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable/ic_taskmanager_choice.xml" value="0.21041666666666667" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable/ic_taskmanager_choice_trans.xml" value="0.2421875" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable/ic_taskmanager_clean.xml" value="0.21041666666666667" />
@@ -77,6 +84,7 @@
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_bt7.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_bt8.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_bt9.xml" value="0.271286231884058" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_bt_pop.xml" value="0.18229166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_device.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_display.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_display_home_screen.xml" value="0.271286231884058" />
@@ -119,12 +127,34 @@
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/task_item.xml" value="1.0" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/titie_textview.xml" value="1.25" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/title_layout.xml" value="0.1859375" />
-        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/wifi_add_dialog.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/wifi_add_dialog.xml" value="0.1585014409221902" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/wifi_connect_dialog.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/wifi_disconnect_dialog.xml" value="0.25" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/wifi_fragment.xml" value="0.21979166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/wifi_item.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/zh_adjust_layout.xml" value="0.23229166666666667" />
+        <entry key="..\:/AndroidStudioProject/Setting/bluetooth/src/main/res/drawable/ic_bt.xml" value="0.1984375" />
+        <entry key="..\:/AndroidStudioProject/Setting/bluetooth/src/main/res/layout/activity_main.xml" value="0.11510416666666666" />
+        <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/drawable/check_off.xml" value="0.18802083333333333" />
+        <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/drawable/check_on.xml" value="0.18802083333333333" />
+        <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/drawable/plus.xml" value="0.18802083333333333" />
+        <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/drawable/rectangle.xml" value="0.18802083333333333" />
+        <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/drawable/rectangle_negative.xml" value="0.18802083333333333" />
+        <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/drawable/setting_wifi.xml" value="0.18802083333333333" />
+        <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/drawable/soft_exit.xml" value="0.1984375" />
+        <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/layout/bluetooth_device_item.xml" value="0.33695652173913043" />
+        <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/layout/bluetooth_pair_dialog.xml" value="0.33695652173913043" />
+        <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/layout/bluetooth_rename_dialog.xml" value="0.18229166666666666" />
+        <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/layout/buletooth_fragment.xml" value="0.18229166666666666" />
+        <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/layout/title_layout.xml" value="0.171875" />
+        <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/layout/wifi_add_dialog.xml" value="0.171875" />
+        <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/layout/wifi_connect_dialog.xml" value="0.171875" />
+        <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/layout/wifi_disconnect_dialog.xml" value="0.171875" />
+        <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/layout/wifi_fragment.xml" value="0.33695652173913043" />
+        <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/layout/wifi_item.xml" value="0.33695652173913043" />
+        <entry key="..\:/AndroidStudioProject/Setting/wifi/src/main/res/drawable/ic_wifi.xml" value="0.1984375" />
+        <entry key="..\:/AndroidStudioProject/Setting/wifi/src/main/res/layout/activity_main.xml" value="0.16" />
+        <entry key="..\:/AndroidStudioProject/Setting/wifipop/src/main/res/layout/activity_main.xml" value="0.16875" />
       </map>
     </option>
   </component>
