@@ -42,7 +42,7 @@
             android:layout_marginStart="@dimen/title_layout_icon_space"
             android:visibility="gone"/>
 
-        <com.jzzh.setting.ZhCheckBox
+        <com.jzzh.tools.ZhCheckBox
             android:id="@+id/title_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

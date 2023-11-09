@@ -1,17 +1,17 @@
 package com.jzzh.setting;
 
-import android.app.Instrumentation;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.KeyEvent;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.jzzh.tools.ZhCheckBox;
 
 public class TitleLayout extends RelativeLayout {
 
@@ -43,7 +43,7 @@ public class TitleLayout extends RelativeLayout {
     private void intView(Context context) {
         mContext = context;
         LayoutInflater factory = LayoutInflater.from(context);
-        mLayout = (ViewGroup)factory.inflate(R.layout.title_layout,this, false);
+        mLayout = (ViewGroup)factory.inflate(R.layout.net_title_layout,this, false);
         addView(mLayout);
 
         mTvTitle = mLayout.findViewById(R.id.title_name);

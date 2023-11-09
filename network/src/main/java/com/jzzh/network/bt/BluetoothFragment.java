@@ -29,7 +29,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.jzzh.network.R;
-import com.jzzh.network.TitleLayout;
+import com.jzzh.network.NetTitleLayout;
 import com.jzzh.tools.ZhCheckBox;
 
 import java.lang.reflect.Method;
@@ -48,7 +48,7 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
     private BtBroadcaster mBroadcaster;
     private TextView mInSearch;
     private ImageView mIvRefresh;
-    private TitleLayout mTitleLayout;
+    private NetTitleLayout mNetTitleLayout;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -60,7 +60,7 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
         if(mBluetoothAdapter == null) {
             Toast.makeText(mContext,mContext.getString(R.string.bt_not_supported),Toast.LENGTH_LONG).show();
         }
-        mTitleLayout = view.findViewById(R.id.title_layout);
+        mNetTitleLayout = view.findViewById(R.id.title_layout);
         ImageView exit = view.findViewById(R.id.title_exit);
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,7 +120,7 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
     }
 
     public void showTitleLayoutExit() {
-        mTitleLayout.showExit();
+        mNetTitleLayout.showExit();
     }
 
     @Override

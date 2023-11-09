@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.jzzh.tools.ZhCheckBox;
 
-public class TitleLayout extends RelativeLayout {
+public class NetTitleLayout extends RelativeLayout {
 
     private Context mContext;
     private ViewGroup mLayout;
@@ -25,12 +25,12 @@ public class TitleLayout extends RelativeLayout {
     private ZhCheckBox mCheckBox;
     private ImageView mExit;
 
-    public TitleLayout(Context context) {
+    public NetTitleLayout(Context context) {
         super(context);
         intView(context);
     }
 
-    public TitleLayout(Context context, AttributeSet attributeSet) {
+    public NetTitleLayout(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.TitleLayout);
         mTitle = typedArray.getString(R.styleable.TitleLayout_title);
@@ -43,7 +43,9 @@ public class TitleLayout extends RelativeLayout {
     private void intView(Context context) {
         mContext = context;
         LayoutInflater factory = LayoutInflater.from(context);
-        mLayout = (ViewGroup)factory.inflate(R.layout.title_layout,this, false);
+        //原本layout名为title_layout，与setting中有相同的名字，当setting引用这个network以后，会优先读取setting中的title_layout，
+        //所以要改成不一样的名字
+        mLayout = (ViewGroup)factory.inflate(R.layout.net_title_layout,this, false);
         addView(mLayout);
 
         mTvTitle = mLayout.findViewById(R.id.title_name);

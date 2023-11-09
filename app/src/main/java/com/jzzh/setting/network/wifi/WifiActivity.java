@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.FragmentTransaction;
 
+import com.jzzh.network.wifi.WifiFragment;
 import com.jzzh.setting.BaseActivity;
 import com.jzzh.setting.R;
 

@@ -70,6 +70,7 @@
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable/switch_on.xml" value="0.21041666666666667" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable/up_arrow.xml" value="0.21041666666666667" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_.xml" value="0.271286231884058" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_app_update.xml" value="0.18229166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_auto_power_off.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_auto_sleep.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_base.xml" value="0.1" />
@@ -85,7 +86,10 @@
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_bt8.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_bt9.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_bt_pop.xml" value="0.18229166666666666" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_date_and_time.xml" value="0.18229166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_device.xml" value="0.271286231884058" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_device_certification_info.xml" value="0.18229166666666666" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_device_info.xml" value="0.18229166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_display.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_display_home_screen.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_display_poi.xml" value="0.271286231884058" />
@@ -96,15 +100,19 @@
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_display_si_default.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_display_si_user.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_display_widget_text.xml" value="0.271286231884058" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_factory_reset.xml" value="0.18229166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_gsf.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_keyboard_manager.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_language_and_keyboard.xml" value="0.21979166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_light.xml" value="0.271286231884058" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_lock_screen.xml" value="0.18229166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_network.xml" value="0.28396739130434784" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_power.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_refresh.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_setting.xml" value="0.19427083333333334" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_system_update.xml" value="0.18229166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_task_manager.xml" value="0.22" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_time_zone.xml" value="0.18229166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_wifi.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/adjust_layout.xml" value="0.1324599708879185" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/app_item_custom.xml" value="0.23229166666666667" />
@@ -118,6 +126,7 @@
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/keyboard_layout.xml" value="0.21510416666666668" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/language_layout.xml" value="0.21510416666666668" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/list_item_c.xml" value="0.21510416666666668" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/list_item_checkbox.xml" value="0.18229166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/navigation_textview.xml" value="0.19427083333333334" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/page_indication.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/select_item.xml" value="0.23229166666666667" />
@@ -137,6 +146,7 @@
         <entry key="..\:/AndroidStudioProject/Setting/bluetooth/src/main/res/layout/activity_main.xml" value="0.11510416666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/drawable/check_off.xml" value="0.18802083333333333" />
         <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/drawable/check_on.xml" value="0.18802083333333333" />
+        <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/drawable/exit.xml" value="0.18802083333333333" />
         <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/drawable/plus.xml" value="0.18802083333333333" />
         <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/drawable/rectangle.xml" value="0.18802083333333333" />
         <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/drawable/rectangle_negative.xml" value="0.18802083333333333" />

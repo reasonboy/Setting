@@ -13,8 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.inno.spacesetupwizardlib.SetupWizardFragment;
+import com.jzzh.network.wifi.WifiFragment;
 import com.jzzh.setting.R;
-import com.jzzh.setting.network.wifi.WifiFragment;
 
 public class WifiSetupWizardFragment extends SetupWizardFragment {
     public static WifiSetupWizardFragment newInstance() {

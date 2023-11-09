@@ -2,7 +2,6 @@ package com.jzzh.setting.language;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.net.wifi.ScanResult;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
@@ -19,7 +18,7 @@ import android.widget.Toast;
 
 import com.jzzh.setting.BaseActivity;
 import com.jzzh.setting.R;
-import com.jzzh.setting.ZhCheckBox;
+import com.jzzh.tools.ZhCheckBox;
 
 import java.util.ArrayList;
 import java.util.List;
