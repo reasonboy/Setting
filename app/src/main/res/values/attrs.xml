@@ -21,4 +21,14 @@
         <attr name="title" />
     </declare-styleable>
 
+    <declare-styleable name="TimeSettingItem">
+        <attr name="title" />
+        <attr name="summary" format="string"/>
+        <attr name="function">
+            <enum name="set_time" value="0"/>
+            <enum name="checkbox" value="1"/>
+            <enum name="set_zone" value="2"/>
+        </attr>
+    </declare-styleable>
+
 </resources>

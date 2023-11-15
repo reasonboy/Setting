@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/listview_item_height" >
+
+    <TextView
+        android:id="@+id/time_zone_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/setting_sub_item_margin"
+        android:textSize="@dimen/textSize19"
+        android:text="Beijing"/>
+
+    <TextView
+        android:id="@+id/time_zone_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/setting_sub_item_margin"
+        android:text="GMT+8:00"
+        android:textSize="@dimen/textSize19" />
+
+    <View
+        android:background="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_layout_underline_height"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/navi_layout_marginLeft"
+        android:layout_marginRight="@dimen/navi_layout_marginLeft"/>
+</RelativeLayout>

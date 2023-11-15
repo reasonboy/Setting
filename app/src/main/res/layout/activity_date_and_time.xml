@@ -6,4 +6,58 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.jzzh.setting.TitleLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_marginTop"
+        app:title="@string/time_setting"/>
+
+    <com.jzzh.setting.time.TimeSettingItem
+        android:id="@+id/time_auto_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/setting_sub_item_margin"
+        app:title="@string/time_auto_time"
+        app:summary="@string/time_use_network_time"
+        app:function="checkbox"/>
+
+    <com.jzzh.setting.time.TimeSettingItem
+        android:id="@+id/time_set_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="66dp"
+        app:title="@string/time_set_date"
+        app:summary="2019-04-24"/>
+
+    <com.jzzh.setting.time.TimeSettingItem
+        android:id="@+id/time_set_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="66dp"
+        app:title="@string/time_set_time"
+        app:summary="04:24"/>
+
+    <com.jzzh.setting.time.TimeSettingItem
+        android:id="@+id/time_hour_format"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/setting_sub_item_margin"
+        app:title="@string/time_use_24_format"
+        app:function="checkbox"/>
+
+    <View
+        android:background="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_layout_underline_height"
+        android:layout_marginLeft="@dimen/setting_sub_item_margin"
+        android:layout_marginRight="@dimen/setting_sub_item_margin"/>
+
+    <com.jzzh.setting.time.TimeSettingItem
+        android:id="@+id/time_select_timezone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/setting_sub_item_margin"
+        app:title="@string/time_select_timezone"
+        app:function="set_zone"/>
+
 </LinearLayout>
