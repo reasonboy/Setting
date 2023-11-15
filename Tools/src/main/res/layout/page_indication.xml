@@ -9,6 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
+        <!--
         <ImageView
             android:layout_width="@dimen/page_size"
             android:layout_height="@dimen/page_size"
@@ -21,7 +22,11 @@
             android:layout_marginLeft="5dp"
             android:textSize="18sp"
             android:textColor="@android:color/black"
-            android:text="@string/page_prev"/>
+            android:text="@string/page_prev"/>-->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/setting_prev"/>
     </LinearLayout>
 
     <TextView
@@ -29,18 +34,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_centerInParent="true"
+        android:layout_gravity="center"
         android:textColor="@android:color/black"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:layout_toEndOf="@id/page_prev"
-        android:textSize="18sp" />
+        android:textSize="19sp" />
 
     <LinearLayout
         android:id="@+id/page_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
+        <!--
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,6 +59,11 @@
             android:layout_height="@dimen/page_size"
             android:layout_marginLeft="5dp"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/page_right" />
+            android:background="@drawable/page_right" />-->
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/setting_next"/>
     </LinearLayout>
 </com.jzzh.tools.PageIndication>
