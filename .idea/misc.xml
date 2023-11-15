@@ -131,9 +131,16 @@
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/page_indication.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/select_item.xml" value="0.23229166666666667" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/select_listview.xml" value="0.21510416666666668" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/set_date_dialog.xml" value="0.24114583333333334" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/set_time_dialog.xml" value="0.24114583333333334" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/setting_item.xml" value="0.22" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/setting_sub_item.xml" value="0.28396739130434784" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/simple_list_item_single_choice.xml" value="0.153125" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/task_item.xml" value="1.0" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/time_set_date_dialog.xml" value="0.5" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/time_set_time_dialog.xml" value="0.6521739130434783" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/time_setting_item.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/time_zone_list_item.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/titie_textview.xml" value="1.25" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/title_layout.xml" value="0.1859375" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/wifi_add_dialog.xml" value="0.1585014409221902" />
@@ -142,6 +149,7 @@
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/wifi_fragment.xml" value="0.21979166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/wifi_item.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/zh_adjust_layout.xml" value="0.23229166666666667" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/xml/timezones.xml" value="0.171875" />
         <entry key="..\:/AndroidStudioProject/Setting/bluetooth/src/main/res/drawable/ic_bt.xml" value="0.1984375" />
         <entry key="..\:/AndroidStudioProject/Setting/bluetooth/src/main/res/layout/activity_main.xml" value="0.11510416666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/drawable/check_off.xml" value="0.18802083333333333" />
@@ -156,6 +164,7 @@
         <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/layout/bluetooth_pair_dialog.xml" value="0.33695652173913043" />
         <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/layout/bluetooth_rename_dialog.xml" value="0.18229166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/layout/buletooth_fragment.xml" value="0.18229166666666666" />
+        <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/layout/net_title_layout.xml" value="0.171875" />
         <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/layout/title_layout.xml" value="0.171875" />
         <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/layout/wifi_add_dialog.xml" value="0.171875" />
         <entry key="..\:/AndroidStudioProject/Setting/network/src/main/res/layout/wifi_connect_dialog.xml" value="0.171875" />

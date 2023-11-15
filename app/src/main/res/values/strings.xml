@@ -60,4 +60,13 @@
     <string name="language_en">English</string>
     <string name="keyboard_setting">Keyboard Setting</string>
     <string name="keyboard_msg">Default keyboard can not disable</string>
+    <string name="time_setting">Date &amp; Time Setting</string>
+    <string name="time_auto_time">Automatic Date &amp; Time</string>
+    <string name="time_use_network_time">Use Network Time</string>
+    <string name="time_set_date">Set Date</string>
+    <string name="time_set_time">Set Time</string>
+    <string name="time_use_24_format">Use 24-hour Format</string>
+    <string name="time_am">AM</string>
+    <string name="time_pm">PM</string>
+    <string name="time_select_timezone">Select Time Zone</string>
 </resources>

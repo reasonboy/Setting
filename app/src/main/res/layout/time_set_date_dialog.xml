@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="@dimen/zh_dialog_width"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rectangle">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zh_dialog_title_height">
+        <TextView
+            android:textSize="@dimen/textSize21"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/time_set_date"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/set_date_dialog_year_increase"
+                android:layout_gravity="center"
+                android:layout_width="@dimen/time_dialog_button_size"
+                android:layout_height="@dimen/time_dialog_button_size"
+                android:background="@drawable/set_time_up"/>
+            <TextView
+                android:id="@+id/set_date_dialog_year"
+                style="@style/SettingTimeTextViewStyle"
+                android:text="1996"/>
+            <ImageView
+                android:id="@+id/set_date_dialog_year_reduce"
+                android:layout_gravity="center"
+                android:layout_width="@dimen/time_dialog_button_size"
+                android:layout_height="@dimen/time_dialog_button_size"
+                android:background="@drawable/set_time_down"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textSize="@dimen/time_dialog_text_size"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:text="-"/>
+
+        <LinearLayout
+            android:layout_width="@dimen/time_dialog_button_layout_width"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/set_date_dialog_month_increase"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="@dimen/time_dialog_button_size"
+                android:layout_height="@dimen/time_dialog_button_size"
+                android:background="@drawable/set_time_up"/>
+            <TextView
+                android:id="@+id/set_date_dialog_month"
+                style="@style/SettingTimeTextViewStyle"
+                android:text="4"/>
+            <ImageView
+                android:id="@+id/set_date_dialog_month_reduce"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="@dimen/time_dialog_button_size"
+                android:layout_height="@dimen/time_dialog_button_size"
+                android:background="@drawable/set_time_down"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textSize="@dimen/time_dialog_text_size"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:text="-"/>
+
+        <LinearLayout
+            android:layout_width="@dimen/time_dialog_button_layout_width"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/set_date_dialog_date_increase"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="@dimen/time_dialog_button_size"
+                android:layout_height="@dimen/time_dialog_button_size"
+                android:background="@drawable/set_time_up"/>
+            <TextView
+                android:id="@+id/set_date_dialog_date"
+                style="@style/SettingTimeTextViewStyle"
+                android:text="4"/>
+            <ImageView
+                android:id="@+id/set_date_dialog_date_reduce"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="@dimen/time_dialog_button_size"
+                android:layout_height="@dimen/time_dialog_button_size"
+                android:background="@drawable/set_time_down"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp">
+
+        <Button
+            android:id="@+id/set_date_dialog_cancel"
+            style="@style/DialogButtonStyle"
+            android:text="@string/settings_cancel" />
+        <Button
+            android:id="@+id/set_date_dialog_ok"
+            style="@style/DialogButtonStyle"
+            android:layout_marginLeft="30dp"
+            android:text="@string/settings_ok" />
+    </LinearLayout>
+</LinearLayout>
