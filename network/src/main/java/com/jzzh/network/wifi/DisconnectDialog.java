@@ -5,6 +5,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.LinkAddress;
 import android.net.LinkProperties;
+import android.net.RouteInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,8 +18,12 @@ import androidx.annotation.RequiresApi;
 
 import com.jzzh.network.R;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.Inet4Address;
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.stream.Collectors;
 
 public class DisconnectDialog extends Dialog implements View.OnClickListener{
@@ -83,15 +88,15 @@ public class DisconnectDialog extends Dialog implements View.OnClickListener{
         }
         // Find IPv4 default gateway.
         String gateway = null;
-        /*
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             for (RouteInfo routeInfo : mLinkProperties.getRoutes()) {
-                if (routeInfo.isIPv4Default() && routeInfo.hasGateway()) {
+                if (routeInfo.hasGateway()) {
                     gateway = routeInfo.getGateway().getHostAddress();
                     break;
                 }
             }
-        }*/
+        }
 
         // Find all (IPv4 and IPv6) DNS addresses.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -115,7 +120,7 @@ public class DisconnectDialog extends Dialog implements View.OnClickListener{
             }
         }
 
-//        Log.e(TAG, "signalLevel:" + mSignalLevel + "ipv4:" + ipv4Address + " subnet:" + subnet + " gateway:" + gateway + " DNS:" + dnsServers + " band:" + band);
+        Log.e(TAG, "signalLevel:" + mSignalLevel + "ipv4:" + ipv4Address + " subnet:" + subnet + " gateway:" + gateway + " DNS:" + dnsServers + " band:" + band);
         TextView signalStrengthTv = findViewById(R.id.tv_signal_strength);
         String signalStrength = getSignalStrengthByLevel(mSignalLevel);
         signalStrengthTv.setText(String.format("%s: %s", mContext.getString(R.string.wifi_detail_signal_strength), signalStrength));

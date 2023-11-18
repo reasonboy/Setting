@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rectangle">
+
+    <TextView
+        android:id="@+id/ip_settings_dhcp"
+        style="@style/WifiDetailTextViewStyle1"
+        android:text="@string/ip_settings_dialog_dhcp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"/>
+
+    <TextView
+        android:id="@+id/ip_settings_static"
+        style="@style/WifiDetailTextViewStyle1"
+        android:text="@string/ip_settings_dialog_static"/>
+</LinearLayout>

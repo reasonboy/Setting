@@ -1,13 +1,40 @@
 package com.jzzh.network.wifi;
 
+import android.annotation.SuppressLint;
+import android.net.LinkAddress;
 import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiEnterpriseConfig;
 import android.net.wifi.WifiManager;
+import android.util.Log;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class WifiUtils {
+    /**
+     * No metered override.
+     * @hide
+     */
+    public static final int METERED_OVERRIDE_NONE = 0;
+    /**
+     * Override network to be metered.
+     * @hide
+     */
+    public static final int METERED_OVERRIDE_METERED = 1;
+    /**
+     * Override network to be unmetered.
+     * @hide
+     */
+    public static final int METERED_OVERRIDE_NOT_METERED = 2;
+
 
     private WifiManager mWifiManager;
+    private static final String TAG = WifiUtils.class.getSimpleName();
 
     public WifiUtils(WifiManager wifiManager) {
         this.mWifiManager = wifiManager;
@@ -20,7 +47,7 @@ public class WifiUtils {
      * @param targetPsd 密码
      * @param enc 加密类型
      */
-    public void connectWifi(String targetSsid, String targetPsd, String enc) {
+    public void connectWifi(String targetSsid, String targetPsd, String enc, int meteredType,String ipAssignment,String[] ipSettingsData) {
         // 1、注意热点和密码均包含引号，此处需要需要转义引号
         String ssid = "\"" + targetSsid + "\"";
         String psd = "\"" + targetPsd + "\"";
@@ -28,6 +55,14 @@ public class WifiUtils {
         //2、配置wifi信息
         WifiConfiguration conf = new WifiConfiguration();
         conf.SSID = ssid;
+        setMeteredOverride(conf,meteredType); // 测试metered
+        if(!ipAssignment.isEmpty()){
+            setIpAssignment(conf,ipAssignment);
+            if(ipAssignment.equals("STATIC")){
+                Object staticIpConfiguration = buildStaticIpConfiguration(ipSettingsData[0], ipSettingsData[1], ipSettingsData[2], ipSettingsData[3]);
+                setStaticIpConfiguration(conf,staticIpConfiguration);
+            }
+        }
         switch (enc) {
             case "WEP":
                 // 加密类型为WEP
@@ -75,5 +110,112 @@ public class WifiUtils {
                 mWifiManager.saveConfiguration();
             }
         }
+    }
+
+    private void setMeteredOverride(WifiConfiguration configuration, int meteredOverrideValue) {
+        try {
+            Class clzWifiConfiguration = configuration.getClass();
+            java.lang.reflect.Field meteredOverride = clzWifiConfiguration.getField("meteredOverride");
+            meteredOverride.setInt(configuration, meteredOverrideValue);
+        } catch (Exception e) {
+
+        }
+    }
+
+    private void setIpAssignment(WifiConfiguration configuration, String enumValue) {
+        try {
+            Class clazz = Class.forName("android.net.IpConfiguration$IpAssignment");
+            Object param = Enum.valueOf(clazz, enumValue);
+            Class clzWifiConfiguration = configuration.getClass();
+            java.lang.reflect.Method setIpAssignment = clzWifiConfiguration.getDeclaredMethod("setIpAssignment",clazz);
+            setIpAssignment.invoke(configuration, param);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setStaticIpConfiguration(WifiConfiguration configuration, Object staticIpConfiguration) {
+        Class clzWifiConfiguration = configuration.getClass();
+        try {
+            java.lang.reflect.Method setStaticIpConfiguration = clzWifiConfiguration.getDeclaredMethod("setStaticIpConfiguration",staticIpConfiguration.getClass());
+            setStaticIpConfiguration.invoke(configuration, staticIpConfiguration);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 设置静态ip配置
+     *
+     * @param address ip地址
+     * @param mask    子网掩码
+     * @param gate    门关
+     * @param dns     dns
+     * @return {@link Object}
+     */
+    public Object buildStaticIpConfiguration(String address, String mask, String gate, String dns) {
+        try {
+            Log.d(TAG, "setStaticIpConfiguration: address = " + address + " netmask = " + mask + " gateway = " + gate + " dns = " + dns);
+            @SuppressLint("PrivateApi")
+            Class<?> staticIpConfigurationClz = Class.forName("android.net.StaticIpConfiguration");
+            Object staticIpConfiguration = staticIpConfigurationClz.newInstance();
+            Field ipAddress = staticIpConfigurationClz.getField("ipAddress");
+            Field netmask = staticIpConfigurationClz.getField("domains");
+            Field gateway = staticIpConfigurationClz.getField("gateway");
+            Field dnsServers = staticIpConfigurationClz.getField("dnsServers");
+            Log.e(TAG, "prefixLength:" + getPrefixLength(mask));
+            ipAddress.set(staticIpConfiguration, getLinkAddress(InetAddress.getByName(address), getPrefixLength(mask)));
+            netmask.set(staticIpConfiguration, mask);
+            gateway.set(staticIpConfiguration, InetAddress.getByName(gate));
+            ArrayList<InetAddress> dnsList = (ArrayList<InetAddress>) dnsServers.get(staticIpConfiguration);
+            dnsList.add(InetAddress.getByName(dns));
+            return staticIpConfiguration;
+        } catch (ClassNotFoundException | NoSuchFieldException | IllegalAccessException |
+                InstantiationException | UnknownHostException e) {
+            Log.d(TAG, "setStaticIpConfiguration: " + e);
+            return null;
+        }
+    }
+
+    /**
+     * 得到链接地址
+     *
+     * @param address 地址
+     * @param length  长度
+     * @return {@link LinkAddress}
+     */
+    public LinkAddress getLinkAddress(InetAddress address, int length) {
+        try {
+            Class<?> linkAddressClz = Class.forName("android.net.LinkAddress");
+            Constructor<?> linkAddressCsr = linkAddressClz.getConstructor(InetAddress.class, int.class);
+            return (LinkAddress) linkAddressCsr.newInstance(address, length);
+        } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException |
+                InstantiationException | InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 获取长度
+     */
+    private static int getPrefixLength(String mask) {
+        String[] strs = mask.split("\\.");
+        int count = 0;
+        for (String str : strs) {
+            if (str.equals("255")) {
+                ++count;
+            }
+        }
+        return count * 8;
     }
 }

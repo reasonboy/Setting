@@ -1,5 +1,7 @@
 package com.jzzh.network.wifi;
 
+import static com.jzzh.network.wifi.WifiUtils.METERED_OVERRIDE_NONE;
+
 import android.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -149,16 +151,16 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
             String capabilities = mWifiAdapter.getItem(i).capabilities;
             String enc = getEncryption(capabilities);
             int signalLevel = mWifiAdapter.getSignalLevel(i);
-
+            Log.e("lx","name:"+name+" "+address+" is clicked");
             if (!name.equals(mCurConnectSSID)) {
                 if (enc.equals("OPEN") && !isWifiSaved(name)) {
-                    mWifiUtils.connectWifi(name, "", "OPEN");
+                    mWifiUtils.connectWifi(name, "", "OPEN", METERED_OVERRIDE_NONE, "", null);
                 } else {
                     if (isWifiSaved(name)) {
 //                        Log.e(TAG, "已保存的无线网络");
                         new ConnectDialog(mContext, R.style.ZhDialog, new ConnectDialog.DialogCallback() {
                             @Override
-                            public void callBackData(String[] data, String key) {
+                            public void callBackData(String[] data, String key, int meteredType,String ipAssignment,String[] ipSettingsData) {
                                 if ("connect".equals(key)) {
                                     WifiConfiguration wifiConfig = new WifiConfiguration();
                                     wifiConfig.SSID = "\"" + name + "\"";
@@ -175,8 +177,8 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
                     } else {
                         new ConnectDialog(mContext, R.style.ZhDialog, new ConnectDialog.DialogCallback() {
                             @Override
-                            public void callBackData(String[] data, String key) {
-                                mWifiUtils.connectWifi(data[0], data[1], data[2]);
+                            public void callBackData(String[] data, String key, int meteredType,String ipAssignment,String[] ipSettingsData) {
+                                mWifiUtils.connectWifi(data[0], data[1], data[2], meteredType, ipAssignment, ipSettingsData);
                             }
                         }, name, enc, false, signalLevel).show();
                     }
@@ -256,7 +258,7 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
                 new AddDialog(mContext, R.style.ZhDialog, new AddDialog.DialogCallback() {
                     @Override
                     public void callBackData(String[] data) {
-                        mWifiUtils.connectWifi(data[0], data[1], data[2]);
+                            mWifiUtils.connectWifi(data[0], data[1], data[2], METERED_OVERRIDE_NONE, "", null);
                     }
                 }).show();
             }
