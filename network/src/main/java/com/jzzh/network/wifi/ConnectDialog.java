@@ -10,7 +10,11 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,6 +49,10 @@ public class ConnectDialog extends Dialog implements View.OnClickListener {
     private boolean mAdvancedOptionsVisible = false;
     private boolean mIsSavedNet;
     private int mSignalLevel;
+    private ImageView mMeteredDownDrop;
+    private ImageView mIpSettingsDownDrop;
+    private MeteredDialog mMeteredDialog;
+    private IPSettingsDialog mIPSettingsDialog;
 
     private static final String WPA = "WPA";
 
@@ -73,8 +81,10 @@ public class ConnectDialog extends Dialog implements View.OnClickListener {
         mShowPassword.setOnClickListener(this);
         mAdvancedOptions = findViewById(R.id.wifi_connect_dialog_show_advanced_options);
         mAdvancedOptions.setOnClickListener(this);
-        findViewById(R.id.metered_down_drop).setOnClickListener(this);
-        findViewById(R.id.ip_settings_down_drop).setOnClickListener(this);
+        mMeteredDownDrop = findViewById(R.id.metered_down_drop);
+        mMeteredDownDrop.setOnClickListener(this);
+        mIpSettingsDownDrop = findViewById(R.id.ip_settings_down_drop);
+        mIpSettingsDownDrop.setOnClickListener(this);
         mMeteredResult = findViewById(R.id.metered_result);
         mIPAssignmentResult = findViewById(R.id.ip_settings_result);
         mAdvancedOptionsLayout = findViewById(R.id.ll_advanced_options);
@@ -106,6 +116,64 @@ public class ConnectDialog extends Dialog implements View.OnClickListener {
         TextView signalStrengthTv = findViewById(R.id.tv_signal_strength);
         String signalStrength = getSignalStrengthByLevel(mSignalLevel);
         signalStrengthTv.setText(String.format("%s: %s", mContext.getString(R.string.wifi_detail_signal_strength), signalStrength));
+        // Metered Dialog
+        mMeteredDialog = new MeteredDialog(mContext, R.style.ZhDialog, new MeteredDialog.DialogCallback() {
+            @Override
+            public void callBackData(MeteredDialog.Type data) {
+                switch (data) {
+                    case AUTO:
+                        mMeteredResult.setText(R.string.metered_dialog_auto);
+                        mMeteredType = METERED_OVERRIDE_NONE;
+                        break;
+                    case METERED:
+                        mMeteredResult.setText(R.string.metered_dialog_metered);
+                        mMeteredType = METERED_OVERRIDE_METERED;
+                        break;
+                    case UNMETERED:
+                        mMeteredResult.setText(R.string.metered_dialog_unmetered);
+                        mMeteredType = METERED_OVERRIDE_NOT_METERED;
+                        break;
+                }
+            }
+        });
+        // IPSettings Dialog
+        mIPSettingsDialog = new IPSettingsDialog(mContext, R.style.ZhDialog, new IPSettingsDialog.DialogCallback() {
+            @Override
+            public void callBackData(IPSettingsDialog.Type data) {
+                switch (data) {
+                    case DHCP:
+                        mIPAssignmentResult.setText(R.string.ip_settings_dialog_dhcp);
+                        mIPAssignment = "DHCP";
+                        setStaticIpSettingsVisible(false);
+                        break;
+                    case STATIC:
+                        mIPAssignmentResult.setText(R.string.ip_settings_dialog_static);
+                        mIPAssignment = "STATIC";
+                        setStaticIpSettingsVisible(true);
+                        break;
+                }
+            }
+        });
+    }
+
+    private void setMeteredDialogPosition() {
+        Window meteredDialogWindow = mMeteredDialog.getWindow();
+        WindowManager.LayoutParams meteredDialogLp = meteredDialogWindow.getAttributes();
+        meteredDialogWindow.setGravity(Gravity.CENTER | Gravity.TOP);
+        int[] location = new int[2];
+        mMeteredDownDrop.getLocationOnScreen(location);
+        meteredDialogLp.y = location[1];
+        meteredDialogWindow.setAttributes(meteredDialogLp);
+    }
+
+    private void setIPSettingsDialogPosition() {
+        Window iPSettingsDialogWindow = mIPSettingsDialog.getWindow();
+        WindowManager.LayoutParams iPSettingsDialogLp = iPSettingsDialogWindow.getAttributes();
+        iPSettingsDialogWindow.setGravity(Gravity.CENTER | Gravity.TOP);
+        int[] location = new int[2];
+        mIpSettingsDownDrop.getLocationOnScreen(location);
+        iPSettingsDialogLp.y = location[1];
+        iPSettingsDialogWindow.setAttributes(iPSettingsDialogLp);
     }
 
     private void setPasswordVisible(boolean visible) {
@@ -157,43 +225,11 @@ public class ConnectDialog extends Dialog implements View.OnClickListener {
             mAdvancedOptionsVisible = !mAdvancedOptionsVisible;
             setAdvancedOptionsVisible(mAdvancedOptionsVisible);
         } else if (id == R.id.metered_down_drop) {
-            new MeteredDialog(mContext, R.style.ZhDialog, new MeteredDialog.DialogCallback() {
-                @Override
-                public void callBackData(MeteredDialog.Type data) {
-                    switch (data) {
-                        case AUTO:
-                            mMeteredResult.setText(R.string.metered_dialog_auto);
-                            mMeteredType = METERED_OVERRIDE_NONE;
-                            break;
-                        case METERED:
-                            mMeteredResult.setText(R.string.metered_dialog_metered);
-                            mMeteredType = METERED_OVERRIDE_METERED;
-                            break;
-                        case UNMETERED:
-                            mMeteredResult.setText(R.string.metered_dialog_unmetered);
-                            mMeteredType = METERED_OVERRIDE_NOT_METERED;
-                            break;
-                    }
-                }
-            }).show();
+            setMeteredDialogPosition();
+            mMeteredDialog.show();
         } else if (id == R.id.ip_settings_down_drop) {
-            new IPSettingsDialog(mContext, R.style.ZhDialog, new IPSettingsDialog.DialogCallback() {
-                @Override
-                public void callBackData(IPSettingsDialog.Type data) {
-                    switch (data) {
-                        case DHCP:
-                            mIPAssignmentResult.setText(R.string.ip_settings_dialog_dhcp);
-                            mIPAssignment = "DHCP";
-                            setStaticIpSettingsVisible(false);
-                            break;
-                        case STATIC:
-                            mIPAssignmentResult.setText(R.string.ip_settings_dialog_static);
-                            mIPAssignment = "STATIC";
-                            setStaticIpSettingsVisible(true);
-                            break;
-                    }
-                }
-            }).show();
+            setIPSettingsDialogPosition();
+            mIPSettingsDialog.show();
         }
     }
 
