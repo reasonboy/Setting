@@ -1,12 +1,20 @@
 package com.jzzh.network.wifi;
 
+import static com.jzzh.network.wifi.WifiUtils.METERED_OVERRIDE_METERED;
+import static com.jzzh.network.wifi.WifiUtils.METERED_OVERRIDE_NONE;
+import static com.jzzh.network.wifi.WifiUtils.METERED_OVERRIDE_NOT_METERED;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,13 +29,30 @@ public class ConnectDialog extends Dialog implements View.OnClickListener {
     private Context mContext;
     private String mWifiName,mEncryption;
     private TextView mWifiNameTx;
+    private TextView mMeteredResult;
+    private TextView mIPAssignmentResult;
     private EditText mPasswordEt;
+    private EditText mIpAddressEt;
+    private EditText mGatewayEt;
+    private EditText mNetworkPrefixLengthEt;
+    private EditText mDns1Et;
     private ImageView mShowPassword;
+    private ImageView mAdvancedOptions;
+    private LinearLayout mAdvancedOptionsLayout;
+    private LinearLayout mStaticIpSettingsLayout;
+    private LinearLayout mShowAdvancedOptions;
+    private int mMeteredType = METERED_OVERRIDE_NONE;
+    private String mIPAssignment = "DHCP";
     private Button mCancle,mConnect;
     private DialogCallback mCallback;
     private boolean mPasswordVisible = false;
+    private boolean mAdvancedOptionsVisible = false;
     private boolean mIsSavedNet;
     private int mSignalLevel;
+    private ImageView mMeteredDownDrop;
+    private ImageView mIpSettingsDownDrop;
+    private MeteredDialog mMeteredDialog;
+    private IPSettingsDialog mIPSettingsDialog;
 
     private static final String WPA = "WPA";
 
@@ -48,13 +73,29 @@ public class ConnectDialog extends Dialog implements View.OnClickListener {
         mWifiNameTx = findViewById(R.id.wifi_connect_dialog_name);
         mWifiNameTx.setText(mWifiName);
         mPasswordEt = findViewById(R.id.wifi_connect_connect_password);
+        mIpAddressEt = findViewById(R.id.wifi_ip_address);
+        mGatewayEt = findViewById(R.id.wifi_gateway);
+        mNetworkPrefixLengthEt = findViewById(R.id.wifi_network_prefix_length);
+        mDns1Et = findViewById(R.id.wifi_dns1);
         mShowPassword = findViewById(R.id.wifi_connect_dialog_show_password);
         mShowPassword.setOnClickListener(this);
+        mAdvancedOptions = findViewById(R.id.wifi_connect_dialog_show_advanced_options);
+        mAdvancedOptions.setOnClickListener(this);
+        mMeteredDownDrop = findViewById(R.id.metered_down_drop);
+        mMeteredDownDrop.setOnClickListener(this);
+        mIpSettingsDownDrop = findViewById(R.id.ip_settings_down_drop);
+        mIpSettingsDownDrop.setOnClickListener(this);
+        mMeteredResult = findViewById(R.id.metered_result);
+        mIPAssignmentResult = findViewById(R.id.ip_settings_result);
+        mAdvancedOptionsLayout = findViewById(R.id.ll_advanced_options);
+        mStaticIpSettingsLayout = findViewById(R.id.ll_static_ip_settings);
+        mShowAdvancedOptions = findViewById(R.id.ll_show_advanced_options);
         mCancle = findViewById(R.id.wifi_connect_dialog_cancle);
         mCancle.setOnClickListener(this);
         mConnect = findViewById(R.id.wifi_connect_dialog_connect);
         mConnect.setOnClickListener(this);
         setPasswordVisible(mPasswordVisible);
+        setAdvancedOptionsVisible(mAdvancedOptionsVisible);
         if (mIsSavedNet) {
             mPasswordEt.setVisibility(View.GONE);
             LinearLayout ll = findViewById(R.id.ll_enable_show_password);
@@ -64,15 +105,75 @@ public class ConnectDialog extends Dialog implements View.OnClickListener {
             TextView deleteThisInternet = findViewById(R.id.wifi_delete_this_internet);
             deleteThisInternet.setVisibility(View.VISIBLE);
             deleteThisInternet.setOnClickListener(this);
+            mShowAdvancedOptions.setVisibility(View.GONE);
         } else {  // 未保存的wifi，输入密码交互
             mConnect.setEnabled(false);
             mConnect.setTextAppearance(mContext, R.style.NegativeDialogButtonStyle);
             mConnect.setBackgroundResource(R.drawable.rectangle_negative);
             mPasswordEt.addTextChangedListener(textWatcher);
+            mShowAdvancedOptions.setVisibility(View.VISIBLE);
         }
         TextView signalStrengthTv = findViewById(R.id.tv_signal_strength);
         String signalStrength = getSignalStrengthByLevel(mSignalLevel);
         signalStrengthTv.setText(String.format("%s: %s", mContext.getString(R.string.wifi_detail_signal_strength), signalStrength));
+        // Metered Dialog
+        mMeteredDialog = new MeteredDialog(mContext, R.style.ZhDialog, new MeteredDialog.DialogCallback() {
+            @Override
+            public void callBackData(MeteredDialog.Type data) {
+                switch (data) {
+                    case AUTO:
+                        mMeteredResult.setText(R.string.metered_dialog_auto);
+                        mMeteredType = METERED_OVERRIDE_NONE;
+                        break;
+                    case METERED:
+                        mMeteredResult.setText(R.string.metered_dialog_metered);
+                        mMeteredType = METERED_OVERRIDE_METERED;
+                        break;
+                    case UNMETERED:
+                        mMeteredResult.setText(R.string.metered_dialog_unmetered);
+                        mMeteredType = METERED_OVERRIDE_NOT_METERED;
+                        break;
+                }
+            }
+        });
+        // IPSettings Dialog
+        mIPSettingsDialog = new IPSettingsDialog(mContext, R.style.ZhDialog, new IPSettingsDialog.DialogCallback() {
+            @Override
+            public void callBackData(IPSettingsDialog.Type data) {
+                switch (data) {
+                    case DHCP:
+                        mIPAssignmentResult.setText(R.string.ip_settings_dialog_dhcp);
+                        mIPAssignment = "DHCP";
+                        setStaticIpSettingsVisible(false);
+                        break;
+                    case STATIC:
+                        mIPAssignmentResult.setText(R.string.ip_settings_dialog_static);
+                        mIPAssignment = "STATIC";
+                        setStaticIpSettingsVisible(true);
+                        break;
+                }
+            }
+        });
+    }
+
+    private void setMeteredDialogPosition() {
+        Window meteredDialogWindow = mMeteredDialog.getWindow();
+        WindowManager.LayoutParams meteredDialogLp = meteredDialogWindow.getAttributes();
+        meteredDialogWindow.setGravity(Gravity.CENTER | Gravity.TOP);
+        int[] location = new int[2];
+        mMeteredDownDrop.getLocationOnScreen(location);
+        meteredDialogLp.y = location[1];
+        meteredDialogWindow.setAttributes(meteredDialogLp);
+    }
+
+    private void setIPSettingsDialogPosition() {
+        Window iPSettingsDialogWindow = mIPSettingsDialog.getWindow();
+        WindowManager.LayoutParams iPSettingsDialogLp = iPSettingsDialogWindow.getAttributes();
+        iPSettingsDialogWindow.setGravity(Gravity.CENTER | Gravity.TOP);
+        int[] location = new int[2];
+        mIpSettingsDownDrop.getLocationOnScreen(location);
+        iPSettingsDialogLp.y = location[1];
+        iPSettingsDialogWindow.setAttributes(iPSettingsDialogLp);
     }
 
     private void setPasswordVisible(boolean visible) {
@@ -87,6 +188,24 @@ public class ConnectDialog extends Dialog implements View.OnClickListener {
         }
     }
 
+    private void setAdvancedOptionsVisible(boolean visible) {
+        if (visible) {
+            mAdvancedOptions.setImageResource(R.drawable.check_on);
+            mAdvancedOptionsLayout.setVisibility(View.VISIBLE);
+        } else {
+            mAdvancedOptions.setImageResource(R.drawable.check_off);
+            mAdvancedOptionsLayout.setVisibility(View.GONE);
+        }
+    }
+
+    private void setStaticIpSettingsVisible(boolean visible) {
+        if (visible) {
+            mStaticIpSettingsLayout.setVisibility(View.VISIBLE);
+        } else {
+            mStaticIpSettingsLayout.setVisibility(View.GONE);
+        }
+    }
+
     @Override
     public void onClick(View view) {
         int id = view.getId();
@@ -97,11 +216,20 @@ public class ConnectDialog extends Dialog implements View.OnClickListener {
         } else if (id == R.id.wifi_connect_dialog_cancle) {
             dismiss();
         } else if (id == R.id.wifi_connect_dialog_connect) {
-            mCallback.callBackData(new String[]{mWifiName, mPasswordEt.getText().toString(), mEncryption}, "connect");
+                mCallback.callBackData(new String[]{mWifiName, mPasswordEt.getText().toString(), mEncryption}, "connect", mMeteredType, mIPAssignment, new String[]{mIpAddressEt.getText().toString(), "255.255.255.0", mGatewayEt.getText().toString(),mDns1Et.getText().toString()});
             dismiss();
         } else if (id == R.id.wifi_delete_this_internet) {
-            mCallback.callBackData(new String[]{mWifiName}, "delete");
+                mCallback.callBackData(new String[]{mWifiName}, "delete", METERED_OVERRIDE_NONE,"",null);
             dismiss();
+        } else if (id == R.id.wifi_connect_dialog_show_advanced_options) {
+            mAdvancedOptionsVisible = !mAdvancedOptionsVisible;
+            setAdvancedOptionsVisible(mAdvancedOptionsVisible);
+        } else if (id == R.id.metered_down_drop) {
+            setMeteredDialogPosition();
+            mMeteredDialog.show();
+        } else if (id == R.id.ip_settings_down_drop) {
+            setIPSettingsDialogPosition();
+            mIPSettingsDialog.show();
         }
     }
 
@@ -149,6 +277,6 @@ public class ConnectDialog extends Dialog implements View.OnClickListener {
     };
 
     public interface DialogCallback {
-        void callBackData(String[] data, String key);
+        void callBackData(String[] data, String key,int meteredType,String ipAssignment,String[] ipSettingsData);
     }
 }

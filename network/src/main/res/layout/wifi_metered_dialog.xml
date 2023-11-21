@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rectangle">
+
+    <TextView
+        android:id="@+id/metered_auto"
+        style="@style/WifiDetailTextViewStyle1"
+        android:text="@string/metered_dialog_auto"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"/>
+
+    <TextView
+        android:id="@+id/metered_metered"
+        style="@style/WifiDetailTextViewStyle1"
+        android:text="@string/metered_dialog_metered"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"/>
+
+    <TextView
+        android:id="@+id/metered_unmetered"
+        style="@style/WifiDetailTextViewStyle1"
+        android:text="@string/metered_dialog_unmetered"/>
+</LinearLayout>
