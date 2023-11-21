@@ -6,4 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <include layout="@layout/display_def_image_layout"/>
+
 </LinearLayout>

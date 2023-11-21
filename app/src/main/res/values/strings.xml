@@ -69,4 +69,28 @@
     <string name="time_am">AM</string>
     <string name="time_pm">PM</string>
     <string name="time_select_timezone">Select Time Zone</string>
+    <string name="def_image_apply">Apply</string>
+    <string name="power_user_no_image">
+        <![CDATA[
+        <p>Please connect to your desktop
+        <br>and copy image files to <b>PowerOff</b> folder
+        <br>or <b>INNOS</b> folder(in <b>Download</b> folder).
+        <br><b>PNG, BMP, JPG</b> files can be used for PowerOff image.</p>
+        <p>Optimized resolution is <b>1200 X 1600</b>
+        ]]>
+    </string>
+    <string name="sleep_user_no_image">
+        <![CDATA[
+        <p>Please connect to your desktop
+        <br>and copy image files to <b>Sleep</b> folder
+        <br>or <b>INNOS</b> folder(in <b>Download</b> folder).
+        <br><b>PNG, BMP, JPG</b> files can be used for sleep image.</p>
+        <p>Optimized resolution is <b>1200 X 1600</b>
+        ]]>
+    </string>
+    <string name="user_image_setting">User Image Setting</string>
+    <string name="user_image_fit_center">Fit Center</string>
+    <string name="user_image_center_crop">Center Crop</string>
+    <string name="user_image_rotate">Rotate</string>
+    <string name="user_image_rotate_reverse">Rotate Reverse</string>
 </resources>
