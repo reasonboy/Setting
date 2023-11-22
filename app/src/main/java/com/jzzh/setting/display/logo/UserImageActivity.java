@@ -1,4 +1,4 @@
-package com.jzzh.setting.display;
+package com.jzzh.setting.display.logo;
 
 import android.app.Fragment;
 import android.os.Bundle;

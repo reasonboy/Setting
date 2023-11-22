@@ -1,4 +1,4 @@
-package com.jzzh.setting.display;
+package com.jzzh.setting.display.logo;
 
 import android.content.Context;
 import android.view.LayoutInflater;

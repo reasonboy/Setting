@@ -1,4 +1,4 @@
-package com.jzzh.setting.display;
+package com.jzzh.setting.display.logo;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -46,7 +46,6 @@ public class UserImageSettingItem extends LinearLayout {
         @Override
         public boolean onResourceReady(Object resource, Object model, Target RequestListener, DataSource dataSource, boolean isFirstResource) {
             mSrcBitmap = ((BitmapDrawable) resource).getBitmap();
-            Log.v("bbb",mSrcBitmap.getWidth()+"-onResourceReady-"+mSrcBitmap.getHeight());
             return false;
         }
     };
@@ -101,6 +100,8 @@ public class UserImageSettingItem extends LinearLayout {
                     .into(mPreview);
         }
     }
+
+
 
     public Bitmap getSrcBitmap() {
         return mSrcBitmap;

@@ -93,4 +93,5 @@
     <string name="user_image_center_crop">Center Crop</string>
     <string name="user_image_rotate">Rotate</string>
     <string name="user_image_rotate_reverse">Rotate Reverse</string>
+    <string name="set_image_successfully">Set Image Successfully</string>
 </resources>

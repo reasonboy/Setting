@@ -1,8 +1,7 @@
-package com.jzzh.setting.display;
+package com.jzzh.setting.display.logo;
 
 import android.annotation.SuppressLint;
 import android.app.Fragment;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.FileObserver;
 import android.text.Html;

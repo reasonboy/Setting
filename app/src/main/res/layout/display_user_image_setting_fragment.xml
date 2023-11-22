@@ -20,13 +20,13 @@
         android:layout_marginTop="60dp"
         android:layout_gravity="center_horizontal">
 
-        <com.jzzh.setting.display.UserImageSettingItem
+        <com.jzzh.setting.display.logo.UserImageSettingItem
             android:id="@+id/user_image_fit_center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:describe="@string/user_image_fit_center"/>
 
-        <com.jzzh.setting.display.UserImageSettingItem
+        <com.jzzh.setting.display.logo.UserImageSettingItem
             android:id="@+id/user_image_center_crop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,13 +41,13 @@
         android:layout_marginTop="100dp"
         android:layout_gravity="center_horizontal">
 
-        <com.jzzh.setting.display.UserImageSettingItem
+        <com.jzzh.setting.display.logo.UserImageSettingItem
             android:id="@+id/user_image_rotate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:describe="@string/user_image_rotate"/>
 
-        <com.jzzh.setting.display.UserImageSettingItem
+        <com.jzzh.setting.display.logo.UserImageSettingItem
             android:id="@+id/user_image_rotate_reverse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

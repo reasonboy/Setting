@@ -1,4 +1,4 @@
-package com.jzzh.setting.display;
+package com.jzzh.setting.display.logo;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -19,7 +19,14 @@ import java.io.FileOutputStream;
 
 public class BitmapManager {
 
-    public static final String LOGO_SAVE_PATH = "/storage/emulated/0/Android/Logo/";
+    public static final String LOGO_SAVE_PATH = "/data/misc/eink/";
+    public static final String[] SLEEP_IMAGE_SAVE_FILES = new String[]{
+            LOGO_SAVE_PATH+"standby.png",
+            LOGO_SAVE_PATH+"standby_lowpower.png",
+            LOGO_SAVE_PATH+"standby_charge.png"};
+    public static final String[] POWER_OFF_IMAGE_SAVE_FILES = new String[]{
+            LOGO_SAVE_PATH+"poweroff.png",
+            LOGO_SAVE_PATH+"poweroff_nopower.png"};
 
     public static Bitmap rotateBitmap(Bitmap srcBitmap, float degrees) {
         Matrix matrix = new Matrix();
@@ -62,12 +69,6 @@ public class BitmapManager {
      * 将Bitmap保存到targetPath
      * */
     public static void saveBitmap(Bitmap bitmap, String targetPath) {
-
-
-        File file = new File(LOGO_SAVE_PATH);
-        if (!file.exists()) {
-            boolean flag = file.mkdirs();
-        }
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(targetPath);
@@ -78,6 +79,13 @@ public class BitmapManager {
         } catch (Exception e) {
             Log.v("xml_log_err",""+e.toString());
             e.printStackTrace();
+        }
+    }
+
+    public static void deleteBitmap(String targetPath) {
+        File file = new File(targetPath);
+        if(file.exists()) {
+            file.delete();
         }
     }
 
