@@ -94,4 +94,9 @@
     <string name="user_image_rotate">Rotate</string>
     <string name="user_image_rotate_reverse">Rotate Reverse</string>
     <string name="set_image_successfully">Set Image Successfully</string>
+    <string name="home_screen_widget_setting">Widget Setting</string>
+    <string name="home_screen_widget_setting_describe1">When Wifi is ON Search bar and notification message are exposed. Get notifications of the latest updates and more right away!</string>
+    <string name="home_screen_widget_setting_describe2">Widget settings are available only when a widget style is selected.</string>
+    <string name="home_screen_widget_style">Widget Style</string>
+    <string name="home_screen_default_style">Default App Style</string>
 </resources>

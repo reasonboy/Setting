@@ -12,9 +12,12 @@
         <entry key="..\:/AndroidStudioProject/Setting/Tools/src/main/res/layout/task_item.xml" value="0.171875" />
         <entry key="..\:/AndroidStudioProject/Setting/WifiSetting/src/main/res/layout/activity_main.xml" value="0.11510416666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable-v24/dispaly_def_apply_frame.xml" value="0.18958333333333333" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable-v24/display_def_apply_frame.xml" value="0.26510416666666664" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable-v24/frame_right_angle.xml" value="0.18958333333333333" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.21041666666666667" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable-v24/negative_rectangle.xml" value="0.18489583333333334" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable-v24/ra_button_bg.xml" value="0.26510416666666664" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable-v24/radio_button_select.xml" value="0.26510416666666664" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable-v24/rectangle.xml" value="0.18489583333333334" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable-v24/rectangle_negative.xml" value="0.2484375" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable-v24/rectangle_small.xml" value="0.21145833333333333" />
@@ -96,7 +99,7 @@
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_device_certification_info.xml" value="0.18229166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_device_info.xml" value="0.18229166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_display.xml" value="0.1" />
-        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_display_home_screen.xml" value="0.271286231884058" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_display_home_screen.xml" value="0.5" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_display_poi.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_display_poi_default.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_display_poi_user.xml" value="0.271286231884058" />
@@ -135,6 +138,7 @@
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/display_user_image_setting_fragment.xml" value="0.38125" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/display_user_image_setting_item.xml" value="0.32653985507246375" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/fragment_wifi_setupwizard.xml" value="0.21510416666666668" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/home_screen_item.xml" value="0.2604166666666667" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/keyboard_layout.xml" value="0.21510416666666668" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/language_layout.xml" value="0.21510416666666668" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/list_item_c.xml" value="0.21510416666666668" />
