@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="@dimen/zh_dialog_width"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rectangle">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zh_dialog_title_height">
+        <TextView
+            android:textSize="@dimen/textSize21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:text="@string/widget_text_change"/>
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/change_widget_et"
+        android:layout_gravity="center_horizontal"
+        android:hint="@string/widget_text_dialog_et_hint"
+        style="@style/DialogEditTextStyle"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:textSize="15sp"
+        android:text="@string/widget_text_dialog_describe"/>
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
+
+        <Button
+            android:id="@+id/change_widget_cancel"
+            style="@style/DialogButtonStyle"
+            android:text="@string/settings_cancel" />
+        <Button
+            android:id="@+id/change_widget_ok"
+            style="@style/DialogButtonStyle"
+            android:layout_marginLeft="30dp"
+            android:text="@string/settings_ok" />
+    </LinearLayout>
+
+</LinearLayout>

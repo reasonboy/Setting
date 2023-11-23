@@ -6,4 +6,38 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.jzzh.setting.TitleLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_marginTop"
+        app:title="@string/widget_text"/>
+
+    <LinearLayout
+        android:id="@+id/widget_text_layout"
+        android:layout_width="match_parent"
+        android:layout_height="92dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="54dp"
+                android:textSize="@dimen/textSize19"
+                android:text="@string/widget_text_change"/>
+
+            <TextView
+                android:id="@+id/widget_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:textSize="15sp"
+                android:text="@string/widget_text_default"/>
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>

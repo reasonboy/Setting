@@ -99,4 +99,9 @@
     <string name="home_screen_widget_setting_describe2">Widget settings are available only when a widget style is selected.</string>
     <string name="home_screen_widget_style">Widget Style</string>
     <string name="home_screen_default_style">Default App Style</string>
+    <string name="widget_text">Widget Text</string>
+    <string name="widget_text_change">Change Widget Text</string>
+    <string name="widget_text_default">Default Text</string>
+    <string name="widget_text_dialog_describe">Max 3 lines,75 characters</string>
+    <string name="widget_text_dialog_et_hint">Enter here to add a widget text</string>
 </resources>
