@@ -118,4 +118,10 @@
     <string name="device_info_available">Available:</string>
     <string name="device_info_total">Total:</string>
     <string name="device_info_no_sd">No SD card</string>
+    <string name="factory_reset_msg1"> <![CDATA[This will erase all data from your device\'s <b>internal storage<b>.]]></string>
+    <string name="factory_reset_msg2">including:</string>
+    <string name="factory_reset_msg3">Google Acount data and settings\nSystem and application data and settings\nDownloaded books\nTo also clear music, pictures, and other user data</string>
+    <string name="factory_reset_msg4">Data recovery is impossible after reset, so please proceed carefully.</string>
+    <string name="factory_reset_dialog_msg">Are you sure you want to reset device?\nData recovery is impossible after reset.</string>
+    <string name="factory_reset_btn">RESET</string>
 </resources>
