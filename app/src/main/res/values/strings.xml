@@ -104,4 +104,18 @@
     <string name="widget_text_default">Default Text</string>
     <string name="widget_text_dialog_describe">Max 3 lines,75 characters</string>
     <string name="widget_text_dialog_et_hint">Enter here to add a widget text</string>
+    <string name="device_info_system_version">System version</string>
+    <string name="device_info_android_version">Android version</string>
+    <string name="device_info_model_number">Model Number</string>
+    <string name="device_info_serial_number">Serial Number</string>
+    <string name="device_info_battery">Battery Info</string>
+    <string name="device_info_storage">Storage Info</string>
+    <string name="device_info_sd">SDCard Info</string>
+    <string name="device_info_license">Open License Info</string>
+    <string name="device_info_battery_full">Full</string>
+    <string name="device_info_battery_discharging">Discharging</string>
+    <string name="device_info_battery_charging">Charging</string>
+    <string name="device_info_available">Available:</string>
+    <string name="device_info_total">Total:</string>
+    <string name="device_info_no_sd">No SD card</string>
 </resources>

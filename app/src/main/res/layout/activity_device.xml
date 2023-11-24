@@ -15,6 +15,7 @@
 
     <com.jzzh.setting.SettingSubItem
         android:id="@+id/setting_device_certification_info"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:title="@string/setting_device_certification_info"/>

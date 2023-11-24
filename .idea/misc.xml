@@ -95,7 +95,7 @@
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_bt9.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_bt_pop.xml" value="0.18229166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_date_and_time.xml" value="0.18229166666666666" />
-        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_device.xml" value="0.271286231884058" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_device.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_device_certification_info.xml" value="0.18229166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_device_info.xml" value="0.18229166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_display.xml" value="0.1" />
@@ -130,6 +130,7 @@
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/bluetooth_pair_dialog.xml" value="0.1953125" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/bluetooth_rename_dialog.xml" value="0.1953125" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/buletooth_fragment.xml" value="0.21979166666666666" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/device_info_item.xml" value="0.24895833333333334" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/display_def_image_layout.xml" value="0.1734375" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/display_si_user.xml" value="0.32653985507246375" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/display_user_image_fragment.xml" value="0.1734375" />
