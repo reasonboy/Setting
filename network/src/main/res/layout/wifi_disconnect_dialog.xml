@@ -27,14 +27,29 @@
         android:layout_height="1.0dip" />
 
     <TextView
+        android:id="@+id/tv_status_info"
+        style="@style/WifiDetailTextViewStyle"
+        android:text="@string/wifi_detail_status_info"/>
+
+    <TextView
         android:id="@+id/tv_signal_strength"
         style="@style/WifiDetailTextViewStyle"
         android:text="@string/wifi_detail_signal_strength" />
 
     <TextView
+        android:id="@+id/tv_connecting_speed"
+        style="@style/WifiDetailTextViewStyle"
+        android:text="@string/wifi_detail_connecting_speed" />
+
+    <TextView
         android:id="@+id/tv_frequency"
         style="@style/WifiDetailTextViewStyle"
         android:text="@string/wifi_detail_frequency" />
+
+    <TextView
+        android:id="@+id/tv_security"
+        style="@style/WifiDetailTextViewStyle"
+        android:text="@string/wifi_detail_security" />
 
     <TextView
         android:id="@+id/tv_ip_address"
@@ -44,17 +59,25 @@
     <TextView
         android:id="@+id/tv_gateway"
         style="@style/WifiDetailTextViewStyle"
-        android:text="@string/wifi_detail_gateway" />
+        android:text="@string/wifi_detail_gateway"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/tv_subnet_mask"
         style="@style/WifiDetailTextViewStyle"
-        android:text="@string/wifi_detail_subnet_mask" />
+        android:text="@string/wifi_detail_subnet_mask"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/tv_dns"
         style="@style/WifiDetailTextViewStyle"
-        android:text="@string/wifi_detail_dns" />
+        android:text="@string/wifi_detail_dns"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_mac_address"
+        style="@style/WifiDetailTextViewStyle"
+        android:text="@string/wifi_detail_mac_address" />
 
     <LinearLayout
         android:gravity="center"

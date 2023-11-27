@@ -189,7 +189,7 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
                     public void callBackData(String[] data) {
                         mWifiUtils.removeWifiBySsid(data[0]);
                     }
-                }, name, signalLevel).show();
+                }, name, signalLevel, enc).show();
             }
         }
     };
@@ -488,6 +488,7 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
             }
             viewHolder.wifiName.setText(mResultList.get(i).SSID);
             String describe = getDescribe(mResultList.get(i));
+            Log.d("lx","describe:"+describe);
             boolean lock;
             if(describe.contains("WPA")) {
                 lock = true;

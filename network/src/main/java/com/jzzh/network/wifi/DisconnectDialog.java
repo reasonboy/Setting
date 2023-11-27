@@ -1,5 +1,6 @@
 package com.jzzh.network.wifi;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -34,14 +35,16 @@ public class DisconnectDialog extends Dialog implements View.OnClickListener{
     private Button mCancle,mConnect;
     private DialogCallback mCallback;
     private int mSignalLevel;
+    private String mSecurity;
     private static final String TAG=DisconnectDialog.class.getSimpleName();
 
-    public DisconnectDialog(Context context, int style, DialogCallback callback, String wifiName,int signalLevel) {
+    public DisconnectDialog(Context context, int style, DialogCallback callback, String wifiName,int signalLevel,String security) {
         super(context, style);
         mContext=context;
         mCallback = callback;
         mWifiName = wifiName;
         mSignalLevel = signalLevel;
+        mSecurity = security;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -69,6 +72,7 @@ public class DisconnectDialog extends Dialog implements View.OnClickListener{
         }
     }
 
+    @SuppressLint("MissingPermission")
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void showConnectInfo() {
         ConnectivityManager mConnectivityManager = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -106,9 +110,13 @@ public class DisconnectDialog extends Dialog implements View.OnClickListener{
         }
 
         String band = null;
+        int linkSpeed = 0;
+        String macAddress = "";
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             WifiManager mWifiManager = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
             int frequency = mWifiManager.getConnectionInfo().getFrequency();
+            macAddress = mWifiManager.getConnectionInfo().getMacAddress();
+            linkSpeed = mWifiManager.getConnectionInfo().getLinkSpeed();
             if (frequency >= 2400
                     && frequency < 2500) {
                 band = mContext.getResources().getString(R.string.wifi_band_24ghz);
@@ -134,6 +142,14 @@ public class DisconnectDialog extends Dialog implements View.OnClickListener{
         subnetMaskTv.setText(String.format("%s: %s", mContext.getString(R.string.wifi_detail_subnet_mask), subnet));
         TextView dnsTv = findViewById(R.id.tv_dns);
         dnsTv.setText(String.format("%s: %s", mContext.getString(R.string.wifi_detail_dns), dnsServers));
+        TextView statusInfoTv = findViewById(R.id.tv_status_info);
+        statusInfoTv.setText(String.format("%s: %s", mContext.getString(R.string.wifi_detail_status_info), "Connected"));
+        TextView connectingSpeed = findViewById(R.id.tv_connecting_speed);
+        connectingSpeed.setText(String.format("%s: %s%s", mContext.getString(R.string.wifi_detail_connecting_speed), linkSpeed, "Mbps"));
+        TextView macAddressTv = findViewById(R.id.tv_mac_address);
+        macAddressTv.setText(String.format("%s: %s", mContext.getString(R.string.wifi_detail_mac_address), macAddress));
+        TextView securityTv = findViewById(R.id.tv_security);
+        securityTv.setText(String.format("%s:%s", mContext.getString(R.string.wifi_detail_security), mSecurity));
     }
 
     /*
