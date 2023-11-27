@@ -1,5 +1,7 @@
 package com.jzzh.setting.device;
 
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.Html;
@@ -11,6 +13,8 @@ import com.jzzh.setting.BaseActivity;
 import com.jzzh.setting.R;
 
 public class GSFActivity extends BaseActivity implements View.OnClickListener {
+
+    private static final Uri sUri = Uri.parse("content://com.google.android.gsf.gservices");
 
     private View mGsfContentLayout;
     private ImageView mGsfSwitch;
@@ -89,7 +93,27 @@ public class GSFActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private String getGsfId() {
-        return null;
+        try {
+            Cursor query = getContentResolver().query(sUri, null, null, new String[] { "android_id" }, null);
+            if (query == null) {
+                return "Not found";
+            }
+            if (!query.moveToFirst() || query.getColumnCount() < 2) {
+                query.close();
+                return "Not found";
+            }
+
+            final String String = query.getString(1);
+            query.close();
+
+            return String.toUpperCase().trim();
+        } catch (SecurityException e) {
+            e.printStackTrace();
+            return null;
+        } catch (Exception e2) {
+            e2.printStackTrace();
+            return null;
+        }
     }
 
     @Override
