@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidStudioProject/Setting/Bluetoothsetting/src/main/res/layout/activity_main.xml" value="0.11510416666666666" />
+        <entry key="..\:/AndroidStudioProject/Setting/Tools/src/main/res/drawable/radio_button_select.xml" value="0.25625" />
         <entry key="..\:/AndroidStudioProject/Setting/Tools/src/main/res/drawable/setting_next.xml" value="0.18958333333333333" />
         <entry key="..\:/AndroidStudioProject/Setting/Tools/src/main/res/drawable/setting_prev.xml" value="0.18958333333333333" />
         <entry key="..\:/AndroidStudioProject/Setting/Tools/src/main/res/drawable/switch_off.xml" value="0.18802083333333333" />
@@ -11,6 +12,7 @@
         <entry key="..\:/AndroidStudioProject/Setting/Tools/src/main/res/layout/page_indication.xml" value="0.5" />
         <entry key="..\:/AndroidStudioProject/Setting/Tools/src/main/res/layout/task_item.xml" value="0.171875" />
         <entry key="..\:/AndroidStudioProject/Setting/WifiSetting/src/main/res/layout/activity_main.xml" value="0.11510416666666666" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable-v24/check_select.xml" value="0.25625" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable-v24/dispaly_def_apply_frame.xml" value="0.18958333333333333" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable-v24/display_def_apply_frame.xml" value="0.26510416666666664" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable-v24/frame_right_angle.xml" value="0.18958333333333333" />
@@ -28,8 +30,10 @@
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable-v24/task_button_rectangle_choice.xml" value="0.2421875" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable-v24/task_button_rectangle_normal.xml" value="0.2421875" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable-v24/task_item_bg_rectangle.xml" value="0.2421875" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable/arrow_select.xml" value="0.20677083333333332" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable/check_off.xml" value="0.21041666666666667" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable/check_on.xml" value="0.21041666666666667" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable/check_select.xml" value="0.20677083333333332" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable/down_arrow.xml" value="0.21041666666666667" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable/g_check_off.xml" value="0.21041666666666667" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/drawable/g_check_on.xml" value="0.21041666666666667" />
@@ -109,7 +113,7 @@
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_display_si_user.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_display_widget_text.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_factory_reset.xml" value="0.18229166666666666" />
-        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_gsf.xml" value="0.271286231884058" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_gsf.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_keyboard_manager.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_language_and_keyboard.xml" value="0.21979166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_light.xml" value="0.271286231884058" />

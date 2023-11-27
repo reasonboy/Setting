@@ -6,4 +6,87 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.jzzh.setting.TitleLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_marginTop"
+        app:title="@string/gsf_google_enable"
+        app:function_icon_1="@drawable/check_select"/>
+    
+    <LinearLayout
+        android:id="@+id/gsf_content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="52dp"
+        android:layout_marginRight="52dp"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/textSize19"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/gsf_how_to_use"/>
+
+                    <ImageView
+                        android:id="@+id/gsf_how_to_use_msg_switch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|center_vertical"
+                        android:background="@drawable/arrow_select"/>
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/gsf_how_to_use_msg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/textSize19"
+                    android:layout_gravity="center_vertical"
+                    android:lineSpacingExtra="15dp"
+                    android:paddingBottom="15dp"
+                    android:text="@string/gsf_how_to_use_msg"/>
+            </LinearLayout>
+
+            <View
+                android:background="@color/black"
+                android:layout_gravity="bottom"
+                android:layout_width="@dimen/title_layout_underline_width"
+                android:layout_height="@dimen/title_layout_underline_height" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="71dp">
+
+            <TextView
+                android:id="@+id/gsf_id_state_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textSize19"
+                android:layout_gravity="center_vertical"/>
+
+
+            <TextView
+                android:id="@+id/gsf_id_state_btn"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:textSize="@dimen/textSize19"
+                android:gravity="center"
+                android:background="@drawable/task_button_bg"
+                android:layout_gravity="right|center_vertical"/>
+        </FrameLayout>
+    </LinearLayout>
 </LinearLayout>

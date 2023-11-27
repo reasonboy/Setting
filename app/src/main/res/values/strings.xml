@@ -124,4 +124,22 @@
     <string name="factory_reset_msg4">Data recovery is impossible after reset, so please proceed carefully.</string>
     <string name="factory_reset_dialog_msg">Are you sure you want to reset device?\nData recovery is impossible after reset.</string>
     <string name="factory_reset_btn">RESET</string>
+    <string name="gsf_google_enable">Google Play Enable</string>
+    <string name="gsf_how_to_use">How to use</string>
+    <string name="gsf_how_to_use_msg">
+        <![CDATA[
+        1. After connecting to Wifi, select the GSF ID below.(At this point, the GSF ID is automatically copied to the clipboard.)
+        <br>2. Enter your Google ID and PW to log in.
+        <br>3. After entering lD, check "l am not a robot' and register.(When entering ID, press and hold the input field and press the paste menu that appears.)
+        <br>4. Reboot the device after waiting about 20 minutes to 1hour.
+        <br>(※ It may take more time depending on the user environment. up to 48 hours)
+        <br>5. Check that Google Play Store is installed on the main screen.
+        <br>6. Select Google Play Store and log in.
+        <br>7. Search for the desired application and download it.
+        ]]>
+    </string>
+    <string name="gsf_id_miss">GSF ID has not been generated. Please log in to Google Play</string>
+    <string name="gsf_id_obtain">GSF ID:%1$s</string>
+    <string name="gsf_btn_login">LOGIN</string>
+    <string name="gsf_btn_select">SELECT</string>
 </resources>
