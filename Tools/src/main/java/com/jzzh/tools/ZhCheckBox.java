@@ -21,6 +21,7 @@ public class ZhCheckBox extends View {
     private float mHeight;
     private int mLayoutWidth;
     private int mLayoutHeight;
+    private boolean mEnable = true;
 
     private boolean mCheck = true;
     private OnZhCheckedChangeListener mChangeListener;
@@ -92,12 +93,14 @@ public class ZhCheckBox extends View {
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
-                if(x <= mLayoutWidth && y <= mLayoutHeight) { //起来时在控件范围内
-                    mCheck = !mCheck;
-                    if(mChangeListener != null) {
-                        mChangeListener.onCheckedChanged(mCheck);
+                if(mEnable)  {
+                    if(x <= mLayoutWidth && y <= mLayoutHeight) { //起来时在控件范围内
+                        mCheck = !mCheck;
+                        if(mChangeListener != null) {
+                            mChangeListener.onCheckedChanged(mCheck);
+                        }
+                        invalidate();
                     }
-                    invalidate();
                 }
                 break;
         }
@@ -116,6 +119,14 @@ public class ZhCheckBox extends View {
         matrix.postScale(scaleWidth, scaleHeight);
 
         return Bitmap.createBitmap(bitmap, 0, 0, bmpWidth, bmpHeight, matrix, true);
+    }
+
+    public boolean isEnable() {
+        return mEnable;
+    }
+
+    public void setEnable(boolean enable) {
+        mEnable = enable;
     }
 
     public void setCheck(boolean checked) {

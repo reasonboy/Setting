@@ -31,4 +31,12 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="UserImageSettingItem">
+        <attr name="describe" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="DeviceIfoItem">
+        <attr name="title"/>
+    </declare-styleable>
+
 </resources>

@@ -1,9 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.jzzh.setting.TitleLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_marginTop"
+            app:title="@string/setting_device_reset"/>
+
+        <TextView
+            android:id="@+id/factory_reset_msg1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="52dp"
+            android:textSize="@dimen/textSize19"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="52dp"
+            android:textSize="@dimen/textSize19"
+            android:text="@string/factory_reset_msg2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="56dp"
+            android:textSize="@dimen/textSize19"
+            android:text="@string/factory_reset_msg3"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="52dp"
+            android:textSize="@dimen/textSize19"
+            android:text="@string/factory_reset_msg4"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/factory_reset_btn"
+        android:layout_width="178dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="68dp"
+        android:background="@drawable/display_def_apply_frame"
+        android:layout_gravity="center_horizontal|bottom">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textSize20"
+            android:layout_gravity="center"
+            android:text="@string/factory_reset_btn"/>
+    </FrameLayout>
+
+</FrameLayout>
