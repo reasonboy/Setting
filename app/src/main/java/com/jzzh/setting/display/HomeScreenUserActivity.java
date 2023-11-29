@@ -31,7 +31,7 @@ public class HomeScreenUserActivity extends BaseActivity implements View.OnClick
         mDefaultAppStyle = findViewById(R.id.default_app_style);
         mDefaultAppStyle.setOnClickListener(this);
         mDefaultAppStyle.setTitle(R.string.home_screen_default_style);
-        mDefaultAppStyle.setPreview(R.drawable.home_scree_default);
+        mDefaultAppStyle.setPreview(R.drawable.home_screen_app_style);
 
         mWidgetDescribe = findViewById(R.id.widget_setting_describe);
         mCheckBox = findViewById(R.id.widget_setting_switch);
@@ -54,9 +54,9 @@ public class HomeScreenUserActivity extends BaseActivity implements View.OnClick
             mCheckBox.setCheck(widgetEnable == HOME_SCREEN_WIDGET_ENABLE);
             mWidgetDescribe.setText(R.string.home_screen_widget_setting_describe1);
             if(widgetEnable == HOME_SCREEN_WIDGET_ENABLE) {
-                mWidgetStyle.setPreview(R.drawable.home_scree_widget_on);
+                mWidgetStyle.setPreview(R.drawable.home_screen_widget_on);
             } else {
-                mWidgetStyle.setPreview(R.drawable.home_scree_widget_off);
+                mWidgetStyle.setPreview(R.drawable.home_screen_widget_off);
             }
         } else {
             mWidgetStyle.select(false);
