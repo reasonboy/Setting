@@ -24,7 +24,7 @@
             android:id="@+id/home_screen_item_preview"
             android:layout_gravity="center"
             android:layout_width="270dp"
-            android:layout_height="360dp"/>
+            android:layout_height="357dp"/>
 
         <ImageView
             android:layout_width="match_parent"

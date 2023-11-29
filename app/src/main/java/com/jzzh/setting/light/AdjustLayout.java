@@ -43,7 +43,7 @@ public class AdjustLayout extends LinearLayout implements ZhCheckBox.OnZhChecked
         addView(mLayout);
 
         ImageView icon = mLayout.findViewById(R.id.zh_adjust_icon);
-        icon.setBackground(context.getDrawable(iconId));
+        icon.setImageResource(iconId);
         TextView titleTv = mLayout.findViewById(R.id.zh_adjust_title);
         titleTv.setText(title);
 
@@ -69,12 +69,12 @@ public class AdjustLayout extends LinearLayout implements ZhCheckBox.OnZhChecked
     private void updateViewState(boolean enable) {
 		if(enable) {
             mSeekBar.enable(true);
-            mReduce.setBackground(mContext.getDrawable(R.drawable.soft_bar_on_reduce));
-            mIncrease.setBackground(mContext.getDrawable(R.drawable.soft_bar_on_increase));
+            mReduce.setImageResource(R.drawable.soft_bar_on_reduce);
+            mIncrease.setImageResource(R.drawable.soft_bar_on_increase);
         } else {
             mSeekBar.enable(false);
-            mReduce.setBackground(mContext.getDrawable(R.drawable.soft_bar_off_reduce));
-            mIncrease.setBackground(mContext.getDrawable(R.drawable.soft_bar_off_increase));
+            mReduce.setImageResource(R.drawable.soft_bar_off_reduce);
+            mIncrease.setImageResource(R.drawable.soft_bar_off_increase);
         }
 	}
 
