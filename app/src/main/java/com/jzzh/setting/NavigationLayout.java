@@ -33,9 +33,8 @@ public class NavigationLayout extends LinearLayout{
 
     public void setNavigation(int[] navigationIds) {
         final MarginLayoutParams tvLp = new MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-        final MarginLayoutParams ivLp = new MarginLayoutParams(getResources().getDimensionPixelOffset(R.dimen.navi_layout_iconSize),
-                getResources().getDimensionPixelOffset(R.dimen.navi_layout_iconSize));
-        ivLp.setMargins(getResources().getDimensionPixelOffset(R.dimen.navi_layout_view_space), 7,
+        final MarginLayoutParams ivLp = new MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        ivLp.setMargins(getResources().getDimensionPixelOffset(R.dimen.navi_layout_view_space), 1,
                 getResources().getDimensionPixelOffset(R.dimen.navi_layout_view_space),0);
         for (int i = 0;i < navigationIds.length;i++) {
             int srcId = navigationIds[i];
@@ -52,7 +51,7 @@ public class NavigationLayout extends LinearLayout{
             });
 
             ImageView iv = new ImageView(mContext);
-            iv.setBackground(mContext.getDrawable(R.drawable.setting_title_next));
+            iv.setImageResource(R.drawable.setting_title_next);
 
             if(i == navigationIds.length - 1) {
                 tv.underLineVisible(true);

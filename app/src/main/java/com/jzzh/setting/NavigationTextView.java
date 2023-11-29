@@ -42,7 +42,7 @@ public class NavigationTextView extends LinearLayout {
         if(visible) {
             mUnderLine.setVisibility(View.VISIBLE);
         } else {
-            mUnderLine.setVisibility(View.GONE);
+            mUnderLine.setVisibility(View.INVISIBLE);
         }
     }
 
