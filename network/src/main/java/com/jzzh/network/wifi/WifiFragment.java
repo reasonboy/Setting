@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
+import android.net.ProxyInfo;
 import android.net.wifi.ScanResult;
 import android.net.wifi.SupplicantState;
 import android.net.wifi.WifiConfiguration;
@@ -154,13 +155,13 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
             Log.e("lx","name:"+name+" "+address+" is clicked");
             if (!name.equals(mCurConnectSSID)) {
                 if (enc.equals("OPEN") && !isWifiSaved(name)) {
-                    mWifiUtils.connectWifi(name, "", "OPEN", METERED_OVERRIDE_NONE, "", null);
+                    mWifiUtils.connectWifi(name, "", "OPEN", METERED_OVERRIDE_NONE, "", null,"NONE",null);
                 } else {
                     if (isWifiSaved(name)) {
 //                        Log.e(TAG, "已保存的无线网络");
                         new ConnectDialog(mContext, R.style.ZhDialog, new ConnectDialog.DialogCallback() {
                             @Override
-                            public void callBackData(String[] data, String key, int meteredType,String ipAssignment,String[] ipSettingsData) {
+                            public void callBackData(String[] data, String key, int meteredType, String ipAssignment, String[] ipSettingsData, String proxySettings, ProxyInfo proxyInfo) {
                                 if ("connect".equals(key)) {
                                     WifiConfiguration wifiConfig = new WifiConfiguration();
                                     wifiConfig.SSID = "\"" + name + "\"";
@@ -177,8 +178,8 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
                     } else {
                         new ConnectDialog(mContext, R.style.ZhDialog, new ConnectDialog.DialogCallback() {
                             @Override
-                            public void callBackData(String[] data, String key, int meteredType,String ipAssignment,String[] ipSettingsData) {
-                                mWifiUtils.connectWifi(data[0], data[1], data[2], meteredType, ipAssignment, ipSettingsData);
+                            public void callBackData(String[] data, String key, int meteredType,String ipAssignment,String[] ipSettingsData,String proxySettings,ProxyInfo proxyInfo) {
+                                mWifiUtils.connectWifi(data[0], data[1], data[2], meteredType, ipAssignment, ipSettingsData, proxySettings, proxyInfo);
                             }
                         }, name, enc, false, signalLevel).show();
                     }
@@ -258,7 +259,7 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
                 new AddDialog(mContext, R.style.ZhDialog, new AddDialog.DialogCallback() {
                     @Override
                     public void callBackData(String[] data) {
-                            mWifiUtils.connectWifi(data[0], data[1], data[2], METERED_OVERRIDE_NONE, "", null);
+                            mWifiUtils.connectWifi(data[0], data[1], data[2], METERED_OVERRIDE_NONE, "", null,"NONE",null);
                     }
                 }).show();
             }
@@ -488,7 +489,7 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
             }
             viewHolder.wifiName.setText(mResultList.get(i).SSID);
             String describe = getDescribe(mResultList.get(i));
-            Log.d("lx","describe:"+describe);
+//            Log.d("lx","describe:"+describe);
             boolean lock;
             if(describe.contains("WPA")) {
                 lock = true;

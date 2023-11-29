@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rectangle"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/proxy_none"
+        style="@style/WifiDetailTextViewStyle1"
+        android:text="@string/proxy_dialog_none" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black" />
+
+    <TextView
+        android:id="@+id/proxy_manual"
+        style="@style/WifiDetailTextViewStyle1"
+        android:text="@string/proxy_dialog_manual" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black" />
+
+    <TextView
+        android:id="@+id/proxy_auto_config"
+        style="@style/WifiDetailTextViewStyle1"
+        android:text="@string/proxy_dialog_auto_config" />
+</LinearLayout>

@@ -2,9 +2,11 @@ package com.jzzh.network.wifi;
 
 import android.annotation.SuppressLint;
 import android.net.LinkAddress;
+import android.net.ProxyInfo;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiEnterpriseConfig;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.util.Log;
 
 import java.lang.reflect.Constructor;
@@ -47,7 +49,7 @@ public class WifiUtils {
      * @param targetPsd 密码
      * @param enc 加密类型
      */
-    public void connectWifi(String targetSsid, String targetPsd, String enc, int meteredType,String ipAssignment,String[] ipSettingsData) {
+    public void connectWifi(String targetSsid, String targetPsd, String enc, int meteredType,String ipAssignment,String[] ipSettingsData,String proxySettings,ProxyInfo proxyInfo) {
         // 1、注意热点和密码均包含引号，此处需要需要转义引号
         String ssid = "\"" + targetSsid + "\"";
         String psd = "\"" + targetPsd + "\"";
@@ -61,6 +63,18 @@ public class WifiUtils {
             if(ipAssignment.equals("STATIC")){
                 Object staticIpConfiguration = buildStaticIpConfiguration(ipSettingsData[0], ipSettingsData[1], ipSettingsData[2], ipSettingsData[3]);
                 setStaticIpConfiguration(conf,staticIpConfiguration);
+            }
+        }
+        if (!proxySettings.equals("NONE") && proxyInfo != null) {  // set proxy
+            Log.e(TAG, "proxySettings:" + proxySettings);
+            if(proxySettings.equals("PAC")){
+                Log.e(TAG, "PAC uri:" + proxyInfo.getPacFileUrl().toString());
+            }else if(proxySettings.equals("STATIC")){
+                Log.e(TAG,"host:"+proxyInfo.getHost()+",port:"+proxyInfo.getPort()+",execList:"+proxyInfo.getExclusionList().toString());
+            }
+            setProxySettings(conf,proxySettings);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                conf.setHttpProxy(proxyInfo);
             }
         }
         switch (enc) {
@@ -131,6 +145,38 @@ public class WifiUtils {
             setIpAssignment.invoke(configuration, param);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setProxySettings(WifiConfiguration configuration,String enumValue){
+        try {
+            Class clazz = Class.forName("android.net.IpConfiguration$ProxySettings");
+            Object param = Enum.valueOf(clazz, enumValue);
+            Class clzWifiConfiguration = configuration.getClass();
+            java.lang.reflect.Method setIpAssignment = clzWifiConfiguration.getDeclaredMethod("setProxySettings",clazz);
+            setIpAssignment.invoke(configuration, param);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setHttpProxy(WifiConfiguration configuration, ProxyInfo proxyInfo) {
+        Class clzWifiConfiguration = configuration.getClass();
+        try {
+            java.lang.reflect.Method setHttpProxy = clzWifiConfiguration.getDeclaredMethod("setHttpProxy", proxyInfo.getClass());
+            setHttpProxy.invoke(configuration, proxyInfo);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {

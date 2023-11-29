@@ -35,7 +35,7 @@
         <item name="android:textSize">15sp</item>
         <item name="android:background">@drawable/rectangle</item>
         <item name="android:paddingLeft">5.0dip</item>
-        <item name="android:layout_width">350dp</item>
+        <item name="android:layout_width">335dp</item>
         <item name="android:layout_height">30dp</item>
     </style>
 
