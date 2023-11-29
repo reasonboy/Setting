@@ -20,12 +20,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:background="@drawable/soft_light_warm"/>
+                android:src="@drawable/setting_light_warm"/>
             <TextView
                 android:id="@+id/zh_adjust_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
                 android:textSize="@dimen/textSize19"
                 android:text="@string/light_warm"/>
 

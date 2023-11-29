@@ -15,12 +15,12 @@
         android:id="@+id/adjust_warm_light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:icon="@drawable/soft_light_warm"
+        app:icon="@drawable/setting_light_warm"
         app:title="@string/light_warm"/>
     <com.jzzh.setting.light.AdjustLayout
         android:id="@+id/adjust_cold_light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:icon="@drawable/soft_light_cold"
+        app:icon="@drawable/setting_light_cold"
         app:title="@string/light_cold"/>
 </LinearLayout>
