@@ -110,6 +110,8 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
             @Override
             public void onClick(View v) {
                 if (mWifiManager.isWifiEnabled()) {
+                    mWifiTips.setText(getString(R.string.wifi_scanning));
+                    showWifiContent(false);
                     mHandler.sendEmptyMessage(START_SCAN);
                 }
             }
