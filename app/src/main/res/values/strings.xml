@@ -19,7 +19,7 @@
     <string name="setting_display_widget_text">Widget Text</string>
     <string name="setting_light">Light</string>
     <string name="setting_language_and_keyboard">Language &amp; Keyboard</string>
-    <string name="setting_language_and_keyboard_km">Keyboard Manager</string>
+    <string name="setting_language_and_keyboard_km">Keyboard Management</string>
     <string name="setting_date_and_time">Date &amp; Time</string>
     <string name="setting_date_and_time_tz">Time Zone</string>
     <string name="setting_lock_screen">Lock Screen</string>
@@ -56,7 +56,7 @@
     <string name="task_choose">Choose</string>
     <string name="task_all_clean">All Clean</string>
     <string name="language_setting">Language Setting</string>
-    <string name="language_ko">Korean</string>
+    <string name="language_ko">한국어</string>
     <string name="language_en">English</string>
     <string name="keyboard_setting">Keyboard Setting</string>
     <string name="keyboard_msg">Default keyboard can not disable</string>
@@ -118,19 +118,26 @@
     <string name="device_info_available">Available:</string>
     <string name="device_info_total">Total:</string>
     <string name="device_info_no_sd">No SD card</string>
-    <string name="factory_reset_msg1"> <![CDATA[This will erase all data from your device\'s <b>internal storage<b>.]]></string>
-    <string name="factory_reset_msg2">including:</string>
-    <string name="factory_reset_msg3">Google Acount data and settings\nSystem and application data and settings\nDownloaded books\nTo also clear music, pictures, and other user data</string>
-    <string name="factory_reset_msg4">Data recovery is impossible after reset, so please proceed carefully.</string>
+    <string name="factory_reset_contents">
+        This will erase all data from your device\'s <b>internal storage</b>,\n\n
+        including:\n
+        &#160;Google Account data and settings\n
+        &#160;System and application data and settings\n
+        &#160;Downloaded books\n
+        &#160;To also clear music, pictures, and other user data\n\n
+        Data recovery is impossible after reset, so please proceed carefully.\n\n
+    </string>
     <string name="factory_reset_dialog_msg">Are you sure you want to reset device?\nData recovery is impossible after reset.</string>
     <string name="factory_reset_btn">RESET</string>
     <string name="gsf_google_enable">Google Play Enable</string>
     <string name="gsf_how_to_use">How to use</string>
     <string name="gsf_how_to_use_msg">
         <![CDATA[
-        1. After connecting to Wifi, select the GSF ID below.(At this point, the GSF ID is automatically copied to the clipboard.)
+        1. After connecting to Wifi, select the GSF ID below.
+        <br>(At this point, the GSF ID is automatically copied to the clipboard.)
         <br>2. Enter your Google ID and PW to log in.
-        <br>3. After entering lD, check "l am not a robot' and register.(When entering ID, press and hold the input field and press the paste menu that appears.)
+        <br>3. After entering lD, check "l am not a robot' and register.
+        <br>(When entering ID, press and hold the input field and press the paste menu that appears.)
         <br>4. Reboot the device after waiting about 20 minutes to 1hour.
         <br>(※ It may take more time depending on the user environment. up to 48 hours)
         <br>5. Check that Google Play Store is installed on the main screen.
@@ -152,6 +159,17 @@
     </string>
     <string name="msg_wifi_not_connected">Please Wifi on</string>
     <string name="toast_msg_gsf_select">The GSF ID has been copied.\nPaste it in the input field!</string>
+
+    <!-- Lock screen -->
+    <string name="set_password">Password Setting</string>
+    <string name="show_password">Show Password</string>
+    <string name="input_password">Input Password</string>
+    <string name="input_six_digits">Input (6 Digits)</string>
+    <string name="msg_pwd_null_empty">Please input password.</string>
+    <string name="msg_pwd_6_digit">Please set the password with 6 digits</string>
+    <string name="msg_pwd_different">Passwords are different. Please check</string>
+    <string name="msg_pwd_only_digits">Please input only numbers!</string>
+    <string name="msg_pwd_wrong">Password is Wrong!!!</string>
 
     <string name="cancel">Cancel</string>
     <string name="confirm">Confirm</string>
