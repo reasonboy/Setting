@@ -1,0 +1,186 @@
+<resources>
+    <string name="app_name">설정</string>
+    <string name="setting">설정</string>
+    <string name="setting_network">네트워크</string>
+    <string name="setting_network_wifi">와이파이</string>
+    <string name="setting_network_bt">BT(2.4GHz 무선)</string>
+    <string name="setting_power">전원</string>
+    <string name="setting_power_auto_sleep">자동 슬립 설정</string>
+    <string name="setting_power_auto_power_off">자동 종료 설정</string>
+    <string name="setting_display">화면</string>
+    <string name="setting_display_refresh">잔상 제거</string>
+    <string name="setting_display_poi">종료 이미지</string>
+    <string name="setting_display_poi_default">기본 이미지</string>
+    <string name="setting_display_poi_user">사용자 이미지</string>
+    <string name="setting_display_si">슬립 이미지</string>
+    <string name="setting_display_si_default">기본 이미지</string>
+    <string name="setting_display_si_user">사용자 이미지</string>
+    <string name="setting_display_home_screen">홈 화면</string>
+    <string name="setting_display_widget_text">위젯 문구</string>
+    <string name="setting_light">조명</string>
+    <string name="setting_language_and_keyboard">언어/키보드</string>
+    <string name="setting_language_and_keyboard_km">키보드 관리</string>
+    <string name="setting_date_and_time">날짜/시간</string>
+    <string name="setting_date_and_time_tz">표준 시간대</string>
+    <string name="setting_lock_screen">잠금설정</string>
+    <string name="setting_task_manager">작업 관리자</string>
+    <string name="setting_device">기기관리</string>
+    <string name="setting_device_info">기기 정보</string>
+    <string name="setting_device_certification_info">기기 인증 정보</string>
+    <string name="setting_device_system_update">시스템 업데이트</string>
+    <string name="setting_device_app_update">앱 업데이트</string>
+    <string name="setting_device_reset">초기화</string>
+    <string name="setting_device_gsf_id">GSF ID</string>
+
+    <string name="settings_ok">확인</string>
+    <string name="settings_cancel">취소</string>
+
+    <string name="power_2min">2 분</string>
+    <string name="power_5min">5 분</string>
+    <string name="power_10min">10 분</string>
+    <string name="power_15min">15 분</string>
+    <string name="power_20min">20 분</string>
+    <string name="power_30min">30 분</string>
+    <string name="power_60min">60 분</string>
+    <string name="power_none">사용 안 함</string>
+	
+    <string name="refresh_none">사용 안 함</string>
+    <string name="refresh_1view">1 View</string>
+    <string name="refresh_5view">5 View</string>
+    <string name="refresh_10view">10 View</string>
+    <string name="refresh_15view">15 View</string>
+    <string name="refresh_20view">20 View</string>
+	
+    <string name="light_setting">조명 설정</string>
+    <string name="light_warm">온색 조명</string>
+    <string name="light_cold">백색 조명</string>
+	
+    <string name="task_memory_usage">메모리 사용량:%1$s</string>
+    <string name="task_choose">선택</string>
+    <string name="task_all_clean">모두 지우기</string>
+	
+    <string name="language_setting">언어 설정</string>
+    <string name="language_ko">한국어</string>
+    <string name="language_en">English</string>
+    <string name="keyboard_setting">키보드 설정</string>
+    <string name="keyboard_msg">기본 키보드는 비활성화 할 수 없습니다.</string>
+	
+    <string name="time_setting">날짜/시간 설정</string>
+    <string name="time_auto_time">날짜/시간 자동 설정하기</string>
+    <string name="time_use_network_time">네트워크 시간 사용</string>
+    <string name="time_set_date">날짜 설정</string>
+    <string name="time_set_time">시간 설정</string>
+    <string name="time_use_24_format">24시간 형식 사용</string>
+    <string name="time_am">AM</string>
+    <string name="time_pm">PM</string>
+    <string name="time_select_timezone">표준 시간대 선택</string>
+	
+    <string name="def_image_apply">적용</string>
+    <string name="power_user_no_image">
+		<![CDATA[<p>이미지를 <b>내부 저장소</b>의 <b>PowerOff</b> 폴더
+        <br>혹은 <b>Download</b> 안의 <b>INNOS</b> 폴더에 복사해주세요.
+        <br><b>PNG, BMP, JPG</b> 형식을 사용할 수 있습니다.</p>
+        <p>최적화 된 해상도는 <b>1200 X 1600</b> 입니다.]]>
+    </string>
+    <string name="sleep_user_no_image">
+		<![CDATA[<p>이미지를 <b>내부 저장소</b>의 <b>Sleep</b> 폴더
+        <br>혹은 <b>Download</b> 안의 <b>INNOS</b> 폴더에 복사해주세요.
+        <br><b>PNG, BMP, JPG</b> 형식을 사용할 수 있습니다.</p>
+        <p>최적화 된 해상도는 <b>1200 X 1600</b> 입니다.]]>
+    </string>
+    <string name="user_image_setting">사용자 이미지 설정</string>
+    <string name="user_image_fit_center">Fit Center</string>
+    <string name="user_image_center_crop">Center Crop</string>
+    <string name="user_image_rotate">Rotate</string>
+    <string name="user_image_rotate_reverse">Rotate Reverse</string>
+    <string name="set_image_successfully">이미지 설정 완료!</string>
+	
+    <string name="home_screen_widget_setting">위젯 설정</string>
+    <string name="home_screen_widget_setting_describe1">        
+		와이파이 ON 상태일 경우 검색창, 알림 메세지를 노출합니다.\n
+        최신 업데이트 등 알림을 바로 받아보세요!
+	</string>
+    <string name="home_screen_widget_setting_describe2">
+		위젯 설정은 위젯 스타일 선택시에만 가능합니다.
+	</string>
+    <string name="home_screen_widget_style">위젯 스타일</string>
+    <string name="home_screen_default_style">기본 앱 배열 스타일</string>
+    <string name="widget_text">위젯 문구</string>
+    <string name="widget_text_change">위젯 문구 바꾸기</string>
+    <string name="widget_text_default">기본 문구</string>
+    <string name="widget_text_dialog_describe">최대 3줄, 75자</string>
+    <string name="widget_text_dialog_et_hint">좋아하는 문구를 입력해주세요</string>
+	
+    <string name="device_info_system_version">시스템 버전</string>
+    <string name="device_info_android_version">안드로이드 버전</string>
+    <string name="device_info_model_number">기기 모델 번호</string>
+    <string name="device_info_serial_number">시리얼 번호</string>
+    <string name="device_info_battery">배터리 정보</string>
+    <string name="device_info_storage">저장소 정보</string>
+    <string name="device_info_sd">외부저장소 정보</string>
+    <string name="device_info_license">오픈 라이센스 정보</string>
+    <string name="device_info_battery_full">충전 완료</string>
+    <string name="device_info_battery_discharging">충전 안함</string>
+    <string name="device_info_battery_charging">충전 중</string>
+    <string name="device_info_available">사용 가능:</string>
+    <string name="device_info_total">전체:</string>
+    <string name="device_info_no_sd">SD 카드가 없습니다</string>
+
+    <string name="factory_reset_contents">
+        시스템 초기화 진행 시 내부저장소의 모든 데이터가 삭제됩니다.\n\n
+        &#160;Google 계정\n
+        &#160;시스템 및 앱 데이터\n
+        &#160;다운로드한 앱, 음악, 파일 등 사용자 데이터\n\n
+        초기화 후 데이터 복구가 불가능 하므로 신중히 진행해 주세요.
+    </string>
+    <string name="factory_reset_dialog_msg">
+        <b>정말 초기화를 진행하시겠습니까?</b>\n
+        초기화 진행 후 파일 복구는 불가능합니다.
+	</string>
+    <string name="factory_reset_btn">초기화</string>
+	
+    <string name="gsf_google_enable">구글 플레이 활성화</string>
+    <string name="gsf_how_to_use">이용방법</string>
+    <string name="gsf_how_to_use_msg">
+        <![CDATA[
+        1. 와이파이 연결 후 아래 GSF ID를 선택 합니다.
+		<br>(이때 자동으로 GSF ID가 클립보드에 복사됩니다.)
+        <br>2. 구글 ID와 PW를 입력하여 로그인 합니다.
+        <br>3. ID 입력 후 ‘로봇이 아닙니다’를 체크하고 등록 합니다.
+		<br>(ID 입력란을 길게 누르면 뜨는 붙여넣기 메뉴를 누릅니다.)
+        <br>4. 20분 ~ 1시간 정도 대기 후 기기를 재부팅 합니다.
+        <br>(※ 사용자 환경에 따라 최대 48 시간까지 소요될 수 있습니다.)
+        <br>5. 기본 화면에 구글 플레이 스토어가 설치된 것을 확인합니다.
+        <br>6. 구글 플레이 스토어를 선택하여 로그인 합니다.
+        <br>7. 원하는 어플을 검색하여 다운로드 받습니다.
+        ]]>
+    </string>
+    <string name="gsf_id_miss">GSF ID가 생성되지 않았습니다. Google Play에 로그인 해주세요.</string>
+    <string name="gsf_id_obtain">GSF ID : %1$s</string>
+    <string name="gsf_btn_login">LOGIN</string>
+    <string name="gsf_btn_select">선택</string>
+
+    <string name="msg_gsf_id_empty">
+        GSF ID 값이 없습니다!\n\n
+        GSF ID를 받아오기 위해서,\n
+        Google Play에 로그인 해주세요.\n
+        그리고 2~30분이 지나고 재부팅 후\n\n
+        다시 시도해 주시기 바랍니다.
+    </string>
+    <string name="msg_wifi_not_connected">와이파이를 켜주세요</string>
+    <string name="toast_msg_gsf_select">GSF ID가 복사 되었습니다.\n입력 란에 붙여넣기 하세요!</string>
+
+    <!--Lock Screen-->
+    <string name="set_password">비밀번호 설정</string>
+    <string name="show_password">비밀번호 표시</string>
+    <string name="input_password">비밀번호 입력</string>
+    <string name="input_six_digits">입력 (6자리 숫자)</string>
+    <string name="msg_pwd_null_empty">비밀번호를 입력해주세요.</string>
+    <string name="msg_pwd_6_digit">비밀번호는 6자리 숫자로 설정해 주세요.</string>
+    <string name="msg_pwd_different">비밀번호가 서로 다릅니다. 확인해주세요</string>
+    <string name="msg_pwd_only_digits">비밀번호는 숫자로만 설정해 주세요.</string>
+    <string name="msg_pwd_wrong">비밀번호가 틀립니다!!!</string>
+
+    <string name="cancel">취소</string>
+    <string name="confirm">확인</string>
+</resources>

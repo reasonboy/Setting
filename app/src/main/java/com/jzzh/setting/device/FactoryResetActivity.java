@@ -14,12 +14,10 @@ public class FactoryResetActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_factory_reset);
-        TextView msg1 = findViewById(R.id.factory_reset_msg1);
-        msg1.setText(Html.fromHtml(getString(R.string.factory_reset_msg1)));
         findViewById(R.id.factory_reset_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new FactoryResetDialog(FactoryResetActivity.this,R.style.ZhDialog).show();
+                new FactoryResetDialog(FactoryResetActivity.this, R.style.ZhDialog).show();
             }
         });
     }
