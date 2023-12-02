@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.jzzh.network.R;
@@ -50,7 +51,7 @@ public class ConnectDialog extends Dialog implements View.OnClickListener {
     private ImageView mAdvancedOptions;
     private LinearLayout mAdvancedOptionsLayout;
     private LinearLayout mStaticIpSettingsLayout;
-    private LinearLayout mShowAdvancedOptions;
+    private RelativeLayout mShowAdvancedOptions;
     private LinearLayout mProxyAutoConfig;
     private LinearLayout mProxyManual;
     private int mMeteredType = METERED_OVERRIDE_NONE;
@@ -122,7 +123,7 @@ public class ConnectDialog extends Dialog implements View.OnClickListener {
         setAdvancedOptionsVisible(mAdvancedOptionsVisible);
         if (mIsSavedNet) {
             mPasswordEt.setVisibility(View.GONE);
-            LinearLayout ll = findViewById(R.id.ll_enable_show_password);
+            RelativeLayout ll = findViewById(R.id.ll_enable_show_password);
             ll.setVisibility(View.GONE);
             TextView passwordTv = findViewById(R.id.tv_password);
             passwordTv.setVisibility(View.GONE);

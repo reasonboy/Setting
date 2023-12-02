@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/proxy_none"
-        style="@style/WifiDetailTextViewStyle1"
+        style="@style/WifiDetailTextViewStyle2"
         android:text="@string/proxy_dialog_none" />
 
     <View
@@ -17,7 +17,7 @@
 
     <TextView
         android:id="@+id/proxy_manual"
-        style="@style/WifiDetailTextViewStyle1"
+        style="@style/WifiDetailTextViewStyle2"
         android:text="@string/proxy_dialog_manual" />
 
     <View
@@ -27,6 +27,6 @@
 
     <TextView
         android:id="@+id/proxy_auto_config"
-        style="@style/WifiDetailTextViewStyle1"
+        style="@style/WifiDetailTextViewStyle2"
         android:text="@string/proxy_dialog_auto_config" />
 </LinearLayout>

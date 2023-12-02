@@ -74,4 +74,12 @@
     <string name="bt_connecting">Connecting…</string>
     <string name="bt_connect_success">Successfully connected!</string>
     <string name="bt_connect_fail_or_disconnect">Connection failed or disconnected!</string>
+    <string name="hint_wifi_pac_url">"https://www.example.com/proxy.pac"</string>
+    <string name="hint_wifi_proxy_hostname">"proxy.example.com"</string>
+    <string name="hint_wifi_proxy_port">"8080"</string>
+    <string name="hint_wifi_bypass_proxy_for">"example.com,mycomp.test.com,localhost"</string>
+    <string name="hint_wifi_ip_address">"192.168.0.1"</string>
+    <string name="hint_wifi_gateway">"192.168.0.1"</string>
+    <string name="hint_wifi_network_prefix_length">24</string>
+    <string name="hint_wifi_dns1">"8.8.8.8"</string>
 </resources>

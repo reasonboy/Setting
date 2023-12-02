@@ -34,8 +34,7 @@
     <style name="DialogEditTextStyle">
         <item name="android:textSize">15sp</item>
         <item name="android:background">@drawable/rectangle</item>
-        <item name="android:paddingLeft">5.0dip</item>
-        <item name="android:layout_width">335dp</item>
+        <item name="android:layout_width">330dp</item>
         <item name="android:layout_height">30dp</item>
     </style>
 
@@ -62,5 +61,15 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:paddingTop">8dp</item>
         <item name="android:paddingBottom">8dp</item>
+    </style>
+
+    <style name="WifiDetailTextViewStyle2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/textSize19</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingLeft">8dp</item>
     </style>
 </resources>

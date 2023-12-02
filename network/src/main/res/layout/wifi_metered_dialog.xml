@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/metered_auto"
-        style="@style/WifiDetailTextViewStyle1"
+        style="@style/WifiDetailTextViewStyle2"
         android:text="@string/metered_dialog_auto"/>
 
     <View
@@ -17,7 +17,7 @@
 
     <TextView
         android:id="@+id/metered_metered"
-        style="@style/WifiDetailTextViewStyle1"
+        style="@style/WifiDetailTextViewStyle2"
         android:text="@string/metered_dialog_metered"/>
 
     <View
@@ -27,6 +27,6 @@
 
     <TextView
         android:id="@+id/metered_unmetered"
-        style="@style/WifiDetailTextViewStyle1"
+        style="@style/WifiDetailTextViewStyle2"
         android:text="@string/metered_dialog_unmetered"/>
 </LinearLayout>
