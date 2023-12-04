@@ -260,8 +260,8 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
             if (mWifiManager.isWifiEnabled()) {
                 new AddDialog(mContext, R.style.ZhDialog, new AddDialog.DialogCallback() {
                     @Override
-                    public void callBackData(String[] data) {
-                            mWifiUtils.connectWifi(data[0], data[1], data[2], METERED_OVERRIDE_NONE, "", null,"NONE",null);
+                    public void callBackData(String[] data, int meteredType, String ipAssignment, String[] ipSettingsData, String proxySettings, ProxyInfo proxyInfo) {
+                        mWifiUtils.connectWifi(data[0], data[1], data[2], meteredType, ipAssignment, ipSettingsData, proxySettings, proxyInfo);
                     }
                 }).show();
             }

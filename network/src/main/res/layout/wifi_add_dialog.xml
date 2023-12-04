@@ -25,64 +25,104 @@
         android:layout_width="fill_parent"
         android:layout_height="1.0dip" />
 
-    <EditText
-        android:id="@+id/wifi_add_dialog_name"
-        style="@style/DialogEditTextStyle"
-        android:layout_marginTop="20dp"
-        android:hint="SSID" />
-
-    <EditText
-        android:id="@+id/wifi_add_dialog_password"
-        style="@style/DialogEditTextStyle"
-        android:layout_marginTop="20dp"
-        android:hint="@string/wifi_dialog_password" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
-
-        <ImageView
-            android:id="@+id/wifi_add_dialog_none"
-            style="@style/DialogCheckBoxImageStyle"/>
-
-        <TextView
-            style="@style/DialogCheckBoxTextStyle"
-            android:text="@string/wifi_dialog_none"/>
-
-        <ImageView
-            android:id="@+id/wifi_add_dialog_wep"
-            style="@style/DialogCheckBoxImageStyle"
-            android:layout_marginLeft="50dp"/>
-        <TextView
-            style="@style/DialogCheckBoxTextStyle"
-            android:text="@string/wifi_dialog_wep"/>
-
-        <ImageView
-            android:id="@+id/wifi_add_dialog_wpa"
-            style="@style/DialogCheckBoxImageStyle"
-            android:layout_marginLeft="50dp"/>
-        <TextView
-            style="@style/DialogCheckBoxTextStyle"
-            android:text="@string/wifi_dialog_wpa"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:gravity="center"
-        android:orientation="horizontal"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp">
+        android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/wifi_add_dialog_cancle"
-            style="@style/DialogButtonStyle"
-            android:text="@string/wifi_dialog_cancel" />
-        <Button
-            android:id="@+id/wifi_add_dialog_connect"
-            style="@style/DialogButtonStyle"
-            android:layout_marginLeft="60dp"
-            android:text="@string/wifi_dialog_connect" />
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <EditText
+                android:id="@+id/wifi_add_dialog_name"
+                style="@style/DialogEditTextStyle"
+                android:layout_marginTop="20dp"
+                android:hint="SSID" />
+
+            <EditText
+                android:id="@+id/wifi_add_dialog_password"
+                style="@style/DialogEditTextStyle"
+                android:layout_marginTop="20dp"
+                android:hint="@string/wifi_dialog_password" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <ImageView
+                    android:id="@+id/wifi_add_dialog_none"
+                    style="@style/DialogCheckBoxImageStyle"/>
+
+                <TextView
+                    style="@style/DialogCheckBoxTextStyle"
+                    android:text="@string/wifi_dialog_none"/>
+
+                <ImageView
+                    android:id="@+id/wifi_add_dialog_wep"
+                    style="@style/DialogCheckBoxImageStyle"
+                    android:layout_marginLeft="50dp"/>
+                <TextView
+                    style="@style/DialogCheckBoxTextStyle"
+                    android:text="@string/wifi_dialog_wep"/>
+
+                <ImageView
+                    android:id="@+id/wifi_add_dialog_wpa"
+                    style="@style/DialogCheckBoxImageStyle"
+                    android:layout_marginLeft="50dp"/>
+                <TextView
+                    style="@style/DialogCheckBoxTextStyle"
+                    android:text="@string/wifi_dialog_wpa"/>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/ll_show_advanced_options"
+                android:layout_width="@dimen/zh_dialog_item_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    style="@style/DialogCheckBoxTextStyle"
+                    android:text="@string/wifi_dialog_show_advanced_options"
+                    android:layout_centerVertical="true" />
+
+                <ImageView
+                    android:id="@+id/wifi_connect_dialog_show_advanced_options"
+                    style="@style/DialogCheckBoxImageStyle"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/check_off" />
+            </RelativeLayout>
+
+            <include
+                android:id="@+id/ll_advanced_options"
+                layout="@layout/layout_wifi_advanced_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp">
+
+                <Button
+                    android:id="@+id/wifi_add_dialog_cancle"
+                    style="@style/DialogButtonStyle"
+                    android:text="@string/wifi_dialog_cancel" />
+                <Button
+                    android:id="@+id/wifi_add_dialog_connect"
+                    style="@style/DialogButtonStyle"
+                    android:layout_marginLeft="60dp"
+                    android:text="@string/wifi_dialog_connect" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
