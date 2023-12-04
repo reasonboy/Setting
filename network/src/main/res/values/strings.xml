@@ -40,7 +40,7 @@
     <string name="wifi_dialog_show_password">Show password</string>
     <string name="wifi_dialog_show_advanced_options">Advanced options</string>
     <string name="wifi_dialog_metered">Metered</string>
-    <string name="wifi_dialog_delete_internet_setting"><u>Delete this internet setting</u></string>
+    <string name="wifi_dialog_delete_internet_setting"><u>Delete this wifi setting</u></string>
     <string name="metered_dialog_auto">Detect automatically</string>
     <string name="metered_dialog_metered">Treat as metered</string>
     <string name="metered_dialog_unmetered">Treat as unmetered</string>
@@ -74,12 +74,12 @@
     <string name="bt_connecting">Connecting…</string>
     <string name="bt_connect_success">Successfully connected!</string>
     <string name="bt_connect_fail_or_disconnect">Connection failed or disconnected!</string>
-    <string name="hint_wifi_pac_url">"https://www.example.com/proxy.pac"</string>
-    <string name="hint_wifi_proxy_hostname">"proxy.example.com"</string>
-    <string name="hint_wifi_proxy_port">"8080"</string>
-    <string name="hint_wifi_bypass_proxy_for">"example.com,mycomp.test.com,localhost"</string>
-    <string name="hint_wifi_ip_address">"192.168.0.1"</string>
-    <string name="hint_wifi_gateway">"192.168.0.1"</string>
-    <string name="hint_wifi_network_prefix_length">24</string>
-    <string name="hint_wifi_dns1">"8.8.8.8"</string>
+    <string name="hint_wifi_pac_url" translatable="false">"https://www.example.com/proxy.pac"</string>
+    <string name="hint_wifi_proxy_hostname" translatable="false">"proxy.example.com"</string>
+    <string name="hint_wifi_proxy_port" translatable="false">"8080"</string>
+    <string name="hint_wifi_bypass_proxy_for" translatable="false">"example.com,mycomp.test.com,localhost"</string>
+    <string name="hint_wifi_ip_address" translatable="false">"192.168.0.1"</string>
+    <string name="hint_wifi_gateway" translatable="false">"192.168.0.1"</string>
+    <string name="hint_wifi_network_prefix_length" translatable="false">24</string>
+    <string name="hint_wifi_dns1" translatable="false">"8.8.8.8"</string>
 </resources>
