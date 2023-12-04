@@ -155,7 +155,7 @@
         <br>7. 원하는 어플을 검색하여 다운로드 받습니다.
         ]]>
     </string>
-    <string name="gsf_id_miss">GSF ID가 생성되지 않았습니다. Google Play에 로그인 해주세요.</string>
+    <string name="gsf_id_miss">GSF ID가 생성되지 않았습니다. 와이파이를 연결 해주세요.</string>
     <string name="gsf_id_obtain">GSF ID : %1$s</string>
     <string name="gsf_btn_login">LOGIN</string>
     <string name="gsf_btn_select">선택</string>
@@ -163,9 +163,8 @@
     <string name="msg_gsf_id_empty">
         GSF ID 값이 없습니다!\n\n
         GSF ID를 받아오기 위해서,\n
-        Google Play에 로그인 해주세요.\n
-        그리고 2~30분이 지나고 재부팅 후\n\n
-        다시 시도해 주시기 바랍니다.
+        와이파이를 연결한 뒤 2~30분이 지나고\n
+        재부팅 후, 다시 시도해 주시기 바랍니다.
     </string>
     <string name="msg_wifi_not_connected">와이파이를 켜주세요</string>
     <string name="toast_msg_gsf_select">GSF ID가 복사 되었습니다.\n입력 란에 붙여넣기 하세요!</string>

@@ -69,7 +69,7 @@ public class GSFActivity extends BaseActivity implements View.OnClickListener {
             mGsfIdBtn.setText(R.string.gsf_btn_select);
         } else {
             mGsfIdState.setText(getString(R.string.gsf_id_miss));
-            mGsfIdBtn.setText(R.string.gsf_btn_login);
+            mGsfIdBtn.setText(R.string.gsf_btn_select);
         }
     }
 
@@ -164,10 +164,6 @@ public class GSFActivity extends BaseActivity implements View.OnClickListener {
             dialog = new AlertDialog.Builder(this)
                     .setMessage(R.string.msg_gsf_id_empty)
                     .setPositiveButton(R.string.confirm, (dialog, which) -> {
-                        Intent intent = new Intent(Intent.ACTION_MAIN);
-                        ComponentName cn = new ComponentName(GOOGLE_PLAY, GOOGLE_PLAY_MAIN);
-                        intent.setComponent(cn);
-                        startActivity(intent);
                     })
                     .show();
             return;
