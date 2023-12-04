@@ -4,6 +4,9 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -33,6 +36,32 @@ public class WidgetTextDialog extends Dialog implements View.OnClickListener{
         if(getWidgetText() != null) {
             mChangeWidgetEt.setText(getWidgetText());
         }
+        mChangeWidgetEt.addTextChangedListener(new TextWatcher() {
+            CharSequence beforeText = null;
+            private int line;
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                StringBuilder sb = new StringBuilder(charSequence);
+                beforeText = sb.delete(i, i + i2).toString();
+                line = mChangeWidgetEt.getLineCount();
+                int length = beforeText.length();
+                if (line >= 4 || length >= 75) {  // 限制最多输入3行，75个字符
+                    mChangeWidgetEt.setText(beforeText.toString());
+                    mChangeWidgetEt.setSelection(length);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
     @Override
