@@ -84,6 +84,7 @@ public class AddDialog extends Dialog implements View.OnClickListener {
         //getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         //getWindow().clearFlags( WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         mSSID = findViewById(R.id.wifi_add_dialog_name);
+        mSSID.requestFocus();
         mPassword = findViewById(R.id.wifi_add_dialog_password);
         mNone = findViewById(R.id.wifi_add_dialog_none);
         mWep = findViewById(R.id.wifi_add_dialog_wep);

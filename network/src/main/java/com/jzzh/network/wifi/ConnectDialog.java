@@ -89,6 +89,7 @@ public class ConnectDialog extends Dialog implements View.OnClickListener {
         mWifiNameTx = findViewById(R.id.wifi_connect_dialog_name);
         mWifiNameTx.setText(mWifiName);
         mPasswordEt = findViewById(R.id.wifi_connect_connect_password);
+        mPasswordEt.requestFocus();
         mIpAddressEt = findViewById(R.id.wifi_ip_address);
         mGatewayEt = findViewById(R.id.wifi_gateway);
         mNetworkPrefixLengthEt = findViewById(R.id.wifi_network_prefix_length);
