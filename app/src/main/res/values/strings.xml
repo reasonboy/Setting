@@ -145,7 +145,7 @@
         <br>7. Search for the desired application and download it.
         ]]>
     </string>
-    <string name="gsf_id_miss">GSF ID has not been generated. Please log in to Google Play</string>
+    <string name="gsf_id_miss">GSF ID has not been generated. Please Wifi on.</string>
     <string name="gsf_id_obtain">GSF ID:%1$s</string>
     <string name="gsf_btn_login">LOGIN</string>
     <string name="gsf_btn_select">SELECT</string>
@@ -153,9 +153,7 @@
     <string name="msg_gsf_id_empty">
         GSF ID is empty!\n\n
         To get GSF ID, \n
-        Please log in to Google Play \n
-        and Please rebooting after minutes, \n\n
-        Please try again.
+        After connecting to Wi-Fi and rebooting after 2~30 minutes, Please try again.
     </string>
     <string name="msg_wifi_not_connected">Please Wifi on</string>
     <string name="toast_msg_gsf_select">The GSF ID has been copied.\nPaste it in the input field!</string>
