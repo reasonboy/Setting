@@ -74,6 +74,9 @@
     <string name="bt_connecting">Connecting…</string>
     <string name="bt_connect_success">Successfully connected!</string>
     <string name="bt_connect_fail_or_disconnect">Connection failed or disconnected!</string>
+    <string name="bt_name">Name</string>
+    <string name="bt_confirm">Confirm</string>
+    <string name="bt_paired_devices">Paired devices</string>
     <string name="hint_wifi_pac_url" translatable="false">"https://www.example.com/proxy.pac"</string>
     <string name="hint_wifi_proxy_hostname" translatable="false">"proxy.example.com"</string>
     <string name="hint_wifi_proxy_port" translatable="false">"8080"</string>

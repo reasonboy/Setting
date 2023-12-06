@@ -1,5 +1,7 @@
 package com.jzzh.network.bt;
 
+import static com.jzzh.network.bt.BtUtils.getAlias;
+
 import android.app.Fragment;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -32,6 +34,7 @@ import com.jzzh.network.R;
 import com.jzzh.network.NetTitleLayout;
 import com.jzzh.tools.ZhCheckBox;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Set;
@@ -166,7 +169,7 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
                 new BtPairDialog(mContext, R.style.ZhDialog,
                         BtPairDialog.Type.PAIR, availableDevice, new BtPairDialog.BtDialogCallback() {
                     @Override
-                    public void callBackData(BluetoothDevice device) {
+                    public void callBackData(BluetoothDevice device, BtPairDialog.ButtonType buttonType) {
                         pair(device);
                     }
                 }).show();
@@ -182,8 +185,12 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
                 new BtPairDialog(mContext, R.style.ZhDialog,
                         BtPairDialog.Type.DISCONNECT, pairedDevice, new BtPairDialog.BtDialogCallback() {
                     @Override
-                    public void callBackData(BluetoothDevice device) {
-                        cancelpair(device);
+                    public void callBackData(BluetoothDevice device, BtPairDialog.ButtonType buttonType) {
+                        if (buttonType == BtPairDialog.ButtonType.LEFT) {
+                            cancelpair(device);
+                        } else {
+                            updatePairedListView();
+                        }
                     }
                 }).show();
             }
@@ -417,7 +424,7 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
             } else {
                 viewHolder = (ViewHolder)view.getTag();
             }
-            viewHolder.btName.setText(mDevices.get(i).getName());
+            viewHolder.btName.setText(getAlias(mDevices.get(i)));
             viewHolder.btAddress.setText(mDevices.get(i).getAddress());
             return view;
         }

@@ -24,6 +24,28 @@
         android:layout_height="1.0dip" />
 
     <LinearLayout
+        android:id="@+id/ll_alias_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/WifiDetailTextViewStyle"
+            android:layout_marginLeft="@dimen/zh_dialog_margin_left"
+            android:layout_marginTop="10dp"
+            android:text="@string/bt_name" />
+
+        <EditText
+            android:id="@+id/bt_alias_et"
+            style="@style/DialogEditTextStyle"
+            android:layout_marginLeft="@dimen/zh_dialog_margin_left"
+            android:layout_marginTop="5dp"
+            android:inputType="text" />
+    </LinearLayout>
+
+    <LinearLayout
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_width="match_parent"

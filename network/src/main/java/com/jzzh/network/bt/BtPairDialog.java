@@ -1,11 +1,17 @@
 package com.jzzh.network.bt;
 
+import static com.jzzh.network.bt.BtUtils.getAlias;
+import static com.jzzh.network.bt.BtUtils.setAlias;
+
 import android.app.Dialog;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jzzh.network.R;
@@ -17,7 +23,10 @@ public class BtPairDialog extends Dialog implements View.OnClickListener{
     private Type mType;
     private BluetoothDevice mDevice;
     private TextView mBtNameTv;
+    private Button mCancel;
     private Button mDefine;
+    private EditText mBtAliasEt;
+    private LinearLayout mBtAliasLayout;
 
     public BtPairDialog(Context context, int i, Type type, BluetoothDevice device, BtDialogCallback callback) {
         super(context, i);
@@ -32,14 +41,24 @@ public class BtPairDialog extends Dialog implements View.OnClickListener{
         super.onCreate(bundle);
         setContentView(R.layout.bluetooth_pair_dialog);
         mBtNameTv = findViewById(R.id.bt_pair_dialog_name);
-        mBtNameTv.setText(mDevice.getName());
-        findViewById(R.id.bt_pair_dialog_cancle).setOnClickListener(this);
+        if (mType == Type.DISCONNECT) {
+            mBtNameTv.setText(R.string.bt_paired_devices);
+        } else {
+            mBtNameTv.setText(mDevice.getName());
+        }
+        mBtAliasEt = findViewById(R.id.bt_alias_et);
+        mBtAliasEt.setText(getAlias(mDevice));
+        mBtAliasLayout = findViewById(R.id.ll_alias_et);
+        mCancel=findViewById(R.id.bt_pair_dialog_cancle);
+        mCancel.setOnClickListener(this);
         mDefine = findViewById(R.id.bt_pair_dialog_define);
         mDefine.setOnClickListener(this);
         if(mType == Type.PAIR) {
             mDefine.setText(mContext.getString(R.string.bt_pair));
         } else {
-            mDefine.setText(mContext.getString(R.string.bt_disconnect));
+            mBtAliasLayout.setVisibility(View.VISIBLE);
+            mCancel.setText(R.string.bt_disconnect);
+            mDefine.setText(R.string.bt_confirm);
         }
     }
 
@@ -47,9 +66,15 @@ public class BtPairDialog extends Dialog implements View.OnClickListener{
     public void onClick(View view) {
         int id = view.getId();
         if (id == R.id.bt_pair_dialog_cancle) {
+            if (mType == Type.DISCONNECT) {
+                mDialogCallback.callBackData(mDevice, ButtonType.LEFT);
+            }
             dismiss();
         } else if (id == R.id.bt_pair_dialog_define) {
-            mDialogCallback.callBackData(mDevice);
+            if (mType == Type.DISCONNECT) { // rename
+                setAlias(mDevice, mBtAliasEt.getText().toString());
+            }
+            mDialogCallback.callBackData(mDevice, ButtonType.RIGHT);
             dismiss();
         }
     }
@@ -58,7 +83,11 @@ public class BtPairDialog extends Dialog implements View.OnClickListener{
         PAIR, DISCONNECT
     }
 
+    public enum ButtonType {
+        LEFT, RIGHT
+    }
+
     public interface BtDialogCallback {
-        void callBackData(BluetoothDevice device);
+        void callBackData(BluetoothDevice device,ButtonType buttonType);
     }
 }
