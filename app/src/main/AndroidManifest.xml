@@ -52,6 +52,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+            <intent-filter android:priority="300">
+                <action android:name="android.settings.SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
 
         <activity android:name=".network.NetworkActivity" />
@@ -83,11 +87,36 @@
         <activity android:name=".display.HomeScreenUserActivity" />
         <activity android:name=".display.WidgetTextActivity" />
         <activity android:name=".light.LightActivity" />
-        <activity android:name=".language.LanguageAndKeyboardActivity" />
+        <activity android:name=".language.LanguageAndKeyboardActivity"
+            android:exported="true">
+            <intent-filter android:priority="300">
+                <action android:name="android.settings.LOCALE_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter android:priority="300">
+                <action android:name="android.settings.INPUT_METHOD_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <!-- Modified to not show language settings page for each system keyboard-->
+            <intent-filter android:priority="300">
+                <action android:name="android.settings.INPUT_METHOD_SUBTYPE_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".language.KeyboardManagerActivity" />
         <activity android:name=".time.DateAndTimeActivity" />
         <activity android:name=".time.TimeZoneActivity" />
-        <activity android:name=".lock.LockScreenActivity" />
+        <activity android:name=".lock.LockScreenActivity"
+            android:excludeFromRecents="true"
+            android:exported="true">
+            <intent-filter android:priority="300">
+                <action android:name="android.app.action.SET_NEW_PASSWORD" />
+                <action android:name="android.app.action.SET_NEW_PARENT_PROFILE_PASSWORD" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
+                android:value="true" />
+        </activity>
         <activity android:name=".task.TaskManagerActivity"
             android:exported="true">
             <intent-filter>
