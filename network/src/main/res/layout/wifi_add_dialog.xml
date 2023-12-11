@@ -105,22 +105,28 @@
                 android:orientation="vertical"
                 android:visibility="gone"/>
 
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:layout_marginTop="20dp"
+                android:background="@color/black" />
+
             <LinearLayout
-                android:gravity="center"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp">
+                android:divider="@drawable/dialog_button_divider_vertical"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:showDividers="middle">
 
                 <Button
                     android:id="@+id/wifi_add_dialog_cancle"
-                    style="@style/DialogButtonStyle"
+                    style="@style/DialogButtonDividerStyle"
                     android:text="@string/wifi_dialog_cancel" />
+
                 <Button
                     android:id="@+id/wifi_add_dialog_connect"
-                    style="@style/DialogButtonStyle"
-                    android:layout_marginLeft="60dp"
+                    style="@style/DialogButtonDividerStyle"
                     android:text="@string/wifi_dialog_connect" />
             </LinearLayout>
         </LinearLayout>

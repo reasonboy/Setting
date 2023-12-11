@@ -134,8 +134,7 @@ public class ConnectDialog extends Dialog implements View.OnClickListener {
             mShowAdvancedOptions.setVisibility(View.GONE);
         } else {  // 未保存的wifi，输入密码交互
             mConnect.setEnabled(false);
-            mConnect.setTextAppearance(mContext, R.style.NegativeDialogButtonStyle);
-            mConnect.setBackgroundResource(R.drawable.rectangle_negative);
+            mConnect.setTextAppearance(mContext, R.style.NegativeDialogButtonDividerStyle);
             mPasswordEt.addTextChangedListener(textWatcher);
             mShowAdvancedOptions.setVisibility(View.VISIBLE);
         }
@@ -361,12 +360,10 @@ public class ConnectDialog extends Dialog implements View.OnClickListener {
         public void afterTextChanged(Editable editable) {
             if (editable.length() >= 8) {
                 mConnect.setEnabled(true);
-                mConnect.setTextAppearance(mContext, R.style.DialogButtonStyle);
-                mConnect.setBackgroundResource(R.drawable.rectangle);
+                mConnect.setTextAppearance(mContext, R.style.DialogButtonDividerStyle);
             } else {
                 mConnect.setEnabled(false);
-                mConnect.setTextAppearance(mContext, R.style.NegativeDialogButtonStyle);
-                mConnect.setBackgroundResource(R.drawable.rectangle_negative);
+                mConnect.setTextAppearance(mContext, R.style.NegativeDialogButtonDividerStyle);
             }
         }
     };

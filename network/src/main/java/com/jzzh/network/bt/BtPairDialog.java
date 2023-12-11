@@ -27,6 +27,7 @@ public class BtPairDialog extends Dialog implements View.OnClickListener{
     private Button mDefine;
     private EditText mBtAliasEt;
     private LinearLayout mBtAliasLayout;
+    private View mBottomLine;
 
     public BtPairDialog(Context context, int i, Type type, BluetoothDevice device, BtDialogCallback callback) {
         super(context, i);
@@ -53,10 +54,12 @@ public class BtPairDialog extends Dialog implements View.OnClickListener{
         mCancel.setOnClickListener(this);
         mDefine = findViewById(R.id.bt_pair_dialog_define);
         mDefine.setOnClickListener(this);
+        mBottomLine=findViewById(R.id.bottom_line);
         if(mType == Type.PAIR) {
             mDefine.setText(mContext.getString(R.string.bt_pair));
         } else {
             mBtAliasLayout.setVisibility(View.VISIBLE);
+            mBottomLine.setVisibility(View.VISIBLE);
             mCancel.setText(R.string.bt_disconnect);
             mDefine.setText(R.string.bt_confirm);
         }
