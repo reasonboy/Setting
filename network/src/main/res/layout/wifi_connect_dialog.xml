@@ -54,7 +54,8 @@
             <EditText
                 android:id="@+id/wifi_connect_connect_password"
                 style="@style/DialogEditTextStyle"
-                android:layout_marginLeft="@dimen/zh_dialog_margin_left"
+                android:layout_marginStart="@dimen/zh_dialog_margin_left"
+                android:layout_marginEnd="@dimen/zh_dialog_margin_left"
                 android:layout_marginTop="5dp"
                 android:paddingStart="10dp"
                 android:hint="@string/wifi_dialog_ed_hint"
