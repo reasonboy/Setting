@@ -39,12 +39,14 @@
                 android:id="@+id/wifi_add_dialog_name"
                 style="@style/DialogEditTextStyle"
                 android:layout_marginTop="20dp"
+                android:paddingStart="10dp"
                 android:hint="SSID" />
 
             <EditText
                 android:id="@+id/wifi_add_dialog_password"
                 style="@style/DialogEditTextStyle"
                 android:layout_marginTop="20dp"
+                android:paddingStart="10dp"
                 android:hint="@string/wifi_dialog_password" />
 
             <LinearLayout
