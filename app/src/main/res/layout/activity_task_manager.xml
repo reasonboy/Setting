@@ -41,14 +41,15 @@
 
                 <LinearLayout
                     android:id="@+id/task_choice"
-                    android:layout_width="110dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="30dp"
-                    android:background="@drawable/task_button_bg">
+                    android:background="@drawable/task_button_bg"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp">
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="5dp"
                         android:background="@drawable/ic_taskmanager_choice_trans"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -61,15 +62,16 @@
 
                 <LinearLayout
                     android:id="@+id/task_clean"
-                    android:layout_width="110dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/task_button_bg">
+                    android:background="@drawable/task_button_bg"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp">
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="5dp"
                         android:background="@drawable/ic_taskmanager_clean"/>
                     <TextView
                         android:layout_width="wrap_content"

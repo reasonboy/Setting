@@ -52,6 +52,8 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
     private TextView mInSearch;
     private ImageView mIvRefresh;
     private NetTitleLayout mNetTitleLayout;
+    private static final int BT_LISTVIEW_AVAILABLE = 0;
+    private static final int BT_LISTVIEW_PAIRED = 1;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -95,10 +97,26 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
         view.findViewById(R.id.bt_device_rename).setOnClickListener(this);
         //PairedListView
         mPairedListView = view.findViewById(R.id.bt_paired_device_listview);
-        mPairedAdapter = new BluetoothDevicesAdapter(mContext,getPairedDevices());
+        mPairedAdapter = new BluetoothDevicesAdapter(mContext, getPairedDevices(), BT_LISTVIEW_PAIRED);
+        mPairedAdapter.setOnElementClickListener(new OnElementClickListener() {
+            @Override
+            public void onBtSetting(int position) {
+                BluetoothDevice pairedDevice = mPairedAdapter.getItem(position);
+                new BtPairDialog(mContext, R.style.ZhDialog,
+                        BtPairDialog.Type.DISCONNECT, pairedDevice, new BtPairDialog.BtDialogCallback() {
+                    @Override
+                    public void callBackData(BluetoothDevice device, BtPairDialog.ButtonType buttonType) {
+                        if (buttonType == BtPairDialog.ButtonType.LEFT) {
+                            cancelpair(device);
+                        } else {
+                            updatePairedListView();
+                        }
+                    }
+                }).show();
+            }
+        });
         mPairedListView.setAdapter(mPairedAdapter);
         mPairedListView.setOnItemClickListener(mOnItemClickListener);
-        mPairedListView.setOnItemLongClickListener(mOnItemLongClickListener);  // 长按取消配对
         //AvailableListView
         mIvRefresh = view.findViewById(R.id.bt_available_device_refresh);
         mIvRefresh.setOnClickListener(this);
@@ -106,7 +124,7 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
             mBluetoothAdapter.startDiscovery();
         }
         mAvailableListView = view.findViewById(R.id.bt_available_device_listview);
-        mAvailableAdapter = new BluetoothDevicesAdapter(mContext,mAvailableDevices);
+        mAvailableAdapter = new BluetoothDevicesAdapter(mContext, mAvailableDevices, BT_LISTVIEW_AVAILABLE);
         mAvailableListView.setAdapter(mAvailableAdapter);
         mAvailableListView.setOnItemClickListener(mOnItemClickListener);
         mInSearch = view.findViewById(R.id.bt_available_insearch);
@@ -174,27 +192,6 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
                     }
                 }).show();
             }
-        }
-    };
-
-    private AdapterView.OnItemLongClickListener mOnItemLongClickListener = new AdapterView.OnItemLongClickListener() {
-        @Override
-        public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-            if (parent.getId() == R.id.bt_paired_device_listview) {
-                BluetoothDevice pairedDevice = mPairedAdapter.getItem(position);
-                new BtPairDialog(mContext, R.style.ZhDialog,
-                        BtPairDialog.Type.DISCONNECT, pairedDevice, new BtPairDialog.BtDialogCallback() {
-                    @Override
-                    public void callBackData(BluetoothDevice device, BtPairDialog.ButtonType buttonType) {
-                        if (buttonType == BtPairDialog.ButtonType.LEFT) {
-                            cancelpair(device);
-                        } else {
-                            updatePairedListView();
-                        }
-                    }
-                }).show();
-            }
-            return true;
         }
     };
 
@@ -387,10 +384,17 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
 
         private ArrayList<BluetoothDevice> mDevices;
         private Context mContext;
+        private int mBtListViewType;
+        private OnElementClickListener mOnElementClickListener;
 
-        public BluetoothDevicesAdapter(Context context,ArrayList<BluetoothDevice> devices) {
+        public BluetoothDevicesAdapter(Context context, ArrayList<BluetoothDevice> devices, int BtListViewType) {
             mContext = context;
             mDevices = devices;
+            mBtListViewType = BtListViewType;
+        }
+
+        public void setOnElementClickListener(OnElementClickListener onElementClickListener) {
+            mOnElementClickListener = onElementClickListener;
         }
 
         public void setDevices(ArrayList list) {
@@ -420,12 +424,24 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
                 viewHolder = new ViewHolder();
                 viewHolder.btName = view.findViewById(R.id.bt_name);
                 viewHolder.btAddress = view.findViewById(R.id.bt_address);
+                viewHolder.btSetting = view.findViewById(R.id.bt_setting);
                 view.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder)view.getTag();
             }
             viewHolder.btName.setText(getAlias(mDevices.get(i)));
             viewHolder.btAddress.setText(mDevices.get(i).getAddress());
+            if (mBtListViewType == BT_LISTVIEW_PAIRED) {
+                viewHolder.btSetting.setVisibility(View.VISIBLE);
+            }
+            viewHolder.btSetting.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (mOnElementClickListener != null) {
+                        mOnElementClickListener.onBtSetting(i);
+                    }
+                }
+            });
             return view;
         }
     }
@@ -433,5 +449,10 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
     private class ViewHolder {
         TextView btName;
         TextView btAddress;
+        ImageView btSetting;
+    }
+
+    public interface OnElementClickListener{
+        public void onBtSetting(int position);
     }
 }
