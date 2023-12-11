@@ -1,5 +1,6 @@
 package com.jzzh.setting.task;
 
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -66,11 +67,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskHolder> 
             @Override
             public void onClick(View view) {
                 if(mState == STATE_NORMAL) {
-                    Intent intent = new Intent();
-                    intent.setFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    intent.addCategory("android.intent.category.LAUNCHER");
-                    intent.setComponent(mList.get(position).componentName);
-                    mContext.startActivity(intent);
+                    TaskUtils.moveTaskToFront(mContext, mList.get(position).taskId);
                 }
             }
         });
