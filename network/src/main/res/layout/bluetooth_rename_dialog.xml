@@ -25,7 +25,9 @@
     <EditText
         android:id="@+id/bt_rename_dialog_name"
         android:layout_gravity="center_horizontal"
-        style="@style/DialogEditTextStyle"/>
+        style="@style/DialogEditTextStyle"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"/>
 
     <LinearLayout
         android:gravity="center"

@@ -98,6 +98,8 @@
             android:id="@+id/wifi_pac_url"
             style="@style/DialogEditTextStyle"
             android:layout_marginTop="5dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:hint=""
             android:text="@string/hint_wifi_pac_url" />
     </LinearLayout>
@@ -118,6 +120,8 @@
             android:id="@+id/wifi_proxy_hostname"
             style="@style/DialogEditTextStyle"
             android:layout_marginTop="5dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:hint=""
             android:text="@string/hint_wifi_proxy_hostname" />
 
@@ -129,6 +133,8 @@
             android:id="@+id/wifi_proxy_port"
             style="@style/DialogEditTextStyle"
             android:layout_marginTop="5dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:hint=""
             android:text="@string/hint_wifi_proxy_port" />
 
@@ -140,6 +146,8 @@
             android:id="@+id/wifi_bypass_proxy_for"
             style="@style/DialogEditTextStyle"
             android:layout_marginTop="5dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:hint=""
             android:text="@string/hint_wifi_bypass_proxy_for" />
     </LinearLayout>
@@ -201,6 +209,8 @@
                 android:id="@+id/wifi_ip_address"
                 style="@style/DialogEditTextStyle"
                 android:layout_marginTop="5dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
                 android:hint=""
                 android:text="@string/hint_wifi_ip_address" />
         </LinearLayout>
@@ -218,6 +228,8 @@
                 android:id="@+id/wifi_gateway"
                 style="@style/DialogEditTextStyle"
                 android:layout_marginTop="5dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
                 android:hint=""
                 android:text="@string/hint_wifi_gateway" />
         </LinearLayout>
@@ -235,6 +247,8 @@
                 android:id="@+id/wifi_network_prefix_length"
                 style="@style/DialogEditTextStyle"
                 android:layout_marginTop="5dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
                 android:hint=""
                 android:text="@string/hint_wifi_network_prefix_length" />
         </LinearLayout>
@@ -252,6 +266,8 @@
                 android:id="@+id/wifi_dns1"
                 style="@style/DialogEditTextStyle"
                 android:layout_marginTop="5dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
                 android:hint=""
                 android:text="@string/hint_wifi_dns1" />
         </LinearLayout>
