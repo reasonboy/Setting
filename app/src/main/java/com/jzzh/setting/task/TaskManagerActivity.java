@@ -133,15 +133,17 @@ public class TaskManagerActivity extends BaseActivity implements TasksAdapter.On
             TaskItem item = new TaskItem();
             ComponentName cn = info.topActivity != null ? info.topActivity : (ComponentName) getSubField(info,"realActivity");
             String packageName = cn.getPackageName();
-            try {
-                item.title = getPackageManager().getApplicationLabel(getPackageManager().getApplicationInfo(packageName,PackageManager.GET_META_DATA));
-                item.icon = getPackageManager().getActivityIcon(cn);
-                item.componentName = cn;
-                item.taskId = info.taskId;
-            } catch (PackageManager.NameNotFoundException e) {
-                e.printStackTrace();
+            if (!packageName.equals("com.inno.spacelauncher")) {  // 过滤掉Launcher
+                try {
+                    item.title = getPackageManager().getApplicationLabel(getPackageManager().getApplicationInfo(packageName, PackageManager.GET_META_DATA));
+                    item.icon = getPackageManager().getActivityIcon(cn);
+                    item.componentName = cn;
+                    item.taskId = info.taskId;
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
+                }
+                list.add(item);
             }
-            list.add(item);
         }
         return list;
     }

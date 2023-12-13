@@ -7,7 +7,8 @@
         android:id="@+id/ll_bt_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true">
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/bt_name"
@@ -24,6 +25,15 @@
             android:visibility="gone"
             android:textSize="@dimen/textSize19"
             android:layout_marginStart="5dp"/>
+
+        <TextView
+            android:id="@+id/bt_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bt_active"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/textSize17"
+            android:visibility="gone" />
     </LinearLayout>
 
     <ImageView

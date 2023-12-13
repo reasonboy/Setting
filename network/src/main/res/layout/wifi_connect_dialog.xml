@@ -105,6 +105,18 @@
                 android:layout_marginTop="10dp"
                 android:orientation="vertical" />
 
+            <TextView
+                android:id="@+id/wifi_delete_this_internet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/zh_dialog_margin_left"
+                android:layout_marginTop="15dp"
+                android:autoLink="all"
+                android:text="@string/wifi_dialog_delete_internet_setting"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:visibility="gone" />
+
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="1.0dip"
@@ -129,18 +141,6 @@
                     style="@style/DialogButtonDividerStyle"
                     android:text="@string/wifi_dialog_connect" />
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/wifi_delete_this_internet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/zh_dialog_margin_left"
-                android:layout_marginBottom="15dp"
-                android:autoLink="all"
-                android:text="@string/wifi_dialog_delete_internet_setting"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                android:visibility="gone" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -3,6 +3,7 @@ package com.jzzh.network.bt;
 import static com.jzzh.network.bt.BtUtils.getAlias;
 
 import android.app.Fragment;
+import android.bluetooth.BluetoothA2dp;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
@@ -34,7 +35,6 @@ import com.jzzh.network.R;
 import com.jzzh.network.NetTitleLayout;
 import com.jzzh.tools.ZhCheckBox;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Set;
@@ -54,6 +54,7 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
     private NetTitleLayout mNetTitleLayout;
     private static final int BT_LISTVIEW_AVAILABLE = 0;
     private static final int BT_LISTVIEW_PAIRED = 1;
+    private BluetoothA2dp mA2dp;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -65,6 +66,7 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
         if(mBluetoothAdapter == null) {
             Toast.makeText(mContext,mContext.getString(R.string.bt_not_supported),Toast.LENGTH_LONG).show();
         }
+        getA2dpAdapter();
         mNetTitleLayout = view.findViewById(R.id.title_layout);
         ImageView exit = view.findViewById(R.id.title_exit);
         exit.setOnClickListener(new View.OnClickListener() {
@@ -136,6 +138,8 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
         filter.addAction(BluetoothDevice.ACTION_FOUND);
         filter.addAction(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
         filter.addAction(BluetoothAdapter.ACTION_STATE_CHANGED);
+        filter.addAction(BluetoothA2dp.ACTION_CONNECTION_STATE_CHANGED);
+        filter.addAction(BluetoothA2dp.ACTION_PLAYING_STATE_CHANGED);
         mContext.registerReceiver(mBroadcaster, filter);
         return view;
     }
@@ -149,7 +153,53 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
         super.onDestroy();
         mBluetoothAdapter.cancelDiscovery();
         mContext.unregisterReceiver(mBroadcaster);
+        closeA2dpAdapter();
     }
+
+    public void getA2dpAdapter() {
+        if (mBluetoothAdapter.isEnabled()) { //判断蓝牙是否开启
+            //获取A2DP代理对象
+            if (mA2dp == null) { //不能重复连接服务，否则会报错
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    mBluetoothAdapter.getProfileProxy(getContext(), mBluetoothProfileListener, BluetoothProfile.A2DP);
+                }
+            }
+        } else {
+            Log.e("lx","getA2dpAdapter error. bluetooth is not Enabled");
+        }
+    }
+
+    public void closeA2dpAdapter() {
+        if (mBluetoothAdapter.isEnabled()) { //判断蓝牙是否开启
+            //获取A2DP代理对象
+            if (mA2dp != null) { //不能重复连接服务，否则会报错
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    mBluetoothAdapter.closeProfileProxy(BluetoothProfile.A2DP, mA2dp);
+                    mA2dp = null;
+                }
+            }
+        }
+    }
+
+    //getProfileProxy并不会直接返回A2DP代理对象，而是通过mListener中回调获取。
+    private BluetoothProfile.ServiceListener mBluetoothProfileListener = new BluetoothProfile.ServiceListener() {
+        @Override
+        public void onServiceDisconnected(int profile) {
+            if (profile == BluetoothProfile.A2DP) {
+                Log.d("lx","A2dp onServiceDisconnected ");
+                mA2dp = null;
+            }
+        }
+
+        // getProfileProxy 到 连接成功一般需要几十毫秒！
+        @Override
+        public void onServiceConnected(int profile, BluetoothProfile proxy) {
+            if (profile == BluetoothProfile.A2DP) {
+                Log.d("lx","A2dp onServiceConnected ");
+                mA2dp = (BluetoothA2dp) proxy; //转换 ，这个就是  BluetoothA2dp 对象
+            }
+        }
+    };
 
     private AdapterView.OnItemClickListener mOnItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
@@ -160,6 +210,9 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
                     Log.e("TAG", "pairedDevice onItemClick");
                     ViewHolder viewHolder = (ViewHolder) view.getTag();
+                    if (viewHolder.btStatus.getVisibility() == View.VISIBLE) {  // 如果蓝牙设备使用中，则不进行连接操作
+                        return;
+                    }
                     viewHolder.btAddress.setVisibility(View.VISIBLE);
                     viewHolder.btAddress.setText(getString(R.string.bt_connecting));
                     pairedDevice.connectGatt(mContext, false, new BluetoothGattCallback() {
@@ -303,6 +356,10 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
                     mBtSwitch.setCheck(true);
                     mBluetoothAdapter.startDiscovery();
                 }
+            } else if (action.equals(BluetoothA2dp.ACTION_CONNECTION_STATE_CHANGED)) {
+                int state = intent.getIntExtra(BluetoothA2dp.EXTRA_STATE, BluetoothA2dp.STATE_DISCONNECTED);
+                Log.d("lx", "connect state=" + state);
+                updatePairedListView();
             }
         }
     }
@@ -387,10 +444,10 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
         private int mBtListViewType;
         private OnElementClickListener mOnElementClickListener;
 
-        public BluetoothDevicesAdapter(Context context, ArrayList<BluetoothDevice> devices, int BtListViewType) {
+        public BluetoothDevicesAdapter(Context context, ArrayList<BluetoothDevice> devices, int btListViewType) {
             mContext = context;
             mDevices = devices;
-            mBtListViewType = BtListViewType;
+            mBtListViewType = btListViewType;
         }
 
         public void setOnElementClickListener(OnElementClickListener onElementClickListener) {
@@ -425,14 +482,24 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
                 viewHolder.btName = view.findViewById(R.id.bt_name);
                 viewHolder.btAddress = view.findViewById(R.id.bt_address);
                 viewHolder.btSetting = view.findViewById(R.id.bt_setting);
+                viewHolder.btStatus = view.findViewById(R.id.bt_status);
                 view.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder)view.getTag();
             }
-            viewHolder.btName.setText(getAlias(mDevices.get(i)));
-            viewHolder.btAddress.setText(mDevices.get(i).getAddress());
+            BluetoothDevice device = mDevices.get(i);
+            String alias = getAlias(device);
+            viewHolder.btName.setText(alias);
+            viewHolder.btAddress.setText(device.getAddress());
             if (mBtListViewType == BT_LISTVIEW_PAIRED) {
                 viewHolder.btSetting.setVisibility(View.VISIBLE);
+                if (mA2dp != null) {  // 判断是否为使用中的蓝牙设备
+                    if(device.getName().equals(getActiveDeviceName(mA2dp))){
+                        viewHolder.btStatus.setVisibility(View.VISIBLE);
+                    }else {
+                        viewHolder.btStatus.setVisibility(View.GONE);
+                    }
+                }
             }
             viewHolder.btSetting.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -446,10 +513,27 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
         }
     }
 
+    private String getActiveDeviceName(BluetoothA2dp a2dp) {
+        String name = null;
+        try {
+            Class<?> bluetoothA2dp = Class.forName("android.bluetooth.BluetoothA2dp");
+            Method getActiveDevice = bluetoothA2dp.getMethod("getActiveDevice");
+            BluetoothDevice device =
+                    (BluetoothDevice) getActiveDevice.invoke(a2dp);
+            if (device != null) {
+                name = device.getName();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return name;
+    }
+
     private class ViewHolder {
         TextView btName;
         TextView btAddress;
         ImageView btSetting;
+        TextView btStatus;
     }
 
     public interface OnElementClickListener{
