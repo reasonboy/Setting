@@ -22,6 +22,7 @@ import com.jzzh.setting.R;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TaskManagerActivity extends BaseActivity implements TasksAdapter.OnChoiceClickListener,
@@ -124,19 +125,27 @@ public class TaskManagerActivity extends BaseActivity implements TasksAdapter.On
         }
     }
 
+    private static final String SPACE_LAUNCHER = "com.inno.spacelauncher";
+    private List<String> ignoreList = new ArrayList<>(Arrays.asList(SPACE_LAUNCHER));
+    private boolean checkIfIgnore(String pkgName) {
+        return ignoreList.contains(pkgName);
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.Q)
     private List<TaskItem> getTaskItem() {
         List<TaskItem> list = new ArrayList<>();
-        List<ActivityManager.RecentTaskInfo> recentTasks = mActivityManager.getRecentTasks(Integer.MAX_VALUE, 0x0002);
-        for(ActivityManager.RecentTaskInfo info : recentTasks) {
-            Log.v("xml_log_t","info.toString()="+info.toString());
-            TaskItem item = new TaskItem();
-            ComponentName cn = info.topActivity != null ? info.topActivity : (ComponentName) getSubField(info,"realActivity");
+        List<ActivityManager.RunningTaskInfo> tasks = mActivityManager != null ? mActivityManager.getRunningTasks(100) : new ArrayList<>();
+        PackageManager pm = getPackageManager();
+
+        for(ActivityManager.RunningTaskInfo info : tasks) {
+            Log.v("xml_log_t", "info.toString()=" + info.toString());
+            ComponentName cn = info.topActivity != null ? info.topActivity : (ComponentName) getSubField(info, "realActivity");
             String packageName = cn.getPackageName();
-            if (!packageName.equals("com.inno.spacelauncher")) {  // 过滤掉Launcher
+            if (pm.getLaunchIntentForPackage(packageName) != null && !(checkIfIgnore(packageName))) {
+                TaskItem item = new TaskItem();
                 try {
-                    item.title = getPackageManager().getApplicationLabel(getPackageManager().getApplicationInfo(packageName, PackageManager.GET_META_DATA));
-                    item.icon = getPackageManager().getActivityIcon(cn);
+                    item.title = pm.getApplicationLabel(pm.getApplicationInfo(packageName, PackageManager.GET_META_DATA));
+                    item.icon = pm.getActivityIcon(cn);
                     item.componentName = cn;
                     item.taskId = info.taskId;
                 } catch (PackageManager.NameNotFoundException e) {
