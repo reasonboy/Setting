@@ -122,8 +122,8 @@
     <string name="device_info_battery_full">충전 완료</string>
     <string name="device_info_battery_discharging">충전 안함</string>
     <string name="device_info_battery_charging">충전 중</string>
-    <string name="device_info_available">사용 가능:</string>
-    <string name="device_info_total">전체:</string>
+    <string name="device_info_available">사용 가능 : </string>
+    <string name="device_info_total">전체 : </string>
     <string name="device_info_no_sd">SD 카드가 없습니다</string>
 
     <string name="factory_reset_contents">
