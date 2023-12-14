@@ -24,7 +24,8 @@
     <View
         android:background="@android:color/black"
         android:layout_width="fill_parent"
-        android:layout_height="1.0dip" />
+        android:layout_height="1.0dip"
+        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:id="@+id/tv_status_info"
