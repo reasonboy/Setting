@@ -55,7 +55,7 @@
     <string name="light_warm">온색 조명</string>
     <string name="light_cold">백색 조명</string>
 	
-    <string name="task_memory_usage">메모리 사용량:%1$s</string>
+    <string name="task_memory_usage">메모리 사용량 : %1$s</string>
     <string name="task_choose">선택</string>
     <string name="task_all_clean">모두 지우기</string>
 	

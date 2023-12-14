@@ -52,7 +52,7 @@
     <string name="light_setting">Light Setting</string>
     <string name="light_warm">Warm Light</string>
     <string name="light_cold">Cold Light</string>
-    <string name="task_memory_usage">Memory Usage:%1$s</string>
+    <string name="task_memory_usage">Memory Usage : %1$s</string>
     <string name="task_choose">Choose</string>
     <string name="task_all_clean">All Clean</string>
     <string name="language_setting">Language Setting</string>
