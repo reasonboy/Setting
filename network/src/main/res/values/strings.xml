@@ -61,11 +61,11 @@
     <string name="ip_settings_dialog_dhcp">DHCP</string>
     <string name="ip_settings_dialog_static">Static</string>
     <string name="bt_setting">BT(2.4GHz Wireless)</string>
-    <string name="bt_device_name">Device name:%1$s</string>
-    <string name="bt_device_address">Bluetooth address:%1$s</string>
+    <string name="bt_device_name">Device name : %1$s</string>
+    <string name="bt_device_address">Bluetooth address : %1$s</string>
     <string name="bt_device_rename">Rename</string>
-    <string name="bt_paired_device">Paired devices:</string>
-    <string name="bt_available_device">Available Device:</string>
+    <string name="bt_paired_device">Paired devices :</string>
+    <string name="bt_available_device">Available Device :</string>
     <string name="bt_not_supported">Bluetooth not supported</string>
     <string name="bt_name_cannot_be_empty">Bluetooth name cannot be empty！</string>
     <string name="bt_pair">Pair</string>
@@ -78,6 +78,7 @@
     <string name="bt_confirm">Confirm</string>
     <string name="bt_paired_devices">Paired devices</string>
     <string name="bt_active">Active</string>
+    <string name="bt_forget">Forget</string>
     <string name="hint_wifi_pac_url" translatable="false">"https://www.example.com/proxy.pac"</string>
     <string name="hint_wifi_proxy_hostname" translatable="false">"proxy.example.com"</string>
     <string name="hint_wifi_proxy_port" translatable="false">"8080"</string>

@@ -52,7 +52,7 @@
     <string name="light_setting">Light Setting</string>
     <string name="light_warm">Warm Light</string>
     <string name="light_cold">Cold Light</string>
-    <string name="task_memory_usage">Memory Usage:%1$s</string>
+    <string name="task_memory_usage">Memory Usage : %1$s</string>
     <string name="task_choose">Choose</string>
     <string name="task_all_clean">All Clean</string>
     <string name="language_setting">Language Setting</string>
@@ -115,12 +115,12 @@
     <string name="device_info_battery_full">Full</string>
     <string name="device_info_battery_discharging">Discharging</string>
     <string name="device_info_battery_charging">Charging</string>
-    <string name="device_info_available">Available:</string>
-    <string name="device_info_total">Total:</string>
+    <string name="device_info_available">Available : </string>
+    <string name="device_info_total">Total : </string>
     <string name="device_info_no_sd">No SD card</string>
     <string name="factory_reset_contents">
         This will erase all data from your device\'s <b>internal storage</b>,\n\n
-        including:\n
+        including :\n
         &#160;Google Account data and settings\n
         &#160;System and application data and settings\n
         &#160;Downloaded books\n
@@ -146,7 +146,7 @@
         ]]>
     </string>
     <string name="gsf_id_miss">GSF ID has not been generated. Please Wifi on.</string>
-    <string name="gsf_id_obtain">GSF ID:%1$s</string>
+    <string name="gsf_id_obtain">GSF ID : %1$s</string>
     <string name="gsf_btn_login">LOGIN</string>
     <string name="gsf_btn_select">SELECT</string>
 

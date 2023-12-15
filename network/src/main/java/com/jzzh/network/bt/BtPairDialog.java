@@ -60,7 +60,7 @@ public class BtPairDialog extends Dialog implements View.OnClickListener{
         } else {
             mBtAliasLayout.setVisibility(View.VISIBLE);
             mBottomLine.setVisibility(View.VISIBLE);
-            mCancel.setText(R.string.bt_disconnect);
+            mCancel.setText(R.string.bt_forget);
             mDefine.setText(R.string.bt_confirm);
         }
     }

@@ -11,24 +11,31 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:textSize="@dimen/textSize20"
+        android:lineSpacingExtra="10dp"
         android:text="@string/factory_reset_dialog_msg"/>
 
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1.0dip"
+        android:layout_marginTop="20dp"
+        android:background="@color/black" />
+
     <LinearLayout
-        android:gravity="center"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp">
+        android:divider="@drawable/dialog_button_divider_vertical"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:showDividers="middle">
 
         <Button
             android:id="@+id/cancel"
-            style="@style/DialogButtonStyle"
+            style="@style/DialogButtonDividerStyle"
             android:text="@string/settings_cancel" />
+
         <Button
             android:id="@+id/ok"
-            style="@style/DialogButtonStyle"
-            android:layout_marginLeft="30dp"
+            style="@style/DialogButtonDividerStyle"
             android:text="@string/settings_ok" />
     </LinearLayout>
 
