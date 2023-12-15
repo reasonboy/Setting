@@ -39,7 +39,7 @@ public class RefreshActivity extends BaseActivity implements AdapterView.OnItemC
 
     private void initData() {
         mListData = new ArrayList<>();
-        mListData.add(new Data(getString(R.string.refresh_none),500));
+        mListData.add(new Data(getString(R.string.refresh_none),-1));
         mListData.add(new Data(getString(R.string.refresh_1view),1));
         mListData.add(new Data(getString(R.string.refresh_5view),5));
         mListData.add(new Data(getString(R.string.refresh_10view),10));
@@ -65,7 +65,7 @@ public class RefreshActivity extends BaseActivity implements AdapterView.OnItemC
     }
 
     private int getRefreshFrequency() {
-        int time = Settings.System.getInt(getContentResolver(),REFRESH_FREQUENCY_KEY,500);
+        int time = Settings.System.getInt(getContentResolver(),REFRESH_FREQUENCY_KEY,-1);
         return time;
     }
 
