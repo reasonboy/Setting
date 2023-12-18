@@ -2,6 +2,7 @@ package com.jzzh.network.wifi;
 
 import android.annotation.SuppressLint;
 import android.net.LinkAddress;
+import android.net.Proxy;
 import android.net.ProxyInfo;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiEnterpriseConfig;
@@ -12,6 +13,8 @@ import android.util.Log;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -204,14 +207,14 @@ public class WifiUtils {
      * 设置静态ip配置
      *
      * @param address ip地址
-     * @param mask    子网掩码
+     * @param prefixLength    prefixLength
      * @param gate    门关
      * @param dns     dns
      * @return {@link Object}
      */
-    public Object buildStaticIpConfiguration(String address, String mask, String gate, String dns) {
+    public Object buildStaticIpConfiguration(String address, String prefixLength, String gate, String dns) {
         try {
-            Log.d(TAG, "setStaticIpConfiguration: address = " + address + " netmask = " + mask + " gateway = " + gate + " dns = " + dns);
+            Log.d(TAG, "setStaticIpConfiguration: address = " + address + " prefixLength = " + prefixLength + " gateway = " + gate + " dns = " + dns);
             @SuppressLint("PrivateApi")
             Class<?> staticIpConfigurationClz = Class.forName("android.net.StaticIpConfiguration");
             Object staticIpConfiguration = staticIpConfigurationClz.newInstance();
@@ -219,9 +222,7 @@ public class WifiUtils {
             Field netmask = staticIpConfigurationClz.getField("domains");
             Field gateway = staticIpConfigurationClz.getField("gateway");
             Field dnsServers = staticIpConfigurationClz.getField("dnsServers");
-            Log.e(TAG, "prefixLength:" + getPrefixLength(mask));
-            ipAddress.set(staticIpConfiguration, getLinkAddress(InetAddress.getByName(address), getPrefixLength(mask)));
-            netmask.set(staticIpConfiguration, mask);
+            ipAddress.set(staticIpConfiguration, getLinkAddress(InetAddress.getByName(address), Integer.parseInt(prefixLength)));
             gateway.set(staticIpConfiguration, InetAddress.getByName(gate));
             ArrayList<InetAddress> dnsList = (ArrayList<InetAddress>) dnsServers.get(staticIpConfiguration);
             dnsList.add(InetAddress.getByName(dns));
@@ -263,5 +264,65 @@ public class WifiUtils {
             }
         }
         return count * 8;
+    }
+
+    public static int proxyValidate(String hostname, String port, String exclList) {
+        Class proxyClazz = Proxy.class;
+        int result = 0;
+        try {
+            Method validate = proxyClazz.getMethod("validate", String.class, String.class, String.class);
+            result = (int) validate.invoke(null, hostname, port, exclList);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static Inet4Address getIPv4Address(String text) {
+        try {
+            return (Inet4Address) numericToInetAddress(text);
+        } catch (IllegalArgumentException | ClassCastException e) {
+            return null;
+        }
+    }
+
+    public static InetAddress numericToInetAddress(String addrString) {
+        InetAddress inetAddress = null;
+        try {
+            Class clazz = Class.forName("android.net.NetworkUtils");
+            Method numericToInetAddress = clazz.getMethod("numericToInetAddress", String.class);
+            inetAddress = (InetAddress) numericToInetAddress.invoke(null, addrString);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+        }
+        return inetAddress;
+    }
+
+    public static InetAddress getNetworkPart(InetAddress address, int prefixLength) {
+        InetAddress inetAddress = null;
+        Class clazz = null;
+        try {
+            clazz = Class.forName("android.net.NetworkUtils");
+            Method getNetworkPart = clazz.getMethod("getNetworkPart", InetAddress.class, int.class);
+            inetAddress = (InetAddress) getNetworkPart.invoke(null, address, prefixLength);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        return inetAddress;
     }
 }

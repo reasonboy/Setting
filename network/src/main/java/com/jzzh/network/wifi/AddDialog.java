@@ -3,12 +3,18 @@ package com.jzzh.network.wifi;
 import static com.jzzh.network.wifi.WifiUtils.METERED_OVERRIDE_METERED;
 import static com.jzzh.network.wifi.WifiUtils.METERED_OVERRIDE_NONE;
 import static com.jzzh.network.wifi.WifiUtils.METERED_OVERRIDE_NOT_METERED;
+import static com.jzzh.network.wifi.WifiUtils.getIPv4Address;
+import static com.jzzh.network.wifi.WifiUtils.getNetworkPart;
+import static com.jzzh.network.wifi.WifiUtils.proxyValidate;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.net.ProxyInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -24,14 +30,16 @@ import android.widget.TextView;
 
 import com.jzzh.network.R;
 
+import java.net.Inet4Address;
+import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class AddDialog extends Dialog implements View.OnClickListener {
+public class AddDialog extends Dialog implements View.OnClickListener , TextWatcher {
 
     private Context mContext;
-    private EditText mSSID,mPassword;
+    private EditText mSsidEt,mPasswordEt;
     private EditText mIpAddressEt;
     private EditText mGatewayEt;
     private EditText mNetworkPrefixLengthEt;
@@ -64,6 +72,7 @@ public class AddDialog extends Dialog implements View.OnClickListener {
     private int mMeteredType = METERED_OVERRIDE_NONE;
     private String mIPAssignment = "DHCP";
     private String mProxySettings = "NONE";
+    private ProxyInfo mHttpProxyInfo;
 
     private static final String NONE = "OPEN";
     private static final String WEP = "WEP";
@@ -83,9 +92,11 @@ public class AddDialog extends Dialog implements View.OnClickListener {
         setContentView(R.layout.wifi_add_dialog);
         //getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         //getWindow().clearFlags( WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-        mSSID = findViewById(R.id.wifi_add_dialog_name);
-        mSSID.requestFocus();
-        mPassword = findViewById(R.id.wifi_add_dialog_password);
+        mSsidEt = findViewById(R.id.wifi_add_dialog_name);
+        mSsidEt.addTextChangedListener(this);
+        mSsidEt.requestFocus();
+        mPasswordEt = findViewById(R.id.wifi_add_dialog_password);
+        mPasswordEt.addTextChangedListener(this);
         mNone = findViewById(R.id.wifi_add_dialog_none);
         mWep = findViewById(R.id.wifi_add_dialog_wep);
         mWpa = findViewById(R.id.wifi_add_dialog_wpa);
@@ -96,18 +107,28 @@ public class AddDialog extends Dialog implements View.OnClickListener {
         mWpa.setOnClickListener(this);
         mCancle.setOnClickListener(this);
         mConnect.setOnClickListener(this);
+        mConnect.setEnabled(false);
+        mConnect.setTextAppearance(mContext, R.style.NegativeDialogButtonDividerStyle);
         mImageList.add(mNone);
         mImageList.add(mWep);
         mImageList.add(mWpa);
         setCheck(WPA);
         mIpAddressEt = findViewById(R.id.wifi_ip_address);
+        mIpAddressEt.addTextChangedListener(this);
         mGatewayEt = findViewById(R.id.wifi_gateway);
+        mGatewayEt.addTextChangedListener(this);
         mNetworkPrefixLengthEt = findViewById(R.id.wifi_network_prefix_length);
+        mNetworkPrefixLengthEt.addTextChangedListener(this);
         mDns1Et = findViewById(R.id.wifi_dns1);
+        mDns1Et.addTextChangedListener(this);
         mPACUrlEt = findViewById(R.id.wifi_pac_url);
+        mPACUrlEt.addTextChangedListener(this);
         mProxyHostnameEt = findViewById(R.id.wifi_proxy_hostname);
+        mProxyHostnameEt.addTextChangedListener(this);
         mProxyPortEt = findViewById(R.id.wifi_proxy_port);
+        mProxyPortEt.addTextChangedListener(this);
         mBypassProxyForEt = findViewById(R.id.wifi_bypass_proxy_for);
+        mBypassProxyForEt.addTextChangedListener(this);
         mAdvancedOptions = findViewById(R.id.wifi_connect_dialog_show_advanced_options);
         mAdvancedOptions.setOnClickListener(this);
         mAdvancedOptionsLayout = findViewById(R.id.ll_advanced_options);
@@ -168,6 +189,7 @@ public class AddDialog extends Dialog implements View.OnClickListener {
                         mProxySettings = "PAC";
                         break;
                 }
+                enableSubmitIfAppropriate();
             }
         });
         // IPSettings Dialog
@@ -186,6 +208,7 @@ public class AddDialog extends Dialog implements View.OnClickListener {
                         setStaticIpSettingsVisible(true);
                         break;
                 }
+                enableSubmitIfAppropriate();
             }
         });
     }
@@ -199,14 +222,15 @@ public class AddDialog extends Dialog implements View.OnClickListener {
         }
         if(capabilities.equals(NONE)) {
             mNone.setImageResource(R.drawable.check_on);
-            mPassword.setVisibility(View.GONE);
+            mPasswordEt.setVisibility(View.GONE);
         } else if(capabilities.equals(WEP)){
             mWep.setImageResource(R.drawable.check_on);
-            mPassword.setVisibility(View.VISIBLE);
+            mPasswordEt.setVisibility(View.VISIBLE);
         } else if(capabilities.equals(WPA)){
             mWpa.setImageResource(R.drawable.check_on);
-            mPassword.setVisibility(View.VISIBLE);
+            mPasswordEt.setVisibility(View.VISIBLE);
         }
+        enableSubmitIfAppropriate();
     }
 
     @Override
@@ -221,21 +245,8 @@ public class AddDialog extends Dialog implements View.OnClickListener {
         } else if (id == R.id.wifi_add_dialog_cancle) {
             dismiss();
         } else if (id == R.id.wifi_add_dialog_connect) {
-            String[] ipSettingsData = new String[]{mIpAddressEt.getText().toString(), "255.255.255.0", mGatewayEt.getText().toString(), mDns1Et.getText().toString()};
-            ProxyInfo proxyInfo = null;
-            if (mProxySettings.equals("PAC")) {
-                String pacUrl = mPACUrlEt.getText().toString();
-                Uri uri = Uri.parse(pacUrl);
-                proxyInfo = ProxyInfo.buildPacProxy(uri);
-            } else if (mProxySettings.equals("STATIC")) {
-                String hostName = mProxyHostnameEt.getText().toString();
-                String portStr = mProxyPortEt.getText().toString();
-                int port = Integer.parseInt(portStr);
-                String bypassProxyFor = mBypassProxyForEt.getText().toString();
-                List<String> bypassProxyForList = Arrays.asList(bypassProxyFor.split(","));
-                proxyInfo = ProxyInfo.buildDirectProxy(hostName, port, bypassProxyForList);
-            }
-            mCallback.callBackData(new String[]{mSSID.getText().toString(), mPassword.getText().toString(), mCapabilities},mMeteredType, mIPAssignment, ipSettingsData, mProxySettings, proxyInfo);
+            String[] ipSettingsData = new String[]{mIpAddressEt.getText().toString(), mNetworkPrefixLengthEt.getText().toString(), mGatewayEt.getText().toString(), mDns1Et.getText().toString()};
+            mCallback.callBackData(new String[]{mSsidEt.getText().toString(), mPasswordEt.getText().toString(), mCapabilities},mMeteredType, mIPAssignment, ipSettingsData, mProxySettings, mHttpProxyInfo);
             dismiss();
         } else if (id == R.id.wifi_connect_dialog_show_advanced_options) {
             mAdvancedOptionsVisible = !mAdvancedOptionsVisible;
@@ -320,6 +331,144 @@ public class AddDialog extends Dialog implements View.OnClickListener {
         mIpSettingsDownDrop.getLocationOnScreen(location);
         iPSettingsDialogLp.y = location[1];
         iPSettingsDialogWindow.setAttributes(iPSettingsDialogLp);
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+        enableSubmitIfAppropriate();
+    }
+
+    public boolean isSubmittable() {
+        boolean enable = false;
+        int ssidLength = 0;
+        int passwordLength = 0;
+        ssidLength = mSsidEt.getText().toString().length();
+        passwordLength = mPasswordEt.getText().toString().length();
+        if ((mCapabilities.equals("NONE") && ssidLength == 0) || (mCapabilities.equals("WEP") && (ssidLength == 0 || passwordLength < 1)) || (mCapabilities.equals("WPA") && (ssidLength == 0 || passwordLength < 8))) {
+            enable = false;
+        } else {
+            enable = ipAndProxyFieldsAreValid();
+        }
+        return enable;
+    }
+
+    private void enableSubmitIfAppropriate() {
+        if (isSubmittable()) {
+            mConnect.setEnabled(true);
+            mConnect.setTextAppearance(mContext, R.style.DialogButtonDividerStyle);
+        } else {
+            mConnect.setEnabled(false);
+            mConnect.setTextAppearance(mContext, R.style.NegativeDialogButtonDividerStyle);
+        }
+    }
+
+    private boolean ipAndProxyFieldsAreValid() {  // 判断IP及proxy是否有效
+        int result = 0;
+
+        if (mIPAssignment.equals("STATIC")) {
+            result = validateIpConfigFields();
+            if (result != 0) {
+                return false;
+            }
+        }
+        if (mProxySettings.equals("PAC")) {
+            CharSequence uriSequence = mPACUrlEt.getText();
+            if (TextUtils.isEmpty(uriSequence)) {
+                return false;
+            }
+            Uri uri = Uri.parse(uriSequence.toString());
+            if (uri == null) {
+                return false;
+            }
+            mHttpProxyInfo = ProxyInfo.buildPacProxy(uri);
+        } else if (mProxySettings.equals("STATIC")) {
+            String hostName = mProxyHostnameEt.getText().toString();
+            String portStr = mProxyPortEt.getText().toString();
+            String bypassProxyFor = mBypassProxyForEt.getText().toString();
+            int port = 0;
+            try {
+                port = Integer.parseInt(portStr);
+                result = proxyValidate(hostName, portStr, bypassProxyFor);
+            } catch (NumberFormatException e) {
+                result = -1;
+            }
+            if (result == 0) {
+                List<String> bypassProxyForList = Arrays.asList(bypassProxyFor.split(","));
+                mHttpProxyInfo = ProxyInfo.buildDirectProxy(hostName, port, bypassProxyForList);
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public int validateIpConfigFields() {
+        String ipAddr = mIpAddressEt.getText().toString();
+        if (TextUtils.isEmpty(ipAddr)) return -1;
+
+        Inet4Address inetAddr = getIPv4Address(ipAddr);
+        if (inetAddr == null) {
+            return -1;
+        }
+
+        int networkPrefixLength = -1;
+        try {
+            networkPrefixLength = Integer.parseInt(mNetworkPrefixLengthEt.getText().toString());
+            if (networkPrefixLength < 0 || networkPrefixLength > 32) {
+                return -1;
+            }
+        } catch (NumberFormatException e) {
+            // Set the hint as default after user types in ip address
+            mNetworkPrefixLengthEt.setText(R.string.hint_wifi_network_prefix_length);
+        } catch (IllegalArgumentException e) {
+            return -1;
+        }
+
+        String gateway = mGatewayEt.getText().toString();
+        if (TextUtils.isEmpty(gateway)) {
+            try {
+                //Extract a default gateway from IP address
+                InetAddress netPart = getNetworkPart(inetAddr, networkPrefixLength);
+                byte[] addr = netPart.getAddress();
+                addr[addr.length - 1] = 1;
+                mGatewayEt.setText(InetAddress.getByAddress(addr).getHostAddress());
+            } catch (RuntimeException ee) {
+            } catch (java.net.UnknownHostException u) {
+            }
+        } else {
+            InetAddress gatewayAddr = getIPv4Address(gateway);
+            if (gatewayAddr == null) {
+                return -1;
+            }
+            if (gatewayAddr.isMulticastAddress()) {
+                return -1;
+            }
+        }
+
+        String dns = mDns1Et.getText().toString();
+        InetAddress dnsAddr = null;
+
+        if (TextUtils.isEmpty(dns)) {
+            //If everything else is valid, provide hint as a default option
+            mDns1Et.setText(R.string.hint_wifi_dns1);
+        } else {
+            dnsAddr = getIPv4Address(dns);
+            if (dnsAddr == null) {
+                return -1;
+            }
+        }
+
+        return 0;
     }
 
     public interface DialogCallback {
