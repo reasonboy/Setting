@@ -47,11 +47,12 @@
 
         <ImageView
             android:id="@+id/zh_adjust_reduce"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="69dp"
-            android:background="@drawable/soft_bar_on_reduce"/>
+            android:src="@drawable/soft_bar_on_reduce"
+            android:padding="10dp"/>
 
         <com.jzzh.tools.ZhSeekBar
             android:id="@+id/zh_adjust_seekbar"
@@ -65,11 +66,12 @@
 
         <ImageView
             android:id="@+id/zh_adjust_increase"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
             android:layout_gravity="right|center_vertical"
             android:layout_marginRight="69dp"
-            android:background="@drawable/soft_bar_on_increase"/>
+            android:src="@drawable/soft_bar_on_increase"
+            android:padding="10dp"/>
 
     </FrameLayout>
 
