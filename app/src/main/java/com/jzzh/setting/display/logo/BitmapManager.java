@@ -95,6 +95,22 @@ public class BitmapManager {
         int srcWidth = src.getWidth();
         int srcHeight = src.getHeight();
 
+        float scaleX = 1;
+        float scaleY = 1;
+        if(srcWidth > bgWidth) {
+            scaleX = (float)bgWidth / srcWidth;
+        }
+        if(srcHeight > bgHeight) {
+            scaleY = (float)bgHeight / srcHeight;
+        }
+        float scale = Math.min(scaleX,scaleY);
+        Matrix matrix = new Matrix();
+        matrix.postScale(scale,scale);
+        Bitmap resizeBitmap = Bitmap.createBitmap(src, 0, 0, srcWidth, srcHeight, matrix, true);
+        int resizeWidth = resizeBitmap.getWidth();
+        int resizeHeight = resizeBitmap.getHeight();
+        Log.v("xml_log_bb",resizeWidth+":adjustBitmap:"+resizeHeight);
+
         Bitmap newBitmap = Bitmap.createBitmap(bgWidth, bgHeight, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(newBitmap);
 
@@ -102,7 +118,7 @@ public class BitmapManager {
         Paint paint = new Paint();
         paint.setColor(Color.WHITE);
         canvas.drawRect(0, 0, bgWidth, bgHeight, paint);
-        canvas.drawBitmap(src, (bgWidth - srcWidth)/2, (bgHeight - srcHeight)/2, null);
+        canvas.drawBitmap(resizeBitmap, (bgWidth - resizeWidth)/2, (bgHeight - resizeHeight)/2, null);
 
         return newBitmap;
     }
