@@ -6,4 +6,24 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/zh_dialog_margin_left"
+            android:text="@string/set_password"
+            android:textSize="@dimen/textSize19" />
+
+        <com.jzzh.tools.ZhCheckBox
+            android:id="@+id/zh_lock_screen_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp" />
+    </RelativeLayout>
 </LinearLayout>
