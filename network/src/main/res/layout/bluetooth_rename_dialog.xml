@@ -8,13 +8,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/zh_dialog_title_height">
+
         <TextView
-            android:textSize="@dimen/textSize20"
-            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:text="@string/bt_device_rename"
-            android:layout_centerInParent="true"/>
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSize20" />
     </RelativeLayout>
 
     <View
@@ -25,26 +26,32 @@
     <EditText
         android:id="@+id/bt_rename_dialog_name"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
         style="@style/DialogEditTextStyle"
         android:paddingStart="10dp"
-        android:paddingEnd="10dp"/>
+        android:paddingEnd="10dp" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1.0dip"
+        android:layout_marginTop="20dp"
+        android:background="@color/black" />
 
     <LinearLayout
-        android:gravity="center"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp">
+        android:divider="@drawable/dialog_button_divider_vertical"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:showDividers="middle">
 
         <Button
             android:id="@+id/bt_rename_dialog_cancle"
-            style="@style/DialogButtonStyle"
+            style="@style/DialogButtonDividerStyle"
             android:text="@string/settings_cancel" />
         <Button
             android:id="@+id/bt_rename_dialog_ok"
-            style="@style/DialogButtonStyle"
-            android:layout_marginLeft="30dp"
+            style="@style/DialogButtonDividerStyle"
             android:text="@string/settings_ok" />
     </LinearLayout>
 

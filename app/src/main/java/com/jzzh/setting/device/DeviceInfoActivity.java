@@ -15,6 +15,7 @@ import android.provider.Settings;
 import android.text.format.Formatter;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.jzzh.setting.BaseActivity;
 import com.jzzh.setting.R;
@@ -225,6 +226,7 @@ public class DeviceInfoActivity extends BaseActivity implements View.OnClickList
             breakthrough = BREAK_THROUGH_TIMES;
             writeAdbSetting(getAdbSetting() != ADB_SETTING_ON);
             updateSystemVersion();
+            showToast();
         }
     }
 
@@ -233,6 +235,14 @@ public class DeviceInfoActivity extends BaseActivity implements View.OnClickList
             mSystemVersion.setInformation(getProperties(this, "ro.build.version.incremental") + ".D");
         } else {
             mSystemVersion.setInformation(getProperties(this, "ro.build.version.incremental"));
+        }
+    }
+
+    private void showToast() {
+        if (getAdbSetting() == ADB_SETTING_ON) {
+            Toast.makeText(this, "ADB enabled", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "ADB disabled", Toast.LENGTH_SHORT).show();
         }
     }
 
