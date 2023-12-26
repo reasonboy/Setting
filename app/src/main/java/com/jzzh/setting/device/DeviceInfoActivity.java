@@ -1,5 +1,6 @@
 package com.jzzh.setting.device;
 
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -10,8 +11,10 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StatFs;
 import android.os.storage.StorageManager;
+import android.provider.Settings;
 import android.text.format.Formatter;
 import android.util.Log;
+import android.view.View;
 
 import com.jzzh.setting.BaseActivity;
 import com.jzzh.setting.R;
@@ -20,7 +23,12 @@ import java.io.File;
 import java.lang.reflect.Method;
 import java.util.List;
 
-public class DeviceInfoActivity extends BaseActivity {
+public class DeviceInfoActivity extends BaseActivity implements View.OnClickListener {
+    public static final int ADB_SETTING_ON = 1;
+    public static final int ADB_SETTING_OFF = 0;
+    private final Integer BREAK_THROUGH_TIMES = 6;
+    private int breakthrough = BREAK_THROUGH_TIMES;
+    private long lastClickTime;
 
     private DeviceIfoItem mSystemVersion, mAndroidVersion, mModelNumber, mSerialNumber, mBatteryInfo, mStorageInfo, mSdCardInfo, mLicense;
     private BroadcastReceiver mBatteryReceiver = new BroadcastReceiver() {
@@ -49,8 +57,11 @@ public class DeviceInfoActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_info);
         mSystemVersion = findViewById(R.id.device_info_system_version);
+        mSystemVersion.setOnClickListener(this);
         mAndroidVersion = findViewById(R.id.device_info_android_version);
+        mAndroidVersion.setOnClickListener(this);
         mModelNumber = findViewById(R.id.device_info_model_number);
+        mModelNumber.setOnClickListener(this);
         mSerialNumber = findViewById(R.id.device_info_serial_number);
         mBatteryInfo = findViewById(R.id.device_info_battery);
         mStorageInfo = findViewById(R.id.device_info_storage);
@@ -65,7 +76,7 @@ public class DeviceInfoActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mSystemVersion.setInformation(getProperties(this,"ro.build.version.incremental"));
+        updateSystemVersion();
         mAndroidVersion.setInformation(Build.VERSION.RELEASE);
         mModelNumber.setInformation(Build.MODEL);
         mSerialNumber.setInformation(getSerialNumber());
@@ -184,5 +195,68 @@ public class DeviceInfoActivity extends BaseActivity {
             Log.e("e", "读取设备序列号异常：" + e.toString());
         }
         return serial;
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+        if (breakthrough > 0) {
+            if (!isFastClickEachOneSec()) {
+                breakthrough = BREAK_THROUGH_TIMES;
+            }
+        }
+
+        switch (id) {
+            case R.id.device_info_system_version:
+                if (breakthrough == 6 || breakthrough == 3)
+                    breakthrough--;
+                break;
+            case R.id.device_info_android_version:
+                if (breakthrough == 1)
+                    breakthrough--;
+                break;
+            case R.id.device_info_model_number:
+                if (breakthrough == 5 || breakthrough == 4 || breakthrough == 2)
+                    breakthrough--;
+                break;
+        }
+        if (breakthrough == 0) {
+            breakthrough = BREAK_THROUGH_TIMES;
+            writeAdbSetting(getAdbSetting() != ADB_SETTING_ON);
+            updateSystemVersion();
+        }
+    }
+
+    private void updateSystemVersion(){
+        if (getAdbSetting() == ADB_SETTING_ON) {
+            mSystemVersion.setInformation(getProperties(this, "ro.build.version.incremental") + ".D");
+        } else {
+            mSystemVersion.setInformation(getProperties(this, "ro.build.version.incremental"));
+        }
+    }
+
+    /**
+     * 防止1秒内连续操作
+     *
+     * @return true为连续操作，false则不是连续操作
+     */
+    public boolean isFastClickEachOneSec() {
+        long time = System.currentTimeMillis();
+        if (time - lastClickTime < 1000) {
+            lastClickTime = time;
+            return true;
+        }
+        lastClickTime = time;
+        return false;
+    }
+
+    private void writeAdbSetting(boolean enabled) {
+        Settings.Global.putInt(getContentResolver(),
+                Settings.Global.ADB_ENABLED, enabled ? ADB_SETTING_ON : ADB_SETTING_OFF);
+    }
+
+    private int getAdbSetting() {
+        return Settings.Global.getInt(getContentResolver(), Settings.Global.ADB_ENABLED, ADB_SETTING_OFF);
     }
 }
