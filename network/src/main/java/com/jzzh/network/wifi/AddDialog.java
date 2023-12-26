@@ -1,5 +1,7 @@
 package com.jzzh.network.wifi;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 import static com.jzzh.network.wifi.WifiUtils.METERED_OVERRIDE_METERED;
 import static com.jzzh.network.wifi.WifiUtils.METERED_OVERRIDE_NONE;
 import static com.jzzh.network.wifi.WifiUtils.METERED_OVERRIDE_NOT_METERED;
@@ -13,6 +15,7 @@ import android.net.ProxyInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -53,6 +56,8 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
     private Button mCancle,mConnect;
     private DialogCallback mCallback;
     private String mCapabilities;
+    private RelativeLayout mShowPasswordLayout;
+    private ImageView mShowPassword;
     private ImageView mAdvancedOptions;
     private boolean mAdvancedOptionsVisible = false;
     private LinearLayout mAdvancedOptionsLayout;
@@ -73,6 +78,7 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
     private String mIPAssignment = "DHCP";
     private String mProxySettings = "NONE";
     private ProxyInfo mHttpProxyInfo;
+    private boolean mPasswordVisible = false;
 
     private static final String NONE = "OPEN";
     private static final String WEP = "WEP";
@@ -112,6 +118,7 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
         mImageList.add(mNone);
         mImageList.add(mWep);
         mImageList.add(mWpa);
+        mShowPasswordLayout = findViewById(R.id.ll_enable_show_password);
         setCheck(WPA);
         mIpAddressEt = findViewById(R.id.wifi_ip_address);
         mIpAddressEt.addTextChangedListener(this);
@@ -129,6 +136,8 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
         mProxyPortEt.addTextChangedListener(this);
         mBypassProxyForEt = findViewById(R.id.wifi_bypass_proxy_for);
         mBypassProxyForEt.addTextChangedListener(this);
+        mShowPassword = findViewById(R.id.wifi_add_dialog_show_password);
+        mShowPassword.setOnClickListener(this);
         mAdvancedOptions = findViewById(R.id.wifi_connect_dialog_show_advanced_options);
         mAdvancedOptions.setOnClickListener(this);
         mAdvancedOptionsLayout = findViewById(R.id.ll_advanced_options);
@@ -222,14 +231,19 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
         }
         if(capabilities.equals(NONE)) {
             mNone.setImageResource(R.drawable.check_on);
-            mPasswordEt.setVisibility(View.GONE);
+            mPasswordEt.setVisibility(GONE);
+            mShowPasswordLayout.setVisibility(GONE);
         } else if(capabilities.equals(WEP)){
             mWep.setImageResource(R.drawable.check_on);
-            mPasswordEt.setVisibility(View.VISIBLE);
+            mPasswordEt.setVisibility(VISIBLE);
+            mShowPasswordLayout.setVisibility(VISIBLE);
         } else if(capabilities.equals(WPA)){
             mWpa.setImageResource(R.drawable.check_on);
-            mPasswordEt.setVisibility(View.VISIBLE);
+            mPasswordEt.setVisibility(VISIBLE);
+            mShowPasswordLayout.setVisibility(VISIBLE);
         }
+        mPasswordEt.getText().clear();
+
         enableSubmitIfAppropriate();
     }
 
@@ -248,6 +262,9 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
             String[] ipSettingsData = new String[]{mIpAddressEt.getText().toString(), mNetworkPrefixLengthEt.getText().toString(), mGatewayEt.getText().toString(), mDns1Et.getText().toString()};
             mCallback.callBackData(new String[]{mSsidEt.getText().toString(), mPasswordEt.getText().toString(), mCapabilities},mMeteredType, mIPAssignment, ipSettingsData, mProxySettings, mHttpProxyInfo);
             dismiss();
+        } else if (id == R.id.wifi_add_dialog_show_password) {
+            mPasswordVisible = !mPasswordVisible;
+            setPasswordVisible(mPasswordVisible);
         } else if (id == R.id.wifi_connect_dialog_show_advanced_options) {
             mAdvancedOptionsVisible = !mAdvancedOptionsVisible;
             setAdvancedOptionsVisible(mAdvancedOptionsVisible);
@@ -263,6 +280,18 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
         }
     }
 
+    private void setPasswordVisible(boolean visible) {
+        if (visible) {
+            mShowPassword.setImageResource(R.drawable.check_on);
+            mPasswordEt.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+            mPasswordEt.setSelection(mPasswordEt.getText().toString().length());
+        } else {
+            mShowPassword.setImageResource(R.drawable.check_off);
+            mPasswordEt.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            mPasswordEt.setSelection(mPasswordEt.getText().toString().length());
+        }
+    }
+
     private void closeKeybord() {
         InputMethodManager imm = (InputMethodManager)mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
         View view = getWindow().peekDecorView();
@@ -272,34 +301,34 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
     private void setAdvancedOptionsVisible(boolean visible) {
         if (visible) {
             mAdvancedOptions.setImageResource(R.drawable.check_on);
-            mAdvancedOptionsLayout.setVisibility(View.VISIBLE);
+            mAdvancedOptionsLayout.setVisibility(VISIBLE);
         } else {
             mAdvancedOptions.setImageResource(R.drawable.check_off);
-            mAdvancedOptionsLayout.setVisibility(View.GONE);
+            mAdvancedOptionsLayout.setVisibility(GONE);
         }
     }
 
     private void setStaticIpSettingsVisible(boolean visible) {
         if (visible) {
-            mStaticIpSettingsLayout.setVisibility(View.VISIBLE);
+            mStaticIpSettingsLayout.setVisibility(VISIBLE);
         } else {
-            mStaticIpSettingsLayout.setVisibility(View.GONE);
+            mStaticIpSettingsLayout.setVisibility(GONE);
         }
     }
 
     private void setProxyAutoConfigVisible(boolean visible){
         if(visible){
-            mProxyAutoConfig.setVisibility(View.VISIBLE);
+            mProxyAutoConfig.setVisibility(VISIBLE);
         }else {
-            mProxyAutoConfig.setVisibility(View.GONE);
+            mProxyAutoConfig.setVisibility(GONE);
         }
     }
 
     private void setProxyManualVisible(boolean visible) {
         if (visible) {
-            mProxyManual.setVisibility(View.VISIBLE);
+            mProxyManual.setVisibility(VISIBLE);
         } else {
-            mProxyManual.setVisibility(View.GONE);
+            mProxyManual.setVisibility(GONE);
         }
     }
 
