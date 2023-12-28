@@ -1,5 +1,6 @@
 package com.jzzh.setting.time;
 
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.Dialog;
 import android.content.Context;
@@ -14,10 +15,13 @@ import java.util.Calendar;
 
 public class SetDateDialog extends Dialog implements View.OnClickListener{
 
-    private TextView mYearTv,mMonthTv,mDateTv;
+    private TextView mYearTv, mYearIncreaseTv, mYearReduceTv;
+    private TextView mMonthTv, mMonthIncreaseTv, mMonthReduceTv;
+    private TextView mDateTv, mDateIncreaseTv, mDateReduceTv;
     private int mYear,mMonth,mDate;
     private Context mContext;
     private DialogCallback mDialogCallback;
+    private static final String[] MONTH_ABBR={"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
 
     public SetDateDialog(Context context, int i, DialogCallback callback) {
         super(context, i);
@@ -29,12 +33,18 @@ public class SetDateDialog extends Dialog implements View.OnClickListener{
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.time_set_date_dialog);
-        findViewById(R.id.set_date_dialog_year_increase).setOnClickListener(this);
-        findViewById(R.id.set_date_dialog_year_reduce).setOnClickListener(this);
-        findViewById(R.id.set_date_dialog_month_increase).setOnClickListener(this);
-        findViewById(R.id.set_date_dialog_month_reduce).setOnClickListener(this);
-        findViewById(R.id.set_date_dialog_date_increase).setOnClickListener(this);
-        findViewById(R.id.set_date_dialog_date_reduce).setOnClickListener(this);
+        mYearIncreaseTv = findViewById(R.id.set_date_dialog_year_increase);
+        mYearIncreaseTv.setOnClickListener(this);
+        mYearReduceTv = findViewById(R.id.set_date_dialog_year_reduce);
+        mYearReduceTv.setOnClickListener(this);
+        mMonthIncreaseTv = findViewById(R.id.set_date_dialog_month_increase);
+        mMonthIncreaseTv.setOnClickListener(this);
+        mMonthReduceTv = findViewById(R.id.set_date_dialog_month_reduce);
+        mMonthReduceTv.setOnClickListener(this);
+        mDateIncreaseTv = findViewById(R.id.set_date_dialog_date_increase);
+        mDateIncreaseTv.setOnClickListener(this);
+        mDateReduceTv = findViewById(R.id.set_date_dialog_date_reduce);
+        mDateReduceTv.setOnClickListener(this);
         findViewById(R.id.set_date_dialog_cancel).setOnClickListener(this);
         findViewById(R.id.set_date_dialog_ok).setOnClickListener(this);
         mYearTv = findViewById(R.id.set_date_dialog_year);
@@ -48,13 +58,46 @@ public class SetDateDialog extends Dialog implements View.OnClickListener{
         Log.v("xml_log_time",mYear+"-"+mMonth+"-"+mDate);
     }
 
+    @SuppressLint("SetTextI18n")
     private void updateDate() {
-        if(mDate > getDaysOfCurrentMonth()) {
+        if (mDate > getDaysOfCurrentMonth()) {
             mDate = getDaysOfCurrentMonth();
         }
-        mYearTv.setText(mYear+"");
-        mMonthTv.setText(mMonth+"");
-        mDateTv.setText(mDate+"");
+        mYearTv.setText(mYear + "");
+        if (mYear - 1 < 1970) {
+            mYearReduceTv.setText(2991 + "");
+        } else {
+            mYearReduceTv.setText(mYear - 1 + "");
+        }
+        if (mYear + 1 > 2991) {
+            mYearIncreaseTv.setText(1970 + "");
+        } else {
+            mYearIncreaseTv.setText(mYear + 1 + "");
+        }
+
+        mMonthTv.setText(MONTH_ABBR[mMonth - 1]);
+        if (mMonth - 1 < 1) {
+            mMonthReduceTv.setText(MONTH_ABBR[11]);
+        } else {
+            mMonthReduceTv.setText(MONTH_ABBR[mMonth - 2]);
+        }
+        if (mMonth + 1 > 12) {
+            mMonthIncreaseTv.setText(MONTH_ABBR[0]);
+        } else {
+            mMonthIncreaseTv.setText(MONTH_ABBR[mMonth]);
+        }
+
+        mDateTv.setText(mDate + "");
+        if (mDate - 1 < 1) {
+            mDateReduceTv.setText(getDaysOfCurrentMonth() + "");
+        } else {
+            mDateReduceTv.setText(mDate - 1 + "");
+        }
+        if (mDate + 1 > getDaysOfCurrentMonth()) {
+            mDateIncreaseTv.setText(1 + "");
+        } else {
+            mDateIncreaseTv.setText(mDate + 1 + "");
+        }
     }
 
     @Override

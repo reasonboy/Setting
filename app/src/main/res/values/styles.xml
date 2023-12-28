@@ -73,11 +73,19 @@
 
     <style name="SettingTimeTextViewStyle">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">@dimen/time_dialog_textview_size</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/time_dialog_text_size</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginBottom">10dp</item>
         <item name="android:layout_gravity">center</item>
+        <item name="android:padding">7dp</item>
+    </style>
+
+    <style name="SettingTimeControlTextViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/time_dialog_text_size</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:padding">7dp</item>
     </style>
 </resources>

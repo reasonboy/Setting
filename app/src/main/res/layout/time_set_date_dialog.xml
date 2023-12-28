@@ -21,91 +21,97 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp">
+
+        <LinearLayout
+            android:layout_width="@dimen/time_dialog_button_layout_width"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/set_date_dialog_month_reduce"
+                style="@style/SettingTimeControlTextViewStyle" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3px"
+                android:background="@color/black" />
+
+            <TextView
+                android:id="@+id/set_date_dialog_month"
+                style="@style/SettingTimeTextViewStyle"
+                android:text="4" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3px"
+                android:background="@color/black" />
+
+            <TextView
+                android:id="@+id/set_date_dialog_month_increase"
+                style="@style/SettingTimeControlTextViewStyle" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/time_dialog_button_layout_width"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/set_date_dialog_date_reduce"
+                style="@style/SettingTimeControlTextViewStyle" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3px"
+                android:background="@color/black" />
+
+            <TextView
+                android:id="@+id/set_date_dialog_date"
+                style="@style/SettingTimeTextViewStyle"
+                android:text="4" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3px"
+                android:background="@color/black" />
+
+            <TextView
+                android:id="@+id/set_date_dialog_date_increase"
+                style="@style/SettingTimeControlTextViewStyle" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="60dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
             android:orientation="vertical">
-            <ImageView
-                android:id="@+id/set_date_dialog_year_increase"
-                android:layout_gravity="center"
-                android:layout_width="@dimen/time_dialog_button_size"
-                android:layout_height="@dimen/time_dialog_button_size"
-                android:background="@drawable/set_time_up"/>
+
+            <TextView
+                android:id="@+id/set_date_dialog_year_reduce"
+                style="@style/SettingTimeControlTextViewStyle" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3px"
+                android:background="@color/black" />
+
             <TextView
                 android:id="@+id/set_date_dialog_year"
                 style="@style/SettingTimeTextViewStyle"
-                android:text="1996"/>
-            <ImageView
-                android:id="@+id/set_date_dialog_year_reduce"
-                android:layout_gravity="center"
-                android:layout_width="@dimen/time_dialog_button_size"
-                android:layout_height="@dimen/time_dialog_button_size"
-                android:background="@drawable/set_time_down"/>
-        </LinearLayout>
+                android:text="1996" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textSize="@dimen/time_dialog_text_size"
-            android:textColor="@color/black"
-            android:layout_gravity="center"
-            android:text="-"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3px"
+                android:background="@color/black" />
 
-        <LinearLayout
-            android:layout_width="@dimen/time_dialog_button_layout_width"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <ImageView
-                android:id="@+id/set_date_dialog_month_increase"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="@dimen/time_dialog_button_size"
-                android:layout_height="@dimen/time_dialog_button_size"
-                android:background="@drawable/set_time_up"/>
             <TextView
-                android:id="@+id/set_date_dialog_month"
-                style="@style/SettingTimeTextViewStyle"
-                android:text="4"/>
-            <ImageView
-                android:id="@+id/set_date_dialog_month_reduce"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="@dimen/time_dialog_button_size"
-                android:layout_height="@dimen/time_dialog_button_size"
-                android:background="@drawable/set_time_down"/>
-        </LinearLayout>
+                android:id="@+id/set_date_dialog_year_increase"
+                style="@style/SettingTimeControlTextViewStyle" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textSize="@dimen/time_dialog_text_size"
-            android:textColor="@color/black"
-            android:layout_gravity="center"
-            android:text="-"/>
-
-        <LinearLayout
-            android:layout_width="@dimen/time_dialog_button_layout_width"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <ImageView
-                android:id="@+id/set_date_dialog_date_increase"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="@dimen/time_dialog_button_size"
-                android:layout_height="@dimen/time_dialog_button_size"
-                android:background="@drawable/set_time_up"/>
-            <TextView
-                android:id="@+id/set_date_dialog_date"
-                style="@style/SettingTimeTextViewStyle"
-                android:text="4"/>
-            <ImageView
-                android:id="@+id/set_date_dialog_date_reduce"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="@dimen/time_dialog_button_size"
-                android:layout_height="@dimen/time_dialog_button_size"
-                android:background="@drawable/set_time_down"/>
         </LinearLayout>
 
     </LinearLayout>

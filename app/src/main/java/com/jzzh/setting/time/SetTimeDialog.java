@@ -1,5 +1,6 @@
 package com.jzzh.setting.time;
 
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.Dialog;
 import android.content.Context;
@@ -15,7 +16,9 @@ import java.util.Calendar;
 
 public class SetTimeDialog extends Dialog implements View.OnClickListener {
 
-    private TextView mHourTv,mMinuteTv,mApmTv;
+    private TextView mHourTv, mHourIncreaseTv, mHourReduceTv;
+    private TextView mMinuteTv, mMinuteIncreaseTv, mMinuteReduceTv;
+    private TextView mApmTv, mApmReduceTv;
     private int mHour,mMinute,mApm;
     private Context mContext;
     private DialogCallback mDialogCallback;
@@ -30,12 +33,16 @@ public class SetTimeDialog extends Dialog implements View.OnClickListener {
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.time_set_time_dialog);
-        findViewById(R.id.set_time_dialog_hour_increase).setOnClickListener(this);
-        findViewById(R.id.set_time_dialog_hour_reduce).setOnClickListener(this);
-        findViewById(R.id.set_time_dialog_minute_increase).setOnClickListener(this);
-        findViewById(R.id.set_time_dialog_minute_reduce).setOnClickListener(this);
-        findViewById(R.id.set_time_dialog_apm_increase).setOnClickListener(this);
-        findViewById(R.id.set_time_dialog_apm_reduce).setOnClickListener(this);
+        mHourIncreaseTv = findViewById(R.id.set_time_dialog_hour_increase);
+        mHourIncreaseTv.setOnClickListener(this);
+        mHourReduceTv = findViewById(R.id.set_time_dialog_hour_reduce);
+        mHourReduceTv.setOnClickListener(this);
+        mMinuteIncreaseTv = findViewById(R.id.set_time_dialog_minute_increase);
+        mMinuteIncreaseTv.setOnClickListener(this);
+        mMinuteReduceTv = findViewById(R.id.set_time_dialog_minute_reduce);
+        mMinuteReduceTv.setOnClickListener(this);
+        mApmReduceTv = findViewById(R.id.set_time_dialog_apm_reduce);
+        mApmReduceTv.setOnClickListener(this);
         findViewById(R.id.set_time_dialog_cancel).setOnClickListener(this);
         findViewById(R.id.set_time_dialog_ok).setOnClickListener(this);
         mHourTv = findViewById(R.id.set_time_dialog_hour);
@@ -68,17 +75,57 @@ public class SetTimeDialog extends Dialog implements View.OnClickListener {
         super.onDetachedFromWindow();
     }
 
+    @SuppressLint("SetTextI18n")
     private void updateTime() {
-        mHourTv.setText(mHour+"");
-        if(mMinute < 10) {
+        int hourMax;
+        if (is24HourFormatEnabled()) {
+            hourMax = 23;
+        } else {
+            hourMax = 12;
+        }
+
+        mHourTv.setText(mHour + "");
+        if (mHour - 1 < 0) {
+            mHourReduceTv.setText(hourMax + "");
+        } else {
+            mHourReduceTv.setText(mHour - 1 + "");
+        }
+        if (mHour + 1 > hourMax) {
+            mHourIncreaseTv.setText(0 + "");
+        } else {
+            mHourIncreaseTv.setText(mHour + 1 + "");
+        }
+
+        if (mMinute < 10) {
             mMinuteTv.setText("0" + mMinute);
         } else {
-            mMinuteTv.setText(mMinute+"");
+            mMinuteTv.setText(mMinute + "");
         }
-        if(mApm == Calendar.AM) {
+        if (mMinute - 1 < 0) {
+            mMinuteReduceTv.setText(59 + "");
+        } else {
+            if (mMinute - 1 < 10) {
+                mMinuteReduceTv.setText("0" + (mMinute - 1));
+            } else {
+                mMinuteReduceTv.setText(mMinute - 1 + "");
+            }
+        }
+        if (mMinute + 1 > 59) {
+            mMinuteIncreaseTv.setText("0" + 0);
+        } else {
+            if (mMinute + 1 < 10) {
+                mMinuteIncreaseTv.setText("0" + (mMinute + 1));
+            } else {
+                mMinuteIncreaseTv.setText(mMinute + 1 + "");
+            }
+        }
+
+        if (mApm == Calendar.AM) {
             mApmTv.setText(R.string.time_am);
+            mApmReduceTv.setText(R.string.time_pm);
         } else {
             mApmTv.setText(R.string.time_pm);
+            mApmReduceTv.setText(R.string.time_am);
         }
     }
 
@@ -115,7 +162,6 @@ public class SetTimeDialog extends Dialog implements View.OnClickListener {
             case R.id.set_time_dialog_minute_reduce:
                 minOperation(false);
                 break;
-            case R.id.set_time_dialog_apm_increase:
             case R.id.set_time_dialog_apm_reduce:
                 apmOperation();
                 break;
