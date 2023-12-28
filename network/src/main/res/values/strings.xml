@@ -70,6 +70,8 @@
     <string name="bt_name_cannot_be_empty">Bluetooth name cannot be empty！</string>
     <string name="bt_pair">Pair</string>
     <string name="bt_disconnect">Disconnect</string>
+    <string name="bt_disconnect_device">Disconnect device?</string>
+    <string name="bt_disconnect_hint">Your device will disconnect from</string>
     <string name="bt_searching">Searching…</string>
     <string name="bt_connecting">Connecting…</string>
     <string name="bt_connect_success">Successfully connected!</string>

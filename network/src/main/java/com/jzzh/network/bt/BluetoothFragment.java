@@ -5,6 +5,8 @@ import static com.jzzh.network.bt.BtUtils.getAlias;
 import android.app.Fragment;
 import android.bluetooth.BluetoothA2dp;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothAssignedNumbers;
+import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCallback;
@@ -35,6 +37,7 @@ import com.jzzh.network.R;
 import com.jzzh.network.NetTitleLayout;
 import com.jzzh.tools.ZhCheckBox;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Set;
@@ -210,11 +213,28 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
                     Log.e("TAG", "pairedDevice onItemClick");
                     ViewHolder viewHolder = (ViewHolder) view.getTag();
-                    if (viewHolder.btStatus.getVisibility() == View.VISIBLE) {  // 如果蓝牙设备使用中，则不进行连接操作
+                    if (viewHolder.btStatus.getVisibility() == View.VISIBLE) {  // 如果蓝牙设备使用中，则弹出断开连接对话框
+                        new BtDisconnectDialog(mContext, R.style.ZhDialog, getAlias(pairedDevice), new BtDisconnectDialog.BtDialogCallback() {
+                            @Override
+                            public void callBackData(BtDisconnectDialog.ButtonType buttonType) {
+                                if (buttonType == BtDisconnectDialog.ButtonType.RIGHT) {
+                                    a2dpDisconnect(mA2dp, pairedDevice);
+                                }
+                            }
+                        }).show();
                         return;
                     }
                     viewHolder.btAddress.setVisibility(View.VISIBLE);
                     viewHolder.btAddress.setText(getString(R.string.bt_connecting));
+                    BluetoothClass bluetoothClass = pairedDevice.getBluetoothClass();
+                    if (bluetoothClass.hasService(BluetoothClass.Service.AUDIO)) {
+                        boolean success = a2dpConnect(mA2dp, pairedDevice);
+                        Log.d("lx", "a2dpConnect flag:" + success);
+                        if (success) {
+                            viewHolder.btAddress.setVisibility(View.GONE);
+                        }
+                        return;
+                    }
                     pairedDevice.connectGatt(mContext, false, new BluetoothGattCallback() {
                         @Override
                         public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {
@@ -358,7 +378,7 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
                 }
             } else if (action.equals(BluetoothA2dp.ACTION_CONNECTION_STATE_CHANGED)) {
                 int state = intent.getIntExtra(BluetoothA2dp.EXTRA_STATE, BluetoothA2dp.STATE_DISCONNECTED);
-                Log.d("lx", "connect state=" + state);
+//                Log.d("lx", "connect state=" + state);
                 updatePairedListView();
             }
         }
@@ -527,6 +547,40 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
             e.printStackTrace();
         }
         return name;
+    }
+
+    private boolean a2dpConnect(BluetoothA2dp bluetoothA2dp, BluetoothDevice bluetoothDevice) {
+        Class<?> bluetoothA2dpClass = bluetoothA2dp.getClass();
+        Method connect = null;
+        boolean success = false;
+        try {
+            connect = bluetoothA2dpClass.getMethod("connect", BluetoothDevice.class);
+            success = (boolean) connect.invoke(bluetoothA2dp, bluetoothDevice);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        return success;
+    }
+
+    private boolean a2dpDisconnect(BluetoothA2dp bluetoothA2dp, BluetoothDevice device) {
+        Class<?> bluetoothA2dpClass = bluetoothA2dp.getClass();
+        Method disconnect = null;
+        boolean success = false;
+        try {
+            disconnect = bluetoothA2dpClass.getMethod("disconnect", BluetoothDevice.class);
+            success = (boolean) disconnect.invoke(bluetoothA2dp, device);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        return success;
     }
 
     private class ViewHolder {
