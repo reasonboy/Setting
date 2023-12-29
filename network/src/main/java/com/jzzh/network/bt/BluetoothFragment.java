@@ -514,7 +514,7 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
             if (mBtListViewType == BT_LISTVIEW_PAIRED) {
                 viewHolder.btSetting.setVisibility(View.VISIBLE);
                 if (mA2dp != null) {  // 判断是否为使用中的蓝牙设备
-                    if(device.getName().equals(getActiveDeviceName(mA2dp))){
+                    if(device.getAddress().equals(getActiveDeviceAddress(mA2dp))){  // 改为通过地址判断设备是否Active
                         viewHolder.btStatus.setVisibility(View.VISIBLE);
                     }else {
                         viewHolder.btStatus.setVisibility(View.GONE);
@@ -533,20 +533,20 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-    private String getActiveDeviceName(BluetoothA2dp a2dp) {
-        String name = null;
+    private String getActiveDeviceAddress(BluetoothA2dp a2dp) {
+        String address = null;
         try {
             Class<?> bluetoothA2dp = Class.forName("android.bluetooth.BluetoothA2dp");
             Method getActiveDevice = bluetoothA2dp.getMethod("getActiveDevice");
             BluetoothDevice device =
                     (BluetoothDevice) getActiveDevice.invoke(a2dp);
             if (device != null) {
-                name = device.getName();
+                address = device.getAddress();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return name;
+        return address;
     }
 
     private boolean a2dpConnect(BluetoothA2dp bluetoothA2dp, BluetoothDevice bluetoothDevice) {
