@@ -74,6 +74,7 @@
     <string name="bt_disconnect_hint">Your device will disconnect from</string>
     <string name="bt_searching">Searching…</string>
     <string name="bt_connecting">Connecting…</string>
+    <string name="bt_disconnecting">Disconnecting…</string>
     <string name="bt_connect_success">Successfully connected!</string>
     <string name="bt_connect_fail_or_disconnect">Connection failed or disconnected!</string>
     <string name="bt_name">Name</string>

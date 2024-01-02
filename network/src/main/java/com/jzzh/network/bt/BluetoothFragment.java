@@ -213,26 +213,25 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
                     Log.e("TAG", "pairedDevice onItemClick");
                     ViewHolder viewHolder = (ViewHolder) view.getTag();
-                    if (viewHolder.btStatus.getVisibility() == View.VISIBLE) {  // 如果蓝牙设备使用中，则弹出断开连接对话框
+                    BluetoothClass bluetoothClass = pairedDevice.getBluetoothClass();
+                    if (bluetoothClass.hasService(BluetoothClass.Service.AUDIO) && mA2dp.getConnectionState(pairedDevice) == BluetoothA2dp.STATE_CONNECTED) {  // 如果蓝牙设备连接使用中，则弹出断开连接对话框
                         new BtDisconnectDialog(mContext, R.style.ZhDialog, getAlias(pairedDevice), new BtDisconnectDialog.BtDialogCallback() {
                             @Override
                             public void callBackData(BtDisconnectDialog.ButtonType buttonType) {
                                 if (buttonType == BtDisconnectDialog.ButtonType.RIGHT) {
+                                    viewHolder.btStatus.setVisibility(View.VISIBLE);
+                                    viewHolder.btStatus.setText(R.string.bt_disconnecting);
                                     a2dpDisconnect(mA2dp, pairedDevice);
                                 }
                             }
                         }).show();
                         return;
                     }
-                    viewHolder.btAddress.setVisibility(View.VISIBLE);
-                    viewHolder.btAddress.setText(getString(R.string.bt_connecting));
-                    BluetoothClass bluetoothClass = pairedDevice.getBluetoothClass();
-                    if (bluetoothClass.hasService(BluetoothClass.Service.AUDIO)) {
+                    if (bluetoothClass.hasService(BluetoothClass.Service.AUDIO) && mA2dp.getConnectionState(pairedDevice) != BluetoothA2dp.STATE_CONNECTED) {
+                        viewHolder.btStatus.setVisibility(View.VISIBLE);
+                        viewHolder.btStatus.setText(R.string.bt_connecting);
                         boolean success = a2dpConnect(mA2dp, pairedDevice);
                         Log.d("lx", "a2dpConnect flag:" + success);
-                        if (success) {
-                            viewHolder.btAddress.setVisibility(View.GONE);
-                        }
                         return;
                     }
                     pairedDevice.connectGatt(mContext, false, new BluetoothGattCallback() {
@@ -242,7 +241,7 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    viewHolder.btAddress.setVisibility(View.GONE);
+                                    viewHolder.btStatus.setVisibility(View.GONE);
                                     if (newState == BluetoothProfile.STATE_CONNECTED) {
                                         Log.e("TAG", "连接 STATE_CONNECTED");
                                         Toast.makeText(mContext, R.string.bt_connect_success, Toast.LENGTH_SHORT).show();
@@ -379,7 +378,9 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
             } else if (action.equals(BluetoothA2dp.ACTION_CONNECTION_STATE_CHANGED)) {
                 int state = intent.getIntExtra(BluetoothA2dp.EXTRA_STATE, BluetoothA2dp.STATE_DISCONNECTED);
 //                Log.d("lx", "connect state=" + state);
-                updatePairedListView();
+                if (state == BluetoothA2dp.STATE_CONNECTED || state == BluetoothA2dp.STATE_DISCONNECTED) {  // 已连接或断开时，刷新连接状态
+                    updatePairedListView();
+                }
             }
         }
     }
@@ -510,12 +511,13 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
             BluetoothDevice device = mDevices.get(i);
             String alias = getAlias(device);
             viewHolder.btName.setText(alias);
-            viewHolder.btAddress.setText(device.getAddress());
+            viewHolder.btStatus.setVisibility(View.GONE);
             if (mBtListViewType == BT_LISTVIEW_PAIRED) {
                 viewHolder.btSetting.setVisibility(View.VISIBLE);
                 if (mA2dp != null) {  // 判断是否为使用中的蓝牙设备
                     if(device.getAddress().equals(getActiveDeviceAddress(mA2dp))){  // 改为通过地址判断设备是否Active
                         viewHolder.btStatus.setVisibility(View.VISIBLE);
+                        viewHolder.btStatus.setText(R.string.bt_active);
                     }else {
                         viewHolder.btStatus.setVisibility(View.GONE);
                     }
