@@ -103,6 +103,7 @@
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_device.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_device_certification_info.xml" value="0.18229166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_device_info.xml" value="0.18229166666666666" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_device_info_license.xml" value="0.20208333333333334" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_display.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_display_home_screen.xml" value="0.5" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_display_poi.xml" value="0.271286231884058" />
@@ -152,6 +153,7 @@
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/list_item_checkbox.xml" value="0.18229166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/navigation_textview.xml" value="0.19427083333333334" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/page_indication.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/password_setting_dialog.xml" value="0.21614583333333334" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/select_item.xml" value="0.23229166666666667" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/select_listview.xml" value="0.21510416666666668" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/set_date_dialog.xml" value="0.24114583333333334" />

@@ -68,6 +68,7 @@ public class DeviceInfoActivity extends BaseActivity implements View.OnClickList
         mStorageInfo = findViewById(R.id.device_info_storage);
         mSdCardInfo = findViewById(R.id.device_info_sd);
         mLicense = findViewById(R.id.device_info_license);
+        mLicense.setOnClickListener(this);
 
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_BATTERY_CHANGED);
@@ -220,6 +221,9 @@ public class DeviceInfoActivity extends BaseActivity implements View.OnClickList
             case R.id.device_info_model_number:
                 if (breakthrough == 5 || breakthrough == 4 || breakthrough == 2)
                     breakthrough--;
+                break;
+            case R.id.device_info_license:
+                startActivity(LicenseInfo.class);
                 break;
         }
         if (breakthrough == 0) {

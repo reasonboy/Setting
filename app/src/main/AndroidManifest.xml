@@ -126,6 +126,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".device.DeviceActivity" />
+        <activity android:name=".device.LicenseInfo" />
         <activity android:name=".device.DeviceInfoActivity" />
         <activity android:name=".device.DeviceCertificationInfoActivity" />
         <activity android:name=".device.SystemUpdateActivity" />

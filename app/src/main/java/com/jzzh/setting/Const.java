@@ -6,6 +6,7 @@ import com.jzzh.setting.device.DeviceCertificationInfoActivity;
 import com.jzzh.setting.device.DeviceInfoActivity;
 import com.jzzh.setting.device.FactoryResetActivity;
 import com.jzzh.setting.device.GSFActivity;
+import com.jzzh.setting.device.LicenseInfo;
 import com.jzzh.setting.device.SystemUpdateActivity;
 import com.jzzh.setting.display.DisplayActivity;
 import com.jzzh.setting.display.HomeScreenUserActivity;
@@ -71,6 +72,7 @@ public class Const {
 
             DeviceActivity.class,
             DeviceInfoActivity.class,
+            LicenseInfo.class,
             DeviceCertificationInfoActivity.class,
             SystemUpdateActivity.class,
             AppUpdateActivity.class,
@@ -114,6 +116,7 @@ public class Const {
 
             {R.string.setting,R.string.setting_device},
             {R.string.setting,R.string.setting_device,R.string.setting_device_info},
+            {R.string.setting,R.string.setting_device,R.string.setting_device_info,R.string.setting_device_license},
             {R.string.setting,R.string.setting_device,R.string.setting_device_certification_info},
             {R.string.setting,R.string.setting_device,R.string.setting_device_system_update},
             {R.string.setting,R.string.setting_device,R.string.setting_device_app_update},

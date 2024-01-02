@@ -26,6 +26,7 @@
     <string name="setting_task_manager">Task Manager</string>
     <string name="setting_device">Device</string>
     <string name="setting_device_info">Device Info</string>
+    <string name="setting_device_license">Open License Info</string>
     <string name="setting_device_certification_info">Device Certification Info</string>
     <string name="setting_device_system_update">System Update</string>
     <string name="setting_device_app_update">App Update</string>
