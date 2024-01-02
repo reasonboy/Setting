@@ -71,6 +71,8 @@
     <string name="bt_name_cannot_be_empty">BT 이름은 공백일 수 없습니다!</string>
     <string name="bt_pair">페어링</string>
     <string name="bt_disconnect">연결 해제</string>
+    <string name="bt_disconnect_device">기기 연결 해제</string>
+    <string name="bt_disconnect_hint">다음 기기와의 연결을 해제하시겠습니까?</string>
     <string name="bt_searching">탐색 중…</string>
     <string name="bt_connecting">연결 중…</string>
     <string name="bt_connect_success">연결됨!</string>
