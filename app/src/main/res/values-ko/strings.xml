@@ -26,7 +26,7 @@
     <string name="setting_task_manager">작업 관리자</string>
     <string name="setting_device">기기관리</string>
     <string name="setting_device_info">기기 정보</string>
-    <string name="setting_device_license">Open License Info</string>
+    <string name="setting_device_license">오픈 라이센스 정보</string>
     <string name="setting_device_certification_info">기기 인증 정보</string>
     <string name="setting_device_system_update">시스템 업데이트</string>
     <string name="setting_device_app_update">앱 업데이트</string>
