@@ -119,6 +119,7 @@
     <string name="device_info_available">Available : </string>
     <string name="device_info_total">Total : </string>
     <string name="device_info_no_sd">No SD card</string>
+    <string name="device_info_license_info_loading">Loading…</string>
     <string name="factory_reset_contents">
         This will erase all data from your device\'s <b>internal storage</b>,\n\n
         including :\n

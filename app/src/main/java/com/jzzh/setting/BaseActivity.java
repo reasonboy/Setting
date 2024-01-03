@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.jzzh.setting.network.bt.BluetoothActivity;
 import com.jzzh.setting.network.wifi.WifiActivity;
 import com.jzzh.setting.task.TaskManagerActivity;
@@ -18,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class BaseActivity extends Activity implements NavigationLayout.OnNavigationClickListener {
+public class BaseActivity extends AppCompatActivity implements NavigationLayout.OnNavigationClickListener {
 
     private NavigationLayout mNavigationLayout;
     private int mIndex;
