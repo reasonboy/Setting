@@ -85,6 +85,6 @@ public class LicenseHtmlLoaderCompat extends AsyncLoaderCompat<File> {
 
     private boolean generateHtmlFile(Context context, List<File> xmlFiles, File htmlFile) {
         return LicenseHtmlGeneratorFromXml.generateHtml(xmlFiles, htmlFile,
-                "noticeHeader");//context.getString(R.string.notice_header));
+                "");
     }
 }

@@ -24,7 +24,7 @@ public class LicenseInfo extends BaseActivity implements
         LoaderManager.LoaderCallbacks<File> {
     private static final String TAG = LicenseInfo.class.getSimpleName();
 
-    public static final String FILE_PROVIDER_AUTHORITY = "com.android.settings.files";
+    public static final String FILE_PROVIDER_AUTHORITY = "com.jzzh.setting.files";
     private static final String LICENSE_PATH = "/system/etc/NOTICE.html.gz";
     private static final int LOADER_ID_LICENSE_HTML_LOADER = 0;
     private WebView mInfoWebView;
