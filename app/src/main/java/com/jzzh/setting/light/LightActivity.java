@@ -64,18 +64,10 @@ public class LightActivity extends BaseActivity implements AdjustLayout.OnValueC
 
     private void updateLightView() {
         mWarmLight.enable(getWarmLightEnable());
-        if(getTempWarmBrightness() == -1) {//第一次开机
-            mWarmLight.setValue(brightnessToGradient(getWarmBrightnessSetting()));
-        } else {
-            mWarmLight.setValue(brightnessToGradient(getTempWarmBrightness()));
-        }
+        mWarmLight.setValue(brightnessToGradient(getTempWarmBrightness()));
 
         mColdLight.enable(getColdLightEnable());
-        if(getTempColdBrightness() == -1) {
-            mColdLight.setValue(brightnessToGradient(getColdBrightnessSetting()));
-        } else {
-            mColdLight.setValue(brightnessToGradient(getTempColdBrightness()));
-        }
+        mColdLight.setValue(brightnessToGradient(getTempColdBrightness()));
     }
 
     @Override
