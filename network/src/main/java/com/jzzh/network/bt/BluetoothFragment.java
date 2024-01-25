@@ -332,7 +332,7 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            Log.v("xml_log_bt","action = " + action);
+//            Log.v("xml_log_bt","action = " + action);
             if(action.equals(BluetoothDevice.ACTION_FOUND)) {
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 if(device != null &&!TextUtils.isEmpty(device.getName()) && !TextUtils.isEmpty(device.getAddress()) && device.getBondState() != BluetoothDevice.BOND_BONDED) {
@@ -374,6 +374,7 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
                 } else if(newState == BluetoothAdapter.STATE_ON) {
                     mBtSwitch.setCheck(true);
                     mBluetoothAdapter.startDiscovery();
+                    getA2dpAdapter();
                 }
             } else if (action.equals(BluetoothA2dp.ACTION_CONNECTION_STATE_CHANGED)) {
                 int state = intent.getIntExtra(BluetoothA2dp.EXTRA_STATE, BluetoothA2dp.STATE_DISCONNECTED);
