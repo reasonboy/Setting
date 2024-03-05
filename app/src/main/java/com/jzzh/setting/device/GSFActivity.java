@@ -116,17 +116,19 @@ public class GSFActivity extends BaseActivity implements View.OnClickListener {
         try {
             Cursor query = getContentResolver().query(sUri, null, null, new String[] { "android_id" }, null);
             if (query == null) {
-                return "Not found";
+                return null;
             }
             if (!query.moveToFirst() || query.getColumnCount() < 2) {
                 query.close();
-                return "Not found";
+                return null;
             }
 
-            final String String = query.getString(1);
+            final String string = query.getString(1);
             query.close();
 
-            return String.toUpperCase().trim();
+            if (string == null) return null;
+
+            return string.toUpperCase().trim();
         } catch (SecurityException e) {
             e.printStackTrace();
             return null;
@@ -158,7 +160,7 @@ public class GSFActivity extends BaseActivity implements View.OnClickListener {
             Toast.makeText(this, R.string.msg_wifi_not_connected, Toast.LENGTH_LONG).show();
             return;
         }
-        Log.d(TAG, "gsfKey is empty");
+
         if (gsfKey == null || gsfKey.isEmpty()) {
             Log.d(TAG, "gsfKey is empty");
             dialog = new AlertDialog.Builder(this)
