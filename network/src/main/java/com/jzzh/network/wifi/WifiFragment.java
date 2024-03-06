@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
+import android.net.LinkProperties;
 import android.net.ProxyInfo;
 import android.net.wifi.ScanResult;
 import android.net.wifi.SupplicantState;
@@ -187,15 +188,25 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
                     }
                 }
             } else {
-                new DisconnectDialog(mContext, R.style.ZhDialog, new DisconnectDialog.DialogCallback() {
-                    @Override
-                    public void callBackData(String[] data) {
-                        mWifiUtils.removeWifiBySsid(data[0]);
-                    }
-                }, name, signalLevel, enc).show();
+                if (getLinkProperties() != null) {
+                    new DisconnectDialog(mContext, R.style.ZhDialog, new DisconnectDialog.DialogCallback() {
+                        @Override
+                        public void callBackData(String[] data) {
+                            mWifiUtils.removeWifiBySsid(data[0]);
+                        }
+                    }, name, signalLevel, enc).show();
+                }
             }
         }
     };
+
+    private LinkProperties getLinkProperties() {
+        ConnectivityManager mConnectivityManager = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            return mConnectivityManager.getLinkProperties(mConnectivityManager.getActiveNetwork());
+        }
+        return null;
+    }
 
     private boolean isWifiSaved(String wifiName) {
         List<WifiConfiguration> list = new ArrayList<>();
@@ -311,7 +322,12 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
                 int errorReason = 0;//intent.getIntExtra(WifiManager.EXTRA_SUPPLICANT_ERROR_REASON,WifiManager.ERROR_AUTH_FAILURE_NONE);
                 Log.v("xml_log_app","linkState = " + linkState + " ;errorCode = " + errorCode + " ;errorReason = " + errorReason);
             } else if (action.equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
-
+//                synchronized (this) {
+//                    mResultList = mWifiManager.getScanResults();
+//                    mCurConnectSSID = getCurConnectSSID();
+//                    optimizationList();
+//                    mHandler.sendEmptyMessage(SCAN_COMPLETE);
+//                }
             }
         }
     }

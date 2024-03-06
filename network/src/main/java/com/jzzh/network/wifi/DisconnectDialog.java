@@ -78,38 +78,39 @@ public class DisconnectDialog extends Dialog implements View.OnClickListener{
         ConnectivityManager mConnectivityManager = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
         LinkProperties mLinkProperties = mConnectivityManager.getLinkProperties(mConnectivityManager.getActiveNetwork());
         // Find IPv4 and IPv6 addresses.
-        String ipv4Address = null;
-        String subnet = null;
-        String dnsServers = null;
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            for (LinkAddress addr : mLinkProperties.getLinkAddresses()) {
-                if (addr.getAddress() instanceof Inet4Address) {
-                    ipv4Address = addr.getAddress().getHostAddress();
-                    //subnet = ipv4PrefixLengthToSubnetMask(addr.getPrefixLength());
-                }
-            }
-        }
+        String ipv4Address = "";
+        String subnet = "";
+        String dnsServers = "";
         // Find IPv4 default gateway.
-        String gateway = null;
+        String gateway = "";
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            for (RouteInfo routeInfo : mLinkProperties.getRoutes()) {
-                if (routeInfo.hasGateway()) {
-                    gateway = routeInfo.getGateway().getHostAddress();
-                    break;
+        if (mLinkProperties != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                for (LinkAddress addr : mLinkProperties.getLinkAddresses()) {
+                    if (addr.getAddress() instanceof Inet4Address) {
+                        ipv4Address = addr.getAddress().getHostAddress();
+                    }
                 }
+            }
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                for (RouteInfo routeInfo : mLinkProperties.getRoutes()) {
+                    if (routeInfo.hasGateway()) {
+                        gateway = routeInfo.getGateway().getHostAddress();
+                        break;
+                    }
+                }
+            }
+
+            // Find all (IPv4 and IPv6) DNS addresses.
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                dnsServers = mLinkProperties.getDnsServers().stream()
+                        .map(InetAddress::getHostAddress)
+                        .collect(Collectors.joining("\n"));
             }
         }
 
-        // Find all (IPv4 and IPv6) DNS addresses.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            dnsServers = mLinkProperties.getDnsServers().stream()
-                    .map(InetAddress::getHostAddress)
-                    .collect(Collectors.joining("\n"));
-        }
-
-        String band = null;
+        String band = "";
         int linkSpeed = 0;
         String macAddress = "";
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
