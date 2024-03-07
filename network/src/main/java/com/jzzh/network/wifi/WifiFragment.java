@@ -64,6 +64,7 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
     private static final int START_SCAN = 0;
     private static final int SCAN_COMPLETE = 1;
     private boolean CLOSE_OPEN_FLAG;
+    private static final String TAG = WifiFragment.class.getSimpleName();
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -166,11 +167,10 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
                             @Override
                             public void callBackData(String[] data, String key, int meteredType, String ipAssignment, String[] ipSettingsData, String proxySettings, ProxyInfo proxyInfo) {
                                 if ("connect".equals(key)) {
-                                    WifiConfiguration wifiConfig = new WifiConfiguration();
-                                    wifiConfig.SSID = "\"" + name + "\"";
-                                    wifiConfig.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
-                                    int networkId = mWifiManager.addNetwork(wifiConfig);
-                                    mWifiManager.enableNetwork(networkId, true);
+                                    // 连接已保存密码的Wifi
+                                    WifiConfiguration wifiConfiguration = getWifiConfigurationByName(name);
+                                    mWifiManager.disconnect();
+                                    mWifiManager.enableNetwork(wifiConfiguration.networkId, true);
                                     mWifiManager.reconnect();
                                 } else if ("delete".equals(key)) {
                                     mWifiUtils.removeWifiBySsid(name);
@@ -288,12 +288,7 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
                 boolean result = intent.getBooleanExtra(WifiManager.EXTRA_RESULTS_UPDATED,false);//扫描是否成功
                 //Log.v("xml_log_app","scan result = " + result);
                 if (result) {
-                    synchronized (this) {
-                        mResultList = mWifiManager.getScanResults();
-                        mCurConnectSSID = getCurConnectSSID();
-                        optimizationList();
-                        mHandler.sendEmptyMessage(SCAN_COMPLETE);
-                    }
+                    getNewListAndRefresh();
                 }
             } else if (action.equals(WifiManager.WIFI_STATE_CHANGED_ACTION)) {
                 int wifiState = intent.getIntExtra(WifiManager.EXTRA_WIFI_STATE,WifiManager.WIFI_STATE_UNKNOWN);//wifi状态
@@ -322,12 +317,18 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
                 int errorReason = 0;//intent.getIntExtra(WifiManager.EXTRA_SUPPLICANT_ERROR_REASON,WifiManager.ERROR_AUTH_FAILURE_NONE);
                 Log.v("xml_log_app","linkState = " + linkState + " ;errorCode = " + errorCode + " ;errorReason = " + errorReason);
             } else if (action.equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
-//                synchronized (this) {
-//                    mResultList = mWifiManager.getScanResults();
-//                    mCurConnectSSID = getCurConnectSSID();
-//                    optimizationList();
-//                    mHandler.sendEmptyMessage(SCAN_COMPLETE);
-//                }
+                getNewListAndRefresh();
+            }
+        }
+    }
+
+    private void getNewListAndRefresh() {
+        synchronized (this) {
+            mResultList = mWifiManager.getScanResults();
+            if (mResultList != null && mResultList.size() > 0) {
+                mCurConnectSSID = getCurConnectSSID();
+                optimizationList();
+                mHandler.sendEmptyMessage(SCAN_COMPLETE);
             }
         }
     }
@@ -339,9 +340,7 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
         String target = mWifiManager.getConnectionInfo().getSSID().replace("\"", "");
         String result = "";
 
-        if (target == null) {
-            result = "";
-        } else {
+        if (getLinkProperties() != null) {
             result = target;
         }
         return result;
