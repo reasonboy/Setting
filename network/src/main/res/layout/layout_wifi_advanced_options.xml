@@ -100,6 +100,8 @@
             android:layout_marginTop="5dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
+            android:singleLine="true"
+            android:maxLines="1"
             android:hint="@string/hint_wifi_pac_url" />
     </LinearLayout>
 
@@ -121,6 +123,8 @@
             android:layout_marginTop="5dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
+            android:singleLine="true"
+            android:maxLines="1"
             android:hint="@string/hint_wifi_proxy_hostname" />
 
         <TextView
@@ -133,6 +137,8 @@
             android:layout_marginTop="5dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
+            android:singleLine="true"
+            android:maxLines="1"
             android:hint="@string/hint_wifi_proxy_port" />
 
         <TextView
@@ -145,6 +151,8 @@
             android:layout_marginTop="5dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
+            android:singleLine="true"
+            android:maxLines="1"
             android:hint="@string/hint_wifi_bypass_proxy_for" />
     </LinearLayout>
 
@@ -207,6 +215,8 @@
                 android:layout_marginTop="5dp"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
+                android:singleLine="true"
+                android:maxLines="1"
                 android:hint="@string/hint_wifi_ip_address" />
         </LinearLayout>
 
@@ -225,6 +235,8 @@
                 android:layout_marginTop="5dp"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
+                android:singleLine="true"
+                android:maxLines="1"
                 android:hint="@string/hint_wifi_gateway" />
         </LinearLayout>
 
@@ -243,6 +255,8 @@
                 android:layout_marginTop="5dp"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
+                android:singleLine="true"
+                android:maxLines="1"
                 android:hint="@string/hint_wifi_network_prefix_length" />
         </LinearLayout>
 
@@ -261,6 +275,8 @@
                 android:layout_marginTop="5dp"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
+                android:singleLine="true"
+                android:maxLines="1"
                 android:hint="@string/hint_wifi_dns1" />
         </LinearLayout>
     </LinearLayout>
