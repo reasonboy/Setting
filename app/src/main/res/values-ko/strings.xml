@@ -90,10 +90,10 @@
         <p>최적화 된 해상도는 <b>1200 X 1600</b> 입니다.]]>
     </string>
     <string name="user_image_setting">사용자 이미지 설정</string>
-    <string name="user_image_fit_center">Fit Center</string>
-    <string name="user_image_center_crop">Center Crop</string>
-    <string name="user_image_rotate">Rotate</string>
-    <string name="user_image_rotate_reverse">Rotate Reverse</string>
+    <string name="user_image_fit_center">화면에 맞추기</string>
+    <string name="user_image_center_crop">화면 채우기</string>
+    <string name="user_image_rotate">시계 방향 회전</string>
+    <string name="user_image_rotate_reverse">시계 반대 방향 회전</string>
     <string name="set_image_successfully">이미지 설정 완료!</string>
 	
     <string name="home_screen_widget_setting">위젯 설정</string>
