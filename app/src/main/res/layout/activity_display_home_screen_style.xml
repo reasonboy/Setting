@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -25,35 +26,19 @@
         </LinearLayout>
     </FrameLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
+    <com.jzzh.setting.SettingSubItem
+        android:id="@+id/goto_home_background_setting"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="75dp"
-            android:textSize="@dimen/textSize19"
-            android:textStyle="bold"
-            android:layout_gravity="center_vertical"
-            android:text="@string/home_screen_widget_setting"/>
-
-        <com.jzzh.tools.ZhCheckBox
-            android:id="@+id/widget_setting_switch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="48dp"
-            android:layout_gravity="right|center_vertical"/>
-    </FrameLayout>
-
-    <TextView
-        android:id="@+id/widget_setting_describe"
-        android:layout_width="match_parent"
+        app:title="@string/home_background_setting"/>
+    <com.jzzh.setting.SettingSubItem
+        android:id="@+id/home_background_alpha_setting"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/textSize19"
-        android:layout_marginLeft="75dp"
-        android:layout_marginRight="75dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/home_screen_widget_setting_describe1"/>
+        app:title="@string/home_background_alpha_setting"/>
+    <com.jzzh.setting.SettingSubItem
+        android:id="@+id/reset_home_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:title="@string/reset_home_background_setting"/>
 </LinearLayout>

@@ -15,7 +15,7 @@ public class DisplayActivity extends BaseActivity  implements View.OnClickListen
         findViewById(R.id.setting_display_refresh).setOnClickListener(this);
         findViewById(R.id.setting_display_poi).setOnClickListener(this);
         findViewById(R.id.setting_display_si).setOnClickListener(this);
-        findViewById(R.id.setting_display_home_screen).setOnClickListener(this);
+        findViewById(R.id.setting_display_home_screen_style).setOnClickListener(this);
         findViewById(R.id.setting_display_widget_text).setOnClickListener(this);
     }
 
@@ -31,8 +31,8 @@ public class DisplayActivity extends BaseActivity  implements View.OnClickListen
             case R.id.setting_display_si:
                 startActivity(SleepImageActivity.class);
                 break;
-            case R.id.setting_display_home_screen:
-                startActivity(HomeScreenUserActivity.class);
+            case R.id.setting_display_home_screen_style:
+                startActivity(HomeScreenStyleActivity.class);
                 break;
             case R.id.setting_display_widget_text:
                 startActivity(WidgetTextActivity.class);

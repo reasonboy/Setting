@@ -6,11 +6,6 @@ import android.view.View;
 
 import com.jzzh.setting.BaseActivity;
 import com.jzzh.setting.R;
-import com.jzzh.setting.display.HomeScreenUserActivity;
-import com.jzzh.setting.display.PowerOffImageActivity;
-import com.jzzh.setting.display.RefreshActivity;
-import com.jzzh.setting.display.SleepImageActivity;
-import com.jzzh.setting.display.WidgetTextActivity;
 
 public class DeviceActivity extends BaseActivity  implements View.OnClickListener{
 

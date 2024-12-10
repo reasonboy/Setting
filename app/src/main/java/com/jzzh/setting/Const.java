@@ -9,7 +9,7 @@ import com.jzzh.setting.device.GSFActivity;
 import com.jzzh.setting.device.LicenseInfo;
 import com.jzzh.setting.device.SystemUpdateActivity;
 import com.jzzh.setting.display.DisplayActivity;
-import com.jzzh.setting.display.HomeScreenUserActivity;
+import com.jzzh.setting.display.HomeScreenStyleActivity;
 import com.jzzh.setting.display.PowerOffImageActivity;
 import com.jzzh.setting.display.PowerOffImageDefaultActivity;
 import com.jzzh.setting.display.PowerOffImageUserActivity;
@@ -57,7 +57,7 @@ public class Const {
             SleepImageActivity.class,
             SleepImageDefaultActivity.class,
             SleepImageUserActivity.class,
-            HomeScreenUserActivity.class,
+            HomeScreenStyleActivity.class,
             WidgetTextActivity.class,
 
             LightActivity.class,
@@ -104,7 +104,7 @@ public class Const {
             {R.string.setting,R.string.setting_display,R.string.setting_display_si},
             {R.string.setting,R.string.setting_display,R.string.setting_display_si,R.string.setting_display_si_default},
             {R.string.setting,R.string.setting_display,R.string.setting_display_si,R.string.setting_display_si_user},
-            {R.string.setting,R.string.setting_display,R.string.setting_display_home_screen},
+            {R.string.setting,R.string.setting_display,R.string.setting_display_home_screen_style},
             {R.string.setting,R.string.setting_display,R.string.setting_display_widget_text},
 
             {R.string.setting,R.string.setting_light},

@@ -3,8 +3,8 @@ package com.jzzh.setting.utils;
 import android.app.WallpaperManager;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.Settings;
 import android.util.Log;
@@ -179,11 +179,10 @@ public class UtilSpaceUserSettings {
     }
 
     // Home background reset
-    public Bitmap getHomeBackgroundBitmap(Context context) {
+    public Drawable getHomeBackgroundDrawable(Context context) {
         WallpaperManager wallpaperManager = WallpaperManager.getInstance(context);
         try {
-//            return wallpaperManager.getBitmap();
-            return null;
+            return wallpaperManager.getDrawable();
         } catch (Exception e) {
             e.printStackTrace();
             return null;

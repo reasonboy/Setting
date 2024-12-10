@@ -100,7 +100,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".display.HomeScreenUserActivity" />
+        <activity android:name=".display.HomeScreenStyleActivity" />
         <activity android:name=".display.WidgetTextActivity" />
         <activity android:name=".light.LightActivity" />
         <activity android:name=".language.LanguageAndKeyboardActivity"

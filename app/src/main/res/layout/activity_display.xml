@@ -26,10 +26,10 @@
         app:title="@string/setting_display_si"/>
 
     <com.jzzh.setting.SettingSubItem
-        android:id="@+id/setting_display_home_screen"
+        android:id="@+id/setting_display_home_screen_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:title="@string/setting_display_home_screen"/>
+        app:title="@string/setting_display_home_screen_style"/>
 
     <com.jzzh.setting.SettingSubItem
         android:id="@+id/setting_display_widget_text"

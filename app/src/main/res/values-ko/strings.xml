@@ -15,8 +15,9 @@
     <string name="setting_display_si">슬립 이미지</string>
     <string name="setting_display_si_default">기본 이미지</string>
     <string name="setting_display_si_user">사용자 이미지</string>
-    <string name="setting_display_home_screen">홈 화면</string>
-    <string name="setting_display_widget_text">위젯 문구</string>
+    <string name="setting_display_home_screen_style">홈 화면 스타일</string>
+    <string name="setting_display_widget_text">홈 화면 문구</string>
+    <string name="setting_display_widget_setting">위젯 설정</string>
     <string name="setting_light">조명</string>
     <string name="setting_language_and_keyboard">언어/키보드</string>
     <string name="setting_language_and_keyboard_km">키보드 관리</string>
@@ -109,8 +110,14 @@
 	</string>
     <string name="home_screen_widget_style">위젯 스타일</string>
     <string name="home_screen_default_style">기본 앱 배열 스타일</string>
-    <string name="widget_text">위젯 문구</string>
-    <string name="widget_text_change">위젯 문구 바꾸기</string>
+    <string name="home_background_setting">배경 화면 설정</string>
+    <string name="home_background_alpha_setting">배경 화면 투명도</string>
+    <string name="transparency">투명도</string>
+    <string name="reset_home_background_setting">배경 화면 초기화</string>
+    <string name="msg_reset_home_background_setting">홈 배경 화면이 초기화됩니다.\n정말 초기화 하시겠습니까?\n</string>
+
+    <string name="widget_text">홈 화면 문구</string>
+    <string name="widget_text_change">홈 화면 문구 설정</string>
     <string name="widget_text_default">기본 문구</string>
     <string name="widget_text_dialog_describe">최대 3줄, 75자</string>
     <string name="widget_text_dialog_et_hint">좋아하는 문구를 입력해주세요</string>
