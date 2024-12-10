@@ -40,11 +40,7 @@ public class WidgetTextActivity extends BaseActivity {
 
     private void updateText() {
         String widgetText = getWidgetText();
-        if(widgetText == null || widgetText.trim().equals("")) {
-            mWidgetText.setText(R.string.widget_text_default);
-        } else {
-            mWidgetText.setText(widgetText);
-        }
+        mWidgetText.setText(widgetText);
     }
 
     private void setWidgetText(String text) {

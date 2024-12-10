@@ -17,7 +17,7 @@ import com.jzzh.setting.SettingSubItem;
 import com.jzzh.setting.utils.UtilSpaceUserSettings;
 import com.jzzh.tools.ZhSeekBar;
 
-public class HomeScreenStyleActivity extends BaseActivity implements View.OnClickListener {
+public class HomeScreenStyleActivity extends BaseActivity {
 
     private static final int HOME_SCREEN_DEF_APP_STYLE = 0;
     private static final int HOME_SCREEN_WIDGET_STYLE = 1;
@@ -108,11 +108,6 @@ public class HomeScreenStyleActivity extends BaseActivity implements View.OnClic
 
     private int getHomeScreenStyle() {
         return Settings.System.getInt(getContentResolver(),"space_widget_style_enable", HOME_SCREEN_WIDGET_STYLE);
-    }
-
-    @Override
-    public void onClick(View view) {
-
     }
 
     public void resetHomeBackground() {
