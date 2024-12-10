@@ -1,6 +1,7 @@
 package com.jzzh.setting.display.logo;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -12,7 +13,8 @@ import com.jzzh.setting.R;
 import java.io.File;
 
 public class UserImageActivity extends BaseActivity {
-
+    private static final String TAG = UserImageActivity.class.getSimpleName();
+    
     protected String mImagePath;
     protected String[] mSaveLogoPath;
     protected int mNoImageSrcId;
@@ -43,6 +45,27 @@ public class UserImageActivity extends BaseActivity {
             }
         });
         switchFragment(mUserImageListFragment);
+
+        try {
+            Intent intent = getIntent();
+            String action = "";
+            String path = "";
+            if (intent != null) {
+                action = intent.getAction();
+                path = intent.getStringExtra("path");
+            } else Log.e(TAG, "intent is null !!!!!!");
+            Log.d(TAG, "action : " + action + ", path : " + path);
+
+            if (path == null || path.isEmpty()) {
+                Log.d(TAG, "Image path is empty!");
+            } else {
+                UserImageSettingFragment userImageSettingFragment = new UserImageSettingFragment(new File(path), mSaveLogoPath);
+                userImageSettingFragment.setOnClickListener(() -> switchFragment(mUserImageListFragment));
+                switchFragment(userImageSettingFragment);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void switchFragment(Fragment fragment) {

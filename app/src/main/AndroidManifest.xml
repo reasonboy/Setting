@@ -82,10 +82,24 @@
         <activity android:name=".display.RefreshActivity" />
         <activity android:name=".display.PowerOffImageActivity" />
         <activity android:name=".display.PowerOffImageDefaultActivity" />
-        <activity android:name=".display.PowerOffImageUserActivity" />
+        <activity android:name=".display.PowerOffImageUserActivity"
+            android:excludeFromRecents="true"
+            android:exported="true">
+            <intent-filter android:priority="300">
+                <action android:name="com.inno.action.POWER_OFF_IMAGE_SETTING" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".display.SleepImageActivity" />
         <activity android:name=".display.SleepImageDefaultActivity" />
-        <activity android:name=".display.SleepImageUserActivity" />
+        <activity android:name=".display.SleepImageUserActivity"
+            android:excludeFromRecents="true"
+            android:exported="true">
+            <intent-filter android:priority="300">
+                <action android:name="com.inno.action.SLEEP_IMAGE_SETTING" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".display.HomeScreenUserActivity" />
         <activity android:name=".display.WidgetTextActivity" />
         <activity android:name=".light.LightActivity" />
