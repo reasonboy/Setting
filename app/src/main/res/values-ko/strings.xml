@@ -32,6 +32,9 @@
     <string name="setting_device_app_update">앱 업데이트</string>
     <string name="setting_device_reset">초기화</string>
     <string name="setting_device_gsf_id">GSF ID</string>
+    <string name="setting_key_and_gesture">키 / 제스처</string>
+    <string name="setting_key_setting">키 설정</string>
+    <string name="setting_gesture_setting">제스처 설정</string>
 
     <string name="settings_ok">확인</string>
     <string name="settings_cancel">취소</string>
@@ -183,4 +186,15 @@
 
     <string name="cancel">취소</string>
     <string name="confirm">확인</string>
+
+    <!-- key / gesture settings -->
+    <string name="title_key_pack_gesture_enable">키팩 제스처 사용</string>
+    <string name="title_light_gesture_enable">조명 조절 제스처 사용</string>
+    <string name="title_bottom_gesture_enable">하단 제스처 사용</string>
+
+    <string name="desc_key_pack_gesture_enable">키팩을 활성화 하면 자동 페이지 넘김이 가능합니다</string>
+    <string name="desc_light_gesture_enable">화면의 좌우 끝부분을 스와이프하여 조명 밝기와 온도 조절</string>
+    <string name="desc_bottom_gesture_enable">하단 제스처 (뒤로가기/홈/새로고침) 사용</string>
+
+    <string name="empty">없음</string>
 </resources>

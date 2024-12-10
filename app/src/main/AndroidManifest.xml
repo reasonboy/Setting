@@ -32,6 +32,7 @@
         tools:ignore="ProtectedPermissions" />
     <!-- 安卓读写sd权限 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
         tools:ignore="ProtectedPermissions" />
@@ -133,6 +134,8 @@
         <activity android:name=".device.AppUpdateActivity" />
         <activity android:name=".device.FactoryResetActivity" />
         <activity android:name=".device.GSFActivity" />
+        <activity android:name=".keygesture.KeyGestureActivity" />
+        <activity android:name=".keygesture.GestureSettingActivity" />
 
         <activity android:name=".setupwizard.WifiSetupWizardActivity"
             android:exported="true"

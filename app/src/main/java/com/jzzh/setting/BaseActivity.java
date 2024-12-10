@@ -1,20 +1,28 @@
 package com.jzzh.setting;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.jzzh.setting.network.bt.BluetoothActivity;
 import com.jzzh.setting.network.wifi.WifiActivity;
 import com.jzzh.setting.task.TaskManagerActivity;
+import com.jzzh.setting.utils.UtilDips;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -164,5 +172,80 @@ public class BaseActivity extends AppCompatActivity implements NavigationLayout.
                 startActivity(TaskManagerActivity.class);
             }
         }
+    }
+
+    /**
+     *   Common Info Dialog
+     */
+    protected Dialog infoDialog;
+    protected int dialogCurrentIdx = 0;
+    protected void makeInfoDialog(int titleResId, int subTitleResId, int[] imageResIds, int[] descResIds) {
+        makeInfoDialog(titleResId, subTitleResId, imageResIds, true, descResIds);
+    }
+
+    protected void makeInfoDialog(int titleResId, int subTitleResId, int[] imageResIds, boolean useImgBorder) {
+        makeInfoDialog(titleResId, subTitleResId, imageResIds, useImgBorder, new int[] {-1});
+    }
+
+    protected void makeInfoDialog(int titleResId, int subTitleResId, int[] imageResIds, boolean useImgBorder, int[] descResIds) {
+        if (infoDialog != null) infoDialog.dismiss();
+
+        infoDialog = new Dialog(this);
+        infoDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        infoDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        infoDialog.setContentView(R.layout.dialog_display_info_widget_setting);
+        infoDialog.show();
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(infoDialog.getWindow().getAttributes());
+        lp.width = UtilDips.dpToPx(492);
+        infoDialog.getWindow().setAttributes(lp);
+
+        TextView tvTitle = infoDialog.findViewById(R.id.tv_title);
+        ImageView exit = infoDialog.findViewById(R.id.iv_exit);
+        TextView tvSubTitle = infoDialog.findViewById(R.id.tv_sub_title);
+        ImageView centerImage = infoDialog.findViewById(R.id.iv_center_image);
+        TextView desc = infoDialog.findViewById(R.id.tv_desc);
+        ImageView prev = infoDialog.findViewById(R.id.iv_prev);
+        ImageView next = infoDialog.findViewById(R.id.iv_next);
+
+        dialogCurrentIdx = 0;
+
+        exit.setOnClickListener(v -> infoDialog.dismiss());
+
+        if (titleResId != -1) tvTitle.setText(titleResId);
+        if (subTitleResId != -1) tvSubTitle.setText(subTitleResId);
+        else tvSubTitle.setVisibility(View.GONE);
+
+        if (imageResIds[dialogCurrentIdx] != -1) centerImage.setImageResource(imageResIds[dialogCurrentIdx]);
+        else centerImage.setVisibility(View.GONE);
+
+        if (descResIds[dialogCurrentIdx] != -1) desc.setText(descResIds[dialogCurrentIdx]);
+        else desc.setVisibility(View.GONE);
+
+        if (!useImgBorder) centerImage.setBackground(null);
+
+        boolean isMorePage = imageResIds.length > dialogCurrentIdx + 1 || descResIds.length > dialogCurrentIdx + 1;
+        next.setVisibility(isMorePage ? View.VISIBLE : View.INVISIBLE);
+        next.setOnClickListener(v -> {
+            dialogCurrentIdx++;
+            centerImage.setImageResource(imageResIds.length > dialogCurrentIdx ? imageResIds[dialogCurrentIdx] : imageResIds[imageResIds.length - 1]);
+            desc.setText(descResIds.length > dialogCurrentIdx ? descResIds[dialogCurrentIdx] : descResIds[descResIds.length - 1]);
+
+            next.setVisibility(imageResIds.length > dialogCurrentIdx + 1 || descResIds.length > dialogCurrentIdx + 1 ? View.VISIBLE : View.INVISIBLE);
+            prev.setVisibility(dialogCurrentIdx != 0 ? View.VISIBLE : View.INVISIBLE);
+        });
+
+        prev.setVisibility(dialogCurrentIdx != 0 ? View.VISIBLE : View.INVISIBLE);
+        prev.setOnClickListener(v -> {
+            if (dialogCurrentIdx > 0) {
+                dialogCurrentIdx--;
+                centerImage.setImageResource(imageResIds[dialogCurrentIdx]);
+                desc.setText(descResIds[dialogCurrentIdx]);
+            }
+
+            next.setVisibility(imageResIds.length > dialogCurrentIdx + 1 || descResIds.length > dialogCurrentIdx + 1 ? View.VISIBLE : View.INVISIBLE);
+            prev.setVisibility(dialogCurrentIdx != 0 ? View.VISIBLE : View.INVISIBLE);
+        });
     }
 }

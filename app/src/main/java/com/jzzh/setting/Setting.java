@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.jzzh.setting.device.DeviceActivity;
 import com.jzzh.setting.display.DisplayActivity;
+import com.jzzh.setting.keygesture.KeyGestureActivity;
 import com.jzzh.setting.language.LanguageAndKeyboardActivity;
 import com.jzzh.setting.light.LightActivity;
 import com.jzzh.setting.lock.LockScreenActivity;
@@ -29,6 +30,7 @@ public class Setting extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.setting_lock_screen).setOnClickListener(this);
         findViewById(R.id.setting_task_manager).setOnClickListener(this);
         findViewById(R.id.setting_device).setOnClickListener(this);
+        findViewById(R.id.setting_key_and_gesture).setOnClickListener(this);
     }
 
     @Override
@@ -60,6 +62,9 @@ public class Setting extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.setting_device:
                 startActivity(DeviceActivity.class);
+                break;
+            case R.id.setting_key_and_gesture:
+                startActivity(KeyGestureActivity.class);
                 break;
         }
     }

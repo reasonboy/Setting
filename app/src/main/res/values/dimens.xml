@@ -16,7 +16,7 @@
     <!-- 设置单项宽度-->
     <dimen name="setting_item_width">158dp</dimen>
     <!-- 设置单项高度-->
-    <dimen name="setting_item_height">239dp</dimen>
+    <dimen name="setting_item_height">221dp</dimen>
     <dimen name="setting_item_icon_size">53dp</dimen>
     <dimen name="setting_item_text_size">19sp</dimen>
     <dimen name="setting_item_icon_space_text">11dp</dimen>
@@ -45,4 +45,12 @@
     <dimen name="time_dialog_textview_size">22dp</dimen>
     <dimen name="time_dialog_text_size">20sp</dimen>
 
+    <dimen name="lineSpacingExtra">10dp</dimen>
+    <dimen name="dialog_lineSpacingExtra">15dp</dimen>
+
+    <!-- [ inno + -->
+    <dimen name="dialog_divider_thickness">1dp</dimen>
+    <dimen name="dialog_title_text_size">21sp</dimen>
+    <dimen name="dialog_content_text_size">19sp</dimen>
+    <dimen name="dialog_button_text_size">20sp</dimen>
 </resources>

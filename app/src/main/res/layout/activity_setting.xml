@@ -75,4 +75,26 @@
             app:icon="@drawable/setting_device"
             app:title="@string/setting_device"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/setting_margin"
+        android:layout_marginRight="@dimen/setting_margin"
+        android:gravity="start">
+
+        <com.jzzh.setting.SettingItem
+            android:id="@+id/setting_key_and_gesture"
+            style="@style/SettingItemStyle"
+            app:icon="@drawable/ic_setting_k_g"
+            app:title="@string/setting_key_and_gesture"/>
+
+        <com.jzzh.setting.SettingItem
+            android:id="@+id/empty1"
+            style="@style/SettingItemStyle"/>
+
+        <com.jzzh.setting.SettingItem
+            android:id="@+id/empty2"
+            style="@style/SettingItemStyle"/>
+    </LinearLayout>
 </LinearLayout>

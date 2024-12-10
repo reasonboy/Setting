@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="28dp"
+    android:paddingEnd="28dp"
+    android:orientation="vertical">
+
+    <!-- keypack gesture -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="27dp"
+        android:paddingHorizontal="20dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/ll_title_and_btn_key_pack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_key_pack_gesture_enable"
+                android:textSize="21sp"
+                android:textStyle="bold"/>
+
+            <ImageView
+                android:id="@+id/btn_key_pack_gesture_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp"
+                android:src="@drawable/ic_info" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <com.jzzh.tools.ZhCheckBox
+                android:id="@+id/btn_key_pack_on_off"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_notice_key_pack_gesture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:lineSpacingExtra="@dimen/lineSpacingExtra"
+            android:text="@string/desc_key_pack_gesture_enable"
+            android:textSize="19sp"
+            />
+    </LinearLayout>
+
+    <!-- bottom gesture -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="27dp"
+        android:paddingHorizontal="20dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/ll_title_and_btn_bottom_gesture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_bottom_gesture_enable"
+                android:textSize="21sp"
+                android:textStyle="bold"/>
+
+            <ImageView
+                android:id="@+id/btn_bottom_gesture_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp"
+                android:src="@drawable/ic_info" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <com.jzzh.tools.ZhCheckBox
+                android:id="@+id/btn_bottom_gesture_on_off"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_notice_bottom_gesture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:lineSpacingExtra="@dimen/lineSpacingExtra"
+            android:text="@string/desc_bottom_gesture_enable"
+            android:textSize="19sp"
+            />
+    </LinearLayout>
+
+    <!-- light gesture -->
+    <LinearLayout
+        android:id="@+id/ll_total_light_gesture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="27dp"
+        android:paddingHorizontal="20dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/ll_title_and_btn_light_gesture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_light_gesture_enable"
+                android:textSize="21sp"
+                android:textStyle="bold"/>
+
+            <ImageView
+                android:id="@+id/btn_light_gesture_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp"
+                android:src="@drawable/ic_info" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <com.jzzh.tools.ZhCheckBox
+                android:id="@+id/btn_light_gesture_on_off"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_notice_light_gesture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:lineSpacingExtra="@dimen/lineSpacingExtra"
+            android:text="@string/desc_light_gesture_enable"
+            android:textSize="19sp"
+            />
+    </LinearLayout>
+</LinearLayout>

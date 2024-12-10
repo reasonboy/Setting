@@ -18,6 +18,8 @@ import com.jzzh.setting.display.SleepImageActivity;
 import com.jzzh.setting.display.SleepImageDefaultActivity;
 import com.jzzh.setting.display.SleepImageUserActivity;
 import com.jzzh.setting.display.WidgetTextActivity;
+import com.jzzh.setting.keygesture.GestureSettingActivity;
+import com.jzzh.setting.keygesture.KeyGestureActivity;
 import com.jzzh.setting.language.KeyboardManagerActivity;
 import com.jzzh.setting.language.LanguageAndKeyboardActivity;
 import com.jzzh.setting.light.LightActivity;
@@ -77,7 +79,10 @@ public class Const {
             SystemUpdateActivity.class,
             AppUpdateActivity.class,
             FactoryResetActivity.class,
-            GSFActivity.class
+            GSFActivity.class,
+
+            KeyGestureActivity.class,
+            GestureSettingActivity.class
     };
 
     public 	static final int[][] NAVIGATIONS = new int[][]{
@@ -121,6 +126,9 @@ public class Const {
             {R.string.setting,R.string.setting_device,R.string.setting_device_system_update},
             {R.string.setting,R.string.setting_device,R.string.setting_device_app_update},
             {R.string.setting,R.string.setting_device,R.string.setting_device_reset},
-            {R.string.setting,R.string.setting_device,R.string.setting_device_gsf_id}
+            {R.string.setting,R.string.setting_device,R.string.setting_device_gsf_id},
+
+            {R.string.setting,R.string.setting_key_and_gesture},
+            {R.string.setting,R.string.setting_key_and_gesture, R.string.setting_gesture_setting},
     };
 }

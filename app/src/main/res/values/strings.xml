@@ -32,6 +32,9 @@
     <string name="setting_device_app_update">App Update</string>
     <string name="setting_device_reset">Factory Reset</string>
     <string name="setting_device_gsf_id">GSF ID</string>
+    <string name="setting_key_and_gesture">Key &amp; Gesture</string>
+    <string name="setting_key_setting">Key Setting</string>
+    <string name="setting_gesture_setting">Gesture Setting</string>
 
     <string name="settings_ok">OK</string>
     <string name="settings_cancel">Cancel</string>
@@ -173,4 +176,15 @@
 
     <string name="cancel">Cancel</string>
     <string name="confirm">Confirm</string>
+
+    <!-- key / gesture settings -->
+    <string name="title_key_pack_gesture_enable">KeyPack gesture enable</string>
+    <string name="title_light_gesture_enable">Light gesture enable</string>
+    <string name="title_bottom_gesture_enable">Bottom gesture enable</string>
+
+    <string name="desc_key_pack_gesture_enable">Enabling the keypack allows for automatic scrolling</string>
+    <string name="desc_light_gesture_enable">Swipe the edges of the screen to adjust brightness and brightness color</string>
+    <string name="desc_bottom_gesture_enable">Use bottom gestures (Back/Home/Refresh)</string>
+
+    <string name="empty">Empty</string>
 </resources>
