@@ -1,6 +1,5 @@
 package com.jzzh.setting.keygesture;
 
-import android.content.ContentResolver;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -88,7 +87,7 @@ public class GestureSettingActivity extends BaseActivity {
 
     private void updateImageByLocale() {
         Locale currentLocale = getResources().getConfiguration().locale;
-        isKoreaLocale = Locale.KOREA.toString().equals(currentLocale.toString());
+        isKoreaLocale = Locale.KOREAN.toString().equals(currentLocale.toString());
     }
 
     private void updateUI() {
