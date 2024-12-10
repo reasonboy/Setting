@@ -17,6 +17,7 @@ import com.jzzh.setting.display.RefreshActivity;
 import com.jzzh.setting.display.SleepImageActivity;
 import com.jzzh.setting.display.SleepImageDefaultActivity;
 import com.jzzh.setting.display.SleepImageUserActivity;
+import com.jzzh.setting.display.WidgetSettingActivity;
 import com.jzzh.setting.display.WidgetTextActivity;
 import com.jzzh.setting.keygesture.GestureSettingActivity;
 import com.jzzh.setting.keygesture.KeyGestureActivity;
@@ -59,6 +60,7 @@ public class Const {
             SleepImageUserActivity.class,
             HomeScreenStyleActivity.class,
             WidgetTextActivity.class,
+            WidgetSettingActivity.class,
 
             LightActivity.class,
 
@@ -106,6 +108,7 @@ public class Const {
             {R.string.setting,R.string.setting_display,R.string.setting_display_si,R.string.setting_display_si_user},
             {R.string.setting,R.string.setting_display,R.string.setting_display_home_screen_style},
             {R.string.setting,R.string.setting_display,R.string.setting_display_widget_text},
+            {R.string.setting,R.string.setting_display,R.string.setting_display_widget_setting},
 
             {R.string.setting,R.string.setting_light},
 

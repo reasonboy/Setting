@@ -102,6 +102,7 @@
         </activity>
         <activity android:name=".display.HomeScreenStyleActivity" />
         <activity android:name=".display.WidgetTextActivity" />
+        <activity android:name=".display.WidgetSettingActivity" />
         <activity android:name=".light.LightActivity" />
         <activity android:name=".language.LanguageAndKeyboardActivity"
             android:exported="true">

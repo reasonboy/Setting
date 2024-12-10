@@ -37,4 +37,9 @@
         android:layout_height="wrap_content"
         app:title="@string/setting_display_widget_text"/>
 
+    <com.jzzh.setting.SettingSubItem
+        android:id="@+id/setting_display_widget_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:title="@string/setting_display_widget_setting"/>
 </LinearLayout>

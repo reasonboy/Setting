@@ -17,6 +17,7 @@ public class DisplayActivity extends BaseActivity  implements View.OnClickListen
         findViewById(R.id.setting_display_si).setOnClickListener(this);
         findViewById(R.id.setting_display_home_screen_style).setOnClickListener(this);
         findViewById(R.id.setting_display_widget_text).setOnClickListener(this);
+        findViewById(R.id.setting_display_widget_setting).setOnClickListener(this);
     }
 
     @Override
@@ -37,7 +38,9 @@ public class DisplayActivity extends BaseActivity  implements View.OnClickListen
             case R.id.setting_display_widget_text:
                 startActivity(WidgetTextActivity.class);
                 break;
-
+            case R.id.setting_display_widget_setting:
+                startActivity(WidgetSettingActivity.class);
+                break;
         }
     }
 }

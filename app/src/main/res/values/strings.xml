@@ -116,6 +116,36 @@
     <string name="widget_text_default">Default Text</string>
     <string name="widget_text_dialog_describe">Max 3 lines,75 characters</string>
     <string name="widget_text_dialog_et_hint">Enter here to add a widget text</string>
+
+    <!-- Display > Widget setting -->
+    <string name="title_search_alarm">Search &amp; Alarm</string>
+    <string name="desc_search_alarm_on">
+        When Wifi is ON, Search bar and notification message are exposed.
+        Get notifications of the latest updates and more right away!
+    </string>
+    <string name="desc_search_alarm_off">
+        Search and alarm settings are available only when a widget style is selected.
+    </string>
+    <string name="title_bottom_pinned_app">Bottom pinned apps</string>
+    <string name="desc_bottom_pinned_app">Pin up to 5 apps to the bottom of home screen.</string>
+    <string name="title_left_slide">Left slide function</string>
+    <string name="sub_title_static_specific_app">Static specific app</string>
+    <string name="sub_title_recent_books">Recent books</string>
+    <string name="detail_desc_search_alarm_on">When widget style is selected as the home screen style, a search bar and notification message are displayed when Wi-Fi is turned on.</string>
+    <string name="detail_desc_bottom_pinned_app">Pin up to 5 apps to the bottom of home screen. Pin frequently used apps so they are easy to find.</string>
+    <string name="sub_title_left_slide_app">Slide app settings</string>
+    <string name="detail_desc_left_slide_app1">You can set frequently used apps on the left side of Home. On the Home, slide to the left, press the (+) button, and select the app you want to set up.</string>
+    <string name="detail_desc_left_slide_app2">If you want to change the set app, touch the black ◗ icon at the top left of Home. You can change the set app by touching the app.</string>
+    <string-array name="array_left_slide_function">
+        <item>Specific user app</item>
+        <!--        <item>Recent books</item>-->
+    </string-array>
+    <integer-array name="array_left_slide_function_values" translatable="false">
+        <item>0</item>
+        <!--        <item>1</item>-->
+    </integer-array>
+
+    <!-- device -->
     <string name="device_info_system_version">System version</string>
     <string name="device_info_android_version">Android version</string>
     <string name="device_info_model_number">Model Number</string>
