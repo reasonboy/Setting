@@ -47,7 +47,13 @@
     <string name="power_20min">20 minutes</string>
     <string name="power_30min">30 minutes</string>
     <string name="power_60min">60 minutes</string>
+    <string name="power_1hour">1 hour</string>
+    <string name="power_2hour">2 hours</string>
+    <string name="power_8hour">8 hours</string>
+    <string name="power_1day">1 day</string>
+    <string name="power_2day">2 days</string>
     <string name="power_none">None</string>
+
     <string name="refresh_none">None</string>
     <string name="refresh_1view">1 View</string>
     <string name="refresh_5view">5 View</string>

@@ -47,6 +47,11 @@
     <string name="power_20min">20 분</string>
     <string name="power_30min">30 분</string>
     <string name="power_60min">60 분</string>
+    <string name="power_1hour">1 시간</string>
+    <string name="power_2hour">2 시간</string>
+    <string name="power_8hour">8 시간</string>
+    <string name="power_1day">1 일</string>
+    <string name="power_2day">2 일</string>
     <string name="power_none">사용 안 함</string>
 	
     <string name="refresh_none">사용 안 함</string>

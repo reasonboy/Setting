@@ -19,12 +19,12 @@ import java.util.ArrayList;
 
 public class AutoPowerOffActivity extends BaseActivity implements AdapterView.OnItemClickListener{
 
-    private static final  int POWER_OFF_5_MIN = 5 * 60 * 1000;
-    private static final  int POWER_OFF_10_MIN = 10 * 60 * 1000;
-    private static final  int POWER_OFF_15_MIN = 15 * 60 * 1000;
-    private static final  int POWER_OFF_20_MIN = 20 * 60 * 1000;
     private static final  int POWER_OFF_30_MIN = 30 * 60 * 1000;
-    private static final  int POWER_OFF_60_MIN = 60 * 60 * 1000;
+    private static final  int POWER_OFF_1_HOUR = 60 * 60 * 1000;
+    private static final  int POWER_OFF_2_HOURS = 2 * 60 * 60 * 1000;
+    private static final  int POWER_OFF_8_HOURS = 8 * 60 * 60 * 1000;
+    private static final  int POWER_OFF_1_DAY = 24 * 60 * 60 * 1000;
+    private static final  int POWER_OFF_2_DAYS = 2 * 24 * 60 * 60 * 1000;
     private static final  int POWER_OFF_NONE = -1;
 
     private ArrayList<POData> mListData;
@@ -46,12 +46,12 @@ public class AutoPowerOffActivity extends BaseActivity implements AdapterView.On
 
     private void initData() {
         mListData = new ArrayList<>();
-        mListData.add(new POData(getString(R.string.power_5min),POWER_OFF_5_MIN));
-        mListData.add(new POData(getString(R.string.power_10min),POWER_OFF_10_MIN));
-        mListData.add(new POData(getString(R.string.power_15min),POWER_OFF_15_MIN));
-        mListData.add(new POData(getString(R.string.power_20min),POWER_OFF_20_MIN));
-        mListData.add(new POData(getString(R.string.power_30min),POWER_OFF_30_MIN));
-        mListData.add(new POData(getString(R.string.power_60min),POWER_OFF_60_MIN));
+        mListData.add(new POData(getString(R.string.power_30min), POWER_OFF_30_MIN));
+        mListData.add(new POData(getString(R.string.power_1hour), POWER_OFF_1_HOUR));
+        mListData.add(new POData(getString(R.string.power_2hour), POWER_OFF_2_HOURS));
+        mListData.add(new POData(getString(R.string.power_8hour), POWER_OFF_8_HOURS));
+        mListData.add(new POData(getString(R.string.power_1day), POWER_OFF_1_DAY));
+        mListData.add(new POData(getString(R.string.power_2day), POWER_OFF_2_DAYS));
         mListData.add(new POData(getString(R.string.power_none),POWER_OFF_NONE));
     }
 
