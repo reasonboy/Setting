@@ -127,12 +127,12 @@
         Search and alarm settings are available only when a widget style is selected.
     </string>
     <string name="title_bottom_pinned_app">Bottom pinned apps</string>
-    <string name="desc_bottom_pinned_app">Pin up to 5 apps to the bottom of home screen.</string>
+    <string name="desc_bottom_pinned_app">Pin up to 6 apps to the bottom of home screen.</string>
     <string name="title_left_slide">Left slide function</string>
     <string name="sub_title_static_specific_app">Static specific app</string>
     <string name="sub_title_recent_books">Recent books</string>
     <string name="detail_desc_search_alarm_on">When widget style is selected as the home screen style, a search bar and notification message are displayed when Wi-Fi is turned on.</string>
-    <string name="detail_desc_bottom_pinned_app">Pin up to 5 apps to the bottom of home screen. Pin frequently used apps so they are easy to find.</string>
+    <string name="detail_desc_bottom_pinned_app">Pin up to 6 apps to the bottom of home screen. Pin frequently used apps so they are easy to find.</string>
     <string name="sub_title_left_slide_app">Slide app settings</string>
     <string name="detail_desc_left_slide_app1">You can set frequently used apps on the left side of Home. On the Home, slide to the left, press the (+) button, and select the app you want to set up.</string>
     <string name="detail_desc_left_slide_app2">If you want to change the set app, touch the black ◗ icon at the top left of Home. You can change the set app by touching the app.</string>
