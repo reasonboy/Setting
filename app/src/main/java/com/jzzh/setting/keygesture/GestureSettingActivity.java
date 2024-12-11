@@ -1,7 +1,6 @@
 package com.jzzh.setting.keygesture;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 
 import com.jzzh.setting.BaseActivity;
@@ -17,8 +16,8 @@ public class GestureSettingActivity extends BaseActivity {
     private ImageView mInfoKeyPack, mInfoLightGesture, mInfoBottomGesture;
 
     private boolean isUseKeypack = true;
-    private boolean isUseLightGesture = true;
     private boolean isUseBottomGesture = true;
+    private boolean isUseLightGesture = true;
 
     boolean isKoreaLocale = true;
 
@@ -40,7 +39,6 @@ public class GestureSettingActivity extends BaseActivity {
         });
         BtnKeyPackOnOff = findViewById(R.id.btn_key_pack_on_off);
         BtnKeyPackOnOff.setOnZhCheckedChangeListener(checked -> {
-            Log.d(TAG, "checked:" + checked);
             isUseKeypack = !isUseKeypack;
             BtnKeyPackOnOff.setCheck(isUseKeypack);
             mUtilSpaceUserSettings.setKeyPackGestureEnable(isUseKeypack ? 1 : 0);
@@ -54,7 +52,6 @@ public class GestureSettingActivity extends BaseActivity {
         });
         BtnBottomGestureOnOff = findViewById(R.id.btn_bottom_gesture_on_off);
         BtnBottomGestureOnOff.setOnZhCheckedChangeListener(checked -> {
-            Log.d(TAG, "checked:" + checked);
             isUseBottomGesture = !isUseBottomGesture;
             BtnBottomGestureOnOff.setCheck(isUseBottomGesture);
             mUtilSpaceUserSettings.setBottomGestureEnable(isUseBottomGesture ? 1 : 0);
@@ -69,7 +66,6 @@ public class GestureSettingActivity extends BaseActivity {
         });
         BtnLightGestureOnOff = findViewById(R.id.btn_light_gesture_on_off);
         BtnLightGestureOnOff.setOnZhCheckedChangeListener(checked -> {
-            Log.d(TAG, "checked:" + checked);
             isUseLightGesture = !isUseLightGesture;
             BtnLightGestureOnOff.setCheck(isUseLightGesture);
             mUtilSpaceUserSettings.setLightGestureEnable(isUseLightGesture ? 1 : 0);
