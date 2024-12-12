@@ -19,9 +19,9 @@
     <string name="setting_display_widget_text">홈 화면 문구</string>
     <string name="setting_display_widget_setting">위젯 설정</string>
     <string name="setting_light">조명</string>
-    <string name="setting_language_and_keyboard">언어/키보드</string>
+    <string name="setting_language_and_keyboard">언어 / 키보드</string>
     <string name="setting_language_and_keyboard_km">키보드 관리</string>
-    <string name="setting_date_and_time">날짜/시간</string>
+    <string name="setting_date_and_time">날짜 / 시간</string>
     <string name="setting_date_and_time_tz">표준 시간대</string>
     <string name="setting_lock_screen">잠금설정</string>
     <string name="setting_task_manager">작업 관리자</string>
