@@ -14,11 +14,15 @@ import java.io.File;
 
 public class UserImageActivity extends BaseActivity {
     private static final String TAG = UserImageActivity.class.getSimpleName();
-    
+    public static final String ACTION_SLEEP_IMAGE_SETTING = "com.inno.action.SLEEP_IMAGE_SETTING";
+    public static final String ACTION_POWER_OFF_IMAGE_SETTING = "com.inno.action.POWER_OFF_IMAGE_SETTING";
+
     protected String mImagePath;
     protected String[] mSaveLogoPath;
     protected int mNoImageSrcId;
     private UserImageListFragment mUserImageListFragment;
+
+    private boolean isExternal = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,11 @@ public class UserImageActivity extends BaseActivity {
             if (intent != null) {
                 action = intent.getAction();
                 path = intent.getStringExtra("path");
+
+                if (ACTION_SLEEP_IMAGE_SETTING.equals(action)
+                        || ACTION_POWER_OFF_IMAGE_SETTING.equals(action)) {
+                    isExternal = true;
+                }
             } else Log.e(TAG, "intent is null !!!!!!");
             Log.d(TAG, "action : " + action + ", path : " + path);
 
@@ -60,7 +69,13 @@ public class UserImageActivity extends BaseActivity {
                 Log.d(TAG, "Image path is empty!");
             } else {
                 UserImageSettingFragment userImageSettingFragment = new UserImageSettingFragment(new File(path), mSaveLogoPath);
-                userImageSettingFragment.setOnClickListener(() -> switchFragment(mUserImageListFragment));
+                userImageSettingFragment.setOnClickListener(() -> {
+                    if (isExternal) {
+                        this.finish();
+                    } else {
+                        switchFragment(mUserImageListFragment);
+                    }
+                });
                 switchFragment(userImageSettingFragment);
             }
         } catch (Exception e) {
