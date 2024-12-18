@@ -87,9 +87,11 @@ public class GSFActivity extends BaseActivity implements View.OnClickListener {
         int state = getGooglePlayEnable();
         if(state == 1) {
             mGsfSwitch.setSelected(true);
+            mGsfSwitch.setImageResource(R.drawable.check_on);
             mGsfContentLayout.setVisibility(View.VISIBLE);
         } else {
             mGsfSwitch.setSelected(false);
+            mGsfSwitch.setImageResource(R.drawable.check_off);
             mGsfContentLayout.setVisibility(View.GONE);
         }
     }
