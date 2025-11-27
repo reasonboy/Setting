@@ -27,7 +27,10 @@ public class NavigationLayout extends LinearLayout{
         mContext = context;
         mLayout = new LinearLayout(mContext);
         final MarginLayoutParams lp = new MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-        lp.setMargins(getResources().getDimensionPixelOffset(R.dimen.navi_layout_marginLeft), 20 , 0, 0);
+        int naviHeight = getResources().getDimensionPixelOffset(R.dimen.navi_layout_height);
+        int textHeight = getResources().getDimensionPixelOffset(R.dimen.navi_layout_textSize);
+        int top = (naviHeight - textHeight) / 2;
+        lp.setMargins(getResources().getDimensionPixelOffset(R.dimen.navi_layout_marginLeft), top , 0, 0);
         addView(mLayout,lp);
     }
 

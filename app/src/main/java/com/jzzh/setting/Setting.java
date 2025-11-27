@@ -1,5 +1,6 @@
 package com.jzzh.setting;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +22,8 @@ public class Setting extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+        Configuration configuration = getResources().getConfiguration();
+        Log.v("xml_log_setting","smallestScreenWidthDp = "+configuration.smallestScreenWidthDp);
         findViewById(R.id.setting_network).setOnClickListener(this);
         findViewById(R.id.setting_power).setOnClickListener(this);
         findViewById(R.id.setting_display).setOnClickListener(this);

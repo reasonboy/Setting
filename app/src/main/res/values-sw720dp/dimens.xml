@@ -4,28 +4,28 @@
     <dimen name="textSize20">20sp</dimen>
     <dimen name="textSize21">21sp</dimen>
     <!-- 导航栏高度-->
-    <dimen name="navi_layout_height">65dp</dimen>
+    <dimen name="navi_layout_height">55dp</dimen>
     <!-- 导航栏距离左边的距离-->
-    <dimen name="navi_layout_marginLeft">40dp</dimen>
+    <dimen name="navi_layout_marginLeft">27dp</dimen>
     <!-- 导航栏字符大小-->
-    <dimen name="navi_layout_textSize">22sp</dimen>
+    <dimen name="navi_layout_textSize">20sp</dimen>
     <!-- 导航栏字符与“>”图标的距离-->
     <dimen name="navi_layout_view_space">9dp</dimen>
     <!-- 导航栏“>”图标大小-->
     <dimen name="navi_layout_iconSize">22dp</dimen>
     <!-- 导航栏下划线粗细-->
-    <dimen name="navi_layout_underline_height">2dp</dimen>
+    <dimen name="navi_layout_underline_height">1dp</dimen>
     <!-- 设置单项宽度-->
-    <dimen name="setting_item_width">182dp</dimen>
+    <dimen name="setting_item_width">158dp</dimen>
     <!-- 设置单项高度-->
-    <dimen name="setting_item_height">180dp</dimen>
-    <dimen name="setting_item_icon_size">56dp</dimen>
-    <dimen name="setting_item_text_size">21sp</dimen>
-    <dimen name="setting_item_icon_space_text">15dp</dimen>
-    <dimen name="setting_margin">40dp</dimen>
-    <dimen name="setting_item_space">24dp</dimen>
+    <dimen name="setting_item_height">221dp</dimen>
+    <dimen name="setting_item_icon_size">53dp</dimen>
+    <dimen name="setting_item_text_size">19sp</dimen>
+    <dimen name="setting_item_icon_space_text">11dp</dimen>
+    <dimen name="setting_margin">74dp</dimen>
+    <dimen name="setting_item_space">26dp</dimen>
 
-    <dimen name="activity_marginTop">15dp</dimen>
+    <dimen name="activity_marginTop">16dp</dimen>
     <dimen name="setting_sub_item_height">60dp</dimen>
     <dimen name="setting_sub_item_margin">48dp</dimen>
     <dimen name="setting_sub_item_icon_size">22dp</dimen>
