@@ -71,6 +71,7 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.wifi_fragment,null);
         mContext = getContext();
+        mListViewItemNum = getResources().getInteger(R.integer.listview_itemSize);
         mWifiManager = (WifiManager)mContext.getSystemService(Context.WIFI_SERVICE);
         mWifiUtils = new WifiUtils(mWifiManager);
         mWifiBroadcaster = new WifiBroadcaster();

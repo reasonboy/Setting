@@ -28,6 +28,7 @@
     <dimen name="activity_marginTop">16dp</dimen>
     <dimen name="setting_sub_item_height">60dp</dimen>
     <dimen name="setting_sub_item_margin">48dp</dimen>
+    <dimen name="setting_sub_item_textSize">19sp</dimen>
     <dimen name="setting_sub_item_icon_size">22dp</dimen>
 
     <dimen name="title_layout_height">60dp</dimen>

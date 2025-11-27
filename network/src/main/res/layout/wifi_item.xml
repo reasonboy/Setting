@@ -12,7 +12,7 @@
             android:id="@+id/wifi_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/textSize19"
+            android:textSize="@dimen/listview_item_textSize"
             android:text="wifi" />
 
         <TextView
@@ -26,8 +26,8 @@
 
     <ImageView
         android:id="@+id/wifi_signal"
-        android:layout_width="27dp"
-        android:layout_height="27dp"
+        android:layout_width="@dimen/listview_item_iconSize"
+        android:layout_height="@dimen/listview_item_iconSize"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true" />
 

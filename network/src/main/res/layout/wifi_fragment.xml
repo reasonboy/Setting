@@ -18,8 +18,8 @@
         android:id="@+id/wifi_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="52dp"
-        android:layout_marginRight="52dp"
+        android:layout_marginLeft="@dimen/listview_item_margin"
+        android:layout_marginRight="@dimen/listview_item_margin"
         android:orientation="vertical"
         android:visibility="visible">
 
