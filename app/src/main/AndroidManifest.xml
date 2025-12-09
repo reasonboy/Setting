@@ -78,6 +78,7 @@
         <activity android:name=".power.PowerActivity" />
         <activity android:name=".power.AutoSleepActivity" />
         <activity android:name=".power.AutoPowerOffActivity" />
+        <activity android:name=".power.PowerManageActivity" />
         <activity android:name=".display.DisplayActivity" />
         <activity android:name=".display.RefreshActivity" />
         <activity android:name=".display.PowerOffImageActivity" />
