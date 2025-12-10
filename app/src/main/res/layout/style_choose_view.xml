@@ -34,23 +34,27 @@
             android:layout_gravity="center">
         </ImageView>
 
-        <FrameLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="360dp"
             android:layout_height="480dp"
             android:layout_marginRight="23dp"
             android:layout_marginLeft="23dp"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            app:cardCornerRadius="15dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="0dp">
 
             <ImageView
                 android:id="@+id/def_iv"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"/>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/frame_round_angle"/>
-        </FrameLayout>
+        </androidx.cardview.widget.CardView>
 
         <ImageView
             android:id="@+id/btn_next"
