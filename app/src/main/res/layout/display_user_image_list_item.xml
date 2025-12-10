@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="264dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <FrameLayout
-        android:layout_width="159dp"
-        android:layout_height="212dp"
+        android:layout_width="234dp"
+        android:layout_height="312dp"
         android:layout_gravity="center_horizontal">
 
         <ImageView
@@ -18,7 +18,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/frame_right_angle"/>
+            android:background="@drawable/frame_round_angle"/>
     </FrameLayout>
 
 </LinearLayout>

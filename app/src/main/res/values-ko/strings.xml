@@ -13,7 +13,7 @@
     <string name="setting_display_poi_default">기본 이미지</string>
     <string name="setting_display_poi_user">사용자 이미지</string>
     <string name="setting_display_si">슬립 이미지</string>
-    <string name="setting_display_si_default">기본 이미지</string>
+    <string name="setting_display_default_image">기본 이미지</string>
     <string name="setting_display_si_user">사용자 이미지</string>
     <string name="setting_display_home_screen_style">홈 화면 스타일</string>
     <string name="setting_display_widget_text">홈 화면 문구</string>

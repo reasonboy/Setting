@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Setting">
+
+    <LinearLayout
+        android:id="@+id/navigation_base"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/navi_layout_height">
+
+        <ImageView
+            android:id="@+id/navigation_back"
+            android:layout_width="@dimen/navi_layout_iconSize"
+            android:layout_height="@dimen/navi_layout_iconSize"
+            android:layout_marginLeft="18dp"
+            android:src="@drawable/setting_title_prev"
+            android:layout_gravity="center_vertical">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/navigation_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical">
+        </TextView>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/content_base"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+    </FrameLayout>
+
+</LinearLayout>

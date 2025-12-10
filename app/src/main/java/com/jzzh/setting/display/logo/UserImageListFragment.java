@@ -35,7 +35,7 @@ public class UserImageListFragment extends Fragment {
     private UserImageAdapter mAdapter;
     private List<File> mList = new ArrayList<>();
     private PageIndication mPageIndication;
-    private int mCurPage = 1,mTotalPage,mRecyclerViewItemNum = 9;
+    private int mCurPage = 1,mTotalPage,mRecyclerViewItemNum = 4;
     private OnItemClick mOnItemClick;
 
     @SuppressLint("ValidFragment")
@@ -51,7 +51,9 @@ public class UserImageListFragment extends Fragment {
         View view = inflater.inflate(R.layout.display_user_image_list_fragment,null);
         mNoImage = view.findViewById(R.id.user_no_image);
         mRecyclerView = view.findViewById(R.id.user_image_recycler_view);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        mRecyclerView.addItemDecoration(new GridSpacingItemDecoration(2, 46, 45, false));
+        
         mAdapter = new UserImageAdapter(getContext());
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(new UserImageAdapter.OnItemClickListener() {

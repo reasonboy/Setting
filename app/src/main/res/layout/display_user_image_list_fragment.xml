@@ -7,9 +7,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/user_image_recycler_view"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="80dp"
         android:overScrollMode="never"
         android:scrollbars="none" />
 
@@ -20,9 +22,8 @@
         <include
             layout="@layout/page_indication"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginBottom="@dimen/page_indication_marginBottom" />
+            android:layout_height="88dp"
+            android:layout_gravity="bottom|center_horizontal" />
     </FrameLayout>
 
     <TextView

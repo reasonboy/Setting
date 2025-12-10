@@ -11,12 +11,8 @@ import com.jzzh.setting.device.SystemUpdateActivity;
 import com.jzzh.setting.display.DisplayActivity;
 import com.jzzh.setting.display.HomeScreenStyleActivity;
 import com.jzzh.setting.display.PowerOffImageActivity;
-import com.jzzh.setting.display.PowerOffImageDefaultActivity;
-import com.jzzh.setting.display.PowerOffImageUserActivity;
 import com.jzzh.setting.display.RefreshActivity;
 import com.jzzh.setting.display.SleepImageActivity;
-import com.jzzh.setting.display.SleepImageDefaultActivity;
-import com.jzzh.setting.display.SleepImageUserActivity;
 import com.jzzh.setting.display.WidgetSettingActivity;
 import com.jzzh.setting.display.WidgetTextActivity;
 import com.jzzh.setting.keygesture.GestureSettingActivity;
@@ -53,11 +49,7 @@ public class Const {
             DisplayActivity.class,
             RefreshActivity.class,
             PowerOffImageActivity.class,
-            PowerOffImageDefaultActivity.class,
-            PowerOffImageUserActivity.class,
             SleepImageActivity.class,
-            SleepImageDefaultActivity.class,
-            SleepImageUserActivity.class,
             HomeScreenStyleActivity.class,
             WidgetTextActivity.class,
             WidgetSettingActivity.class,
@@ -101,11 +93,7 @@ public class Const {
             {R.string.setting,R.string.setting_display},
             {R.string.setting,R.string.setting_display,R.string.setting_display_refresh},
             {R.string.setting,R.string.setting_display,R.string.setting_display_poi},
-            {R.string.setting,R.string.setting_display,R.string.setting_display_poi,R.string.setting_display_poi_default},
-            {R.string.setting,R.string.setting_display,R.string.setting_display_poi,R.string.setting_display_poi_user},
             {R.string.setting,R.string.setting_display,R.string.setting_display_si},
-            {R.string.setting,R.string.setting_display,R.string.setting_display_si,R.string.setting_display_si_default},
-            {R.string.setting,R.string.setting_display,R.string.setting_display_si,R.string.setting_display_si_user},
             {R.string.setting,R.string.setting_display,R.string.setting_display_home_screen_style},
             {R.string.setting,R.string.setting_display,R.string.setting_display_widget_text},
             {R.string.setting,R.string.setting_display,R.string.setting_display_widget_setting},
