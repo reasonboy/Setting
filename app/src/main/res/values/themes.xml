@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Setting" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Setting" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -15,7 +15,7 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="Theme.Wifi.SetupWizard" parent="@android:style/Theme.Holo.Light.NoActionBar">
+    <style name="Theme.Wifi.SetupWizard" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:background">@android:color/transparent</item>

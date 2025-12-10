@@ -7,7 +7,8 @@
     <LinearLayout
         android:id="@+id/page_prev"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
         <!--
         <ImageView
@@ -24,9 +25,9 @@
             android:textColor="@android:color/black"
             android:text="@string/page_prev"/>-->
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/setting_prev"/>
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/setting_title_prev"/>
     </LinearLayout>
 
     <TextView
@@ -44,7 +45,8 @@
     <LinearLayout
         android:id="@+id/page_next"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
         <!--
         <TextView
@@ -62,8 +64,8 @@
             android:background="@drawable/page_right" />-->
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/setting_next"/>
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/setting_title_next"/>
     </LinearLayout>
 </com.jzzh.tools.PageIndication>
