@@ -7,6 +7,9 @@
     <string name="setting_power">전원</string>
     <string name="setting_power_auto_sleep">자동 슬립 설정</string>
     <string name="setting_power_auto_power_off">자동 종료 설정</string>
+    <string name="setting_power_manage">Power Manage</string>
+    <string name="setting_power_manage_title">Disable auto wake-up by the case</string>
+    <string name="setting_power_manage_description">When you open the case cover, Set to not automatically release sleep mode.</string>
     <string name="setting_display">화면</string>
     <string name="setting_display_refresh">잔상 제거</string>
     <string name="setting_display_poi">종료 이미지</string>

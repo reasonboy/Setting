@@ -128,11 +128,13 @@
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_lock_screen.xml" value="0.18229166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_network.xml" value="0.28396739130434784" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_power.xml" value="0.271286231884058" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_power_manage.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_refresh.xml" value="0.271286231884058" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_setting.xml" value="0.19427083333333334" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_system_update.xml" value="0.18229166666666666" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_task_manager.xml" value="0.22" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_time_zone.xml" value="0.18229166666666666" />
+        <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_widget_setting.xml" value="0.178125" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/activity_wifi.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/adapter_list_radio_btn_item.xml" value="0.18489583333333334" />
         <entry key="..\:/AndroidStudioProject/Setting/app/src/main/res/layout/adjust_layout.xml" value="0.22" />

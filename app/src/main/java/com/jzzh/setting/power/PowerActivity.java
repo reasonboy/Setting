@@ -14,6 +14,7 @@ public class PowerActivity extends BaseActivity  implements View.OnClickListener
         setContentView(R.layout.activity_power);
         findViewById(R.id.setting_power_auto_sleep).setOnClickListener(this);
         findViewById(R.id.setting_power_auto_power_off).setOnClickListener(this);
+        findViewById(R.id.setting_power_manage).setOnClickListener(this);
     }
 
     @Override
@@ -24,6 +25,9 @@ public class PowerActivity extends BaseActivity  implements View.OnClickListener
                 break;
             case R.id.setting_power_auto_power_off:
                 startActivity(AutoPowerOffActivity.class);
+                break;
+            case R.id.setting_power_manage:
+                startActivity(PowerManageActivity.class);
                 break;
         }
     }

@@ -36,6 +36,10 @@
     <dimen name="setting_sub_item_textSize">21sp</dimen>
     <dimen name="setting_sub_item_icon_size">32dp</dimen>
 
+    <dimen name="setting_select_item_textSize">21sp</dimen>
+    <dimen name="setting_select_item_iconSize">32dp</dimen>
+    <dimen name="setting_select_item_margin">56dp</dimen>
+
     <dimen name="title_layout_height">82dp</dimen>
     <dimen name="title_layout_margin">56dp</dimen>
     <dimen name="title_layout_icon_size">32dp</dimen>
@@ -52,6 +56,11 @@
     <dimen name="time_dialog_button_size">22dp</dimen>
     <dimen name="time_dialog_textview_size">22dp</dimen>
     <dimen name="time_dialog_text_size">20sp</dimen>
+
+    <dimen name="switch_item_title_textSize">21sp</dimen>
+    <dimen name="switch_item_description_textSize">21sp</dimen>
+    <dimen name="switch_item_title_marginTop">33dp</dimen>
+    <dimen name="switch_item_title_space_description">25dp</dimen>
 
     <dimen name="lineSpacingExtra">10dp</dimen>
     <dimen name="dialog_lineSpacingExtra">15dp</dimen>

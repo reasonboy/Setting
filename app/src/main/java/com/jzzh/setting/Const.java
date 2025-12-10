@@ -27,6 +27,7 @@ import com.jzzh.setting.network.wifi.WifiActivity;
 import com.jzzh.setting.power.AutoPowerOffActivity;
 import com.jzzh.setting.power.AutoSleepActivity;
 import com.jzzh.setting.power.PowerActivity;
+import com.jzzh.setting.power.PowerManageActivity;
 import com.jzzh.setting.task.TaskManagerActivity;
 import com.jzzh.setting.time.DateAndTimeActivity;
 import com.jzzh.setting.time.TimeZoneActivity;
@@ -45,6 +46,7 @@ public class Const {
             PowerActivity.class,
             AutoSleepActivity.class,
             AutoPowerOffActivity.class,
+            PowerManageActivity.class,
 
             DisplayActivity.class,
             RefreshActivity.class,
@@ -89,6 +91,7 @@ public class Const {
             {R.string.setting,R.string.setting_power},
             {R.string.setting,R.string.setting_power,R.string.setting_power_auto_sleep},
             {R.string.setting,R.string.setting_power,R.string.setting_power_auto_power_off},
+            {R.string.setting,R.string.setting_power,R.string.setting_power_manage},
 
             {R.string.setting,R.string.setting_display},
             {R.string.setting,R.string.setting_display,R.string.setting_display_refresh},

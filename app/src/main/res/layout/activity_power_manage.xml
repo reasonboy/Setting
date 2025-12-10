@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="@dimen/setting_sub_item_margin"
+    android:paddingEnd="@dimen/setting_sub_item_margin"
+    android:layout_marginTop="@dimen/activity_marginTop"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/switch_item_title_marginTop"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/setting_power_manage_title"
+            android:textSize="@dimen/switch_item_title_textSize"
+            android:textStyle="bold"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <com.jzzh.tools.ZhCheckBox
+            android:id="@+id/setting_power_manage_title_cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/switch_item_title_space_description"
+        android:lineSpacingExtra="@dimen/lineSpacingExtra"
+        android:text="@string/setting_power_manage_description"
+        android:textSize="@dimen/switch_item_description_textSize"
+        />
+
+</LinearLayout>
