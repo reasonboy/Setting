@@ -10,81 +10,86 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="29dp"
+        android:layout_marginStart="35dp"
         android:overScrollMode="never"
         android:scrollbars="none" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="28dp"
-        android:layout_marginBottom="26dp"
-        android:layout_gravity="bottom">
+        android:layout_height="96dp"
+        android:layout_gravity="bottom"
+        android:paddingStart="42dp"
+        android:paddingEnd="42dp"
+        tools:ignore="RtlSymmetry">
 
         <TextView
             android:id="@+id/task_memory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/textSize19"
             android:layout_gravity="center_vertical"
-            android:text="@string/task_memory_usage"/>
+            android:text="@string/task_memory_usage"
+            android:textSize="@dimen/textSize21" />
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginRight="28dp">
+                android:layout_gravity="center_vertical|right"
+                tools:ignore="RtlHardcoded">
 
                 <LinearLayout
                     android:id="@+id/task_choice"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:minWidth="100dp"
+                    android:layout_height="50dp"
                     android:background="@drawable/task_button_bg"
+                    android:minWidth="100dp"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp">
+
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
                         android:layout_gravity="center_vertical"
-                        android:background="@drawable/ic_taskmanager_choice_trans"/>
+                        android:background="@drawable/ic_taskmanager_choice_trans" />
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:textSize="@dimen/textSize19"
                         android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="@string/task_choose"/>
+                        android:text="@string/task_choose"
+                        android:textSize="@dimen/textSize21" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/task_clean"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
                     android:background="@drawable/task_button_bg"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp">
+
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
                         android:layout_gravity="center_vertical"
-                        android:background="@drawable/ic_taskmanager_clean"/>
+                        android:background="@drawable/ic_taskmanager_clean" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:textSize="@dimen/textSize19"
                         android:layout_gravity="center_vertical"
-                        android:text="@string/task_all_clean"/>
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="@string/task_all_clean"
+                        android:textSize="@dimen/textSize21" />
                 </LinearLayout>
             </LinearLayout>
         </FrameLayout>

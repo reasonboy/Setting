@@ -1,6 +1,7 @@
 package com.jzzh.setting.task;
 
 import android.content.ComponentName;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 
 public class TaskItem {
@@ -8,4 +9,5 @@ public class TaskItem {
     public CharSequence title;
     public ComponentName componentName;
     public int taskId;
+    public Bitmap thumbnail;
 }

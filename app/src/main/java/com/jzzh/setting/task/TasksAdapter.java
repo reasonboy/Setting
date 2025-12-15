@@ -63,6 +63,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskHolder> 
         }
         holder.title.setText(mList.get(position).title);
         holder.icon.setBackground(mList.get(position).icon);
+        holder.thumbnail.setImageBitmap(mList.get(position).thumbnail);
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,6 +102,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskHolder> 
         TextView title;
         View view;
         ImageView choice;
+        ImageView thumbnail;
 
         public TaskHolder(View itemView) {
             super(itemView);
@@ -108,6 +110,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskHolder> 
             title = itemView.findViewById(R.id.task_item_title);
             view = itemView.findViewById(R.id.task_item_view);
             choice = itemView.findViewById(R.id.task_item_choice);
+            thumbnail = itemView.findViewById(R.id.task_item_thumbnail);
         }
     }
 
