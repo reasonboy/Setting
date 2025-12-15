@@ -60,9 +60,8 @@ public class UserImageSettingFragment extends Fragment implements View.OnClickLi
     public void onClick(View view) {
         Bitmap srcBitmap = ((UserImageSettingItem)view).getSrcBitmap();
         Bitmap logo = BitmapManager.adjustBitmap(srcBitmap);
-        Bitmap rotateLogo = BitmapManager.rotateBitmap(logo,270);
         for(String logoPath : mSaveLogoPath) {
-            BitmapManager.saveBitmap(rotateLogo,logoPath);
+            BitmapManager.saveBitmap(logo,logoPath);
         }
         Toast.makeText(getActivity(),R.string.set_image_successfully,Toast.LENGTH_LONG).show();
         if(mOnSettingCompletedListener != null) {

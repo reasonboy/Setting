@@ -7,15 +7,18 @@ import android.util.Log;
 
 import androidx.fragment.app.FragmentTransaction;
 
-import com.jzzh.setting.BaseActivity;
+import com.jzzh.setting.BaseActivityNoNav;
 import com.jzzh.setting.R;
 
 import java.io.File;
 
-public class UserImageActivity extends BaseActivity {
+public class UserImageActivity extends BaseActivityNoNav {
     private static final String TAG = UserImageActivity.class.getSimpleName();
     public static final String ACTION_SLEEP_IMAGE_SETTING = "com.inno.action.SLEEP_IMAGE_SETTING";
     public static final String ACTION_POWER_OFF_IMAGE_SETTING = "com.inno.action.POWER_OFF_IMAGE_SETTING";
+    public static final String EXTRA_IMAGE_PATH = "extra_image_path";
+    public static final String EXTRA_SAVE_LOGO_PATH = "extra_save_logo_path";
+    public static final String EXTRA_NO_IMAGE_RES_ID = "extra_no_image_res_id";
 
     protected String mImagePath;
     protected String[] mSaveLogoPath;
@@ -28,6 +31,20 @@ public class UserImageActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.display_user_image_activity);
+        setNavText(getString(R.string.setting_display_select_image));
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            if (intent.hasExtra(EXTRA_IMAGE_PATH)) {
+                mImagePath = intent.getStringExtra(EXTRA_IMAGE_PATH);
+            }
+            if (intent.hasExtra(EXTRA_SAVE_LOGO_PATH)) {
+                mSaveLogoPath = intent.getStringArrayExtra(EXTRA_SAVE_LOGO_PATH);
+            }
+            if (intent.hasExtra(EXTRA_NO_IMAGE_RES_ID)) {
+                mNoImageSrcId = intent.getIntExtra(EXTRA_NO_IMAGE_RES_ID, 0);
+            }
+        }
     }
 
     @Override
@@ -42,7 +59,7 @@ public class UserImageActivity extends BaseActivity {
                 userImageSettingFragment.setOnClickListener(new UserImageSettingFragment.OnSettingCompletedListener() {
                     @Override
                     public void settingCompleted() {
-                        switchFragment(mUserImageListFragment);
+                        finish();
                     }
                 });
                 switchFragment(userImageSettingFragment);

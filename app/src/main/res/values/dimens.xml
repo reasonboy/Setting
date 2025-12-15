@@ -13,12 +13,16 @@
     <!-- 导航栏字符与“>”图标的距离-->
     <dimen name="navi_layout_view_space">9dp</dimen>
     <!-- 导航栏“>”图标大小-->
-    <dimen name="navi_layout_iconSize">22dp</dimen>
+    <dimen name="navi_layout_iconSize">32dp</dimen>
     <!-- 导航栏下划线粗细-->
     <dimen name="navi_layout_underline_height">2dp</dimen>
     <!-- 设置单项宽度-->
     <dimen name="setting_item_width">182dp</dimen>
     <!-- 设置单项高度-->
+    <dimen name="dot_view_height">60dp</dimen>
+    <!-- 点状翻页条高度-->
+    <dimen name="dot_view_space">20dp</dimen>
+    <!-- 点状翻页条中两点距离-->
     <dimen name="setting_item_height">180dp</dimen>
     <dimen name="setting_item_icon_size">56dp</dimen>
     <dimen name="setting_item_text_size">21sp</dimen>

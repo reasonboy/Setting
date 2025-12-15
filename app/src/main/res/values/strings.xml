@@ -16,8 +16,11 @@
     <string name="setting_display_poi_default">Default Image</string>
     <string name="setting_display_poi_user">User Image</string>
     <string name="setting_display_si">Sleep Image</string>
-    <string name="setting_display_si_default">Default Image</string>
+    <string name="setting_display_default_image">Default Image</string>
     <string name="setting_display_si_user">User Image</string>
+    <string name="setting_display_select_image">Select Image</string>
+    <string name="setting_display_apply">Apply</string>
+    <string name="setting_display_applied">Applied</string>
     <string name="setting_display_home_screen_style">Home Screen Style</string>
     <string name="setting_display_widget_text">Home Widget Text</string>
     <string name="setting_display_widget_setting">Widget Setting</string>
@@ -115,6 +118,7 @@
     <string name="home_screen_widget_style">Widget Style</string>
     <string name="home_screen_default_style">Default App Style</string>
     <string name="home_background_setting">Home Background Setting</string>
+    <string name="home_background">Home Background</string>
     <string name="home_background_alpha_setting">Home Background Alpha Setting</string>
     <string name="transparency">transparency</string>
     <string name="reset_home_background_setting">Home Background Reset</string>
