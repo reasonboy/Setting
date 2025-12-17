@@ -65,8 +65,6 @@
     <string name="refresh_20view">20 View</string>
 	
     <string name="light_setting">조명 설정</string>
-    <string name="light_warm">온색 조명</string>
-    <string name="light_cold">백색 조명</string>
 	
     <string name="task_memory_usage">메모리 사용량 : %1$s</string>
     <string name="task_choose">선택</string>

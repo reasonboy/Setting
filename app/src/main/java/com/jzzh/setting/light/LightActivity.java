@@ -15,12 +15,17 @@ import com.jzzh.setting.R;
 public class LightActivity extends BaseActivity implements AdjustLayout.OnValueChangeListener,AdjustLayout.OnEnableChangeListener{
 
     private static final int MSG_UPDATE_BRIGHTNESS_STATE = 0;
-    private static final Uri WARM_LIGHT_ENABLE = Settings.System.getUriFor("warm_light_enable");
-    private static final Uri COLD_LIGHT_ENABLE = Settings.System.getUriFor("cold_light_enable");
-    private static final Uri TEMP_WARM_BRIGHTNESS = Settings.System.getUriFor("temp_warm_brightness");
-    private static final Uri TEMP_COLD_BRIGHTNESS = Settings.System.getUriFor("temp_cold_brightness");
-    private AdjustLayout mWarmLight,mColdLight;
-    private int mBrightnessGradient = 25;//亮度梯度
+    private static final Uri TEMPERATURE_ENABLE = Settings.System.getUriFor("temperature_enable");
+    private static final Uri BRIGHTNESS_ENABLE = Settings.System.getUriFor("brightness_enable");
+    private static final Uri TEMP_TEMPERATURE_LEVEL = Settings.System.getUriFor("temp_temperature_level");
+    private static final Uri TEMP_BRIGHTNESS_LEVEL = Settings.System.getUriFor("temp_brightness_level");
+    private int mBrightnessGradient = 32;//亮度梯度
+    private int mTemperatureGradient = 32;//色温梯度
+    private int mBrightnessLevel = 0;//亮度等级
+    private int mTemperatureLevel = 0;//色温等级
+    private int mWarmBrightness = 0;//暖光亮度
+    private int mColdBrightness = 0;//冷光亮度
+    private AdjustLayout mTemperature,mBrightness;
     private LightObserver mLightObserver;
 
     private Handler mHandler = new Handler() {
@@ -41,18 +46,17 @@ public class LightActivity extends BaseActivity implements AdjustLayout.OnValueC
         mLightObserver = new LightObserver(new Handler());
         mLightObserver.startObserving();
 
-        mWarmLight = findViewById(R.id.adjust_warm_light);
-        mColdLight = findViewById(R.id.adjust_cold_light);
+        mTemperature = findViewById(R.id.adjust_temperature);
+        mTemperature.setOnEnableChangeListener(this);
+        mTemperature.setOnValueChangeListener(this);
+        mTemperature.setMinValue(0);
+        mTemperature.setMaxValue(mBrightnessGradient);
 
-        mWarmLight.setOnEnableChangeListener(this);
-        mWarmLight.setOnValueChangeListener(this);
-        mWarmLight.setMinValue(0);
-        mWarmLight.setMaxValue(mBrightnessGradient);
-
-        mColdLight.setOnEnableChangeListener(this);
-        mColdLight.setOnValueChangeListener(this);
-        mColdLight.setMinValue(0);
-        mColdLight.setMaxValue(mBrightnessGradient);
+        mBrightness = findViewById(R.id.adjust_brightness);
+        mBrightness.setOnEnableChangeListener(this);
+        mBrightness.setOnValueChangeListener(this);
+        mBrightness.setMinValue(0);
+        mBrightness.setMaxValue(mBrightnessGradient);
         updateLightView();
     }
 
@@ -63,43 +67,45 @@ public class LightActivity extends BaseActivity implements AdjustLayout.OnValueC
     }
 
     private void updateLightView() {
-        mWarmLight.enable(getWarmLightEnable());
-        mWarmLight.setValue(brightnessToGradient(getTempWarmBrightness()));
+        mBrightness.enable(getBrightnessEnable());
+        mBrightnessLevel = getBrightnessLevel();
+        mBrightness.setValue(mBrightnessLevel);
 
-        mColdLight.enable(getColdLightEnable());
-        mColdLight.setValue(brightnessToGradient(getTempColdBrightness()));
+        mTemperature.enable(getBrightnessEnable());
+        mTemperatureLevel = getTemperatureLevel();
+        mTemperature.setValue(mTemperatureLevel);
     }
 
     @Override
     public void enable(View view, boolean enable) {
-        if(view==mWarmLight) {
-            setWarmLightEnable(enable);
+        if(view==mTemperature) {
+            setTemperatureEnable(enable);
             if(!enable) {
-                setWarmBrightness(0);
+                setTemperatureLevel(0);
             } else {
-                setWarmBrightness(getTempWarmBrightness());
+                setTemperatureLevel(getTempTemperatureLevel());
             }
-        } else if(view==mColdLight) {
-            setColdLightEnable(enable);
+        } else if(view==mBrightness) {
+            setBrightnessEnable(enable);
             if(!enable) {
-                setColdBrightness(0);
+                setBrightnessLevel(0);
             } else {
-                setColdBrightness(getTempColdBrightness());
+                setBrightnessLevel(getTempBrightnessLevel());
             }
         }
+        gradientToBrightness(mBrightnessLevel,mTemperatureLevel);
     }
 
     @Override
     public void valueChange(View view, int value) {
-        if(view==mWarmLight) {
-            int brightness = gradientToBrightness(value);
-            setTempWarmBrightness(brightness);
-            setWarmBrightness(brightness);
-        } else if(view==mColdLight) {
-            int brightness = gradientToBrightness(value);
-            setTempColdBrightness(brightness);
-            setColdBrightness(brightness);
+        if(view==mTemperature) {
+            setTempTemperatureLevel(value);
+            setTemperatureLevel(value);
+        } else if(view==mBrightness) {
+            setTempBrightnessLevel(value);
+            setBrightnessLevel(value);
         }
+        gradientToBrightness(mBrightnessLevel,mTemperatureLevel);
     }
 
     private void setWarmBrightness(int brightness) {
@@ -110,62 +116,76 @@ public class LightActivity extends BaseActivity implements AdjustLayout.OnValueC
         Settings.System.putInt(getContentResolver(),"screen_cold_brightness", brightness);
     }
 
-    private void setTempWarmBrightness(int brightness) {
-        Settings.System.putInt(getContentResolver(),"temp_warm_brightness", brightness);
+    private void setBrightnessLevel(int level) {
+        mBrightnessLevel = level;
+        Settings.System.putInt(getContentResolver(),"brightness_level", level);
     }
 
-    private int getTempWarmBrightness() {
-        return Settings.System.getInt(getContentResolver(),"temp_warm_brightness", -1);
+    private void setTemperatureLevel(int level) {
+        mTemperatureLevel = level;
+        Settings.System.putInt(getContentResolver(),"temperature_level", level);
     }
 
-    private void setTempColdBrightness(int brightness) {
-        Settings.System.putInt(getContentResolver(),"temp_cold_brightness", brightness);
+    private int getBrightnessLevel() {
+        return Settings.System.getInt(getContentResolver(),"brightness_level", 0);
     }
 
-    private int getTempColdBrightness() {
-        return Settings.System.getInt(getContentResolver(),"temp_cold_brightness", -1);
+    private int getTemperatureLevel() {
+        return Settings.System.getInt(getContentResolver(),"temperature_level", 0);
     }
 
-    private void setWarmLightEnable(boolean enable) {
+    private void setTempTemperatureLevel(int level) {
+        Settings.System.putInt(getContentResolver(),"temp_temperature_level", level);
+    }
+
+    private int getTempTemperatureLevel() {
+        return Settings.System.getInt(getContentResolver(),"temp_temperature_level", 0);
+    }
+
+    private void setTempBrightnessLevel(int level) {
+        Settings.System.putInt(getContentResolver(),"temp_brightness_level", level);
+    }
+
+    private int getTempBrightnessLevel() {
+        return Settings.System.getInt(getContentResolver(),"temp_brightness_level", 0);
+    }
+
+    private void setTemperatureEnable(boolean enable) {
         int value = enable ? 1 : 0;
-        Settings.System.putInt(getContentResolver(),"warm_light_enable", value);
+        Settings.System.putInt(getContentResolver(),"temperature_enable", value);
     }
 
-    private boolean getWarmLightEnable() {
-        int value = Settings.System.getInt(getContentResolver(),"warm_light_enable", 1);
+    private boolean getTemperatureEnable() {
+        int value = Settings.System.getInt(getContentResolver(),"temperature_enable", 1);
         boolean enable = value == 1 ? true : false;
         return enable;
     }
 
-    private void setColdLightEnable(boolean enable) {
+    private void setBrightnessEnable(boolean enable) {
         int value = enable ? 1 : 0;
-        Settings.System.putInt(getContentResolver(),"cold_light_enable", value);
+        Settings.System.putInt(getContentResolver(),"brightness_enable", value);
     }
 
-    private boolean getColdLightEnable() {
-        int value = Settings.System.getInt(getContentResolver(),"cold_light_enable", 1);
+    private boolean getBrightnessEnable() {
+        int value = Settings.System.getInt(getContentResolver(),"brightness_enable", 1);
         boolean enable = value == 1 ? true : false;
         return enable;
     }
 
-    private int getColdBrightnessSetting() {
-        return Settings.System.getInt(getContentResolver(),"screen_cold_brightness", -1);
+    //将亮度等级和色温等级转换为暖光亮度和冷光亮度
+    private void gradientToBrightness(int brightness,int temperature) {
+        mWarmBrightness = 256*brightness*temperature / (mBrightnessGradient*mTemperatureGradient);
+        mColdBrightness = 256*brightness*(mTemperatureGradient - temperature) / (mBrightnessGradient*mTemperatureGradient);
+        if(mWarmBrightness < 0) mWarmBrightness = 0;
+        if(mWarmBrightness > 256) mWarmBrightness = 255;
+        if(mColdBrightness < 0) mColdBrightness = 0;
+        if(mColdBrightness > 256) mColdBrightness = 255;
+        changeLight();
     }
 
-    private int getWarmBrightnessSetting() {
-        return Settings.System.getInt(getContentResolver(),"screen_warm_brightness", -1);
-    }
-
-    private int brightnessToGradient(int brightness) {
-        int per = 255 / mBrightnessGradient;
-        int gradient = brightness/per;
-        return gradient;
-    }
-
-    private int gradientToBrightness(int gradient) {
-        int per = 255 / mBrightnessGradient;
-        int brightness = gradient * per;
-        return brightness;
+    private void changeLight() {
+        setWarmBrightness(mWarmBrightness);
+        setColdBrightness(mColdBrightness);
     }
 
     private class LightObserver extends ContentObserver {
@@ -189,10 +209,10 @@ public class LightActivity extends BaseActivity implements AdjustLayout.OnValueC
         public void startObserving() {
             final ContentResolver cr = getContentResolver();
             cr.unregisterContentObserver(this);
-            cr.registerContentObserver(TEMP_WARM_BRIGHTNESS, false, this);
-            cr.registerContentObserver(TEMP_COLD_BRIGHTNESS, false, this);
-            cr.registerContentObserver(WARM_LIGHT_ENABLE, false, this);
-            cr.registerContentObserver(COLD_LIGHT_ENABLE, false, this);
+            cr.registerContentObserver(TEMP_TEMPERATURE_LEVEL, false, this);
+            cr.registerContentObserver(TEMP_BRIGHTNESS_LEVEL, false, this);
+            cr.registerContentObserver(TEMPERATURE_ENABLE, false, this);
+            cr.registerContentObserver(BRIGHTNESS_ENABLE, false, this);
         }
 
         public void stopObserving() {
