@@ -26,7 +26,7 @@ public class TimeZoneActivity extends BaseActivity implements AdapterView.OnItem
     private ListView mListView;
     private TimeZoneAdapter mAdapter;
     private PageIndication mPageIndication;
-    private int mCurPage = 1,mTotalPage,mListViewItemNum = 10;
+    private int mCurPage = 1,mTotalPage,mListViewItemNum = 9;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
