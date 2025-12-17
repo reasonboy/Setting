@@ -1,15 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.jzzh.setting.SettingSubItem
-        android:id="@+id/setting_keygesture_gesture"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:title="@string/setting_gesture_setting"/>
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginBottom="31dp"
+        android:text="@string/setting_key_setting"
+        android:textSize="20sp"
+        android:textStyle="bold">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="56dp"
+        android:layout_marginRight="56dp"
+        android:background="@drawable/frame_round_angle"
+        android:orientation="vertical">
+
+        <com.jzzh.setting.SettingSubItem
+            android:id="@+id/setting_physical_key"
+            android:layout_width="wrap_content"
+            android:layout_height="86dp"
+            app:title="@string/setting_physical_key_setting" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:background="@color/black">
+        </View>
+
+        <com.jzzh.setting.SettingSubItem
+            android:id="@+id/setting_inno_key"
+            android:layout_width="wrap_content"
+            android:layout_height="86dp"
+            app:title="@string/setting_inno_key_setting" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:background="@color/black">
+        </View>
+
+        <com.jzzh.setting.SettingSubItem
+            android:id="@+id/setting_keypack"
+            android:layout_width="wrap_content"
+            android:layout_height="86dp"
+            app:title="@string/setting_keypack_setting" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginBottom="31dp"
+        android:text="@string/setting_gesture_setting"
+        android:textSize="20sp"
+        android:textStyle="bold">
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="56dp"
+        android:layout_marginRight="56dp"
+        android:background="@drawable/frame_round_angle"
+        android:orientation="vertical">
+
+        <com.jzzh.setting.SettingSubItem
+            android:id="@+id/setting_bottom_gesture"
+            android:layout_width="wrap_content"
+            android:layout_height="86dp"
+            app:title="@string/setting_bottom_gesture" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:background="@color/black">
+        </View>
+
+        <com.jzzh.setting.SettingSubItem
+            android:id="@+id/setting_side_gesture"
+            android:layout_width="wrap_content"
+            android:layout_height="86dp"
+            app:title="@string/setting_side_gesture" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:background="@color/black">
+        </View>
+
+        <com.jzzh.setting.SettingSubItem
+            android:id="@+id/setting_light_gesture"
+            android:layout_width="wrap_content"
+            android:layout_height="86dp"
+            app:title="@string/setting_light_gesture" />
+    </LinearLayout>
 
 </LinearLayout>

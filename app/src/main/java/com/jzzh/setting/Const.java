@@ -15,8 +15,11 @@ import com.jzzh.setting.display.RefreshActivity;
 import com.jzzh.setting.display.SleepImageActivity;
 import com.jzzh.setting.display.WidgetSettingActivity;
 import com.jzzh.setting.display.WidgetTextActivity;
-import com.jzzh.setting.keygesture.GestureSettingActivity;
+import com.jzzh.setting.keygesture.BottomGestureSettingActivity;
 import com.jzzh.setting.keygesture.KeyGestureActivity;
+import com.jzzh.setting.keygesture.LightGestureSettingActivity;
+import com.jzzh.setting.keygesture.PhysicalKeySettingActivity;
+import com.jzzh.setting.keygesture.SideGestureSettingActivity;
 import com.jzzh.setting.language.KeyboardManagerActivity;
 import com.jzzh.setting.language.LanguageAndKeyboardActivity;
 import com.jzzh.setting.light.LightActivity;
@@ -35,6 +38,37 @@ import com.jzzh.setting.time.TimeZoneActivity;
 public class Const {
 
     public	static final String PACKAGE_NAME = "com.jzzh.setting";
+
+    public enum GestureType {
+        NONE,
+        BACK,
+        HOME,
+        REFRESH,
+        TASK_MANAGER,
+        EINK_CENTER,
+        KEY_SETTINGS,
+        USER_APP,
+    }
+
+    public enum Gesture {
+        BOTTOM_LEFT,
+        BOTTOM_MIDDLE,
+        BOTTOM_RIGHT,
+        LEFT,
+        RIGHT,
+    }
+
+    public static final String[] APP_BLACKLIST = new String[] {
+
+    };
+
+    public static final String[] APP_WHITELIST = new String[] {
+            "com.iwg.music",
+            "com.inno.dictionary",
+            "com.android.vending",
+            "org.mozilla.firefox",
+            PACKAGE_NAME,
+    };
 
     public static final Class<?>[] ACTIVITIES = new Class[] {
             Setting.class,
@@ -78,7 +112,10 @@ public class Const {
             GSFActivity.class,
 
             KeyGestureActivity.class,
-            GestureSettingActivity.class
+            PhysicalKeySettingActivity.class,
+            SideGestureSettingActivity.class,
+            BottomGestureSettingActivity.class,
+            LightGestureSettingActivity.class
     };
 
     public 	static final int[][] NAVIGATIONS = new int[][]{
@@ -123,6 +160,9 @@ public class Const {
             {R.string.setting,R.string.setting_device,R.string.setting_device_gsf_id},
 
             {R.string.setting,R.string.setting_key_and_gesture},
-            {R.string.setting,R.string.setting_key_and_gesture, R.string.setting_gesture_setting},
+            {R.string.setting,R.string.setting_key_and_gesture, R.string.setting_physical_key_setting},
+            {R.string.setting,R.string.setting_key_and_gesture, R.string.setting_side_gesture},
+            {R.string.setting,R.string.setting_key_and_gesture, R.string.setting_bottom_gesture},
+            {R.string.setting,R.string.setting_key_and_gesture, R.string.setting_light_gesture},
     };
 }

@@ -11,6 +11,10 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.GET_INSTALLED_PACKAGES" />
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
     <uses-permission android:name="android.permission.MODIFY_PHONE_STATE"
         tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -135,7 +139,10 @@
         <activity android:name=".device.FactoryResetActivity" />
         <activity android:name=".device.GSFActivity" />
         <activity android:name=".keygesture.KeyGestureActivity" />
-        <activity android:name=".keygesture.GestureSettingActivity" />
+        <activity android:name=".keygesture.BottomGestureSettingActivity" />
+        <activity android:name=".keygesture.SideGestureSettingActivity" />
+        <activity android:name=".keygesture.PhysicalKeySettingActivity" />
+        <activity android:name=".keygesture.LightGestureSettingActivity" />
 
         <activity android:name=".setupwizard.WifiSetupWizardActivity"
             android:exported="true"

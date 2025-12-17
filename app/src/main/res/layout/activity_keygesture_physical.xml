@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="86dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/setting_physical_key_setting"
+            android:layout_marginLeft="56dp"
+            android:layout_gravity="left|center_vertical"/>
+
+        <TextView
+            android:id="@+id/reverse_key_switch"
+            android:layout_width="120dp"
+            android:layout_height="42dp"
+            android:background="@drawable/display_def_apply_frame"
+            android:text="@string/setting_physical_reverse"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_marginRight="56dp"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/key_setting_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:divider="@android:color/transparent"
+        android:listSelector="@android:color/transparent"
+        android:overScrollMode="never"
+        android:scrollbars="none" />
+</LinearLayout>

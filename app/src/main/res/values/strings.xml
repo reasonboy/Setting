@@ -42,6 +42,30 @@
     <string name="setting_key_and_gesture">Key &amp; Gesture</string>
     <string name="setting_key_setting">Key Setting</string>
     <string name="setting_gesture_setting">Gesture Setting</string>
+    <string name="setting_physical_key_setting">Physical Key Setting</string>
+    <string name="setting_physical_reverse">Reverse</string>
+    <string name="setting_physical_key_page">Page turn(Previous page / Next page)</string>
+    <string name="setting_physical_key_volume">Volume(+ / -)</string>
+    <string name="setting_physical_key_dpad">DPAD(Left / Right)</string>
+    <string name="setting_inno_key_setting">INNOKEY Setting</string>
+    <string name="setting_keypack_setting">KeyPack Setting</string>
+    <string name="setting_bottom_gesture">Bottom Gesture</string>
+    <string name="setting_side_gesture">Side Gesture</string>
+    <string name="setting_left_side_gesture">Left Side Gesture</string>
+    <string name="setting_right_side_gesture">Right Side Gesture</string>
+    <string name="setting_light_gesture">Light Gesture</string>
+    <string name="setting_keypack_gesture">KeyPack Gesture</string>
+    <string name="setting_keypack_information">KeyPack information</string>
+    <string name="setting_gesture_function_selection">Function Selection</string>
+    <string name="gesture_back">Back</string>
+    <string name="gesture_home">Home</string>
+    <string name="gesture_refresh">Refresh</string>
+    <string name="gesture_task_manager">Task Manager</string>
+    <string name="gesture_eink_center">E-ink Center</string>
+    <string name="gesture_key_setting">Key Setting</string>
+    <string name="gesture_user_app">Specific User App</string>
+    <string name="gesture_none">None</string>
+
 
     <string name="settings_ok">OK</string>
     <string name="settings_cancel">Cancel</string>

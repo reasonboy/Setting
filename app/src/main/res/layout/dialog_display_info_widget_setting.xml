@@ -53,8 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:background="@drawable/bg_round"
-                    android:src="@drawable/setting_k_g_gesturesetting_bottomgestureinfo" />
+                    android:background="@drawable/bg_round" />
 
                 <ImageView
                     android:id="@+id/iv_prev"
