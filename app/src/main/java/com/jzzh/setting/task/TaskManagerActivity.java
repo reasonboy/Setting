@@ -312,7 +312,7 @@ public class TaskManagerActivity extends BaseActivity implements TasksAdapter.On
         // 查找 TaskSnapshot 类
         Class<?> taskSnapshotClass = null;
         try {
-            taskSnapshotClass = Class.forName("android.app.TaskSnapshot");
+            taskSnapshotClass = Class.forName("android.window.TaskSnapshot");  // 兼容Android 14
         } catch (ClassNotFoundException e) {
             try {
                 taskSnapshotClass = Class.forName("android.app.ActivityManager$TaskSnapshot");
