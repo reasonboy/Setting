@@ -69,11 +69,11 @@ public class LightActivity extends BaseActivity implements AdjustLayout.OnValueC
     private void updateLightView() {
         mBrightness.enable(getBrightnessEnable());
         mBrightnessLevel = getBrightnessLevel();
-        mBrightness.setValue(mBrightnessLevel);
+        mBrightness.setValue(getTempBrightnessLevel());
 
-        mTemperature.enable(getBrightnessEnable());
+        mTemperature.enable(getTemperatureEnable());
         mTemperatureLevel = getTemperatureLevel();
-        mTemperature.setValue(mTemperatureLevel);
+        mTemperature.setValue(getTempTemperatureLevel());
     }
 
     @Override
