@@ -107,6 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="27dp"
         android:paddingHorizontal="20dp"
+        android:visibility="gone"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
