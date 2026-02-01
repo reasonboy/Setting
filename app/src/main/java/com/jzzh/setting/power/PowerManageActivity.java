@@ -37,7 +37,6 @@ public class PowerManageActivity extends BaseActivity {
 
     private boolean getHallEnable() {
         int value = Settings.System.getInt(getContentResolver(),"hall_enable", 1);
-        boolean enable = value == 0 ? true : false;
-        return enable;
+        return value == 0;
     }
 }
