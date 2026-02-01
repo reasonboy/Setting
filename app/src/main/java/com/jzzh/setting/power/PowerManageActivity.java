@@ -31,13 +31,13 @@ public class PowerManageActivity extends BaseActivity {
     }
 
     private void setHallEnable(boolean enable) {
-        int value = enable ? 1 : 0;
+        int value = enable ? 0 : 1;
         Settings.System.putInt(getContentResolver(),"hall_enable", value);
     }
 
     private boolean getHallEnable() {
         int value = Settings.System.getInt(getContentResolver(),"hall_enable", 1);
-        boolean enable = value == 1 ? true : false;
+        boolean enable = value == 0 ? true : false;
         return enable;
     }
 }
