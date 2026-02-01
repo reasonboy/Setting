@@ -3,6 +3,7 @@ package com.jzzh.setting.display;
 import android.content.Context;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +16,12 @@ import android.widget.TextView;
 import com.jzzh.setting.BaseActivity;
 import com.jzzh.setting.R;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 public class RefreshActivity extends BaseActivity implements AdapterView.OnItemClickListener{
 
-    public static final String REFRESH_FREQUENCY_KEY = "persist_vendor_fullmode_cnt";
+    public static final String REFRESH_FREQUENCY_KEY = "persist.ebook.fullmode_cnt";
     private ArrayList<Data> mListData;
     private ListView mListView;
     private RefreshAdapter mAdapter;
@@ -65,12 +67,12 @@ public class RefreshActivity extends BaseActivity implements AdapterView.OnItemC
     }
 
     private int getRefreshFrequency() {
-        int time = Settings.System.getInt(getContentResolver(),REFRESH_FREQUENCY_KEY,0);
+        int time = Integer.parseInt(getProperties(this, REFRESH_FREQUENCY_KEY));
         return time;
     }
 
     private void setRefreshFrequency(int time) {
-        Settings.System.putInt(getContentResolver(),REFRESH_FREQUENCY_KEY,time);
+        setProperties(this, REFRESH_FREQUENCY_KEY, String.valueOf(time));
     }
 
     @Override
@@ -78,6 +80,43 @@ public class RefreshActivity extends BaseActivity implements AdapterView.OnItemC
         int sleepTime = mListData.get(i).time;
         setRefreshFrequency(sleepTime);
         updateDisplay();
+    }
+
+    public static String getProperties(Context context, String key) {
+        String result = "";
+        try {
+            ClassLoader classLoader = context.getClassLoader();
+            Class SystemProperties = classLoader.loadClass("android.os.SystemProperties");
+            Class[] paramTypes = new Class[1];
+            paramTypes[0] = String.class;
+            Method getString = SystemProperties.getMethod("get", paramTypes);
+            Object[] params = new Object[1];
+            params[0] = new String(key);
+            result = (String) getString.invoke(SystemProperties, params);
+        } catch (Exception e) {
+            result = "0";
+        }
+        return result;
+    }
+
+    public static void setProperties(Context context, String key, String value) {
+        try {
+            ClassLoader classLoader = context.getClassLoader();
+            Class SystemProperties = classLoader.loadClass("android.os.SystemProperties");
+
+            Class[] paramTypes = new Class[2];
+            paramTypes[0] = String.class;
+            paramTypes[1] = String.class;
+
+            Method setString = SystemProperties.getMethod("set", paramTypes);
+
+            Object[] params = new Object[2];
+            params[0] = key;
+            params[1] = value;
+
+            setString.invoke(SystemProperties, params);
+        } catch (Exception e) {
+        }
     }
 
     public class RefreshAdapter extends BaseAdapter {
