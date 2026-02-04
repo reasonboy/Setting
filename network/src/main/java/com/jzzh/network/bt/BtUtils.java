@@ -29,7 +29,7 @@ public class BtUtils {
         boolean success = false;
         try {
             setAliasMethod = device.getClass().getMethod("setAlias", String.class);
-            success = (boolean) setAliasMethod.invoke(device, alias);
+            setAliasMethod.invoke(device, alias);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
