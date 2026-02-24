@@ -43,7 +43,7 @@ public class HomeScreenStyleActivity extends BaseActivity {
         });
         mPages.add(widgetStylePage);
 
-        StyleChooseView.PageData defaultAppStylePage = new StyleChooseView.PageData(getString(R.string.home_screen_default_style), R.drawable.home_screen_widget_off);
+        StyleChooseView.PageData defaultAppStylePage = new StyleChooseView.PageData(getString(R.string.home_screen_default_style), R.drawable.home_screen_app_style);
         defaultAppStylePage.setLeftButton(getString(R.string.home_background), () -> {
             startActivity(HomeBackgroundSettingActivity.class);
         });
