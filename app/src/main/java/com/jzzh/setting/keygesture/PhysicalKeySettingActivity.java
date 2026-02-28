@@ -74,11 +74,11 @@ public class PhysicalKeySettingActivity extends BaseActivity implements ZhCheckB
     private void setReverseKeyState() {
         int reverseKey = getKeyReverse();
         if(reverseKey == 1) {
-            mReverseKey.setBackground(getDrawable(R.drawable.display_def_apply_frame));
-            mReverseKey.setTextColor(Color.BLACK);
-        } else {
             mReverseKey.setBackground(getDrawable(R.drawable.display_def_apply_frame_selected));
             mReverseKey.setTextColor(Color.WHITE);
+        } else {
+            mReverseKey.setBackground(getDrawable(R.drawable.display_def_apply_frame));
+            mReverseKey.setTextColor(Color.BLACK);
         }
     }
 
