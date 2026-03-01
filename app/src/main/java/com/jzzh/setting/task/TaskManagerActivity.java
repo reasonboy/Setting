@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jzzh.setting.BaseActivity;
+import com.jzzh.setting.NavigationDotView;
 import com.jzzh.setting.R;
 
 import java.lang.reflect.Field;
@@ -35,11 +36,17 @@ public class TaskManagerActivity extends BaseActivity implements TasksAdapter.On
 
     private static final int MSG_UPDATE_RECYCLERVIEW = 0;
     private static final int MSG_UPDATE_MEMORY = 1;
-    private static int SPAN_COUNT = 3;
+    private static final int SPAN_COUNT = 3;
+    private static final int ROWS_PER_PAGE = 2;
+    private static final int ITEMS_PER_PAGE = SPAN_COUNT * ROWS_PER_PAGE;
+    
     private ActivityManager mActivityManager;
     private RecyclerView mRecyclerView;
     private TasksAdapter mAdapter;
     private int mState = TasksAdapter.STATE_NORMAL;
+    private NavigationDotView mNavigationDotView;
+    private int mCurrentPage = 0;
+    private List<TaskItem> mAllTaskList = new ArrayList<>();
 
     private TextView mMemory;
     private View mChooseBtn,mCleanBtn;
@@ -68,11 +75,14 @@ public class TaskManagerActivity extends BaseActivity implements TasksAdapter.On
         mActivityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, SPAN_COUNT));
-        List<TaskItem> taskList = getTaskItem();
-        mAdapter = new TasksAdapter(this,taskList,mState);
+        
+        mAllTaskList = getTaskItem();
+        List<TaskItem> currentPageList = getCurrentPageTaskList();
+        mAdapter = new TasksAdapter(this, currentPageList, mState);
         mAdapter.setChoiceClickListener(this);
         mAdapter.setOnLongClickListener(this);
         mRecyclerView.setAdapter(mAdapter);
+        mNavigationDotView = findViewById(R.id.navigation_dot_view);
         mMemory = findViewById(R.id.task_memory);
         mChooseBtn = findViewById(R.id.task_choice);
         mChooseBtn.setOnClickListener(this);
@@ -99,10 +109,61 @@ public class TaskManagerActivity extends BaseActivity implements TasksAdapter.On
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
     private void updateRecyclerView() {
-        List<TaskItem> taskList = getTaskItem();
-        mAdapter.setData(taskList,mState);
+        mAllTaskList = getTaskItem();
+        
+        int totalPages = getTotalPages();
+        if (mCurrentPage >= totalPages && totalPages > 0) {
+            mCurrentPage = totalPages - 1;
+        } else if (totalPages == 0) {
+            mCurrentPage = 0;
+        }
+        
+        List<TaskItem> currentPageList = getCurrentPageTaskList();
+        mAdapter.setData(currentPageList, mState);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
+        
+        setupNavigationDots();
+    }
+    
+    private int getTotalPages() {
+        if (mAllTaskList.isEmpty()) {
+            return 0;
+        }
+        return (int) Math.ceil((double) mAllTaskList.size() / ITEMS_PER_PAGE);
+    }
+    
+    private List<TaskItem> getCurrentPageTaskList() {
+        List<TaskItem> currentPageList = new ArrayList<>();
+        int startIndex = mCurrentPage * ITEMS_PER_PAGE;
+        int endIndex = Math.min(startIndex + ITEMS_PER_PAGE, mAllTaskList.size());
+        
+        if (startIndex < mAllTaskList.size()) {
+            for (int i = startIndex; i < endIndex; i++) {
+                currentPageList.add(mAllTaskList.get(i));
+            }
+        }
+        return currentPageList;
+    }
+    
+    private void setupNavigationDots() {
+        int totalPages = getTotalPages();
+        mNavigationDotView.setDotCount(totalPages);
+        mNavigationDotView.enableDot(mCurrentPage);
+        mNavigationDotView.setOnNavigationDotClickListener(new NavigationDotView.OnNavigationDotClickListener() {
+            @Override
+            public void onNavigationDotClick(int pageIndex) {
+                mCurrentPage = pageIndex;
+                updateCurrentPageData();
+            }
+        });
+    }
+    
+    private void updateCurrentPageData() {
+        List<TaskItem> currentPageList = getCurrentPageTaskList();
+        mAdapter.setData(currentPageList, mState);
+        mAdapter.notifyDataSetChanged();
+        mNavigationDotView.enableDot(mCurrentPage);
     }
 
     private void removeTask(int taskId) {
@@ -192,9 +253,12 @@ public class TaskManagerActivity extends BaseActivity implements TasksAdapter.On
     @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     public void onChoiceClick(int position) {
-        List<TaskItem> list = getTaskItem();
-        removeTask(list.get(position).taskId);
-        mHandler.sendEmptyMessage(MSG_UPDATE_RECYCLERVIEW);
+        // 计算在全部任务列表中的实际位置
+        int realPosition = mCurrentPage * ITEMS_PER_PAGE + position;
+        if (realPosition < mAllTaskList.size()) {
+            removeTask(mAllTaskList.get(realPosition).taskId);
+            mHandler.sendEmptyMessage(MSG_UPDATE_RECYCLERVIEW);
+        }
     }
 
     @Override

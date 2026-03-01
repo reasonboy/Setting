@@ -38,6 +38,7 @@ public class NavigationDotView extends LinearLayout{
     }
 
     public void setDotCount(int count) {
+        mLayout.removeAllViews();
         mDotViews = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             int srcId = i;
