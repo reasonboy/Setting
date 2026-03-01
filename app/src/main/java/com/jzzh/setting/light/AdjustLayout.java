@@ -53,6 +53,7 @@ public class AdjustLayout extends LinearLayout implements ZhCheckBox.OnZhChecked
         mIncrease.setOnClickListener(this);
         mCheckBox = mLayout.findViewById(R.id.zh_adjust_switch);
         mCheckBox.setOnZhCheckedChangeListener(this);
+        mCheckBox.setVisibility(GONE);
         mSeekBar = mLayout.findViewById(R.id.zh_adjust_seekbar);
         mSeekBar.setOnZhSeekBarChangeListener(this);
     }

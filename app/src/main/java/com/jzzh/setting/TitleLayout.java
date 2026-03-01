@@ -13,13 +13,14 @@ import android.widget.TextView;
 
 import com.jzzh.tools.ZhCheckBox;
 
-public class TitleLayout extends RelativeLayout {
+public class TitleLayout extends RelativeLayout implements ZhCheckBox.OnZhCheckedChangeListener{
 
     private Context mContext;
     private ViewGroup mLayout;
     private String mTitle;
     private int mIdIcon1,mIdIcon2;
-    private boolean mEnableCheckBox;
+    private boolean mEnableCheckBox, mEnable;
+    private OnEnableChangeListener mOnEnableChangeListener;
 
     private TextView mTvTitle;
     private ImageView mIvIcon1, mIvIcon2;
@@ -50,6 +51,7 @@ public class TitleLayout extends RelativeLayout {
         mIvIcon1 = mLayout.findViewById(R.id.title_function_1);
         mIvIcon2 = mLayout.findViewById(R.id.title_function_2);
         mCheckBox = mLayout.findViewById(R.id.title_switch);
+        mCheckBox.setOnZhCheckedChangeListener(this);
 
         mTvTitle.setText(mTitle);
         if(mIdIcon1 != 0) {
@@ -72,5 +74,24 @@ public class TitleLayout extends RelativeLayout {
 
     public String getTitle(String title) {
         return mTitle;
+    }
+    public void enable(boolean enable) {
+        mCheckBox.setCheck(enable);
+    }
+
+    public interface OnEnableChangeListener {
+        public void enable(View view, boolean enable);
+    }
+
+    public void setOnEnableChangeListener(OnEnableChangeListener l) {
+        mOnEnableChangeListener = l;
+    }
+
+    @Override
+    public void onCheckedChanged(boolean checked) {
+        mEnable = checked;
+        if(mOnEnableChangeListener!=null) {
+            mOnEnableChangeListener.enable(this,mEnable);
+        }
     }
 }

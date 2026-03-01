@@ -7,16 +7,18 @@
     android:orientation="vertical">
 
     <com.jzzh.setting.TitleLayout
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_marginTop"
-        app:title="@string/light_setting"/>
+        app:title="@string/light_setting"
+        app:enable_checkBox="true"/>
     <com.jzzh.setting.light.AdjustLayout
         android:id="@+id/adjust_brightness"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:icon="@drawable/setting_light_warm"
-        app:title="@string/light_brightness"/>
+        app:title="@string/light_brightness" />
     <com.jzzh.setting.light.AdjustLayout
         android:id="@+id/adjust_temperature"
         android:layout_width="match_parent"

@@ -11,8 +11,9 @@ import android.view.View;
 
 import com.jzzh.setting.BaseActivity;
 import com.jzzh.setting.R;
+import com.jzzh.setting.TitleLayout;
 
-public class LightActivity extends BaseActivity implements AdjustLayout.OnValueChangeListener,AdjustLayout.OnEnableChangeListener{
+public class LightActivity extends BaseActivity implements AdjustLayout.OnValueChangeListener,TitleLayout.OnEnableChangeListener {
 
     private static final int MSG_UPDATE_BRIGHTNESS_STATE = 0;
     private static final Uri TEMPERATURE_ENABLE = Settings.System.getUriFor("temperature_enable");
@@ -26,6 +27,7 @@ public class LightActivity extends BaseActivity implements AdjustLayout.OnValueC
     private int mWarmBrightness = 0;//暖光亮度
     private int mColdBrightness = 0;//冷光亮度
     private AdjustLayout mTemperature,mBrightness;
+    private TitleLayout mTitle;
     private LightObserver mLightObserver;
 
     private Handler mHandler = new Handler() {
@@ -47,16 +49,18 @@ public class LightActivity extends BaseActivity implements AdjustLayout.OnValueC
         mLightObserver.startObserving();
 
         mTemperature = findViewById(R.id.adjust_temperature);
-        mTemperature.setOnEnableChangeListener(this);
         mTemperature.setOnValueChangeListener(this);
         mTemperature.setMinValue(0);
         mTemperature.setMaxValue(mBrightnessGradient);
 
         mBrightness = findViewById(R.id.adjust_brightness);
-        mBrightness.setOnEnableChangeListener(this);
         mBrightness.setOnValueChangeListener(this);
         mBrightness.setMinValue(0);
         mBrightness.setMaxValue(mBrightnessGradient);
+
+        mTitle = findViewById(R.id.title);
+        mTitle.setOnEnableChangeListener(this);
+
         updateLightView();
     }
 
@@ -67,25 +71,19 @@ public class LightActivity extends BaseActivity implements AdjustLayout.OnValueC
     }
 
     private void updateLightView() {
+        mTitle.enable(getBrightnessEnable());
         mBrightness.enable(getBrightnessEnable());
         mBrightnessLevel = getBrightnessLevel();
         mBrightness.setValue(getTempBrightnessLevel());
 
-        mTemperature.enable(getTemperatureEnable());
+        mTemperature.enable(getBrightnessEnable());
         mTemperatureLevel = getTemperatureLevel();
         mTemperature.setValue(getTempTemperatureLevel());
     }
 
     @Override
     public void enable(View view, boolean enable) {
-        if(view==mTemperature) {
-            setTemperatureEnable(enable);
-            if(!enable) {
-                setTemperatureLevel(0);
-            } else {
-                setTemperatureLevel(getTempTemperatureLevel());
-            }
-        } else if(view==mBrightness) {
+        if(view == mTitle) {
             setBrightnessEnable(enable);
             if(!enable) {
                 setBrightnessLevel(0);
