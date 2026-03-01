@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.jzzh.setting.R;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 public class SetDateDialog extends Dialog implements View.OnClickListener{
 
@@ -19,6 +20,7 @@ public class SetDateDialog extends Dialog implements View.OnClickListener{
     private TextView mMonthTv, mMonthIncreaseTv, mMonthReduceTv;
     private TextView mDateTv, mDateIncreaseTv, mDateReduceTv;
     private int mYear,mMonth,mDate;
+    private boolean isKoreaLocale = false;
     private Context mContext;
     private DialogCallback mDialogCallback;
     private static final String[] MONTH_ABBR={"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
@@ -32,7 +34,13 @@ public class SetDateDialog extends Dialog implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(R.layout.time_set_date_dialog);
+        Locale currentLocale = mContext.getResources().getConfiguration().locale;
+        isKoreaLocale = Locale.KOREAN.toString().equals(currentLocale.toString());
+        if (isKoreaLocale){
+            setContentView(R.layout.time_set_date_dialog_korea);
+        } else {
+            setContentView(R.layout.time_set_date_dialog);
+        }
         mYearIncreaseTv = findViewById(R.id.set_date_dialog_year_increase);
         mYearIncreaseTv.setOnClickListener(this);
         mYearReduceTv = findViewById(R.id.set_date_dialog_year_reduce);

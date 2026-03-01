@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="@dimen/zh_dialog_width"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rectangle">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zh_dialog_title_height">
+        <TextView
+            android:textSize="@dimen/textSize21"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/time_set_date"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp">
+
+        <LinearLayout
+            android:layout_width="@dimen/time_dialog_button_layout_width"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/set_date_dialog_year_reduce"
+                style="@style/SettingTimeControlTextViewStyle" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3px"
+                android:background="@color/black" />
+
+            <TextView
+                android:id="@+id/set_date_dialog_year"
+                style="@style/SettingTimeTextViewStyle"
+                android:text="4" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3px"
+                android:background="@color/black" />
+
+            <TextView
+                android:id="@+id/set_date_dialog_year_increase"
+                style="@style/SettingTimeControlTextViewStyle" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/time_dialog_button_layout_width"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/set_date_dialog_month_reduce"
+                style="@style/SettingTimeControlTextViewStyle" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3px"
+                android:background="@color/black" />
+
+            <TextView
+                android:id="@+id/set_date_dialog_month"
+                style="@style/SettingTimeTextViewStyle"
+                android:text="4" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3px"
+                android:background="@color/black" />
+
+            <TextView
+                android:id="@+id/set_date_dialog_month_increase"
+                style="@style/SettingTimeControlTextViewStyle" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/set_date_dialog_date_reduce"
+                style="@style/SettingTimeControlTextViewStyle" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3px"
+                android:background="@color/black" />
+
+            <TextView
+                android:id="@+id/set_date_dialog_date"
+                style="@style/SettingTimeTextViewStyle"
+                android:text="1996" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3px"
+                android:background="@color/black" />
+
+            <TextView
+                android:id="@+id/set_date_dialog_date_increase"
+                style="@style/SettingTimeControlTextViewStyle" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1.0dip"
+        android:layout_marginTop="40dp"
+        android:background="@color/black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/dialog_button_divider_vertical"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:showDividers="middle">
+
+        <Button
+            android:id="@+id/set_date_dialog_cancel"
+            style="@style/DialogButtonDividerStyle"
+            android:text="@string/settings_cancel" />
+
+        <Button
+            android:id="@+id/set_date_dialog_ok"
+            style="@style/DialogButtonDividerStyle"
+            android:text="@string/settings_ok" />
+    </LinearLayout>
+</LinearLayout>

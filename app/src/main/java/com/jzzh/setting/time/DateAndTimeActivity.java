@@ -14,12 +14,14 @@ import com.jzzh.setting.BaseActivity;
 import com.jzzh.setting.R;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 
 public class DateAndTimeActivity extends BaseActivity implements TimeSettingItem.OnClickListener, TimeSettingItem.OnCheckBoxChangeListener {
 
     private TimeBroadcast mTimeBroadcast;
     private TimeSettingItem mAutoTime, mSettingsDate, mSettingsTime, mSettingsTimeZone, mHourFormat;
+    private boolean isKoreaLocale = false;
 
     @Override
     protected void onCreate(Bundle bundle) {
@@ -115,6 +117,8 @@ public class DateAndTimeActivity extends BaseActivity implements TimeSettingItem
     @Override
     protected void onResume() {
         super.onResume();
+        Locale currentLocale = getResources().getConfiguration().locale;
+        isKoreaLocale = Locale.KOREAN.toString().equals(currentLocale.toString());
         mAutoTime.setCheckBoxEnable(isAutoTimeEnabled());
         updateTime();
         updateDate();
@@ -203,6 +207,11 @@ public class DateAndTimeActivity extends BaseActivity implements TimeSettingItem
 
     private void updateDate() {
         Calendar calendar = Calendar.getInstance();
-        mSettingsDate.setSummary((calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(Calendar.DAY_OF_MONTH) + "-" + calendar.get(Calendar.YEAR));
+        if (isKoreaLocale){
+            mSettingsDate.setSummary(calendar.get(Calendar.YEAR)+ "-" +(calendar.get(Calendar.MONTH) + 1)+ "-" + calendar.get(Calendar.DAY_OF_MONTH));
+        } else {
+            mSettingsDate.setSummary((calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(Calendar.DAY_OF_MONTH) + "-" + calendar.get(Calendar.YEAR));
+        }
+
     }
 }
