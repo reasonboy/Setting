@@ -1,5 +1,6 @@
 package com.jzzh.setting.display;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 
@@ -34,9 +35,7 @@ public class HomeScreenStyleActivity extends BaseActivity {
 
     private void initPages() {
         StyleChooseView.PageData widgetStylePage = new StyleChooseView.PageData(getString(R.string.home_screen_widget_style), R.drawable.home_screen_widget_on);
-        widgetStylePage.setLeftButton(getString(R.string.home_background), () -> {
-            startActivity(HomeBackgroundSettingActivity.class);
-        });
+        widgetStylePage.setLeftButton(getString(R.string.home_background), this::startBackgroundSetting);
         widgetStylePage.setRightButton(getString(R.string.setting_display_apply), () -> {
             setHomeScreenStyle(HOME_SCREEN_WIDGET_STYLE);
             updateView();
@@ -44,9 +43,7 @@ public class HomeScreenStyleActivity extends BaseActivity {
         mPages.add(widgetStylePage);
 
         StyleChooseView.PageData defaultAppStylePage = new StyleChooseView.PageData(getString(R.string.home_screen_default_style), R.drawable.home_screen_app_style);
-        defaultAppStylePage.setLeftButton(getString(R.string.home_background), () -> {
-            startActivity(HomeBackgroundSettingActivity.class);
-        });
+        defaultAppStylePage.setLeftButton(getString(R.string.home_background), this::startBackgroundSetting);
 
         defaultAppStylePage.setRightButton(getString(R.string.setting_display_apply), () -> {
             setHomeScreenStyle(HOME_SCREEN_DEF_APP_STYLE);
@@ -80,6 +77,19 @@ public class HomeScreenStyleActivity extends BaseActivity {
 
     private int getHomeScreenStyle() {
         return Settings.System.getInt(getContentResolver(),"space_widget_style_enable", HOME_SCREEN_WIDGET_STYLE);
+    }
+
+    private void startBackgroundSetting() {
+        Intent intent = new Intent();
+        intent.setClassName(
+                "com.inno.filemanager",
+                "com.inno.filemanager.FileListActivity"
+        );
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("action_type", "show_dialog");
+        intent.putExtra("category", "images");
+
+        startActivity(intent);
     }
 
 }
