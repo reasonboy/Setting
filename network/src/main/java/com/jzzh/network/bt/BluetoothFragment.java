@@ -345,8 +345,8 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
             } else if(action.equals(BluetoothAdapter.ACTION_DISCOVERY_STARTED)) {
                 mAvailableDevices.clear();
                 updateAvailableListView();
-                mInSearch.setVisibility(View.VISIBLE);
-                mIvRefresh.setBackgroundResource(R.drawable.settings_searching);
+                mInSearch.setVisibility(View.GONE);
+                mIvRefresh.setBackground(null);
             } else if(action.equals(BluetoothAdapter.ACTION_DISCOVERY_FINISHED)) {
                 mInSearch.setVisibility(View.GONE);
                 mIvRefresh.setBackgroundResource(R.drawable.settings_refresh);
