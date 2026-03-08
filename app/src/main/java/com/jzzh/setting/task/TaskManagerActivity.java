@@ -14,6 +14,8 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -51,6 +53,9 @@ public class TaskManagerActivity extends BaseActivity implements TasksAdapter.On
     private TextView mMemory;
     private View mChooseBtn,mCleanBtn;
 
+    private static final int SWIPE_THRESHOLD = 80;
+    private GestureDetector mGestureDetector;
+
     private Handler mHandler = new Handler() {
         @RequiresApi(api = Build.VERSION_CODES.Q)
         @Override
@@ -73,6 +78,25 @@ public class TaskManagerActivity extends BaseActivity implements TasksAdapter.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_manager);
         mActivityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        mGestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
+            @Override
+            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+                if (e1 == null || e2 == null) return false;
+                float deltaX = e2.getX() - e1.getX();
+                if (Math.abs(deltaX) > Math.abs(e2.getY() - e1.getY()) && Math.abs(deltaX) > SWIPE_THRESHOLD) {
+                    int totalPages = getTotalPages();
+                    if (deltaX > 0 && mCurrentPage > 0) {
+                        mCurrentPage--;
+                        updateCurrentPageData();
+                    } else if (deltaX < 0 && mCurrentPage < totalPages - 1) {
+                        mCurrentPage++;
+                        updateCurrentPageData();
+                    }
+                    return true;
+                }
+                return false;
+            }
+        });
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, SPAN_COUNT));
         
@@ -88,6 +112,12 @@ public class TaskManagerActivity extends BaseActivity implements TasksAdapter.On
         mChooseBtn.setOnClickListener(this);
         mCleanBtn = findViewById(R.id.task_clean);
         mCleanBtn.setOnClickListener(this);
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        mGestureDetector.onTouchEvent(ev);
+        return super.dispatchTouchEvent(ev);
     }
 
     @Override

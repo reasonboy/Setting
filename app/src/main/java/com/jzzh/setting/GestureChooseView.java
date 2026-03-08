@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -32,6 +33,10 @@ public class GestureChooseView extends LinearLayout {
     private TextView mBottomText;
     private List<PageData> mPages;
     private int mCurrentPageIndex = 0;
+
+    private static final int SWIPE_THRESHOLD = 80;
+    private float mTouchStartX = 0f;
+    private boolean mIsSwiping = false;
 
     public GestureChooseView(@NonNull Context context) {
         super(context);
@@ -159,6 +164,33 @@ public class GestureChooseView extends LinearLayout {
 
     public PageData getCurrentPage() {
         return mPages.get(mCurrentPageIndex);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                mTouchStartX = event.getX();
+                mIsSwiping = false;
+                return true;
+            case MotionEvent.ACTION_MOVE:
+                if (Math.abs(event.getX() - mTouchStartX) > SWIPE_THRESHOLD) {
+                    mIsSwiping = true;
+                }
+                return true;
+            case MotionEvent.ACTION_UP:
+                if (mIsSwiping) {
+                    float deltaX = event.getX() - mTouchStartX;
+                    if (deltaX > SWIPE_THRESHOLD) {
+                        showPreviousPage();
+                    } else if (deltaX < -SWIPE_THRESHOLD) {
+                        showNextPage();
+                    }
+                    mIsSwiping = false;
+                }
+                return true;
+        }
+        return super.onTouchEvent(event);
     }
 
     public static class PageData {
