@@ -73,7 +73,9 @@ public class StyleChooseView extends LinearLayout {
 
         mRightButton.setOnClickListener(v -> {
             PageData currentPage = getCurrentPage();
-            currentPage.rightButtonListener.onClick();
+            if(!currentPage.isRightButtonSelected()) {
+                currentPage.rightButtonListener.onClick();
+            }
         });
 
         mNavigationDotView.setOnNavigationDotClickListener(this::onNavigationDotClick);
@@ -208,6 +210,9 @@ public class StyleChooseView extends LinearLayout {
         public OnPageButtonClickListener leftButtonListener;
         public OnPageButtonClickListener rightButtonListener;
 
+        public PageData() {
+
+        }
         public PageData(String title, Bitmap image) {
             this.title = title;
             this.image = image;
@@ -221,6 +226,14 @@ public class StyleChooseView extends LinearLayout {
         public void setLeftButton(String text, OnPageButtonClickListener listener) {
             this.leftButtonText = text;
             this.leftButtonListener = listener;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public void setImage(Bitmap image) {
+            this.image = image;
         }
 
         public void setLeftButton(String text) {
@@ -244,6 +257,9 @@ public class StyleChooseView extends LinearLayout {
             this.rightButtonSelected = b;
         }
 
+        public boolean isRightButtonSelected() {
+            return rightButtonSelected;
+        }
     }
 
     public interface OnPageButtonClickListener {

@@ -3,7 +3,9 @@ package com.jzzh.setting.display.logo;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
+import android.view.View;
 
 import androidx.fragment.app.FragmentTransaction;
 
@@ -19,10 +21,16 @@ public class UserImageActivity extends BaseActivityNoNav {
     public static final String EXTRA_IMAGE_PATH = "extra_image_path";
     public static final String EXTRA_SAVE_LOGO_PATH = "extra_save_logo_path";
     public static final String EXTRA_NO_IMAGE_RES_ID = "extra_no_image_res_id";
+    public static final String EXTRA_TAG_PATH = "extra_tag_path";
+    public static final String EXTRA_TAG_SETTINGS = "extra_tag_settings";
+    public static final String EXTRA_TAG_SETTINGS_VALUE = "extra_tag_settings_value";
 
     protected String mImagePath;
     protected String[] mSaveLogoPath;
     protected int mNoImageSrcId;
+    protected String mTagPath;
+    protected String mTagSettings;
+    protected int mTagSettingsValue;
     private UserImageListFragment mUserImageListFragment;
 
     private boolean isExternal = false;
@@ -31,6 +39,17 @@ public class UserImageActivity extends BaseActivityNoNav {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.display_user_image_activity);
+        mNavigationBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.v("xml_log_nn","child onClick" + mUserImageListFragment.isVisible());
+                if(mUserImageListFragment.isVisible()) {
+                    finish();
+                } else {
+                    onBackPressed();
+                }
+            }
+        });
         setNavText(getString(R.string.setting_display_select_image));
 
         Intent intent = getIntent();
@@ -44,6 +63,15 @@ public class UserImageActivity extends BaseActivityNoNav {
             if (intent.hasExtra(EXTRA_NO_IMAGE_RES_ID)) {
                 mNoImageSrcId = intent.getIntExtra(EXTRA_NO_IMAGE_RES_ID, 0);
             }
+            if (intent.hasExtra(EXTRA_TAG_PATH)) {
+                mTagPath = intent.getStringExtra(EXTRA_TAG_PATH);
+            }
+            if (intent.hasExtra(EXTRA_TAG_SETTINGS)) {
+                mTagSettings = intent.getStringExtra(EXTRA_TAG_SETTINGS);
+            }
+            if (intent.hasExtra(EXTRA_TAG_SETTINGS_VALUE)) {
+                mTagSettingsValue = intent.getIntExtra(EXTRA_TAG_SETTINGS_VALUE, 0);
+            }
         }
     }
 
@@ -51,14 +79,15 @@ public class UserImageActivity extends BaseActivityNoNav {
     protected void onResume() {
         super.onResume();
         Log.v("xml_log_fra","UserImageActivity imagePath = "+mImagePath);
-        mUserImageListFragment = new UserImageListFragment(mImagePath,mNoImageSrcId);
+        mUserImageListFragment = new UserImageListFragment(mImagePath,mNoImageSrcId,mTagPath,mTagSettingsValue);
         mUserImageListFragment.setOnItemClick(new UserImageListFragment.OnItemClick() {
             @Override
             public void onItemClick(File selectFile, int position) {
-                UserImageSettingFragment userImageSettingFragment = new UserImageSettingFragment(selectFile,mSaveLogoPath);
+                UserImageSettingFragment userImageSettingFragment = new UserImageSettingFragment(selectFile,mSaveLogoPath,mTagPath);
                 userImageSettingFragment.setOnClickListener(new UserImageSettingFragment.OnSettingCompletedListener() {
                     @Override
                     public void settingCompleted() {
+                        Settings.System.putInt(getContentResolver(),mTagSettings,mTagSettingsValue);
                         finish();
                     }
                 });
@@ -85,7 +114,7 @@ public class UserImageActivity extends BaseActivityNoNav {
             if (path == null || path.isEmpty()) {
                 Log.d(TAG, "Image path is empty!");
             } else {
-                UserImageSettingFragment userImageSettingFragment = new UserImageSettingFragment(new File(path), mSaveLogoPath);
+                UserImageSettingFragment userImageSettingFragment = new UserImageSettingFragment(new File(path), mSaveLogoPath,mTagPath);
                 userImageSettingFragment.setOnClickListener(() -> {
                     if (isExternal) {
                         this.finish();

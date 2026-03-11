@@ -26,6 +26,8 @@ public class UserImageListFragment extends Fragment {
 
     private String mImagePath;
     private int mNoImageSrcId;
+    private String mTagPath;
+    private int mTagSettingsValue;
 
     public static final String DOWNLOAD_PATH = "/storage/emulated/0/Download/INNOS";
     private UserImageObserver mCustomImageObserver, mDownloadImageObserver;
@@ -39,10 +41,12 @@ public class UserImageListFragment extends Fragment {
     private OnItemClick mOnItemClick;
 
     @SuppressLint("ValidFragment")
-    public UserImageListFragment(String imagePath, int noImageSrcId) {
+    public UserImageListFragment(String imagePath, int noImageSrcId, String tagPath, int tagSettingsValue) {
         Log.v("xml_log_fra","UserImageListFragment imagePath = "+imagePath);
         mImagePath = imagePath;
         mNoImageSrcId = noImageSrcId;
+        mTagPath = tagPath;
+        mTagSettingsValue = tagSettingsValue;//这个值为0说明是系统默认的图
     }
 
     @Override
@@ -128,13 +132,15 @@ public class UserImageListFragment extends Fragment {
             }
             bitmaps.add(localFiles[i]);
         }
-        File downloadFile = new File(DOWNLOAD_PATH);
-        File[] downloadFiles = downloadFile.listFiles();
-        for (int i = 0; i < downloadFiles.length; ++i) {
-            if(!BitmapManager.isImage(downloadFiles[i])) {
-                continue;
+        if(mTagSettingsValue != 0) {
+            File downloadFile = new File(DOWNLOAD_PATH);
+            File[] downloadFiles = downloadFile.listFiles();
+            for (int i = 0; i < downloadFiles.length; ++i) {
+                if(!BitmapManager.isImage(downloadFiles[i])) {
+                    continue;
+                }
+                bitmaps.add(downloadFiles[i]);
             }
-            bitmaps.add(downloadFiles[i]);
         }
         return bitmaps;
     }

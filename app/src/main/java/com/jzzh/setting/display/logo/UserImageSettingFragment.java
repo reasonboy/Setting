@@ -2,6 +2,7 @@ package com.jzzh.setting.display.logo;
 
 import android.annotation.SuppressLint;
 import android.app.Fragment;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,13 +21,15 @@ public class UserImageSettingFragment extends Fragment implements View.OnClickLi
 
     private File mFile;
     private String[] mSaveLogoPath;
+    private String mTagPath;
     private UserImageSettingItem mFitCenter, mCenterCrop, mRotate, mRotateReverse;
     private OnSettingCompletedListener mOnSettingCompletedListener;
 
     @SuppressLint("ValidFragment")
-    public UserImageSettingFragment(File selectFile, String[] saveLogoPath) {
+    public UserImageSettingFragment(File selectFile, String[] saveLogoPath, String tagPath) {
         mFile = selectFile;
         mSaveLogoPath = saveLogoPath;
+        mTagPath = tagPath;
     }
 
     @Override
@@ -60,9 +63,12 @@ public class UserImageSettingFragment extends Fragment implements View.OnClickLi
     public void onClick(View view) {
         Bitmap srcBitmap = ((UserImageSettingItem)view).getSrcBitmap();
         Bitmap logo = BitmapManager.adjustBitmap(srcBitmap);
+        BitmapManager.saveBitmap(logo,mTagPath);
         for(String logoPath : mSaveLogoPath) {
             BitmapManager.saveBitmap(logo,logoPath);
         }
+        Intent intent = new Intent("zhihe.action.UPDATE_STANDBY");
+        getActivity().sendBroadcast(intent);
         Toast.makeText(getActivity(),R.string.set_image_successfully,Toast.LENGTH_LONG).show();
         if(mOnSettingCompletedListener != null) {
             mOnSettingCompletedListener.settingCompleted();

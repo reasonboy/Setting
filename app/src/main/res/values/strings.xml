@@ -117,7 +117,7 @@
         <br>and copy image files to <b>PowerOff</b> folder
         <br>or <b>INNOS</b> folder(in <b>Download</b> folder).
         <br><b>PNG, BMP, JPG</b> files can be used for PowerOff image.</p>
-        <p>Optimized resolution is <b>1200 X 1600</b>
+        <p>Optimized resolution is <b>1264 X 1680</b>
         ]]>
     </string>
     <string name="sleep_user_no_image">
@@ -126,7 +126,7 @@
         <br>and copy image files to <b>Sleep</b> folder
         <br>or <b>INNOS</b> folder(in <b>Download</b> folder).
         <br><b>PNG, BMP, JPG</b> files can be used for sleep image.</p>
-        <p>Optimized resolution is <b>1200 X 1600</b>
+        <p>Optimized resolution is <b>1264 X 1680</b>
         ]]>
     </string>
     <string name="user_image_setting">User Image Setting</string>
