@@ -37,9 +37,7 @@ public class HomeBackgroundSettingActivity extends BaseActivityNoNav {
 
         mHomeBackgroundSetting = findViewById(R.id.goto_home_background_setting);
         mHomeBackgroundSetting.setOnClickListener(v -> {
-            // go to browser for background setting
-            Intent intent = new Intent("com.inno.action.OPEN_FILE_BROWSER.BACKGROUND_IMAGE");
-            sendBroadcast(intent);
+            startBackgroundSetting();
         });
 
         mHomeBackgroundAlphaSetting = findViewById(R.id.home_background_alpha_setting);
@@ -63,6 +61,19 @@ public class HomeBackgroundSettingActivity extends BaseActivityNoNav {
     public void resetHomeBackground() {
         boolean result = mUtilSpaceUserSettings.setHomeBackground(this, BitmapFactory.decodeResource(getResources(), R.drawable.default_wallpaper));
         if (result) Toast.makeText(this, R.string.reset_home_background_setting, Toast.LENGTH_SHORT).show();
+    }
+
+    private void startBackgroundSetting() {
+        Intent intent = new Intent();
+        intent.setClassName(
+                "com.inno.filemanager",
+                "com.inno.filemanager.FileListActivity"
+        );
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("action_type", "show_dialog");
+        intent.putExtra("category", "images");
+
+        startActivity(intent);
     }
 
     public void makeBackgroundAlphaSettingDialog() {
