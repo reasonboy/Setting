@@ -18,6 +18,8 @@
     <string name="setting_display_si">Sleep Image</string>
     <string name="setting_display_default_image">Default Image</string>
     <string name="setting_display_si_user">User Image</string>
+    <string name="setting_display_current_screen">Current Screen</string>
+    <string name="setting_display_current_screen_warning">The current screen enters sleep mode as it is, and icons are displayed at the top.</string>
     <string name="setting_display_select_image">Select Image</string>
     <string name="setting_display_apply">Apply</string>
     <string name="setting_display_applied">Applied</string>

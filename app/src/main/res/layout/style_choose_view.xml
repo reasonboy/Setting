@@ -54,6 +54,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/frame_round_angle"/>
+            <TextView
+                android:id="@+id/tv_warning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingHorizontal="26dp"
+                android:textSize="20sp"/>
         </androidx.cardview.widget.CardView>
 
         <ImageView

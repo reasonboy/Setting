@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.jzzh.setting.BaseActivityNoNav;
 import com.jzzh.setting.R;
+import com.jzzh.setting.display.SleepImageActivity;
 
 import java.io.File;
 
@@ -32,6 +33,7 @@ public class UserImageActivity extends BaseActivityNoNav {
     protected String mTagSettings;
     protected int mTagSettingsValue;
     private UserImageListFragment mUserImageListFragment;
+    private boolean mIsSetStandby = false;
 
     private boolean isExternal = false;
 
@@ -72,6 +74,9 @@ public class UserImageActivity extends BaseActivityNoNav {
             if (intent.hasExtra(EXTRA_TAG_SETTINGS_VALUE)) {
                 mTagSettingsValue = intent.getIntExtra(EXTRA_TAG_SETTINGS_VALUE, 0);
             }
+            if(mTagSettings.equals(SleepImageActivity.STANDBY_LOGO_TAG)) {
+                mIsSetStandby = true;
+            }
         }
     }
 
@@ -87,6 +92,9 @@ public class UserImageActivity extends BaseActivityNoNav {
                 userImageSettingFragment.setOnClickListener(new UserImageSettingFragment.OnSettingCompletedListener() {
                     @Override
                     public void settingCompleted() {
+                        if(mIsSetStandby) {
+                            Settings.System.putInt(getContentResolver(),"sleep_screen_mode",0);
+                        }
                         Settings.System.putInt(getContentResolver(),mTagSettings,mTagSettingsValue);
                         finish();
                     }

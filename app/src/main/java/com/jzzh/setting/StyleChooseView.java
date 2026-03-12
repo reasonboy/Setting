@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
@@ -21,6 +22,7 @@ public class StyleChooseView extends LinearLayout {
 
     private TextView mTitleTextView;
     private ImageView mPreviewImageView;
+    private TextView mWarningTextView;
     private ImageView mPrevButton;
     private ImageView mNextButton;
     private NavigationDotView mNavigationDotView;
@@ -55,6 +57,7 @@ public class StyleChooseView extends LinearLayout {
 
         mTitleTextView = findViewById(R.id.def_tv);
         mPreviewImageView = findViewById(R.id.def_iv);
+        mWarningTextView = findViewById(R.id.tv_warning);
         mPrevButton = findViewById(R.id.btn_prev);
         mNextButton = findViewById(R.id.btn_next);
         mNavigationDotView = findViewById(R.id.dot_navigation);
@@ -118,7 +121,6 @@ public class StyleChooseView extends LinearLayout {
 
     public void updatePageDisplay() {
         PageData currentPage = mPages.get(mCurrentPageIndex);
-
         if (currentPage.title != null) {
             mTitleTextView.setText(currentPage.title);
             mTitleTextView.setVisibility(VISIBLE);
@@ -130,6 +132,13 @@ public class StyleChooseView extends LinearLayout {
             mPreviewImageView.setImageBitmap(currentPage.image);
         } else if (currentPage.imageResId != 0) {
             mPreviewImageView.setImageResource(currentPage.imageResId);
+        }
+
+        if (currentPage.warning != null) {
+            mWarningTextView.setText(currentPage.warning);
+            mWarningTextView.setVisibility(VISIBLE);
+        } else {
+            mWarningTextView.setVisibility(GONE);
         }
 
         if (currentPage.leftButtonSelected) {
@@ -150,11 +159,13 @@ public class StyleChooseView extends LinearLayout {
 
         if (currentPage.leftButtonText != null) {
             mLeftButtonText.setText(currentPage.leftButtonText);
+            mLeftButton.setVisibility(VISIBLE);
         } else {
             mLeftButton.setVisibility(GONE);
         }
         if (currentPage.rightButtonText != null) {
             mRightButtonText.setText(currentPage.rightButtonText);
+            mRightButton.setVisibility(VISIBLE);
         } else {
             mRightButton.setVisibility(GONE);
         }
@@ -202,6 +213,7 @@ public class StyleChooseView extends LinearLayout {
     public static class PageData {
         public String title;
         public Bitmap image;
+        public String warning;
         public int imageResId;
         public String leftButtonText;
         public String rightButtonText;
@@ -234,6 +246,10 @@ public class StyleChooseView extends LinearLayout {
 
         public void setImage(Bitmap image) {
             this.image = image;
+        }
+
+        public void setWarning(String warning) {
+            this.warning = warning;
         }
 
         public void setLeftButton(String text) {
