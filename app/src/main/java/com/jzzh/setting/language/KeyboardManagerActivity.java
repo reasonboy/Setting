@@ -51,6 +51,10 @@ public class KeyboardManagerActivity extends BaseActivity implements AdapterView
     private List<InputMethodInfo> sortList(List<InputMethodInfo> list){
         List<InputMethodInfo> set = new ArrayList<>();
         for (InputMethodInfo info : list) { // 将DEFAULT_IMI_ID置于首位
+            if (info.getPackageName().equals("com.google.android.tts"))
+            {
+                continue;
+            }
             if (info.getId().equals(DEFAULT_IMI_ID))
                 set.add(0, info);
             else
