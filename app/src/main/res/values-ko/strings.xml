@@ -18,6 +18,11 @@
     <string name="setting_display_si">슬립 이미지</string>
     <string name="setting_display_default_image">기본 이미지</string>
     <string name="setting_display_si_user">사용자 이미지</string>
+    <string name="setting_display_current_screen">현재 화면</string>
+    <string name="setting_display_current_screen_warning">현재 화면 그대로 잠금 모드로 들어가며, 아이콘이 상단에 표시됩니다.</string>
+    <string name="setting_display_select_image">이미지 선택</string>
+    <string name="setting_display_apply">적용하기</string>
+    <string name="setting_display_applied">적용됨</string>
     <string name="setting_display_home_screen_style">홈 화면 스타일</string>
     <string name="setting_display_widget_text">홈 화면 문구</string>
     <string name="setting_display_widget_setting">위젯 설정</string>
@@ -39,6 +44,29 @@
     <string name="setting_key_and_gesture">키 / 제스처</string>
     <string name="setting_key_setting">키 설정</string>
     <string name="setting_gesture_setting">제스처 설정</string>
+    <string name="setting_physical_key_setting">볼륨 키 설정</string>
+    <string name="setting_physical_reverse">반전</string>
+    <string name="setting_physical_key_page">페이지 전환(이전 페이지 / 다음 페이지)</string>
+    <string name="setting_physical_key_volume">볼륨(+ / -)</string>
+    <string name="setting_physical_key_dpad">DPAD(왼쪽 / 오른쪽)</string>
+    <string name="setting_inno_key_setting">INNOKEY 설정</string>
+    <string name="setting_keypack_setting">키팩 설정</string>
+    <string name="setting_bottom_gesture">하단 제스처 설정</string>
+    <string name="setting_side_gesture">사이드 제스처 설정</string>
+    <string name="setting_left_side_gesture">왼쪽 사이드 제스처</string>
+    <string name="setting_right_side_gesture">오른쪽 사이드 제스처</string>
+    <string name="setting_light_gesture">조명 조절 제스처 설정</string>
+    <string name="setting_keypack_gesture">키팩 제스처</string>
+    <string name="setting_keypack_information">키팩 정보</string>
+    <string name="setting_gesture_function_selection">기능 선택</string>
+    <string name="gesture_back">뒤로가기</string>
+    <string name="gesture_home">홈</string>
+    <string name="gesture_refresh">잔상 제거</string>
+    <string name="gesture_task_manager">작업 관리자</string>
+    <string name="gesture_eink_center">E-ink 센터</string>
+    <string name="gesture_key_setting">볼륨 키 설정</string>
+    <string name="gesture_user_app">특정 앱 실행</string>
+    <string name="gesture_none">사용 안 함</string>
 
     <string name="settings_ok">확인</string>
     <string name="settings_cancel">취소</string>
@@ -65,6 +93,8 @@
     <string name="refresh_20view">20 View</string>
 	
     <string name="light_setting">조명 설정</string>
+    <string name="light_brightness">밝기</string>
+    <string name="light_color_temperature">색 온도</string>
 	
     <string name="task_memory_usage">메모리 사용량 : %1$s</string>
     <string name="task_choose">선택</string>
@@ -117,6 +147,7 @@
     <string name="home_screen_widget_style">위젯 스타일</string>
     <string name="home_screen_default_style">기본 앱 배열 스타일</string>
     <string name="home_background_setting">배경 화면 설정</string>
+    <string name="home_background">홈 배경 설정</string>
     <string name="home_background_alpha_setting">배경 화면 투명도</string>
     <string name="transparency">투명도</string>
     <string name="reset_home_background_setting">배경 화면 초기화</string>
@@ -166,6 +197,7 @@
     <string name="device_info_available">사용 가능 : </string>
     <string name="device_info_total">전체 : </string>
     <string name="device_info_no_sd">SD 카드가 없습니다</string>
+    <string name="device_info_license_info_loading">불러오는중…</string>
 
     <string name="factory_reset_contents">
         시스템 초기화 진행 시 내부저장소의 모든 데이터가 삭제됩니다.\n\n
