@@ -83,6 +83,32 @@ public class StyleChooseView extends LinearLayout {
 
         mNavigationDotView.setOnNavigationDotClickListener(this::onNavigationDotClick);
 
+        mPreviewImageView.setOnTouchListener((v, event) -> {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    mTouchStartX = event.getX();
+                    mIsSwiping = false;
+                    return true;
+                case MotionEvent.ACTION_MOVE:
+                    if (Math.abs(event.getX() - mTouchStartX) > SWIPE_THRESHOLD) {
+                        mIsSwiping = true;
+                    }
+                    return true;
+                case MotionEvent.ACTION_UP:
+                    if (mIsSwiping) {
+                        float deltaX = event.getX() - mTouchStartX;
+                        if (deltaX > SWIPE_THRESHOLD) {
+                            showPreviousPage();
+                        } else if (deltaX < -SWIPE_THRESHOLD) {
+                            showNextPage();
+                        }
+                        mIsSwiping = false;
+                    }
+                    return true;
+            }
+            return false;
+        });
+
         mPages = new ArrayList<>();
     }
 
@@ -183,32 +209,6 @@ public class StyleChooseView extends LinearLayout {
         return mPages.get(mCurrentPageIndex);
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                mTouchStartX = event.getX();
-                mIsSwiping = false;
-                return true;
-            case MotionEvent.ACTION_MOVE:
-                if (Math.abs(event.getX() - mTouchStartX) > SWIPE_THRESHOLD) {
-                    mIsSwiping = true;
-                }
-                return true;
-            case MotionEvent.ACTION_UP:
-                if (mIsSwiping) {
-                    float deltaX = event.getX() - mTouchStartX;
-                    if (deltaX > SWIPE_THRESHOLD) {
-                        showPreviousPage();
-                    } else if (deltaX < -SWIPE_THRESHOLD) {
-                        showNextPage();
-                    }
-                    mIsSwiping = false;
-                }
-                return true;
-        }
-        return super.onTouchEvent(event);
-    }
 
     public static class PageData {
         public String title;
