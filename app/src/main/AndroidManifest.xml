@@ -91,7 +91,14 @@
         <activity android:name=".display.HomeBackgroundSettingActivity" />
         <activity android:name=".display.WidgetTextActivity" />
         <activity android:name=".display.WidgetSettingActivity" />
-        <activity android:name=".display.logo.UserImageActivity" />
+        <activity android:name=".display.logo.UserImageActivity"
+            android:exported="true">
+            <intent-filter android:priority="300">
+                <action android:name="com.inno.action.SLEEP_IMAGE_SETTING" />
+                <action android:name="com.inno.action.POWER_OFF_IMAGE_SETTING" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".light.LightActivity" />
         <activity android:name=".language.LanguageAndKeyboardActivity"
             android:exported="true">

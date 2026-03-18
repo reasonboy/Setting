@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.jzzh.setting.BaseActivityNoNav;
 import com.jzzh.setting.R;
+import com.jzzh.setting.display.PowerOffImageActivity;
 import com.jzzh.setting.display.SleepImageActivity;
 
 import java.io.File;
@@ -55,7 +56,8 @@ public class UserImageActivity extends BaseActivityNoNav {
         setNavText(getString(R.string.setting_display_select_image));
 
         Intent intent = getIntent();
-        if (intent != null) {
+        Log.v("xml_log_uia","intent.getAction()="+intent.getAction());
+        if (intent != null && intent.getAction() == null) {
             if (intent.hasExtra(EXTRA_IMAGE_PATH)) {
                 mImagePath = intent.getStringExtra(EXTRA_IMAGE_PATH);
             }
@@ -111,10 +113,21 @@ public class UserImageActivity extends BaseActivityNoNav {
             if (intent != null) {
                 action = intent.getAction();
                 path = intent.getStringExtra("path");
-
-                if (ACTION_SLEEP_IMAGE_SETTING.equals(action)
-                        || ACTION_POWER_OFF_IMAGE_SETTING.equals(action)) {
+                if (ACTION_SLEEP_IMAGE_SETTING.equals(action)) {
                     isExternal = true;
+                    mSaveLogoPath = BitmapManager.SLEEP_IMAGE_SAVE_FILES;
+                    mTagPath = SleepImageActivity.USER_LOGO_TAG_PATH;
+                    mIsSetStandby = true;
+                    mTagSettings = SleepImageActivity.STANDBY_LOGO_TAG;
+                    mTagSettingsValue = SleepImageActivity.STANDBY_LOGO_TAG_USER;
+                }
+                if (ACTION_POWER_OFF_IMAGE_SETTING.equals(action)) {
+                    isExternal = true;
+                    mSaveLogoPath = BitmapManager.POWER_OFF_IMAGE_SAVE_FILES;
+                    mTagPath = PowerOffImageActivity.USER_LOGO_TAG_PATH;
+                    mIsSetStandby = false;
+                    mTagSettings = PowerOffImageActivity.POWER_OFF_LOGO_TAG;
+                    mTagSettingsValue = PowerOffImageActivity.POWER_OFF_LOGO_TAG_USER;
                 }
             } else Log.e(TAG, "intent is null !!!!!!");
             Log.d(TAG, "action : " + action + ", path : " + path);
@@ -125,6 +138,10 @@ public class UserImageActivity extends BaseActivityNoNav {
                 UserImageSettingFragment userImageSettingFragment = new UserImageSettingFragment(new File(path), mSaveLogoPath,mTagPath);
                 userImageSettingFragment.setOnClickListener(() -> {
                     if (isExternal) {
+                        if(mIsSetStandby) {
+                            Settings.System.putInt(getContentResolver(),"sleep_screen_mode",0);
+                        }
+                        Settings.System.putInt(getContentResolver(),mTagSettings,mTagSettingsValue);
                         this.finish();
                     } else {
                         switchFragment(mUserImageListFragment);
