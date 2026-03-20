@@ -7,9 +7,9 @@
     <string name="setting_power">전원</string>
     <string name="setting_power_auto_sleep">자동 슬립 설정</string>
     <string name="setting_power_auto_power_off">자동 종료 설정</string>
-    <string name="setting_power_manage">Power Manage</string>
-    <string name="setting_power_manage_title">Disable auto wake-up by the case</string>
-    <string name="setting_power_manage_description">When you open the case cover, Set to not automatically release sleep mode.</string>
+    <string name="setting_power_manage">전원 관리</string>
+    <string name="setting_power_manage_title">케이스에 의한 자동 깨우기 비활성화</string>
+    <string name="setting_power_manage_description">케이스 커버를 열 때, 자동으로 슬립 모드가 해제 되지 않게 합니다.</string>
     <string name="setting_display">화면</string>
     <string name="setting_display_refresh">잔상 제거</string>
     <string name="setting_display_poi">종료 이미지</string>
@@ -121,13 +121,13 @@
 		<![CDATA[<p>이미지를 <b>내부 저장소</b>의 <b>PowerOff</b> 폴더
         <br>혹은 <b>Download</b> 안의 <b>INNOS</b> 폴더에 복사해주세요.
         <br><b>PNG, BMP, JPG</b> 형식을 사용할 수 있습니다.</p>
-        <p>최적화 된 해상도는 <b>1200 X 1600</b> 입니다.]]>
+        <p>최적화 된 해상도는 <b>1264 X 1680</b> 입니다.]]>
     </string>
     <string name="sleep_user_no_image">
 		<![CDATA[<p>이미지를 <b>내부 저장소</b>의 <b>Sleep</b> 폴더
         <br>혹은 <b>Download</b> 안의 <b>INNOS</b> 폴더에 복사해주세요.
         <br><b>PNG, BMP, JPG</b> 형식을 사용할 수 있습니다.</p>
-        <p>최적화 된 해상도는 <b>1200 X 1600</b> 입니다.]]>
+        <p>최적화 된 해상도는 <b>1264 X 1680</b> 입니다.]]>
     </string>
     <string name="user_image_setting">사용자 이미지 설정</string>
     <string name="user_image_fit_center">화면에 맞추기</string>
