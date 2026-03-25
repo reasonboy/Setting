@@ -264,4 +264,17 @@
     <string name="desc_bottom_gesture_enable">Use bottom gestures (Back/Home/Refresh)</string>
 
     <string name="empty">Empty</string>
+
+    <!-- KC -->
+    <string name="kc_certification_no">KC Certification No : R-R-EWG-SPC07009J</string>
+    <string name="kc_battery_certification_no">KC Battery Certification No : XU000000–00000</string>
+    <string name="kc_electrical_safety_confirmation_no">KC Electrical Safety Confirmation No : XU000000–00000</string>
+    <string name="kc_device_name">Device Name : Mars A</string>
+    <string name="kc_model">Model : SPC07009J</string>
+    <string name="kc_manufacturer_iwg">Manufacturer : IWG</string>
+    <string name="kc_importer_iwg">Importer : IWG</string>
+    <string name="kc_rated_voltage">Rated Voltage : 5V 2A</string>
+    <string name="kc_made_in_china">Made in China</string>
+    <string name="kc_as_contact">AS Contact</string>
+    <string name="kc_contact_number">031-689-4548</string>
 </resources>
