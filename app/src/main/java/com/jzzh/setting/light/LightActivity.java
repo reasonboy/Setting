@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 
 import com.jzzh.setting.BaseActivity;
@@ -171,13 +172,55 @@ public class LightActivity extends BaseActivity implements AdjustLayout.OnValueC
     }
 
     //将亮度等级和色温等级转换为暖光亮度和冷光亮度
-    private void gradientToBrightness(int brightness,int temperature) {
+    private void gradientToBrightness1(int brightness,int temperature) {
         mWarmBrightness = 256*brightness*temperature / (mBrightnessGradient*mTemperatureGradient);
         mColdBrightness = 256*brightness*(mTemperatureGradient - temperature) / (mBrightnessGradient*mTemperatureGradient);
         if(mWarmBrightness < 0) mWarmBrightness = 0;
         if(mWarmBrightness > 256) mWarmBrightness = 255;
         if(mColdBrightness < 0) mColdBrightness = 0;
         if(mColdBrightness > 256) mColdBrightness = 255;
+        changeLight();
+    }
+
+    private void gradientToBrightness(int brightness,int temperature) {
+
+        if (brightness == 0)
+        {
+            mWarmBrightness = 0;
+            mColdBrightness = 0;
+        } else {
+            //mWarmBrightness = 256*brightness*temperature / (mBrightnessGradient*mTemperatureGradient);
+            //mColdBrightness = 256*brightness*(mTemperatureGradient - temperature) / (mBrightnessGradient*mTemperatureGradient);
+            double ww = temperature / 32.0f;//暖光权重
+            double wc = 1.0f - ww;//冷光权重
+
+            // 计算总亮度值，范围0-255
+            double total = (brightness / 32.0f) * 255.0f;
+
+            //权重归一化(防止中间区域亮度下降)
+            double sum = Math.sqrt(wc * wc + ww * ww);
+            double nc = wc / sum;
+            double nw = ww / sum;
+
+            double cold = nc * total;
+            double warm = nw * total;
+
+            //可选Gamma校正(提高人眼均匀度)
+            double gamma = 2.2f;
+            if (total > 0) {
+                cold = Math.pow(cold / total, 1.0f / gamma) * total;
+                warm = Math.pow(warm / total, 1.0f / gamma) * total;
+            }
+            mColdBrightness = (int)Math.round(cold);
+            mWarmBrightness = (int)Math.round(warm);
+            if(mWarmBrightness < 4) mWarmBrightness = 4;
+            if(mWarmBrightness > 255) mWarmBrightness = 255;
+            if(mColdBrightness < 4) mColdBrightness = 4;
+            if(mColdBrightness > 255) mColdBrightness = 255;
+        }
+
+        Log.d("ZhLightDialog","gradientToBrightness: brightness="+brightness+",temperature="+temperature
+                +",mWarmBrightness="+mWarmBrightness+",mColdBrightness="+mColdBrightness);
         changeLight();
     }
 
