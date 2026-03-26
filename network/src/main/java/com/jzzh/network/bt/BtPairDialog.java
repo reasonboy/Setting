@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jzzh.network.R;
 
@@ -75,7 +76,12 @@ public class BtPairDialog extends Dialog implements View.OnClickListener{
             dismiss();
         } else if (id == R.id.bt_pair_dialog_define) {
             if (mType == Type.DISCONNECT) { // rename
-                setAlias(mDevice, mBtAliasEt.getText().toString());
+                String alias = mBtAliasEt.getText().toString();
+                if(alias.length() <= 30) {
+                    setAlias(mDevice, alias);
+                } else {
+                    Toast.makeText(mContext,R.string.bt_character_restriction_prompt,Toast.LENGTH_LONG).show();
+                }
             }
             mDialogCallback.callBackData(mDevice, ButtonType.RIGHT);
             dismiss();

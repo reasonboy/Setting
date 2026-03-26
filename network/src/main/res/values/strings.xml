@@ -82,6 +82,7 @@
     <string name="bt_paired_devices">Paired devices</string>
     <string name="bt_active">Active</string>
     <string name="bt_forget">Forget</string>
+    <string name="bt_character_restriction_prompt">Up to 30 characters can be entered.</string>
     <string name="hint_wifi_pac_url" translatable="false">"https://www.example.com/proxy.pac"</string>
     <string name="hint_wifi_proxy_hostname" translatable="false">"proxy.example.com"</string>
     <string name="hint_wifi_proxy_port" translatable="false">"8080"</string>
