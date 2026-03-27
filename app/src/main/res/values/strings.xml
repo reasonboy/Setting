@@ -10,6 +10,8 @@
     <string name="setting_power_manage">Power Manage</string>
     <string name="setting_power_manage_title">Disable auto wake-up by the case</string>
     <string name="setting_power_manage_description">When you open the case cover, Set to not automatically release sleep mode.</string>
+    <string name="setting_pause_music_title">Audio close after into sleep mode</string>
+    <string name="setting_pause_music_description">When it enters sleep mode, the audio turns off.</string>
     <string name="setting_display">Display</string>
     <string name="setting_display_refresh">Refresh</string>
     <string name="setting_display_poi">Power Off Image</string>
