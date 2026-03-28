@@ -10,6 +10,8 @@
     <string name="setting_power_manage">전원 관리</string>
     <string name="setting_power_manage_title">케이스에 의한 자동 깨우기 비활성화</string>
     <string name="setting_power_manage_description">케이스 커버를 열 때, 자동으로 슬립 모드가 해제 되지 않게 합니다.</string>
+    <string name="setting_pause_music_title">슬립 모드로 전환 시 오디오 종료</string>
+    <string name="setting_pause_music_description">슬립 모드로 전환 되면 오디오가 꺼집니다.</string>
     <string name="setting_display">화면</string>
     <string name="setting_display_refresh">잔상 제거</string>
     <string name="setting_display_poi">종료 이미지</string>
