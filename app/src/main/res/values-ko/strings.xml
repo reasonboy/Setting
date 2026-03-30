@@ -46,7 +46,7 @@
     <string name="setting_key_and_gesture">키 / 제스처</string>
     <string name="setting_key_setting">키 설정</string>
     <string name="setting_gesture_setting">제스처 설정</string>
-    <string name="setting_physical_key_setting">볼륨 키 설정</string>
+    <string name="setting_physical_key_setting">물리 키 설정</string>
     <string name="setting_physical_reverse">반전</string>
     <string name="setting_physical_key_page">페이지 전환(이전 페이지 / 다음 페이지)</string>
     <string name="setting_physical_key_volume">볼륨(+ / -)</string>
