@@ -66,7 +66,7 @@
     <string name="gesture_refresh">잔상 제거</string>
     <string name="gesture_task_manager">작업 관리자</string>
     <string name="gesture_eink_center">E-ink 센터</string>
-    <string name="gesture_key_setting">물리 키 설정</string>
+    <string name="gesture_key_setting">키 설정</string>
     <string name="gesture_user_app">특정 앱 실행</string>
     <string name="gesture_none">사용 안 함</string>
 
