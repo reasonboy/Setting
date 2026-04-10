@@ -80,22 +80,49 @@ public class LanguageLayout extends LinearLayout implements AdapterView.OnItemCl
 
     private void setLanguage(Locale locale) {
         try {
-            Class activityManager = Class.forName("android.app.IActivityManager");
-            Class activityManagerNative = Class.forName("android.app.ActivityManagerNative");
-            Method getDefault = activityManagerNative.getDeclaredMethod("getDefault");
-            Object objIActMag = getDefault.invoke(activityManagerNative);
-            Method getConfiguration = activityManager.getDeclaredMethod("getConfiguration");
-            Configuration config = (Configuration) getConfiguration.invoke(objIActMag);
-            config.locale = locale;
-            Class clzConfig = Class.forName("android.content.res.Configuration");
-            java.lang.reflect.Field userSetLocale = clzConfig.getField("userSetLocale");
-            userSetLocale.set(config, true);
-            Class[] clzParams = {Configuration.class};
-            Method updateConfiguration = activityManager.getDeclaredMethod("updateConfiguration", clzParams);
-            updateConfiguration.invoke(objIActMag, config);
+            Locale.setDefault(locale);
+
+            Class<?> amClz = Class.forName("android.app.ActivityManager");
+            Object iAm = amClz.getMethod("getService").invoke(null);
+
+            Configuration config;
+            try {
+                Method getConfiguration = iAm.getClass().getMethod("getConfiguration");
+                config = (Configuration) getConfiguration.invoke(iAm);
+            } catch (Throwable ignore) {
+                config = new Configuration();
+            }
+
+            if (config == null) config = new Configuration();
+
+            config.setLocales(new android.os.LocaleList(locale));
+
+            try {
+                java.lang.reflect.Field userSetLocale = Configuration.class.getField("userSetLocale");
+                userSetLocale.setBoolean(config, true);
+            } catch (Throwable e) {
+                e.printStackTrace();
+            }
+
+            // AOSP 12~14
+            try {
+                Method m = iAm.getClass().getMethod(
+                        "updatePersistentConfigurationWithAttribution",
+                        Configuration.class, String.class, String.class
+                );
+                m.invoke(iAm, config, getContext().getPackageName(), null);
+            } catch (NoSuchMethodException e) {
+                // AOSP 11 fallback
+                Method m = iAm.getClass().getMethod(
+                        "updatePersistentConfiguration",
+                        Configuration.class
+                );
+                m.invoke(iAm, config);
+            }
+
             BackupManager.dataChanged("com.android.providers.settings");
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
     }
 
