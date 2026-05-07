@@ -2,6 +2,7 @@ package com.jzzh.setting;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -26,19 +27,19 @@ public class NavigationLayout extends LinearLayout{
     private void initView(Context context) {
         mContext = context;
         mLayout = new LinearLayout(mContext);
-        final MarginLayoutParams lp = new MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-        int naviHeight = getResources().getDimensionPixelOffset(R.dimen.navi_layout_height);
-        int textHeight = getResources().getDimensionPixelOffset(R.dimen.navi_layout_textSize);
-        int top = (naviHeight - textHeight) / 2;
-        lp.setMargins(getResources().getDimensionPixelOffset(R.dimen.navi_layout_marginLeft), top , 0, 0);
-        addView(mLayout,lp);
+        final LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        lp.setMargins(getResources().getDimensionPixelOffset(R.dimen.navi_layout_marginLeft), 0, 0, 0);
+        lp.gravity = Gravity.CENTER_VERTICAL;
+        addView(mLayout, lp);
     }
 
     public void setNavigation(int[] navigationIds) {
-        final MarginLayoutParams tvLp = new MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-        final MarginLayoutParams ivLp = new MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-        ivLp.setMargins(getResources().getDimensionPixelOffset(R.dimen.navi_layout_view_space), 1,
-                getResources().getDimensionPixelOffset(R.dimen.navi_layout_view_space),0);
+        final LinearLayout.LayoutParams tvLp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        final LinearLayout.LayoutParams ivLp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        tvLp.gravity = Gravity.CENTER_VERTICAL;
+        ivLp.gravity = Gravity.CENTER_VERTICAL;
+        ivLp.setMargins(getResources().getDimensionPixelOffset(R.dimen.navi_layout_view_space), 0,
+                getResources().getDimensionPixelOffset(R.dimen.navi_layout_view_space), 0);
         for (int i = 0;i < navigationIds.length;i++) {
             int srcId = navigationIds[i];
             String subNavi = mContext.getString(srcId);
