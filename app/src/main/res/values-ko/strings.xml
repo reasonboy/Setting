@@ -270,9 +270,9 @@
     <string name="empty">없음</string>
 
     <!-- KC -->
-    <string name="kc_certification_no">KC 방송통신 : R-R-EWG-SPC07009J</string>
-    <string name="kc_battery_certification_no">KC 안전확인 : XU100323-26009</string>
-    <string name="kc_electrical_safety_confirmation_no">KC 안전인증 : XU104287–26001</string>
+    <string name="kc_certification_no">KC 전파인증 : R-R-EWG-SPC07009J</string>
+    <string name="kc_battery_certification_no">KC 배터리인증 : XU100323-26009</string>
+    <string name="kc_electrical_safety_confirmation_no">KC 안전확인 : XU104287–26001</string>
     <string name="kc_device_name">제품명 : Mars A</string>
     <string name="kc_model">모델명 : SPC07009J</string>
     <string name="kc_manufacturer_iwg">제조자 : (주)이노웨이브글로벌</string>

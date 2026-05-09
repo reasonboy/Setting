@@ -51,6 +51,7 @@
         android:theme="@style/Theme.Setting">
         <activity
             android:name=".Setting"
+            android:screenOrientation="userPortrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -64,8 +65,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".network.NetworkActivity" />
+        <activity
+            android:name=".network.NetworkActivity"
+            android:screenOrientation="userPortrait" />
         <activity android:name=".network.wifi.WifiActivity"
+            android:screenOrientation="userPortrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="zhihe.action.START_ACTIVITY_WIFI" />
@@ -73,25 +77,51 @@
             </intent-filter>
         </activity>
         <activity android:name=".network.bt.BluetoothActivity"
+            android:screenOrientation="userPortrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="zhihe.action.START_ACTIVITY_BT" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".power.PowerActivity" />
-        <activity android:name=".power.AutoSleepActivity" />
-        <activity android:name=".power.AutoPowerOffActivity" />
-        <activity android:name=".power.PowerManageActivity" />
-        <activity android:name=".display.DisplayActivity" />
-        <activity android:name=".display.RefreshActivity" />
-        <activity android:name=".display.PowerOffImageActivity" />
-        <activity android:name=".display.SleepImageActivity" />
-        <activity android:name=".display.HomeScreenStyleActivity" />
-        <activity android:name=".display.HomeBackgroundSettingActivity" />
-        <activity android:name=".display.WidgetTextActivity" />
-        <activity android:name=".display.WidgetSettingActivity" />
+        <activity
+            android:name=".power.PowerActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".power.AutoSleepActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".power.AutoPowerOffActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".power.PowerManageActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".display.DisplayActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".display.RefreshActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".display.PowerOffImageActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".display.SleepImageActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".display.HomeScreenStyleActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".display.HomeBackgroundSettingActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".display.WidgetTextActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".display.WidgetSettingActivity"
+            android:screenOrientation="userPortrait" />
         <activity android:name=".display.logo.UserImageActivity"
+            android:screenOrientation="userPortrait"
             android:exported="true">
             <intent-filter android:priority="300">
                 <action android:name="com.inno.action.SLEEP_IMAGE_SETTING" />
@@ -99,8 +129,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".light.LightActivity" />
+        <activity
+            android:name=".light.LightActivity"
+            android:screenOrientation="userPortrait" />
         <activity android:name=".language.LanguageAndKeyboardActivity"
+            android:screenOrientation="userPortrait"
             android:exported="true">
             <intent-filter android:priority="300">
                 <action android:name="android.settings.LOCALE_SETTINGS" />
@@ -116,10 +149,17 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".language.KeyboardManagerActivity" />
-        <activity android:name=".time.DateAndTimeActivity" />
-        <activity android:name=".time.TimeZoneActivity" />
+        <activity
+            android:name=".language.KeyboardManagerActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".time.DateAndTimeActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".time.TimeZoneActivity"
+            android:screenOrientation="userPortrait" />
         <activity android:name=".lock.LockScreenActivity"
+            android:screenOrientation="userPortrait"
             android:excludeFromRecents="true"
             android:exported="true">
             <intent-filter android:priority="300">
@@ -131,27 +171,55 @@
                 android:value="true" />
         </activity>
         <activity android:name=".task.TaskManagerActivity"
+            android:screenOrientation="userPortrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="zhihe.action.START_ACTIVITY_TASK" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".device.DeviceActivity" />
-        <activity android:name=".device.LicenseInfo" />
-        <activity android:name=".device.DeviceInfoActivity" />
-        <activity android:name=".device.DeviceCertificationInfoActivity" />
-        <activity android:name=".device.SystemUpdateActivity" />
-        <activity android:name=".device.AppUpdateActivity" />
-        <activity android:name=".device.FactoryResetActivity" />
-        <activity android:name=".device.GSFActivity" />
-        <activity android:name=".keygesture.KeyGestureActivity" />
-        <activity android:name=".keygesture.BottomGestureSettingActivity" />
-        <activity android:name=".keygesture.SideGestureSettingActivity" />
-        <activity android:name=".keygesture.PhysicalKeySettingActivity" />
-        <activity android:name=".keygesture.LightGestureSettingActivity" />
+        <activity
+            android:name=".device.DeviceActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".device.LicenseInfo"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".device.DeviceInfoActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".device.DeviceCertificationInfoActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".device.SystemUpdateActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".device.AppUpdateActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".device.FactoryResetActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".device.GSFActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".keygesture.KeyGestureActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".keygesture.BottomGestureSettingActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".keygesture.SideGestureSettingActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".keygesture.PhysicalKeySettingActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".keygesture.LightGestureSettingActivity"
+            android:screenOrientation="userPortrait" />
 
         <activity android:name=".setupwizard.WifiSetupWizardActivity"
+            android:screenOrientation="userPortrait"
             android:exported="true"
             android:clearTaskOnLaunch="true"
             android:configChanges="orientation|keyboardHidden"

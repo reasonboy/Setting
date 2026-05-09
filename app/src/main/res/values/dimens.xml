@@ -11,11 +11,11 @@
     <!-- 导航栏字符大小-->
     <dimen name="navi_layout_textSize">22sp</dimen>
     <!-- 导航栏字符与“>”图标的距离-->
-    <dimen name="navi_layout_view_space">9dp</dimen>
+    <dimen name="navi_layout_view_space">20dp</dimen>
     <!-- 导航栏“>”图标大小-->
     <dimen name="navi_layout_iconSize">32dp</dimen>
     <!-- 导航栏下划线粗细-->
-    <dimen name="navi_layout_underline_height">2dp</dimen>
+    <dimen name="navi_layout_underline_height">1.5dp</dimen>
     <!-- 设置单项宽度-->
     <dimen name="setting_item_width">182dp</dimen>
     <!-- 设置单项高度-->

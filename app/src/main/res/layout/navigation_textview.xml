@@ -5,8 +5,6 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:minWidth="40dp"
-    android:paddingStart="5dp"
-    android:paddingEnd="5dp"
     >
 
     <TextView

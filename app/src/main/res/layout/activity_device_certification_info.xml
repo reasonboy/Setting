@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="75dp"
             android:gravity="center"
-            android:text="@string/kc_certification_no"
+            android:text="@string/kc_battery_certification_no"
             android:textColor="@color/black"
             android:textSize="21sp"/>
         <TextView
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="@string/kc_battery_certification_no"
+            android:text="@string/kc_certification_no"
             android:textColor="@color/black"
             android:textSize="21sp"/>
         <TextView
