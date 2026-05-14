@@ -78,7 +78,13 @@ public class BtPairDialog extends Dialog implements View.OnClickListener{
             if (mType == Type.DISCONNECT) { // rename
                 String alias = mBtAliasEt.getText().toString();
                 if(alias.length() <= 30) {
-                    setAlias(mDevice, alias);
+                    if(alias.equals("")) {
+                        setAlias(mDevice, mDevice.getAddress());
+                    } else if (alias.matches("\\s*")){
+                        return;
+                    } else {
+                        setAlias(mDevice, alias);
+                    }
                 } else {
                     Toast.makeText(mContext,R.string.bt_character_restriction_prompt,Toast.LENGTH_LONG).show();
                 }
