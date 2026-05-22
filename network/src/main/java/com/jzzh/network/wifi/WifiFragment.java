@@ -353,8 +353,9 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
     private void optimizationList() {
         List<ScanResult> nullResultList = new ArrayList<ScanResult>();
         for(int i=0;i<mResultList.size();i++) {
+            Log.v("xml_log_wifi",mResultList.get(i).toString());
             if(mResultList.get(i).SSID.toString().trim().equals("") || mResultList.get(i).SSID == null
-                || mResultList.get(i).getWifiStandard() == ScanResult.WIFI_STANDARD_11AX) {
+                || mResultList.get(i).frequency >= 5925) {
                 nullResultList.add(mResultList.get(i));
             }
         }
