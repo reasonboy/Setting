@@ -29,6 +29,7 @@
     <string name="wifi_scanning">와이파이 탐색 중…</string>
     <string name="wifi_open_tips">사용 가능한 네트워크 목록을 보려면 와이파이를 켜주세요</string>
     <string name="wifi_add_network">네트워크 추가</string>
+    <string name="wifi_error_password">Wi-Fi에 연결할 수 없습니다.비밀번호를 확인해주세요.</string>
     <string name="wifi_dialog_password">비밀번호</string>
     <string name="wifi_dialog_ed_hint">비밀번호 입력</string>
     <string name="wifi_dialog_cancel">취소</string>

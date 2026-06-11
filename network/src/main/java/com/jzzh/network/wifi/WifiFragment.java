@@ -27,6 +27,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -314,9 +315,13 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
                 }
             } else if (action.equals(WifiManager.SUPPLICANT_STATE_CHANGED_ACTION)) {//热点连接状态
                 SupplicantState linkState = intent.getParcelableExtra(WifiManager.EXTRA_NEW_STATE);
-                int errorCode = intent.getIntExtra(WifiManager.EXTRA_SUPPLICANT_ERROR,0);
+                int errorCode = intent.getIntExtra(WifiManager.EXTRA_SUPPLICANT_ERROR,-1);
                 int errorReason = 0;//intent.getIntExtra(WifiManager.EXTRA_SUPPLICANT_ERROR_REASON,WifiManager.ERROR_AUTH_FAILURE_NONE);
                 Log.v("xml_log_app","linkState = " + linkState + " ;errorCode = " + errorCode + " ;errorReason = " + errorReason);
+
+                if (errorCode == WifiManager.ERROR_AUTHENTICATING) {
+                    Toast.makeText(mContext,R.string.wifi_error_password,Toast.LENGTH_LONG).show();
+                }
             } else if (action.equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
                 getNewListAndRefresh();
             }

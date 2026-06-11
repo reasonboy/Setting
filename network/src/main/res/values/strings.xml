@@ -29,6 +29,7 @@
     <string name="wifi_scanning">Wi-Fi Scanning…</string>
     <string name="wifi_open_tips">To see the available networks, turn on WiFi.</string>
     <string name="wifi_add_network">Add Network</string>
+    <string name="wifi_error_password">Unable to connect to Wi-Fi.Please check the password.</string>
     <string name="wifi_dialog_password">Password</string>
     <string name="wifi_dialog_ed_hint">Enter the password</string>
     <string name="wifi_dialog_cancel">Cancel</string>
