@@ -51,7 +51,7 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
     private EditText mProxyHostnameEt;
     private EditText mProxyPortEt;
     private EditText mBypassProxyForEt;
-    private ImageView mNone,mWep,mWpa;
+    private ImageView mNone,mWep,mWpa,mWpa2Enterprise,mWpa3Enterprise;
     private ArrayList<ImageView> mImageList = new ArrayList<>();
     private Button mCancle,mConnect;
     private DialogCallback mCallback;
@@ -83,6 +83,8 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
     private static final String NONE = "OPEN";
     private static final String WEP = "WEP";
     private static final String WPA = "WPA";
+    private static final String WPA2_ENTERPRISE = "WPA2-Enterprise";
+    private static final String WPA3_ENTERPRISE = "WPA3-Enterprise";
 
 
     public AddDialog(Context context, int style, DialogCallback callback) {
@@ -106,11 +108,15 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
         mNone = findViewById(R.id.wifi_add_dialog_none);
         mWep = findViewById(R.id.wifi_add_dialog_wep);
         mWpa = findViewById(R.id.wifi_add_dialog_wpa);
+        mWpa2Enterprise = findViewById(R.id.wifi_add_dialog_wpa2_enterprise);
+        mWpa3Enterprise = findViewById(R.id.wifi_add_dialog_wpa3_enterprise);
         mCancle = findViewById(R.id.wifi_add_dialog_cancle);
         mConnect = findViewById(R.id.wifi_add_dialog_connect);
         mNone.setOnClickListener(this);
         mWep.setOnClickListener(this);
         mWpa.setOnClickListener(this);
+        mWpa2Enterprise.setOnClickListener(this);
+        mWpa3Enterprise.setOnClickListener(this);
         mCancle.setOnClickListener(this);
         mConnect.setOnClickListener(this);
         mConnect.setEnabled(false);
@@ -118,6 +124,8 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
         mImageList.add(mNone);
         mImageList.add(mWep);
         mImageList.add(mWpa);
+        mImageList.add(mWpa2Enterprise);
+        mImageList.add(mWpa3Enterprise);
         mShowPasswordLayout = findViewById(R.id.ll_enable_show_password);
         setCheck(WPA);
         mIpAddressEt = findViewById(R.id.wifi_ip_address);
@@ -241,6 +249,14 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
             mWpa.setImageResource(R.drawable.check_on);
             mPasswordEt.setVisibility(VISIBLE);
             mShowPasswordLayout.setVisibility(VISIBLE);
+        } else if(capabilities.equals(WPA2_ENTERPRISE)) {
+            mWpa2Enterprise.setImageResource(R.drawable.check_on);
+            mPasswordEt.setVisibility(VISIBLE);
+            mShowPasswordLayout.setVisibility(VISIBLE);
+        } else if(capabilities.equals(WPA3_ENTERPRISE)) {
+            mWpa3Enterprise.setImageResource(R.drawable.check_on);
+            mPasswordEt.setVisibility(VISIBLE);
+            mShowPasswordLayout.setVisibility(VISIBLE);
         }
         mPasswordEt.getText().clear();
 
@@ -256,6 +272,10 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
             setCheck(WEP);
         } else if (id == R.id.wifi_add_dialog_wpa) {
             setCheck(WPA);
+        } else if (id == R.id.wifi_add_dialog_wpa2_enterprise) {
+            setCheck(WPA2_ENTERPRISE);
+        } else if (id == R.id.wifi_add_dialog_wpa3_enterprise) {
+            setCheck(WPA3_ENTERPRISE);
         } else if (id == R.id.wifi_add_dialog_cancle) {
             dismiss();
         } else if (id == R.id.wifi_add_dialog_connect) {
@@ -383,7 +403,12 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
         int passwordLength = 0;
         ssidLength = mSsidEt.getText().toString().length();
         passwordLength = mPasswordEt.getText().toString().length();
-        if ((mCapabilities.equals("NONE") && ssidLength == 0) || (mCapabilities.equals("WEP") && (ssidLength == 0 || passwordLength < 1)) || (mCapabilities.equals("WPA") && (ssidLength == 0 || passwordLength < 8))) {
+        if ((mCapabilities.equals(NONE) && ssidLength == 0)
+                || (mCapabilities.equals(WEP) && (ssidLength == 0 || passwordLength < 1))
+                || ((mCapabilities.equals(WPA)
+                || mCapabilities.equals(WPA2_ENTERPRISE)
+                || mCapabilities.equals(WPA3_ENTERPRISE))
+                && (ssidLength == 0 || passwordLength < 8))) {
             enable = false;
         } else {
             enable = ipAndProxyFieldsAreValid();

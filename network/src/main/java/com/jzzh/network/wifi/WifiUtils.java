@@ -92,6 +92,12 @@ public class WifiUtils {
                 // 加密类型为WPA
                 conf.preSharedKey = psd;
                 break;
+            case "WPA2-Enterprise":
+                configureEnterpriseNetwork(conf, targetPsd, false);
+                break;
+            case "WPA3-Enterprise":
+                configureEnterpriseNetwork(conf, targetPsd, true);
+                break;
             case "OPEN":
                 //开放网络
                 conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
@@ -112,6 +118,16 @@ public class WifiUtils {
                 break;
             }
         }
+    }
+
+    private void configureEnterpriseNetwork(WifiConfiguration configuration, String password,
+            boolean isWpa3Enterprise) {
+        configuration.allowedKeyManagement.set(isWpa3Enterprise
+                ? WifiConfiguration.KeyMgmt.SUITE_B_192 : WifiConfiguration.KeyMgmt.WPA_EAP);
+        configuration.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.IEEE8021X);
+        configuration.enterpriseConfig.setEapMethod(WifiEnterpriseConfig.Eap.PEAP);
+        configuration.enterpriseConfig.setPhase2Method(WifiEnterpriseConfig.Phase2.MSCHAPV2);
+        configuration.enterpriseConfig.setPassword(password);
     }
 
     public void removeWifiBySsid(String wifiName) {

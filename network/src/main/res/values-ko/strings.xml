@@ -38,6 +38,8 @@
     <string name="wifi_dialog_none">없음</string>
     <string name="wifi_dialog_wep">WEP</string>
     <string name="wifi_dialog_wpa">WPA</string>
+    <string name="wifi_dialog_wpa2_enterprise">WPA2-Enterprise</string>
+    <string name="wifi_dialog_wpa3_enterprise">WPA3-Enterprise</string>
     <string name="wifi_dialog_show_password">비밀번호 보기</string>
     <string name="wifi_dialog_show_advanced_options">고급 옵션</string>
     <string name="wifi_dialog_metered">종량제 네트워크</string>

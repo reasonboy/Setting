@@ -86,6 +86,27 @@
                     android:text="@string/wifi_dialog_wpa"/>
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+                <ImageView
+                    android:id="@+id/wifi_add_dialog_wpa2_enterprise"
+                    style="@style/DialogCheckBoxImageStyle"
+                    android:layout_marginLeft="0dp"/>
+                <TextView
+                    style="@style/DialogCheckBoxTextStyle"
+                    android:text="@string/wifi_dialog_wpa2_enterprise"/>
+
+                <ImageView
+                    android:id="@+id/wifi_add_dialog_wpa3_enterprise"
+                    style="@style/DialogCheckBoxImageStyle"
+                    android:layout_marginLeft="20dp"/>
+                <TextView
+                    style="@style/DialogCheckBoxTextStyle"
+                    android:text="@string/wifi_dialog_wpa3_enterprise"/>
+            </LinearLayout>
+
             <RelativeLayout
                 android:id="@+id/ll_enable_show_password"
                 android:layout_width="@dimen/zh_dialog_item_width"
