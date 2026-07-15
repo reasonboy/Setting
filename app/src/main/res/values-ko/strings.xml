@@ -8,8 +8,10 @@
     <string name="setting_power_auto_sleep">자동 슬립 설정</string>
     <string name="setting_power_auto_power_off">자동 종료 설정</string>
     <string name="setting_power_manage">전원 관리</string>
-    <string name="setting_power_manage_title">케이스에 의한 자동 깨우기 비활성화</string>
-    <string name="setting_power_manage_description">케이스 커버를 열 때, 자동으로 슬립 모드가 해제 되지 않게 합니다.</string>
+    <string name="setting_hall_wake_title">케이스 자동 깨우기</string>
+    <string name="setting_hall_wake_description">케이스 커버를 열 때, 자동으로 슬립 모드를 해제합니다.</string>
+    <string name="setting_hall_sleep_title">케이스 자동 슬립</string>
+    <string name="setting_hall_sleep_description">케이스 커버를 닫을 때, 자동으로 슬립 모드로 전환합니다.</string>
     <string name="setting_pause_music_title">슬립 모드로 전환 시 오디오 종료</string>
     <string name="setting_pause_music_description">슬립 모드로 전환 되면 오디오가 꺼집니다.</string>
     <string name="setting_display">화면</string>

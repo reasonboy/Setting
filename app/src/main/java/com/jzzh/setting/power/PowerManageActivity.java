@@ -9,17 +9,24 @@ import com.jzzh.tools.ZhCheckBox;
 
 public class PowerManageActivity extends BaseActivity {
 
-    private ZhCheckBox mCheckBox, mMusicCheckBox;
+    private ZhCheckBox mWakeCheckBox, mSleepCheckBox, mMusicCheckBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_power_manage);
-        mCheckBox = findViewById(R.id.setting_power_manage_title_cb);
-        mCheckBox.setOnZhCheckedChangeListener(new ZhCheckBox.OnZhCheckedChangeListener() {
+        mWakeCheckBox = findViewById(R.id.setting_hall_wake_cb);
+        mWakeCheckBox.setOnZhCheckedChangeListener(new ZhCheckBox.OnZhCheckedChangeListener() {
             @Override
             public void onCheckedChanged(boolean checked) {
-                setHallEnable(checked);
+                setHallWakeEnable(checked);
+            }
+        });
+        mSleepCheckBox = findViewById(R.id.setting_hall_sleep_cb);
+        mSleepCheckBox.setOnZhCheckedChangeListener(new ZhCheckBox.OnZhCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(boolean checked) {
+                setHallSleepEnable(checked);
             }
         });
         mMusicCheckBox = findViewById(R.id.setting_pause_music_cb);
@@ -34,18 +41,29 @@ public class PowerManageActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mCheckBox.setCheck(getHallEnable());
+        mWakeCheckBox.setCheck(getHallWakeEnable());
+        mSleepCheckBox.setCheck(getHallSleepEnable());
         mMusicCheckBox.setCheck(getPauseMusic());
     }
 
-    private void setHallEnable(boolean enable) {
-        int value = enable ? 0 : 1;
-        Settings.System.putInt(getContentResolver(),"hall_enable", value);
+    private void setHallWakeEnable(boolean enable) {
+        int value = enable ? 1 : 0;
+        Settings.System.putInt(getContentResolver(),"hall_wake_enable", value);
     }
 
-    private boolean getHallEnable() {
-        int value = Settings.System.getInt(getContentResolver(),"hall_enable", 1);
-        return value == 0;
+    private boolean getHallWakeEnable() {
+        int value = Settings.System.getInt(getContentResolver(),"hall_wake_enable", 1);
+        return value == 1;
+    }
+
+    private void setHallSleepEnable(boolean enable) {
+        int value = enable ? 1 : 0;
+        Settings.System.putInt(getContentResolver(),"hall_sleep_enable", value);
+    }
+
+    private boolean getHallSleepEnable() {
+        int value = Settings.System.getInt(getContentResolver(),"hall_sleep_enable", 1);
+        return value == 1;
     }
 
     private void setPauseMusic(boolean enable) {
