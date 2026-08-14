@@ -44,6 +44,7 @@
     <string name="wifi_dialog_show_advanced_options">Advanced options</string>
     <string name="wifi_dialog_metered">Metered</string>
     <string name="wifi_dialog_delete_internet_setting"><u>Delete this wifi setting</u></string>
+    <string name="wifi_dialog_more">More >></string>
     <string name="metered_dialog_auto">Detect automatically</string>
     <string name="metered_dialog_metered">Treat as metered</string>
     <string name="metered_dialog_unmetered">Treat as unmetered</string>

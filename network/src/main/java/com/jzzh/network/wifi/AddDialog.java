@@ -2,6 +2,7 @@ package com.jzzh.network.wifi;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
+import static androidx.core.content.ContextCompat.startActivity;
 import static com.jzzh.network.wifi.WifiUtils.METERED_OVERRIDE_METERED;
 import static com.jzzh.network.wifi.WifiUtils.METERED_OVERRIDE_NONE;
 import static com.jzzh.network.wifi.WifiUtils.METERED_OVERRIDE_NOT_METERED;
@@ -11,6 +12,7 @@ import static com.jzzh.network.wifi.WifiUtils.proxyValidate;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ProxyInfo;
 import android.net.Uri;
 import android.os.Bundle;
@@ -119,6 +121,7 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
         mWpa3Enterprise.setOnClickListener(this);
         mCancle.setOnClickListener(this);
         mConnect.setOnClickListener(this);
+        findViewById(R.id.wifi_add_dialog_more).setOnClickListener(this);
         mConnect.setEnabled(false);
         mConnect.setTextAppearance(mContext, R.style.NegativeDialogButtonDividerStyle);
         mImageList.add(mNone);
@@ -297,6 +300,10 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
         } else if (id == R.id.ip_settings_down_drop) {
             setIPSettingsDialogPosition();
             mIPSettingsDialog.show();
+        } else if (id == R.id.wifi_add_dialog_more) {
+            Intent intent = new Intent("com.android.settings.WIFI_DIALOG");
+            mContext.startActivity(intent);
+            dismiss();
         }
     }
 
