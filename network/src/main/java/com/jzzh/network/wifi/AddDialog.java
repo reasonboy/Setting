@@ -2,7 +2,6 @@ package com.jzzh.network.wifi;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
-import static androidx.core.content.ContextCompat.startActivity;
 import static com.jzzh.network.wifi.WifiUtils.METERED_OVERRIDE_METERED;
 import static com.jzzh.network.wifi.WifiUtils.METERED_OVERRIDE_NONE;
 import static com.jzzh.network.wifi.WifiUtils.METERED_OVERRIDE_NOT_METERED;
@@ -12,7 +11,6 @@ import static com.jzzh.network.wifi.WifiUtils.proxyValidate;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.net.ProxyInfo;
 import android.net.Uri;
 import android.os.Bundle;
@@ -37,11 +35,11 @@ import com.jzzh.network.R;
 
 import java.net.Inet4Address;
 import java.net.InetAddress;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class AddDialog extends Dialog implements View.OnClickListener , TextWatcher {
+public class AddDialog extends Dialog implements View.OnClickListener , TextWatcher,
+        EapOptionsController.OnEapOptionsChangedListener {
 
     private Context mContext;
     private EditText mSsidEt,mPasswordEt;
@@ -53,8 +51,8 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
     private EditText mProxyHostnameEt;
     private EditText mProxyPortEt;
     private EditText mBypassProxyForEt;
-    private ImageView mNone,mWep,mWpa,mWpa2Enterprise,mWpa3Enterprise;
-    private ArrayList<ImageView> mImageList = new ArrayList<>();
+    private TextView mSecurityResult;
+    private ImageView mSecurityDownDrop;
     private Button mCancle,mConnect;
     private DialogCallback mCallback;
     private String mCapabilities;
@@ -81,12 +79,18 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
     private String mProxySettings = "NONE";
     private ProxyInfo mHttpProxyInfo;
     private boolean mPasswordVisible = false;
+    private EapOptionsController mEapOptionsController;
 
     private static final String NONE = "OPEN";
     private static final String WEP = "WEP";
     private static final String WPA = "WPA";
     private static final String WPA2_ENTERPRISE = "WPA2-Enterprise";
     private static final String WPA3_ENTERPRISE = "WPA3-Enterprise";
+
+    /** Security values, in the same order as the R.array.wifi_security_entries items */
+    private static final String[] SECURITY_VALUES = {
+            NONE, WEP, WPA, WPA2_ENTERPRISE, WPA3_ENTERPRISE
+    };
 
 
     public AddDialog(Context context, int style, DialogCallback callback) {
@@ -107,29 +111,19 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
         mSsidEt.requestFocus();
         mPasswordEt = findViewById(R.id.wifi_add_dialog_password);
         mPasswordEt.addTextChangedListener(this);
-        mNone = findViewById(R.id.wifi_add_dialog_none);
-        mWep = findViewById(R.id.wifi_add_dialog_wep);
-        mWpa = findViewById(R.id.wifi_add_dialog_wpa);
-        mWpa2Enterprise = findViewById(R.id.wifi_add_dialog_wpa2_enterprise);
-        mWpa3Enterprise = findViewById(R.id.wifi_add_dialog_wpa3_enterprise);
+        mSecurityResult = findViewById(R.id.security_result);
+        mSecurityDownDrop = findViewById(R.id.security_down_drop);
+        mSecurityDownDrop.setOnClickListener(this);
+        // Open the list when the whole row is tapped, not only the arrow.
+        findViewById(R.id.ll_security).setOnClickListener(this);
         mCancle = findViewById(R.id.wifi_add_dialog_cancle);
         mConnect = findViewById(R.id.wifi_add_dialog_connect);
-        mNone.setOnClickListener(this);
-        mWep.setOnClickListener(this);
-        mWpa.setOnClickListener(this);
-        mWpa2Enterprise.setOnClickListener(this);
-        mWpa3Enterprise.setOnClickListener(this);
         mCancle.setOnClickListener(this);
         mConnect.setOnClickListener(this);
-        findViewById(R.id.wifi_add_dialog_more).setOnClickListener(this);
         mConnect.setEnabled(false);
         mConnect.setTextAppearance(mContext, R.style.NegativeDialogButtonDividerStyle);
-        mImageList.add(mNone);
-        mImageList.add(mWep);
-        mImageList.add(mWpa);
-        mImageList.add(mWpa2Enterprise);
-        mImageList.add(mWpa3Enterprise);
         mShowPasswordLayout = findViewById(R.id.ll_enable_show_password);
+        mEapOptionsController = new EapOptionsController(mContext, findViewById(R.id.ll_eap_options), this);
         setCheck(WPA);
         mIpAddressEt = findViewById(R.id.wifi_ip_address);
         mIpAddressEt.addTextChangedListener(this);
@@ -158,6 +152,10 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
         mProxyDownDrop.setOnClickListener(this);
         mIpSettingsDownDrop = findViewById(R.id.ip_settings_down_drop);
         mIpSettingsDownDrop.setOnClickListener(this);
+        // Open the list when the whole row is tapped, not only the arrow.
+        findViewById(R.id.ll_metered).setOnClickListener(this);
+        findViewById(R.id.ll_proxy).setOnClickListener(this);
+        findViewById(R.id.ll_ip_settings).setOnClickListener(this);
         mMeteredResult = findViewById(R.id.metered_result);
         mProxyResult = findViewById(R.id.proxy_result);
         mIPAssignmentResult = findViewById(R.id.ip_settings_result);
@@ -237,53 +235,48 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
         Log.v("xml_log_dia","capabilities = " + capabilities);
         //closeKeybord();
         mCapabilities = capabilities;
-        for(int i = 0;i<mImageList.size();i++) {
-            mImageList.get(i).setImageResource(R.drawable.check_off);
-        }
-        if(capabilities.equals(NONE)) {
-            mNone.setImageResource(R.drawable.check_on);
-            mPasswordEt.setVisibility(GONE);
-            mShowPasswordLayout.setVisibility(GONE);
-        } else if(capabilities.equals(WEP)){
-            mWep.setImageResource(R.drawable.check_on);
-            mPasswordEt.setVisibility(VISIBLE);
-            mShowPasswordLayout.setVisibility(VISIBLE);
-        } else if(capabilities.equals(WPA)){
-            mWpa.setImageResource(R.drawable.check_on);
-            mPasswordEt.setVisibility(VISIBLE);
-            mShowPasswordLayout.setVisibility(VISIBLE);
-        } else if(capabilities.equals(WPA2_ENTERPRISE)) {
-            mWpa2Enterprise.setImageResource(R.drawable.check_on);
-            mPasswordEt.setVisibility(VISIBLE);
-            mShowPasswordLayout.setVisibility(VISIBLE);
-        } else if(capabilities.equals(WPA3_ENTERPRISE)) {
-            mWpa3Enterprise.setImageResource(R.drawable.check_on);
-            mPasswordEt.setVisibility(VISIBLE);
-            mShowPasswordLayout.setVisibility(VISIBLE);
-        }
+        mSecurityResult.setText(getSecurityLabel(capabilities));
+        mEapOptionsController.setVisible(isEnterprise(capabilities));
+        updatePasswordVisible();
         mPasswordEt.getText().clear();
 
+        enableSubmitIfAppropriate();
+    }
+
+    private boolean isEnterprise(String capabilities) {
+        return WPA2_ENTERPRISE.equals(capabilities) || WPA3_ENTERPRISE.equals(capabilities);
+    }
+
+    /**
+     * EAP-TLS and the SIM based methods take no password, so hide the field for those EAP methods.
+     */
+    private void updatePasswordVisible() {
+        boolean visible;
+        if (isEnterprise(mCapabilities)) {
+            visible = mEapOptionsController.isPasswordSupported();
+        } else {
+            visible = !NONE.equals(mCapabilities);
+        }
+        mPasswordEt.setVisibility(visible ? VISIBLE : GONE);
+        mShowPasswordLayout.setVisibility(visible ? VISIBLE : GONE);
+    }
+
+    @Override
+    public void onEapOptionsChanged() {
+        updatePasswordVisible();
         enableSubmitIfAppropriate();
     }
 
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        if (id == R.id.wifi_add_dialog_none) {
-            setCheck(NONE);
-        } else if (id == R.id.wifi_add_dialog_wep) {
-            setCheck(WEP);
-        } else if (id == R.id.wifi_add_dialog_wpa) {
-            setCheck(WPA);
-        } else if (id == R.id.wifi_add_dialog_wpa2_enterprise) {
-            setCheck(WPA2_ENTERPRISE);
-        } else if (id == R.id.wifi_add_dialog_wpa3_enterprise) {
-            setCheck(WPA3_ENTERPRISE);
+        if (id == R.id.security_down_drop || id == R.id.ll_security) {
+            showSecurityDialog();
         } else if (id == R.id.wifi_add_dialog_cancle) {
             dismiss();
         } else if (id == R.id.wifi_add_dialog_connect) {
             String[] ipSettingsData = new String[]{mIpAddressEt.getText().toString(), mNetworkPrefixLengthEt.getText().toString(), mGatewayEt.getText().toString(), mDns1Et.getText().toString()};
-            mCallback.callBackData(new String[]{mSsidEt.getText().toString(), mPasswordEt.getText().toString(), mCapabilities},mMeteredType, mIPAssignment, ipSettingsData, mProxySettings, mHttpProxyInfo);
+            mCallback.callBackData(new String[]{mSsidEt.getText().toString(), mPasswordEt.getText().toString(), mCapabilities},mMeteredType, mIPAssignment, ipSettingsData, mProxySettings, mHttpProxyInfo, isEnterprise(mCapabilities) ? mEapOptionsController.getConfig() : null);
             dismiss();
         } else if (id == R.id.wifi_add_dialog_show_password) {
             mPasswordVisible = !mPasswordVisible;
@@ -291,20 +284,47 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
         } else if (id == R.id.wifi_connect_dialog_show_advanced_options) {
             mAdvancedOptionsVisible = !mAdvancedOptionsVisible;
             setAdvancedOptionsVisible(mAdvancedOptionsVisible);
-        } else if (id == R.id.metered_down_drop) {
+        } else if (id == R.id.metered_down_drop || id == R.id.ll_metered) {
             setMeteredDialogPosition();
             mMeteredDialog.show();
-        } else if (id == R.id.proxy_down_drop) {
+        } else if (id == R.id.proxy_down_drop || id == R.id.ll_proxy) {
             setProxyDialogPosition();
             mProxyDialog.show();
-        } else if (id == R.id.ip_settings_down_drop) {
+        } else if (id == R.id.ip_settings_down_drop || id == R.id.ll_ip_settings) {
             setIPSettingsDialogPosition();
             mIPSettingsDialog.show();
-        } else if (id == R.id.wifi_add_dialog_more) {
-            Intent intent = new Intent("com.android.settings.WIFI_DIALOG");
-            mContext.startActivity(intent);
-            dismiss();
         }
+    }
+
+    /**
+     * Shows the security type as a drop-down list.
+     */
+    private void showSecurityDialog() {
+        List<String> items = Arrays.asList(mContext.getResources().getStringArray(R.array.wifi_security_entries));
+        WifiListDialog dialog = new WifiListDialog(mContext, R.style.ZhDialog, items, new WifiListDialog.DialogCallback() {
+            @Override
+            public void callBackData(int position, String item) {
+                setCheck(SECURITY_VALUES[position]);
+            }
+        });
+        Window window = dialog.getWindow();
+        WindowManager.LayoutParams lp = window.getAttributes();
+        window.setGravity(Gravity.CENTER | Gravity.TOP);
+        int[] location = new int[2];
+        mSecurityDownDrop.getLocationOnScreen(location);
+        lp.y = location[1];
+        window.setAttributes(lp);
+        dialog.show();
+    }
+
+    private String getSecurityLabel(String capabilities) {
+        String[] entries = mContext.getResources().getStringArray(R.array.wifi_security_entries);
+        for (int i = 0; i < SECURITY_VALUES.length; i++) {
+            if (SECURITY_VALUES[i].equals(capabilities)) {
+                return entries[i];
+            }
+        }
+        return entries[0];
     }
 
     private void setPasswordVisible(boolean visible) {
@@ -405,22 +425,22 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
     }
 
     public boolean isSubmittable() {
-        boolean enable = false;
-        int ssidLength = 0;
-        int passwordLength = 0;
-        ssidLength = mSsidEt.getText().toString().length();
-        passwordLength = mPasswordEt.getText().toString().length();
-        if ((mCapabilities.equals(NONE) && ssidLength == 0)
-                || (mCapabilities.equals(WEP) && (ssidLength == 0 || passwordLength < 1))
-                || ((mCapabilities.equals(WPA)
-                || mCapabilities.equals(WPA2_ENTERPRISE)
-                || mCapabilities.equals(WPA3_ENTERPRISE))
-                && (ssidLength == 0 || passwordLength < 8))) {
-            enable = false;
-        } else {
-            enable = ipAndProxyFieldsAreValid();
+        String password = mPasswordEt.getText().toString();
+        if (mSsidEt.getText().toString().length() == 0) {
+            return false;
         }
-        return enable;
+        boolean enable;
+        if (isEnterprise(mCapabilities)) {
+            // Enterprise required fields differ per EAP method, so let the EAP config decide.
+            enable = mEapOptionsController.isValid(password);
+        } else if (mCapabilities.equals(WEP)) {
+            enable = password.length() >= 1;
+        } else if (mCapabilities.equals(WPA)) {
+            enable = password.length() >= 8;
+        } else {
+            enable = true;
+        }
+        return enable && ipAndProxyFieldsAreValid();
     }
 
     private void enableSubmitIfAppropriate() {
@@ -533,6 +553,6 @@ public class AddDialog extends Dialog implements View.OnClickListener , TextWatc
     }
 
     public interface DialogCallback {
-        void callBackData(String[] data, int meteredType, String ipAssignment, String[] ipSettingsData, String proxySettings, ProxyInfo proxyInfo);
+        void callBackData(String[] data, int meteredType, String ipAssignment, String[] ipSettingsData, String proxySettings, ProxyInfo proxyInfo, WifiEapConfig eapConfig);
     }
 }

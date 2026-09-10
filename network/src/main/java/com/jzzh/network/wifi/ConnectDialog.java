@@ -36,7 +36,8 @@ import java.net.InetAddress;
 import java.util.Arrays;
 import java.util.List;
 
-public class ConnectDialog extends Dialog implements View.OnClickListener,TextWatcher {
+public class ConnectDialog extends Dialog implements View.OnClickListener,TextWatcher,
+        EapOptionsController.OnEapOptionsChangedListener {
 
     private Context mContext;
     private String mWifiName,mEncryption;
@@ -76,8 +77,13 @@ public class ConnectDialog extends Dialog implements View.OnClickListener,TextWa
     private ProxyDialog mProxyDialog;
     private IPSettingsDialog mIPSettingsDialog;
     private ProxyInfo mHttpProxyInfo;
+    private EapOptionsController mEapOptionsController;
+    private TextView mPasswordLabel;
+    private RelativeLayout mShowPasswordLayout;
 
     private static final String WPA = "WPA";
+    private static final String WPA2_ENTERPRISE = "WPA2-Enterprise";
+    private static final String WPA3_ENTERPRISE = "WPA3-Enterprise";
 
     public ConnectDialog(Context context, int style, DialogCallback callback, String wifiName, String enc, boolean isSavedNet, int signalLevel) {
         super(context, style);
@@ -123,6 +129,10 @@ public class ConnectDialog extends Dialog implements View.OnClickListener,TextWa
         mProxyDownDrop.setOnClickListener(this);
         mIpSettingsDownDrop = findViewById(R.id.ip_settings_down_drop);
         mIpSettingsDownDrop.setOnClickListener(this);
+        // Open the list when the whole row is tapped, not only the arrow.
+        findViewById(R.id.ll_metered).setOnClickListener(this);
+        findViewById(R.id.ll_proxy).setOnClickListener(this);
+        findViewById(R.id.ll_ip_settings).setOnClickListener(this);
         mMeteredResult = findViewById(R.id.metered_result);
         mProxyResult = findViewById(R.id.proxy_result);
         mIPAssignmentResult = findViewById(R.id.ip_settings_result);
@@ -135,14 +145,15 @@ public class ConnectDialog extends Dialog implements View.OnClickListener,TextWa
         mCancle.setOnClickListener(this);
         mConnect = findViewById(R.id.wifi_connect_dialog_connect);
         mConnect.setOnClickListener(this);
+        mPasswordLabel = findViewById(R.id.tv_password);
+        mShowPasswordLayout = findViewById(R.id.ll_enable_show_password);
+        mEapOptionsController = new EapOptionsController(mContext, findViewById(R.id.ll_eap_options), this);
         setPasswordVisible(mPasswordVisible);
         setAdvancedOptionsVisible(mAdvancedOptionsVisible);
         if (mIsSavedNet) {
             mPasswordEt.setVisibility(View.GONE);
-            RelativeLayout ll = findViewById(R.id.ll_enable_show_password);
-            ll.setVisibility(View.GONE);
-            TextView passwordTv = findViewById(R.id.tv_password);
-            passwordTv.setVisibility(View.GONE);
+            mShowPasswordLayout.setVisibility(View.GONE);
+            mPasswordLabel.setVisibility(View.GONE);
             TextView deleteThisInternet = findViewById(R.id.wifi_delete_this_internet);
             deleteThisInternet.setVisibility(View.VISIBLE);
             deleteThisInternet.setOnClickListener(this);
@@ -152,6 +163,8 @@ public class ConnectDialog extends Dialog implements View.OnClickListener,TextWa
             mConnect.setTextAppearance(mContext, R.style.NegativeDialogButtonDividerStyle);
             mPasswordEt.addTextChangedListener(this);
             mShowAdvancedOptions.setVisibility(View.VISIBLE);
+            mEapOptionsController.setVisible(isEnterprise());
+            updatePasswordVisible();
         }
         TextView signalStrengthTv = findViewById(R.id.tv_signal_strength);
         String signalStrength = getSignalStrengthByLevel(mSignalLevel);
@@ -266,6 +279,26 @@ public class ConnectDialog extends Dialog implements View.OnClickListener,TextWa
         }
     }
 
+    private boolean isEnterprise() {
+        return WPA2_ENTERPRISE.equals(mEncryption) || WPA3_ENTERPRISE.equals(mEncryption);
+    }
+
+    /**
+     * EAP-TLS and the SIM based methods take no password, so hide the field for those EAP methods.
+     */
+    private void updatePasswordVisible() {
+        boolean visible = !isEnterprise() || mEapOptionsController.isPasswordSupported();
+        mPasswordEt.setVisibility(visible ? View.VISIBLE : View.GONE);
+        mPasswordLabel.setVisibility(visible ? View.VISIBLE : View.GONE);
+        mShowPasswordLayout.setVisibility(visible ? View.VISIBLE : View.GONE);
+    }
+
+    @Override
+    public void onEapOptionsChanged() {
+        updatePasswordVisible();
+        enableSubmitIfAppropriate();
+    }
+
     private void setAdvancedOptionsVisible(boolean visible) {
         if (visible) {
             mAdvancedOptions.setImageResource(R.drawable.check_on);
@@ -311,21 +344,21 @@ public class ConnectDialog extends Dialog implements View.OnClickListener,TextWa
             dismiss();
         } else if (id == R.id.wifi_connect_dialog_connect) {
             String[] ipSettingsData = new String[]{mIpAddressEt.getText().toString(), mNetworkPrefixLengthEt.getText().toString(), mGatewayEt.getText().toString(), mDns1Et.getText().toString()};
-            mCallback.callBackData(new String[]{mWifiName, mPasswordEt.getText().toString(), mEncryption}, "connect", mMeteredType, mIPAssignment, ipSettingsData, mProxySettings, mHttpProxyInfo);
+            mCallback.callBackData(new String[]{mWifiName, mPasswordEt.getText().toString(), mEncryption}, "connect", mMeteredType, mIPAssignment, ipSettingsData, mProxySettings, mHttpProxyInfo, isEnterprise() ? mEapOptionsController.getConfig() : null);
             dismiss();
         } else if (id == R.id.wifi_delete_this_internet) {
-            mCallback.callBackData(new String[]{mWifiName}, "delete", METERED_OVERRIDE_NONE,"",null,mProxySettings,null);
+            mCallback.callBackData(new String[]{mWifiName}, "delete", METERED_OVERRIDE_NONE,"",null,mProxySettings,null, null);
             dismiss();
         } else if (id == R.id.wifi_connect_dialog_show_advanced_options) {
             mAdvancedOptionsVisible = !mAdvancedOptionsVisible;
             setAdvancedOptionsVisible(mAdvancedOptionsVisible);
-        } else if (id == R.id.metered_down_drop) {
+        } else if (id == R.id.metered_down_drop || id == R.id.ll_metered) {
             setMeteredDialogPosition();
             mMeteredDialog.show();
-        } else if (id == R.id.proxy_down_drop) {
+        } else if (id == R.id.proxy_down_drop || id == R.id.ll_proxy) {
             setProxyDialogPosition();
             mProxyDialog.show();
-        } else if (id == R.id.ip_settings_down_drop) {
+        } else if (id == R.id.ip_settings_down_drop || id == R.id.ll_ip_settings) {
             setIPSettingsDialogPosition();
             mIPSettingsDialog.show();
         }
@@ -365,19 +398,22 @@ public class ConnectDialog extends Dialog implements View.OnClickListener,TextWa
     }
 
     public interface DialogCallback {
-        void callBackData(String[] data, String key, int meteredType, String ipAssignment, String[] ipSettingsData, String proxySettings,ProxyInfo proxyInfo);
+        void callBackData(String[] data, String key, int meteredType, String ipAssignment, String[] ipSettingsData, String proxySettings,ProxyInfo proxyInfo, WifiEapConfig eapConfig);
     }
 
     public boolean isSubmittable() {
-        boolean enable = false;
-        boolean passwordInvalid = false;
-        if (mPasswordEt.getText().length() < 8) {
-            passwordInvalid = true;
+        if (mIsSavedNet) {  // Connect to a saved network using its existing configuration.
+            return true;
         }
-        if (!passwordInvalid) {
-            enable = ipAndProxyFieldsAreValid();
+        String password = mPasswordEt.getText().toString();
+        boolean enable;
+        if (isEnterprise()) {
+            // Enterprise required fields differ per EAP method, so let the EAP config decide.
+            enable = mEapOptionsController.isValid(password);
+        } else {
+            enable = password.length() >= 8;
         }
-        return enable;
+        return enable && ipAndProxyFieldsAreValid();
     }
 
     private void enableSubmitIfAppropriate() {

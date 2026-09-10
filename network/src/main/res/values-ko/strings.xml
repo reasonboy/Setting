@@ -32,6 +32,35 @@
     <string name="wifi_error_password">Wi-Fi에 연결할 수 없습니다.비밀번호를 확인해주세요.</string>
     <string name="wifi_dialog_password">비밀번호</string>
     <string name="wifi_dialog_ed_hint">비밀번호 입력</string>
+    <string name="wifi_dialog_identity">아이디</string>
+    <string name="wifi_dialog_identity_hint">아이디 입력</string>
+    <string name="wifi_eap_method">EAP 방식</string>
+    <string name="wifi_eap_phase2">2단계 인증</string>
+    <string name="wifi_eap_ca_cert">CA 인증서</string>
+    <string name="wifi_eap_ca_cert_do_not_validate">확인 안 함</string>
+    <string name="wifi_eap_ca_cert_use_system">시스템 인증서 사용</string>
+    <string name="wifi_eap_user_cert">사용자 인증서</string>
+    <string name="wifi_eap_user_cert_none">없음</string>
+    <string name="wifi_eap_domain">도메인</string>
+    <string name="wifi_eap_domain_hint">도메인 입력</string>
+    <string name="wifi_eap_anonymous_identity">익명 아이디</string>
+    <string name="wifi_eap_anonymous_identity_hint">익명 아이디 입력</string>
+    <string name="wifi_error_connect_failed">Wi-Fi에 연결할 수 없습니다.네트워크 설정을 확인해주세요.</string>
+    <string-array name="wifi_eap_peap_phase2_entries">
+        <item>없음</item>
+        <item translatable="false">MSCHAPV2</item>
+        <item translatable="false">GTC</item>
+        <item translatable="false">SIM</item>
+        <item translatable="false">AKA</item>
+        <item translatable="false">AKA\'</item>
+    </string-array>
+    <string-array name="wifi_eap_ttls_phase2_entries">
+        <item>없음</item>
+        <item translatable="false">PAP</item>
+        <item translatable="false">MSCHAP</item>
+        <item translatable="false">MSCHAPV2</item>
+        <item translatable="false">GTC</item>
+    </string-array>
     <string name="wifi_dialog_cancel">취소</string>
     <string name="wifi_dialog_connect">연결</string>
     <string name="wifi_dialog_disconnect">연결 해제</string>
@@ -44,7 +73,6 @@
     <string name="wifi_dialog_show_advanced_options">고급 옵션</string>
     <string name="wifi_dialog_metered">종량제 네트워크</string>
     <string name="wifi_dialog_delete_internet_setting"><u>이 와이파이 설정을 삭제합니다</u></string>
-    <string name="wifi_dialog_more">더 >></string>
     <string name="metered_dialog_auto">자동 감지</string>
     <string name="metered_dialog_metered">종량제 와이파이로 취급</string>
     <string name="metered_dialog_unmetered">무제한 와이파이로 취급</string>

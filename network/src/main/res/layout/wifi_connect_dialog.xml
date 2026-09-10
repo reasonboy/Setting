@@ -44,6 +44,14 @@
                 android:text="@string/wifi_detail_signal_strength"
                 android:visibility="gone" />
 
+            <include
+                android:id="@+id/ll_eap_options"
+                layout="@layout/layout_wifi_eap_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone" />
+
             <TextView
                 android:id="@+id/tv_password"
                 style="@style/WifiDetailTextViewStyle"

@@ -161,13 +161,13 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
             Log.e("lx","name:"+name+" "+address+" is clicked");
             if (!name.equals(mCurConnectSSID)) {
                 if (enc.equals("OPEN") && !isWifiSaved(name)) {
-                    mWifiUtils.connectWifi(name, "", "OPEN", METERED_OVERRIDE_NONE, "", null,"NONE",null);
+                    connectWifi(name, "", "OPEN", METERED_OVERRIDE_NONE, "", null,"NONE",null, null);
                 } else {
                     if (isWifiSaved(name)) {
 //                        Log.e(TAG, "已保存的无线网络");
                         new ConnectDialog(mContext, R.style.ZhDialog, new ConnectDialog.DialogCallback() {
                             @Override
-                            public void callBackData(String[] data, String key, int meteredType, String ipAssignment, String[] ipSettingsData, String proxySettings, ProxyInfo proxyInfo) {
+                            public void callBackData(String[] data, String key, int meteredType, String ipAssignment, String[] ipSettingsData, String proxySettings, ProxyInfo proxyInfo, WifiEapConfig eapConfig) {
                                 if ("connect".equals(key)) {
                                     // 连接已保存密码的Wifi
                                     WifiConfiguration wifiConfiguration = getWifiConfigurationByName(name);
@@ -183,8 +183,8 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
                     } else {
                         new ConnectDialog(mContext, R.style.ZhDialog, new ConnectDialog.DialogCallback() {
                             @Override
-                            public void callBackData(String[] data, String key, int meteredType,String ipAssignment,String[] ipSettingsData,String proxySettings,ProxyInfo proxyInfo) {
-                                mWifiUtils.connectWifi(data[0], data[1], data[2], meteredType, ipAssignment, ipSettingsData, proxySettings, proxyInfo);
+                            public void callBackData(String[] data, String key, int meteredType,String ipAssignment,String[] ipSettingsData,String proxySettings,ProxyInfo proxyInfo, WifiEapConfig eapConfig) {
+                                connectWifi(data[0], data[1], data[2], meteredType, ipAssignment, ipSettingsData, proxySettings, proxyInfo, eapConfig);
                             }
                         }, name, enc, false, signalLevel).show();
                     }
@@ -243,7 +243,10 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
 
     private String getEncryption(String capabilities) {
         String result = "";
-        if(capabilities.contains("WPA")) {
+        if (capabilities.contains("EAP")) {
+            // WPA3-Enterprise is advertised as an SHA256 based AKM or as Suite-B.
+            result = isWpa3Enterprise(capabilities) ? "WPA3-Enterprise" : "WPA2-Enterprise";
+        } else if(capabilities.contains("WPA")) {
             result =  "WPA";
         } else if (capabilities.contains("WEP")) {
             result =  "WEP";
@@ -251,6 +254,22 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
             result =  "OPEN";
         }
         return result;
+    }
+
+    private static boolean isWpa3Enterprise(String capabilities) {
+        return capabilities.contains("EAP-SHA256") || capabilities.contains("SUITE_B");
+    }
+
+    /**
+     * Notifies the user when the network configuration cannot be saved.
+     */
+    private void connectWifi(String ssid, String password, String enc, int meteredType, String ipAssignment,
+            String[] ipSettingsData, String proxySettings, ProxyInfo proxyInfo, WifiEapConfig eapConfig) {
+        boolean result = mWifiUtils.connectWifi(ssid, password, enc, meteredType, ipAssignment,
+                ipSettingsData, proxySettings, proxyInfo, eapConfig);
+        if (!result) {
+            Toast.makeText(mContext, R.string.wifi_error_connect_failed, Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
@@ -273,8 +292,8 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
             if (mWifiManager.isWifiEnabled()) {
                 new AddDialog(mContext, R.style.ZhDialog, new AddDialog.DialogCallback() {
                     @Override
-                    public void callBackData(String[] data, int meteredType, String ipAssignment, String[] ipSettingsData, String proxySettings, ProxyInfo proxyInfo) {
-                        mWifiUtils.connectWifi(data[0], data[1], data[2], meteredType, ipAssignment, ipSettingsData, proxySettings, proxyInfo);
+                    public void callBackData(String[] data, int meteredType, String ipAssignment, String[] ipSettingsData, String proxySettings, ProxyInfo proxyInfo, WifiEapConfig eapConfig) {
+                        connectWifi(data[0], data[1], data[2], meteredType, ipAssignment, ipSettingsData, proxySettings, proxyInfo, eapConfig);
                     }
                 }).show();
             }
@@ -553,14 +572,18 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
             String wps = "";
             String describe = "";
             String describe_start = "";
-            if(capabilities.contains("WPA-")) {
-                psk += "WPA";
-            }
-            if(capabilities.contains("WPA2-")) {
-                if(psk.equals("")) {
-                    psk += "WPA2";
-                } else {
-                    psk += "/WPA2";
+            if (capabilities.contains("EAP")) {
+                psk = isWpa3Enterprise(capabilities) ? "WPA3-Enterprise" : "WPA2-Enterprise";
+            } else {
+                if(capabilities.contains("WPA-")) {
+                    psk += "WPA";
+                }
+                if(capabilities.contains("WPA2-")) {
+                    if(psk.equals("")) {
+                        psk += "WPA2";
+                    } else {
+                        psk += "/WPA2";
+                    }
                 }
             }
             if(capabilities.contains("[WPS]")) {

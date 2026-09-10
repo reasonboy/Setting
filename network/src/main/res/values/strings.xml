@@ -32,6 +32,51 @@
     <string name="wifi_error_password">Unable to connect to Wi-Fi.Please check the password.</string>
     <string name="wifi_dialog_password">Password</string>
     <string name="wifi_dialog_ed_hint">Enter the password</string>
+    <string name="wifi_dialog_identity">Identity</string>
+    <string name="wifi_dialog_identity_hint">Enter the identity</string>
+    <string name="wifi_eap_method">EAP method</string>
+    <string name="wifi_eap_phase2">Phase 2 authentication</string>
+    <string name="wifi_eap_ca_cert">CA certificate</string>
+    <string name="wifi_eap_ca_cert_do_not_validate">Do not validate</string>
+    <string name="wifi_eap_ca_cert_use_system">Use system certificates</string>
+    <string name="wifi_eap_user_cert">User certificate</string>
+    <string name="wifi_eap_user_cert_none">None</string>
+    <string name="wifi_eap_domain">Domain</string>
+    <string name="wifi_eap_domain_hint">Enter the domain</string>
+    <string name="wifi_eap_anonymous_identity">Anonymous identity</string>
+    <string name="wifi_eap_anonymous_identity_hint">Enter the anonymous identity</string>
+    <string name="wifi_error_connect_failed">Unable to connect to Wi-Fi.Please check the network settings.</string>
+    <string-array name="wifi_eap_method_entries">
+        <item translatable="false">PEAP</item>
+        <item translatable="false">TLS</item>
+        <item translatable="false">TTLS</item>
+        <item translatable="false">PWD</item>
+        <item translatable="false">SIM</item>
+        <item translatable="false">AKA</item>
+        <item translatable="false">AKA\'</item>
+    </string-array>
+    <string-array name="wifi_eap_peap_phase2_entries">
+        <item>None</item>
+        <item translatable="false">MSCHAPV2</item>
+        <item translatable="false">GTC</item>
+        <item translatable="false">SIM</item>
+        <item translatable="false">AKA</item>
+        <item translatable="false">AKA\'</item>
+    </string-array>
+    <string-array name="wifi_eap_ttls_phase2_entries">
+        <item>None</item>
+        <item translatable="false">PAP</item>
+        <item translatable="false">MSCHAP</item>
+        <item translatable="false">MSCHAPV2</item>
+        <item translatable="false">GTC</item>
+    </string-array>
+    <string-array name="wifi_security_entries">
+        <item>@string/wifi_dialog_none</item>
+        <item>@string/wifi_dialog_wep</item>
+        <item>@string/wifi_dialog_wpa</item>
+        <item>@string/wifi_dialog_wpa2_enterprise</item>
+        <item>@string/wifi_dialog_wpa3_enterprise</item>
+    </string-array>
     <string name="wifi_dialog_cancel">Cancel</string>
     <string name="wifi_dialog_connect">Connect</string>
     <string name="wifi_dialog_disconnect">Disconnect</string>
@@ -44,7 +89,6 @@
     <string name="wifi_dialog_show_advanced_options">Advanced options</string>
     <string name="wifi_dialog_metered">Metered</string>
     <string name="wifi_dialog_delete_internet_setting"><u>Delete this wifi setting</u></string>
-    <string name="wifi_dialog_more">More >></string>
     <string name="metered_dialog_auto">Detect automatically</string>
     <string name="metered_dialog_metered">Treat as metered</string>
     <string name="metered_dialog_unmetered">Treat as unmetered</string>

@@ -5,7 +5,6 @@ import android.net.LinkAddress;
 import android.net.Proxy;
 import android.net.ProxyInfo;
 import android.net.wifi.WifiConfiguration;
-import android.net.wifi.WifiEnterpriseConfig;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.util.Log;
@@ -51,8 +50,10 @@ public class WifiUtils {
      * @param targetSsid wifi的SSID
      * @param targetPsd 密码
      * @param enc 加密类型
+     * @param eapConfig Enterprise (802.1x) settings, or null for non-Enterprise networks
+     * @return whether the network configuration was saved successfully
      */
-    public void connectWifi(String targetSsid, String targetPsd, String enc, int meteredType,String ipAssignment,String[] ipSettingsData,String proxySettings,ProxyInfo proxyInfo) {
+    public boolean connectWifi(String targetSsid, String targetPsd, String enc, int meteredType,String ipAssignment,String[] ipSettingsData,String proxySettings,ProxyInfo proxyInfo,WifiEapConfig eapConfig) {
         // 1、注意热点和密码均包含引号，此处需要需要转义引号
         String ssid = "\"" + targetSsid + "\"";
         String psd = "\"" + targetPsd + "\"";
@@ -93,41 +94,103 @@ public class WifiUtils {
                 conf.preSharedKey = psd;
                 break;
             case "WPA2-Enterprise":
-                configureEnterpriseNetwork(conf, targetPsd, false);
+                configureEnterpriseNetwork(conf, targetPsd, eapConfig, false);
                 break;
             case "WPA3-Enterprise":
-                configureEnterpriseNetwork(conf, targetPsd, true);
+                configureEnterpriseNetwork(conf, targetPsd, eapConfig, true);
                 break;
             case "OPEN":
                 //开放网络
                 conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
         }
         //3、链接wifi
-        mWifiManager.addNetwork(conf);
+        int networkId = mWifiManager.addNetwork(conf);
+        if (networkId == -1) {
+            // If updating a saved network fails, reuse its existing network ID.
+            networkId = getNetworkIdBySsid(ssid);
+        }
+        if (networkId == -1) {
+            Log.e(TAG, "addNetwork failed, ssid = " + targetSsid + ", enc = " + enc);
+            return false;
+        }
+        if (!connectByNetworkId(networkId)) {
+            mWifiManager.disconnect();
+            mWifiManager.enableNetwork(networkId, true);
+            mWifiManager.reconnect();
+        }
+        return true;
+    }
+
+    /**
+     * Connecting through WifiManager.connect() is treated as a user initiated connection, so
+     * system UI such as the server certificate confirmation is shown properly. It is @SystemApi, so it is called by reflection.
+     */
+    private boolean connectByNetworkId(int networkId) {
+        try {
+            Class<?> listenerClass = Class.forName("android.net.wifi.WifiManager$ActionListener");
+            Method connect = WifiManager.class.getMethod("connect", int.class, listenerClass);
+            connect.invoke(mWifiManager, networkId, null);
+            return true;
+        } catch (Exception e) {
+            Log.e(TAG, "WifiManager.connect failed: " + e);
+            return false;
+        }
+    }
+
+    private int getNetworkIdBySsid(String quotedSsid) {
         List<WifiConfiguration> list = null;
         try {
             list = mWifiManager.getConfiguredNetworks();
         } catch (SecurityException e) {
 
         }
+        if (list == null) {
+            return -1;
+        }
         for (WifiConfiguration i : list) {
-            if (i.SSID != null && i.SSID.equals(ssid)) {
-                mWifiManager.disconnect();
-                mWifiManager.enableNetwork(i.networkId, true);
-                mWifiManager.reconnect();
-                break;
+            if (i.SSID != null && i.SSID.equals(quotedSsid)) {
+                return i.networkId;
             }
         }
+        return -1;
     }
 
     private void configureEnterpriseNetwork(WifiConfiguration configuration, String password,
-            boolean isWpa3Enterprise) {
-        configuration.allowedKeyManagement.set(isWpa3Enterprise
-                ? WifiConfiguration.KeyMgmt.SUITE_B_192 : WifiConfiguration.KeyMgmt.WPA_EAP);
+            WifiEapConfig eapConfig, boolean isWpa3Enterprise) {
+        configuration.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_EAP);
         configuration.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.IEEE8021X);
-        configuration.enterpriseConfig.setEapMethod(WifiEnterpriseConfig.Eap.PEAP);
-        configuration.enterpriseConfig.setPhase2Method(WifiEnterpriseConfig.Phase2.MSCHAPV2);
-        configuration.enterpriseConfig.setPassword(password);
+        if (isWpa3Enterprise) {
+            // WPA3-Enterprise builds on WPA2-Enterprise and requires SHA256 AKM and PMF.
+            setKeyManagementByName(configuration, "WPA_EAP_SHA256");
+            setRequirePmf(configuration, true);
+        }
+        if (eapConfig != null) {
+            eapConfig.applyTo(configuration.enterpriseConfig, password);
+        }
+    }
+
+    /**
+     * WifiConfiguration.KeyMgmt.WPA_EAP_SHA256 is hidden, so set it via reflection.
+     */
+    private void setKeyManagementByName(WifiConfiguration configuration, String keyMgmtName) {
+        try {
+            Field field = WifiConfiguration.KeyMgmt.class.getField(keyMgmtName);
+            configuration.allowedKeyManagement.set(field.getInt(null));
+        } catch (Exception e) {
+            Log.e(TAG, "set " + keyMgmtName + " failed: " + e);
+        }
+    }
+
+    /**
+     * WifiConfiguration.requirePmf is hidden, so set it via reflection.
+     */
+    private void setRequirePmf(WifiConfiguration configuration, boolean requirePmf) {
+        try {
+            Field field = WifiConfiguration.class.getField("requirePmf");
+            field.setBoolean(configuration, requirePmf);
+        } catch (Exception e) {
+            Log.e(TAG, "setRequirePmf failed: " + e);
+        }
     }
 
     public void removeWifiBySsid(String wifiName) {

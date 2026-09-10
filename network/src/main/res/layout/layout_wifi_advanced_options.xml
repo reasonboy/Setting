@@ -12,6 +12,7 @@
 
     <LinearLayout
         android:id="@+id/ll_metered"
+        android:clickable="true"
         android:layout_width="@dimen/zh_dialog_item_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -48,6 +49,7 @@
 
     <LinearLayout
         android:id="@+id/ll_proxy"
+        android:clickable="true"
         android:layout_width="@dimen/zh_dialog_item_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -158,6 +160,7 @@
 
     <LinearLayout
         android:id="@+id/ll_ip_settings"
+        android:clickable="true"
         android:layout_width="@dimen/zh_dialog_item_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
