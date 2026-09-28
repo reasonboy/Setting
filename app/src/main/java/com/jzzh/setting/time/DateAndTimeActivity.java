@@ -118,7 +118,7 @@ public class DateAndTimeActivity extends BaseActivity implements TimeSettingItem
     protected void onResume() {
         super.onResume();
         Locale currentLocale = getResources().getConfiguration().locale;
-        isKoreaLocale = Locale.KOREAN.toString().equals(currentLocale.toString());
+        isKoreaLocale = Locale.KOREAN.getLanguage().equals(currentLocale.getLanguage());
         mAutoTime.setCheckBoxEnable(isAutoTimeEnabled());
         updateTime();
         updateDate();

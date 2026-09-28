@@ -46,7 +46,7 @@ public class LightGestureSettingActivity extends BaseActivity {
 
     private void updateImageByLocale() {
         Locale currentLocale = getResources().getConfiguration().locale;
-        isKoreaLocale = Locale.KOREAN.toString().equals(currentLocale.toString());
+        isKoreaLocale = Locale.KOREAN.getLanguage().equals(currentLocale.getLanguage());
     }
 
     private void updateUI() {

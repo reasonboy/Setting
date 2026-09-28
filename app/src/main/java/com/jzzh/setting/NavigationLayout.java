@@ -28,7 +28,8 @@ public class NavigationLayout extends LinearLayout{
         mContext = context;
         mLayout = new LinearLayout(mContext);
         final LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        lp.setMargins(getResources().getDimensionPixelOffset(R.dimen.navi_layout_marginLeft), 0, 0, 0);
+        final int margin = getResources().getDimensionPixelOffset(R.dimen.navi_layout_marginLeft);
+        lp.setMargins(margin, 0, margin, 0);
         lp.gravity = Gravity.CENTER_VERTICAL;
         addView(mLayout, lp);
     }

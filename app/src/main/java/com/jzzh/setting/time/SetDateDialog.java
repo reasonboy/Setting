@@ -35,7 +35,7 @@ public class SetDateDialog extends Dialog implements View.OnClickListener{
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         Locale currentLocale = mContext.getResources().getConfiguration().locale;
-        isKoreaLocale = Locale.KOREAN.toString().equals(currentLocale.toString());
+        isKoreaLocale = Locale.KOREAN.getLanguage().equals(currentLocale.getLanguage());
         if (isKoreaLocale){
             setContentView(R.layout.time_set_date_dialog_korea);
         } else {

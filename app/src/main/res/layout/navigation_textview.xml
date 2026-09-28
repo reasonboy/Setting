@@ -13,6 +13,8 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/navi_layout_textSize"
         android:gravity="center"
+        android:singleLine="true"
+        android:ellipsize="end"
         />
 
     <View

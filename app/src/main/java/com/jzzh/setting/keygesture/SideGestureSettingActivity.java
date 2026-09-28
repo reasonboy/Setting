@@ -202,7 +202,7 @@ public class SideGestureSettingActivity extends BaseActivity {
         dialog.setContentView(R.layout.dialog_keypack_information);
         
         Locale currentLocale = getResources().getConfiguration().locale;
-        boolean isKoreaLocale = Locale.KOREAN.toString().equals(currentLocale.toString());
+        boolean isKoreaLocale = Locale.KOREAN.getLanguage().equals(currentLocale.getLanguage());
         
         ImageView ivMain = dialog.findViewById(R.id.iv_main);
         ivMain.setImageResource(
