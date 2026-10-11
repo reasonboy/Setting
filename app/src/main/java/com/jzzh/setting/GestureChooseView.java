@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.jzzh.setting.keygesture.KeyGestureItem;
 import com.jzzh.tools.ZhCheckBox;
 
 import java.util.ArrayList;
@@ -27,10 +28,9 @@ public class GestureChooseView extends LinearLayout {
     private ImageView mPrevButton;
     private ImageView mNextButton;
     private NavigationDotView mNavigationDotView;
-    private View mBottomEnterView;
+    private KeyGestureItem mBottomEnterView;
     private ZhCheckBox mCheckBox;
     private TextView mCheckBoxText;
-    private TextView mBottomText;
     private List<PageData> mPages;
     private int mCurrentPageIndex = 0;
 
@@ -63,7 +63,6 @@ public class GestureChooseView extends LinearLayout {
         mNavigationDotView = findViewById(R.id.dot_navigation);
         mBottomEnterView = findViewById(R.id.bottom_enter);
         mCheckBoxText = findViewById(R.id.checkbox_text);
-        mBottomText = findViewById(R.id.bottom_tv);
         mCheckBox = findViewById(R.id.checkbox);
 
         mPrevButton.setOnClickListener(v -> showPreviousPage());
@@ -164,12 +163,9 @@ public class GestureChooseView extends LinearLayout {
         }
 
         if (currentPage.bottomViewText != null) {
-            mBottomText.setText(currentPage.bottomViewText);
-            mBottomText.setVisibility(VISIBLE);
+            mBottomEnterView.setTitle(currentPage.bottomViewText);
             mBottomEnterView.setVisibility(VISIBLE);
         } else {
-            mBottomText.setText("");
-            mBottomText.setVisibility(GONE);
             mBottomEnterView.setVisibility(GONE);
         }
         

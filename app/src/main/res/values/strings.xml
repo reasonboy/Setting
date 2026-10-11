@@ -47,12 +47,18 @@
     <string name="setting_device_gsf_id">GSF ID</string>
     <string name="setting_key_and_gesture">Key &amp; Gesture</string>
     <string name="setting_key_setting">Key Setting</string>
-    <string name="setting_gesture_setting">Gesture Setting</string>
-    <string name="setting_physical_key_setting">Physical Key Setting</string>
+    <string name="setting_gesture_setting">Gesture &amp; Navigation</string>
+    <string name="setting_physical_key_setting">Volume Key</string>
+    <string name="setting_volume_key_title">Volume Key Setting</string>
+    <string name="setting_volume_key_short_press">Short-press</string>
+    <string name="setting_volume_key_long_press">Long-press</string>
     <string name="setting_physical_reverse">Reverse</string>
-    <string name="setting_physical_key_page">Page turn(Previous page / Next page)</string>
+    <string name="setting_physical_key_page">Page turn\n(Previous page / Next page)</string>
     <string name="setting_physical_key_volume">Volume(+ / -)</string>
     <string name="setting_physical_key_dpad">DPAD(Left / Right)</string>
+    <string name="setting_physical_key_page_value">Page turn</string>
+    <string name="setting_physical_key_volume_value">Volume</string>
+    <string name="setting_physical_key_dpad_value">DPAD</string>
     <string name="setting_inno_key_setting">INNOKEY Setting</string>
     <string name="setting_keypack_setting">KeyPack Setting</string>
     <string name="setting_bottom_gesture">Bottom Gesture</string>
@@ -68,7 +74,8 @@
     <string name="gesture_refresh">Refresh</string>
     <string name="gesture_task_manager">Task Manager</string>
     <string name="gesture_eink_center">E-ink Center</string>
-    <string name="gesture_key_setting">Key Setting</string>
+    <string name="gesture_key_setting">Volume Key Setting</string>
+    <string name="gesture_quick_mini">Quick Mini</string>
     <string name="gesture_user_app">Specific User App</string>
     <string name="gesture_none">None</string>
 

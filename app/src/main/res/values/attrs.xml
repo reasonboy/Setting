@@ -9,6 +9,11 @@
         <attr name="title" />
     </declare-styleable>
 
+    <declare-styleable name="KeyGestureItem">
+        <attr name="title" />
+        <attr name="show_arrow" format="boolean" />
+    </declare-styleable>
+
     <declare-styleable name="TitleLayout">
         <attr name="title" />
         <attr name="function_icon_1" format="reference"/>

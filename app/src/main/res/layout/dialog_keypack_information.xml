@@ -8,37 +8,40 @@
         android:clipChildren="true"
         android:orientation="vertical"
         android:layout_gravity="center"
-        android:paddingVertical="30dp">
+        android:paddingTop="18dp"
+        android:paddingBottom="25dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
-            android:layout_marginBottom="25dp"
-            android:gravity="center_vertical">
+            android:layout_marginBottom="25dp">
+
                 <TextView
                     android:id="@+id/tv_title"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_marginTop="4dp"
+                    android:layout_toStartOf="@+id/iv_exit"
                     android:text="@string/setting_keypack_information"
-                    android:textSize="@dimen/dialog_title_text_size"
+                    android:textSize="@dimen/textSize20"
                     android:textStyle="bold"
                     android:gravity="center_vertical|start" />
 
                 <ImageView
-                    android:id="@+id/iv_exit"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
+                    android:id="@id/iv_exit"
+                    android:layout_width="@dimen/dialog_close_icon_size"
+                    android:layout_height="@dimen/dialog_close_icon_size"
+                    android:layout_alignParentEnd="true"
                     android:src="@drawable/ic_exit" />
-        </LinearLayout>
+        </RelativeLayout>
 
         <ImageView
             android:id="@+id/iv_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp">
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="22dp">
         </ImageView>
 
 </LinearLayout>

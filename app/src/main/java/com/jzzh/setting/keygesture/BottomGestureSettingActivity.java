@@ -83,6 +83,8 @@ public class BottomGestureSettingActivity extends BaseActivity  implements View.
                 return getString(R.string.gesture_eink_center);
             case KEY_SETTINGS:
                 return getString(R.string.gesture_key_setting);
+            case QUICK_MINI:
+                return getString(R.string.gesture_quick_mini);
             case USER_APP:
                 return getString(R.string.gesture_user_app);
             default:

@@ -8,14 +8,14 @@
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/gesture_choose_title_margin_top"
         android:layout_gravity="center_horizontal">
 
         <TextView
             android:id="@+id/def_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="22sp"
+            android:textSize="@dimen/textSize20"
             android:textStyle="bold"/>
 
     </FrameLayout>
@@ -23,22 +23,22 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/gesture_choose_preview_margin_top"
         android:layout_gravity="center_horizontal">
 
         <ImageView
             android:id="@+id/btn_prev"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+            android:layout_width="@dimen/gesture_choose_page_button_size"
+            android:layout_height="@dimen/gesture_choose_page_button_size"
             android:src="@drawable/setting_display_prev"
             android:layout_gravity="center">
         </ImageView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="304dp"
-            android:layout_height="405dp"
-            android:layout_marginRight="51dp"
-            android:layout_marginLeft="51dp"
+            android:layout_width="@dimen/gesture_choose_preview_width"
+            android:layout_height="@dimen/gesture_choose_preview_height"
+            android:layout_marginRight="@dimen/gesture_choose_page_button_space"
+            android:layout_marginLeft="@dimen/gesture_choose_page_button_space"
             android:layout_gravity="center_horizontal"
             app:cardCornerRadius="20dp"
             app:cardBackgroundColor="@color/white"
@@ -49,17 +49,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/frame_round_angle"/>
         </androidx.cardview.widget.CardView>
 
         <ImageView
             android:id="@+id/btn_next"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+            android:layout_width="@dimen/gesture_choose_page_button_size"
+            android:layout_height="@dimen/gesture_choose_page_button_size"
             android:src="@drawable/setting_display_next"
             android:layout_gravity="center">
         </ImageView>
@@ -67,30 +62,31 @@
 
     <com.jzzh.setting.NavigationDotView
         android:id="@+id/dot_navigation"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dot_view_height"
+        android:layout_height="@dimen/gesture_choose_dot_container_height"
         android:layout_gravity="center_horizontal" />
 
     <LinearLayout
         android:id="@+id/selection_view"
-        android:layout_width="562dp"
-        android:layout_height="172dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gesture_choose_selection_horizontal_margin"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="@dimen/gesture_choose_selection_horizontal_margin"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/frame_round_angle"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="86dp">
+            android:layout_height="@dimen/key_gesture_item_height">
 
             <TextView
                 android:id="@+id/checkbox_text"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="@dimen/key_item_text_margin_left"
                 android:textSize="@dimen/textSize20"
                 android:layout_gravity="center"/>
 
@@ -98,7 +94,7 @@
                 android:id="@+id/checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="@dimen/key_item_image_margin_right"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
@@ -107,34 +103,15 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="32dp"
+            android:layout_marginLeft="@dimen/key_gesture_divider_horizontal_margin"
+            android:layout_marginRight="@dimen/key_gesture_divider_horizontal_margin"
             android:background="@color/black">
         </View>
 
-        <LinearLayout
+        <com.jzzh.setting.keygesture.KeyGestureItem
             android:id="@+id/bottom_enter"
             android:layout_width="match_parent"
-            android:layout_height="86dp">
-
-            <TextView
-                android:id="@+id/bottom_tv"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:textSize="@dimen/textSize20"
-                android:layout_gravity="center"/>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/setting_k_g_gesturesetting_enter"
-                android:layout_marginRight="32dp"
-                android:layout_gravity="center">
-            </ImageView>
-
-        </LinearLayout>
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

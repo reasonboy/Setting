@@ -1,26 +1,28 @@
 package com.jzzh.setting.keygesture;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.ListView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.jzzh.setting.BaseActivity;
 import com.jzzh.setting.R;
-import com.jzzh.tools.ZhCheckBox;
 
 import java.util.ArrayList;
 
-public class PhysicalKeySettingActivity extends BaseActivity implements ZhCheckBox.OnZhCheckedChangeListener,
-        View.OnClickListener, AdapterView.OnItemClickListener{
+public class PhysicalKeySettingActivity extends BaseActivity implements View.OnClickListener,
+        AdapterView.OnItemClickListener {
 
     public static final int PAGE_KEY = 0;
     public static final int VOLUME_KEY = 1;
@@ -28,37 +30,62 @@ public class PhysicalKeySettingActivity extends BaseActivity implements ZhCheckB
     public static final String PHYSICAL_KEY_MODE = "physical_key_mode";
     public static final String REVERSE_PHYSICAL_KEY = "reverse_physical_key";
     private ArrayList<Data> mListData;
-    private ListView mListView;
     private KeySettingAdapter mAdapter;
     private TextView mReverseKey;
+    private KeyGestureItem mShortPressItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_keygesture_physical);
         initData();
-        mReverseKey = findViewById(R.id.reverse_key_switch);
-        mReverseKey.setOnClickListener(this);
-        mListView = findViewById(R.id.key_setting_listview);
-        mListView.setOnItemClickListener(this);
-        mAdapter = new KeySettingAdapter(this,mListData);
-        mAdapter.setSelectedPosition(getSelectedPosition());
-        mListView.setAdapter(mAdapter);
-        setReverseKeyState();
+
+        mShortPressItem = findViewById(R.id.short_press);
+        mShortPressItem.setOnClickListener(this);
+        updateShortPressValue();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateShortPressValue();
     }
 
     private void initData() {
         mListData = new ArrayList<>();
-        mListData.add(new Data(getString(R.string.setting_physical_key_page), PAGE_KEY));
-        mListData.add(new Data(getString(R.string.setting_physical_key_volume), VOLUME_KEY));
-        mListData.add(new Data(getString(R.string.setting_physical_key_dpad), DPAD_KEY));
+        mListData.add(new Data(getString(R.string.setting_physical_key_volume),
+                getString(R.string.setting_physical_key_volume_value), VOLUME_KEY));
+        mListData.add(new Data(getString(R.string.setting_physical_key_page),
+                getString(R.string.setting_physical_key_page_value), PAGE_KEY));
+        mListData.add(new Data(getString(R.string.setting_physical_key_dpad),
+                getString(R.string.setting_physical_key_dpad_value), DPAD_KEY));
+    }
+
+    private void showShortPressDialog() {
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setContentView(R.layout.dialog_volume_key_setting);
+
+        mReverseKey = dialog.findViewById(R.id.zh_reverse_key_switch);
+        mReverseKey.setOnClickListener(this);
+
+        ListView listView = dialog.findViewById(R.id.key_setting_listview);
+        listView.setOnItemClickListener(this);
+        mAdapter = new KeySettingAdapter(this, mListData);
+        mAdapter.setSelectedPosition(getSelectedPosition());
+        listView.setAdapter(mAdapter);
+
+        dialog.findViewById(R.id.exit).setOnClickListener(view -> dialog.dismiss());
+        setReverseKeyState();
+        dialog.show();
     }
 
     private int getSelectedPosition() {
         int keyMode = getKeyMode();
         int position = 0;
-        for (int i=0;i<mListData.size();i++) {
-            if(keyMode == mListData.get(i).mode) {
+        for (int i = 0; i < mListData.size(); i++) {
+            if (keyMode == mListData.get(i).mode) {
                 position = i;
             }
         }
@@ -69,47 +96,53 @@ public class PhysicalKeySettingActivity extends BaseActivity implements ZhCheckB
         int position = getSelectedPosition();
         mAdapter.setSelectedPosition(position);
         mAdapter.notifyDataSetChanged();
+        updateShortPressValue();
+    }
+
+    private void updateShortPressValue() {
+        int position = getSelectedPosition();
+        mShortPressItem.setValue(mListData.get(position).value);
     }
 
     private void setReverseKeyState() {
         int reverseKey = getKeyReverse();
-        if(reverseKey == 1) {
-            mReverseKey.setBackground(getDrawable(R.drawable.display_def_apply_frame_selected));
-            mReverseKey.setTextColor(Color.WHITE);
-        } else {
-            mReverseKey.setBackground(getDrawable(R.drawable.display_def_apply_frame));
+        if (reverseKey == 1) {
+            mReverseKey.setBackground(getDrawable(R.drawable.zh_button_bg_on));
             mReverseKey.setTextColor(Color.BLACK);
+        } else {
+            mReverseKey.setBackground(getDrawable(R.drawable.zh_button_bg_off));
+            mReverseKey.setTextColor(Color.WHITE);
         }
     }
 
     private int getKeyMode() {
-        int mode = Settings.System.getInt(getContentResolver(),PHYSICAL_KEY_MODE,PAGE_KEY);
-        return mode;
+        return Settings.System.getInt(getContentResolver(), PHYSICAL_KEY_MODE, PAGE_KEY);
     }
 
     private void setKeyMode(int mode) {
-        Settings.System.putInt(getContentResolver(),PHYSICAL_KEY_MODE,mode);
+        Settings.System.putInt(getContentResolver(), PHYSICAL_KEY_MODE, mode);
     }
 
     private int getKeyReverse() {
-        int mode = Settings.System.getInt(getContentResolver(),REVERSE_PHYSICAL_KEY,0);
-        return mode;
+        return Settings.System.getInt(getContentResolver(), REVERSE_PHYSICAL_KEY, 0);
     }
 
     private void setKeyReverse(int mode) {
-        Settings.System.putInt(getContentResolver(),REVERSE_PHYSICAL_KEY,mode);
+        Settings.System.putInt(getContentResolver(), REVERSE_PHYSICAL_KEY, mode);
     }
 
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        int mode = mListData.get(i).mode;
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+        int mode = mListData.get(position).mode;
         setKeyMode(mode);
         updateDisplay();
     }
 
     @Override
     public void onClick(View view) {
-        if(view.getId() == R.id.reverse_key_switch) {
+        if (view.getId() == R.id.short_press) {
+            showShortPressDialog();
+        } else if (view.getId() == R.id.zh_reverse_key_switch) {
             int reverseKey = getKeyReverse();
             if (reverseKey == 1) {
                 setKeyReverse(0);
@@ -118,11 +151,6 @@ public class PhysicalKeySettingActivity extends BaseActivity implements ZhCheckB
             }
             setReverseKeyState();
         }
-    }
-
-    @Override
-    public void onCheckedChanged(boolean checked) {
-        setKeyReverse(checked ? 1 : 0);
     }
 
     public class KeySettingAdapter extends BaseAdapter {
@@ -146,20 +174,21 @@ public class PhysicalKeySettingActivity extends BaseActivity implements ZhCheckB
         }
 
         @Override
-        public Data getItem(int i) {
-            return mData.get(i);
+        public Data getItem(int position) {
+            return mData.get(position);
         }
 
         @Override
-        public long getItemId(int i) {
-            return i;
+        public long getItemId(int position) {
+            return position;
         }
 
         @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
+        public View getView(int position, View view, ViewGroup viewGroup) {
             ViewHolder viewHolder;
-            if(view == null) {
-                view = LayoutInflater.from(mContext).inflate(R.layout.select_item, viewGroup,false);
+            if (view == null) {
+                view = LayoutInflater.from(mContext).inflate(
+                        R.layout.volume_key_dialog_item, viewGroup, false);
                 viewHolder = new ViewHolder();
                 viewHolder.title = view.findViewById(R.id.select_title);
                 viewHolder.icon = view.findViewById(R.id.select_icon);
@@ -167,8 +196,8 @@ public class PhysicalKeySettingActivity extends BaseActivity implements ZhCheckB
             } else {
                 viewHolder = (ViewHolder) view.getTag();
             }
-            viewHolder.title.setText(mData.get(i).title);
-            if(i == mSelectedPosition) {
+            viewHolder.title.setText(mData.get(position).title);
+            if (position == mSelectedPosition) {
                 viewHolder.icon.setBackground(mContext.getDrawable(R.drawable.check_on));
             } else {
                 viewHolder.icon.setBackground(mContext.getDrawable(R.drawable.check_off));
@@ -184,10 +213,12 @@ public class PhysicalKeySettingActivity extends BaseActivity implements ZhCheckB
 
     public class Data {
         public String title;
+        public String value;
         public int mode;
 
-        public Data(String title, int mode) {
+        public Data(String title, String value, int mode) {
             this.title = title;
+            this.value = value;
             this.mode = mode;
         }
     }

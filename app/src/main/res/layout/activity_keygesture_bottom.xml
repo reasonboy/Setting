@@ -5,29 +5,31 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="590dp"
-        android:layout_height="230dp"
-        android:layout_marginLeft="42dp"
-        android:layout_marginRight="42dp"
+        android:layout_width="@dimen/bottom_gesture_card_width"
+        android:layout_height="@dimen/bottom_gesture_card_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/bottom_gesture_card_spacing"
         android:background="@drawable/frame_round_angle"
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="23dp"
-            android:layout_marginLeft="38dp"
-            android:layout_marginRight="38dp"
+            android:layout_width="@dimen/bottom_gesture_image_width"
+            android:layout_height="@dimen/bottom_gesture_image_height"
+            android:layout_marginTop="@dimen/bottom_gesture_image_margin_top"
+            android:layout_marginLeft="@dimen/bottom_gesture_content_horizontal_margin"
+            android:layout_marginRight="@dimen/bottom_gesture_content_horizontal_margin"
             android:src="@drawable/setting_k_g_gesturesetting_bottom_left">
         </ImageView>
 
         <LinearLayout
             android:id="@+id/left"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginLeft="38dp"
-            android:layout_marginRight="38dp"
+            android:layout_height="@dimen/bottom_gesture_text_row_height"
+            android:layout_marginTop="@dimen/bottom_gesture_image_margin_bottom"
+            android:layout_marginLeft="@dimen/bottom_gesture_content_horizontal_margin"
+            android:layout_marginRight="@dimen/bottom_gesture_content_horizontal_margin"
+            android:layout_marginBottom="@dimen/bottom_gesture_text_margin_bottom"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <TextView
@@ -40,38 +42,39 @@
             </TextView>
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/bottom_gesture_text_row_height"
+                android:layout_height="@dimen/bottom_gesture_text_row_height"
                 android:src="@drawable/setting_k_g_gesturesetting_enter">
             </ImageView>
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="590dp"
-        android:layout_height="230dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="42dp"
-        android:layout_marginRight="42dp"
+        android:layout_width="@dimen/bottom_gesture_card_width"
+        android:layout_height="@dimen/bottom_gesture_card_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/bottom_gesture_card_spacing"
         android:background="@drawable/frame_round_angle"
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="23dp"
-            android:layout_marginLeft="38dp"
-            android:layout_marginRight="38dp"
+            android:layout_width="@dimen/bottom_gesture_image_width"
+            android:layout_height="@dimen/bottom_gesture_image_height"
+            android:layout_marginTop="@dimen/bottom_gesture_image_margin_top"
+            android:layout_marginLeft="@dimen/bottom_gesture_content_horizontal_margin"
+            android:layout_marginRight="@dimen/bottom_gesture_content_horizontal_margin"
             android:src="@drawable/setting_k_g_gesturesetting_bottom_middle">
         </ImageView>
 
         <LinearLayout
             android:id="@+id/middle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginLeft="38dp"
-            android:layout_marginRight="38dp"
+            android:layout_height="@dimen/bottom_gesture_text_row_height"
+            android:layout_marginTop="@dimen/bottom_gesture_image_margin_bottom"
+            android:layout_marginLeft="@dimen/bottom_gesture_content_horizontal_margin"
+            android:layout_marginRight="@dimen/bottom_gesture_content_horizontal_margin"
+            android:layout_marginBottom="@dimen/bottom_gesture_text_margin_bottom"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <TextView
@@ -84,38 +87,39 @@
             </TextView>
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/bottom_gesture_text_row_height"
+                android:layout_height="@dimen/bottom_gesture_text_row_height"
                 android:src="@drawable/setting_k_g_gesturesetting_enter">
             </ImageView>
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="590dp"
-        android:layout_height="230dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="42dp"
-        android:layout_marginRight="42dp"
+        android:layout_width="@dimen/bottom_gesture_card_width"
+        android:layout_height="@dimen/bottom_gesture_card_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/bottom_gesture_card_spacing"
         android:background="@drawable/frame_round_angle"
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="23dp"
-            android:layout_marginLeft="38dp"
-            android:layout_marginRight="38dp"
+            android:layout_width="@dimen/bottom_gesture_image_width"
+            android:layout_height="@dimen/bottom_gesture_image_height"
+            android:layout_marginTop="@dimen/bottom_gesture_image_margin_top"
+            android:layout_marginLeft="@dimen/bottom_gesture_content_horizontal_margin"
+            android:layout_marginRight="@dimen/bottom_gesture_content_horizontal_margin"
             android:src="@drawable/setting_k_g_gesturesetting_bottom_right">
         </ImageView>
 
         <LinearLayout
             android:id="@+id/right"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginLeft="38dp"
-            android:layout_marginRight="38dp"
+            android:layout_height="@dimen/bottom_gesture_text_row_height"
+            android:layout_marginTop="@dimen/bottom_gesture_image_margin_bottom"
+            android:layout_marginLeft="@dimen/bottom_gesture_content_horizontal_margin"
+            android:layout_marginRight="@dimen/bottom_gesture_content_horizontal_margin"
+            android:layout_marginBottom="@dimen/bottom_gesture_text_margin_bottom"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <TextView
@@ -128,8 +132,8 @@
             </TextView>
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/bottom_gesture_text_row_height"
+                android:layout_height="@dimen/bottom_gesture_text_row_height"
                 android:src="@drawable/setting_k_g_gesturesetting_enter">
             </ImageView>
         </LinearLayout>

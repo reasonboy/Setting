@@ -58,6 +58,7 @@ public class GestureActionDialog extends Dialog {
         mData.add(new Data(mContext.getString(R.string.gesture_task_manager), GestureType.TASK_MANAGER.ordinal()));
         mData.add(new Data(mContext.getString(R.string.gesture_eink_center), GestureType.EINK_CENTER.ordinal()));
         mData.add(new Data(mContext.getString(R.string.gesture_key_setting), GestureType.KEY_SETTINGS.ordinal()));
+        mData.add(new Data(mContext.getString(R.string.gesture_quick_mini), GestureType.QUICK_MINI.ordinal()));
         mData.add(new Data(mContext.getString(R.string.gesture_user_app), GestureType.USER_APP.ordinal()));
     }
 
@@ -77,7 +78,7 @@ public class GestureActionDialog extends Dialog {
                 GestureType gestureType = GestureType.values()[selectedData.mode];
 
                 if (gestureType == GestureType.USER_APP) {
-                    setGestureType(selectedData.mode);
+                    setGestureType(gestureType);
                     AppSelectionDialog appDialog = new AppSelectionDialog(mContext, mGesture);
                     appDialog.setOnDismissListener(dialog -> {
                         if (mOnGestureSelectedListener != null) {
@@ -87,7 +88,7 @@ public class GestureActionDialog extends Dialog {
                     appDialog.show();
                     dismiss();
                 } else {
-                    setGestureType(selectedData.mode);
+                    setGestureType(gestureType);
                     if (mOnGestureSelectedListener != null) {
                         mOnGestureSelectedListener.onGestureSelected(gestureType);
                     }
@@ -102,9 +103,9 @@ public class GestureActionDialog extends Dialog {
         return Settings.System.getInt(mContext.getContentResolver(), key, 0);
     }
 
-    private void setGestureType(int type) {
+    private void setGestureType(GestureType type) {
         String key = getSettingsKey();
-        Settings.System.putInt(mContext.getContentResolver(), key, type);
+        Settings.System.putInt(mContext.getContentResolver(), key, type.ordinal());
     }
 
     private String getSettingsKey() {

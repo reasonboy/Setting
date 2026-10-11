@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/key_gesture_item_height">
+
+    <TextView
+        android:id="@+id/key_gesture_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/key_item_text_margin_left"
+        android:textSize="@dimen/setting_sub_item_textSize" />
+
+    <ImageView
+        android:id="@+id/key_gesture_item_arrow"
+        android:layout_width="@dimen/setting_sub_item_icon_size"
+        android:layout_height="@dimen/setting_sub_item_icon_size"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/key_item_image_margin_right"
+        android:background="@drawable/setting_title_next" />
+
+    <TextView
+        android:id="@+id/key_gesture_item_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="@dimen/key_item_text_margin_right"
+        android:layout_toRightOf="@id/key_gesture_item_title"
+        android:gravity="right"
+        android:textSize="@dimen/setting_sub_item_textSize"
+        android:textStyle="bold"
+        android:visibility="gone" />
+</RelativeLayout>

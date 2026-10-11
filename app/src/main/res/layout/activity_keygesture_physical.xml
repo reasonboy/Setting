@@ -1,45 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <ImageView
+        android:layout_width="@dimen/volume_key_image_width"
+        android:layout_height="@dimen/volume_key_image_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/volume_key_image_margin_top"
+        android:src="@drawable/setting_k_g_volumekey" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/key_gesture_page_horizontal_margin"
+        android:layout_marginTop="@dimen/key_gesture_title_vertical_margin"
+        android:layout_marginBottom="@dimen/key_gesture_title_vertical_margin"
+        android:text="@string/setting_volume_key_title"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="86dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="@string/setting_physical_key_setting"
-            android:layout_marginLeft="56dp"
-            android:layout_gravity="left|center_vertical"/>
-
-        <TextView
-            android:id="@+id/reverse_key_switch"
-            android:layout_width="120dp"
-            android:layout_height="42dp"
-            android:background="@drawable/display_def_apply_frame"
-            android:text="@string/setting_physical_reverse"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:layout_marginRight="56dp"
-            android:layout_gravity="center_vertical"/>
-    </LinearLayout>
-
-    <ListView
-        android:id="@+id/key_setting_listview"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:divider="@android:color/transparent"
-        android:listSelector="@android:color/transparent"
-        android:overScrollMode="never"
-        android:scrollbars="none" />
+        android:layout_marginStart="@dimen/key_gesture_page_horizontal_margin"
+        android:layout_marginEnd="@dimen/key_gesture_page_horizontal_margin"
+        android:background="@drawable/frame_round_angle"
+        android:orientation="vertical">
+
+        <com.jzzh.setting.keygesture.KeyGestureItem
+            android:id="@+id/short_press"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:show_arrow="false"
+            app:title="@string/setting_volume_key_short_press" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/key_gesture_divider_horizontal_margin"
+            android:layout_marginEnd="@dimen/key_gesture_divider_horizontal_margin"
+            android:background="@color/black" />
+
+        <com.jzzh.setting.keygesture.KeyGestureItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:show_arrow="false"
+            app:title="@string/setting_volume_key_long_press" />
+    </LinearLayout>
 </LinearLayout>

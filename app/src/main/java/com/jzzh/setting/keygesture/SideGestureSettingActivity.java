@@ -1,6 +1,8 @@
 package com.jzzh.setting.keygesture;
 
 import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
@@ -178,6 +180,8 @@ public class SideGestureSettingActivity extends BaseActivity {
                 return getString(R.string.gesture_eink_center);
             case KEY_SETTINGS:
                 return getString(R.string.gesture_key_setting);
+            case QUICK_MINI:
+                return getString(R.string.gesture_quick_mini);
             case USER_APP:
                 return getString(R.string.gesture_user_app);
             default:
@@ -199,6 +203,7 @@ public class SideGestureSettingActivity extends BaseActivity {
 
     private void showInformationDialog() {
         Dialog dialog = new Dialog(this);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.setContentView(R.layout.dialog_keypack_information);
         
         Locale currentLocale = getResources().getConfiguration().locale;

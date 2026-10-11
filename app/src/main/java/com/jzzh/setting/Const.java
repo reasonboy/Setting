@@ -47,6 +47,7 @@ public class Const {
         TASK_MANAGER,
         EINK_CENTER,
         KEY_SETTINGS,
+        QUICK_MINI,
         USER_APP,
     }
 
