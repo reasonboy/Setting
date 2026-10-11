@@ -15,7 +15,7 @@
     <com.jzzh.setting.time.TimeSettingItem
         android:id="@+id/time_auto_time"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/time_setting_large_item_height"
         android:layout_marginLeft="@dimen/setting_sub_item_margin"
         app:title="@string/time_auto_time"
         app:summary="@string/time_use_network_time"
@@ -24,7 +24,7 @@
     <com.jzzh.setting.time.TimeSettingItem
         android:id="@+id/time_set_date"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/time_setting_regular_item_height"
         android:layout_marginLeft="66dp"
         app:title="@string/time_set_date"
         app:summary="2019-04-24"/>
@@ -32,7 +32,7 @@
     <com.jzzh.setting.time.TimeSettingItem
         android:id="@+id/time_set_time"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/time_setting_regular_item_height"
         android:layout_marginLeft="66dp"
         app:title="@string/time_set_time"
         app:summary="04:24"/>
@@ -40,7 +40,7 @@
     <com.jzzh.setting.time.TimeSettingItem
         android:id="@+id/time_hour_format"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/time_setting_single_line_item_height"
         android:layout_marginLeft="@dimen/setting_sub_item_margin"
         app:title="@string/time_use_24_format"
         app:function="checkbox"/>
@@ -55,7 +55,7 @@
     <com.jzzh.setting.time.TimeSettingItem
         android:id="@+id/time_select_timezone"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/time_setting_large_item_height"
         android:layout_marginLeft="@dimen/setting_sub_item_margin"
         app:title="@string/time_select_timezone"
         app:function="set_zone"/>

@@ -38,14 +38,14 @@ public class TaskManagerActivity extends BaseActivity implements TasksAdapter.On
 
     private static final int MSG_UPDATE_RECYCLERVIEW = 0;
     private static final int MSG_UPDATE_MEMORY = 1;
-    private static final int SPAN_COUNT = 3;
+    private static final int SPAN_COUNT = 2;
     private static final int ROWS_PER_PAGE = 2;
     private static final int ITEMS_PER_PAGE = SPAN_COUNT * ROWS_PER_PAGE;
     
     private ActivityManager mActivityManager;
     private RecyclerView mRecyclerView;
     private TasksAdapter mAdapter;
-    private int mState = TasksAdapter.STATE_NORMAL;
+    private int mState = TasksAdapter.STATE_CHOICE;
     private NavigationDotView mNavigationDotView;
     private int mCurrentPage = 0;
     private List<TaskItem> mAllTaskList = new ArrayList<>();
@@ -99,6 +99,16 @@ public class TaskManagerActivity extends BaseActivity implements TasksAdapter.On
         });
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, SPAN_COUNT));
+        int edgeSpacing = getResources().getDimensionPixelSize(R.dimen.task_manager_horizontal_margin);
+        int horizontalSpacing = getResources().getDimensionPixelSize(R.dimen.task_manager_horizontal_space);
+        int verticalSpacing = getResources().getDimensionPixelSize(R.dimen.task_manager_vertical_space);
+        int topSpacing = getResources().getDimensionPixelSize(R.dimen.task_manager_top_space);
+        mRecyclerView.addItemDecoration(new TaskGridSpacingDecoration(
+                SPAN_COUNT,
+                edgeSpacing,
+                horizontalSpacing,
+                verticalSpacing,
+                topSpacing));
         
         mAllTaskList = getTaskItem();
         List<TaskItem> currentPageList = getCurrentPageTaskList();

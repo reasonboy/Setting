@@ -2,7 +2,7 @@
 <resources>
     <string name="settings_ok">OK</string>
     <string name="settings_cancel">Cancel</string>
-    <string name="wifi_setting">Wifi Setting</string>
+    <string name="wifi_setting">Wi-Fi</string>
     <string name="wifi_capabilities_psk">Protected by %1$s</string>
     <string name="wifi_capabilities_wps">WPS can be used</string>
     <string name="wifi_capabilities_open">Open system certification</string>
@@ -115,6 +115,7 @@
     <string name="bt_paired_device">Paired devices :</string>
     <string name="bt_available_device">Available Device :</string>
     <string name="bt_not_supported">Bluetooth not supported</string>
+    <string name="bt_open_tips">Please turn BT(2.4GHz) on.</string>
     <string name="bt_name_cannot_be_empty">Bluetooth name cannot be empty！</string>
     <string name="bt_pair">Pair</string>
     <string name="bt_disconnect">Disconnect</string>

@@ -9,12 +9,12 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp">
+        android:layout_marginTop="@dimen/light_adjust_title_margin_top">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="56dp">
+            android:layout_marginLeft="@dimen/light_adjust_icon_margin_left">
             <ImageView
                 android:id="@+id/zh_adjust_icon"
                 android:layout_width="32dp"
@@ -46,31 +46,29 @@
 
         <ImageView
             android:id="@+id/zh_adjust_reduce"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+            android:layout_width="@dimen/light_adjust_button_size"
+            android:layout_height="@dimen/light_adjust_button_size"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="69dp"
-            android:src="@drawable/soft_bar_on_reduce"
-            android:padding="7dp"/>
+            android:layout_marginLeft="@dimen/light_adjust_control_margin"
+            android:src="@drawable/soft_bar_on_reduce" />
 
         <com.jzzh.tools.ZhSeekBar
             android:id="@+id/zh_adjust_seekbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:bg_width="354dp"
+            app:bg_width="@dimen/light_adjust_seekbar_width"
             app:bg_height="2dp"
             app:thumb_size="13dp"
             app:touchable_height="30dp"/>
 
         <ImageView
             android:id="@+id/zh_adjust_increase"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+            android:layout_width="@dimen/light_adjust_button_size"
+            android:layout_height="@dimen/light_adjust_button_size"
             android:layout_gravity="right|center_vertical"
-            android:layout_marginRight="69dp"
-            android:src="@drawable/soft_bar_on_increase"
-            android:padding="7dp"/>
+            android:layout_marginRight="@dimen/light_adjust_control_margin"
+            android:src="@drawable/soft_bar_on_increase" />
 
     </FrameLayout>
 

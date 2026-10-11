@@ -8,19 +8,21 @@
 
     <com.jzzh.network.NetTitleLayout
         android:id="@+id/title_layout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:title="@string/bt_setting"
+        app:function_icon_1="@drawable/reset"
         app:enable_checkBox="true"/>
 
     <LinearLayout
+        android:id="@+id/bt_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/listview_item_height"
+            android:layout_height="@dimen/bt_item_height"
             android:visibility="gone">
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -75,11 +77,12 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/bt_paired_device_title"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/listview_item_height"
+            android:layout_height="@dimen/bt_item_height"
             android:gravity="center_vertical"
             android:text="@string/bt_paired_device"
-            android:layout_marginLeft="@dimen/listview_item_margin"
+            android:layout_marginLeft="@dimen/bt_title_margin"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="@dimen/textSize19"/>
@@ -88,7 +91,8 @@
             android:id="@+id/bt_paired_device_listview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="74dp"
+            android:layout_marginLeft="@dimen/bt_device_margin"
+            android:layout_marginRight="@dimen/bt_device_margin"
             android:divider="@null"
             android:overScrollMode="never"
             android:scrollbars="none"
@@ -96,11 +100,11 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/listview_item_height">
+            android:layout_height="@dimen/bt_item_height">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="52dp"
+                android:layout_marginLeft="@dimen/bt_title_margin"
                 android:layout_centerVertical="true"
                 android:textStyle="bold"
                 android:text="@string/bt_available_device"
@@ -122,14 +126,6 @@
                     android:visibility="gone"
                     android:textColor="@color/black"
                     android:textSize="20sp"/>
-
-                <ImageView
-                    android:id="@+id/bt_available_device_refresh"
-                    android:layout_width="27dp"
-                    android:layout_height="27dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/settings_refresh"/>
             </LinearLayout>
         </RelativeLayout>
 
@@ -137,11 +133,21 @@
             android:id="@+id/bt_available_device_listview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="74dp"
+            android:layout_marginLeft="@dimen/bt_device_margin"
+            android:layout_marginRight="@dimen/bt_device_margin"
             android:divider="@null"
             android:overScrollMode="never"
             android:scrollbars="none"
             android:layout_marginBottom="20dp"
             android:listSelector="@android:color/transparent"/>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/bt_tips"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/bt_open_tips"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
 </LinearLayout>

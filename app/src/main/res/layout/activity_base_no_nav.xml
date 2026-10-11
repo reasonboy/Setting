@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".Setting">
 
@@ -25,9 +26,8 @@
             android:id="@+id/navigation_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:textSize="22sp"
-            android:textStyle="bold"
+            android:layout_marginLeft="@dimen/navi_title_margin_left"
+            android:textSize="@dimen/navi_layout_textSize"
             android:layout_gravity="center_vertical">
         </TextView>
 

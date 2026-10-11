@@ -32,11 +32,11 @@ public class DeviceIfoItem extends RelativeLayout {
     private void intView(Context context) {
         mContext = context;
         LayoutInflater factory = LayoutInflater.from(context);
-        mLayout = (ViewGroup)factory.inflate(R.layout.device_info_item,this, false);
+        mLayout = (ViewGroup)factory.inflate(R.layout.information_list_item,this, false);
         addView(mLayout);
 
-        mTitleTv = mLayout.findViewById(R.id.device_info_title);
-        mInformationTv = mLayout.findViewById(R.id.device_info_information);
+        mTitleTv = mLayout.findViewById(R.id.information_item_title);
+        mInformationTv = mLayout.findViewById(R.id.information_item_value);
         setTitle(mTitle);
     }
 

@@ -21,20 +21,19 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="@string/factory_reset_contents"
-            android:textSize="@dimen/textSize19"
+            android:layout_marginStart="@dimen/factory_reset_content_horizontal_margin"
+            android:layout_marginTop="@dimen/factory_reset_content_margin_top"
+            android:layout_marginEnd="@dimen/factory_reset_content_horizontal_margin"
             android:lineSpacingExtra="10dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginStart="52dp"
-            android:layout_marginEnd="52dp"
-            />
+            android:text="@string/factory_reset_contents"
+            android:textSize="@dimen/textSize19" />
     </LinearLayout>
 
     <FrameLayout
         android:id="@+id/factory_reset_btn"
-        android:layout_width="178dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="68dp"
+        android:layout_width="@dimen/factory_reset_button_width"
+        android:layout_height="@dimen/factory_reset_button_height"
+        android:layout_marginBottom="@dimen/factory_reset_button_margin_bottom"
         android:background="@drawable/display_def_apply_frame"
         android:layout_gravity="center_horizontal|bottom">
 

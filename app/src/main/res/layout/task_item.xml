@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="33dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -12,8 +11,8 @@
 
         <ImageView
             android:id="@+id/task_item_icon"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="@dimen/task_manager_icon_size"
+            android:layout_height="@dimen/task_manager_icon_size"
             android:layout_gravity="center" />
 
         <TextView
@@ -23,15 +22,15 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="5dp"
             android:singleLine="true"
-            android:textSize="18sp" />
+            android:textSize="@dimen/task_manager_app_name_text_size" />
 
     </LinearLayout>
 
     <FrameLayout
         android:id="@+id/task_item_view"
-        android:layout_width="168dp"
-        android:layout_height="223dp"
-        android:layout_marginTop="14dp"
+        android:layout_width="@dimen/task_manager_preview_width"
+        android:layout_height="@dimen/task_manager_preview_height"
+        android:layout_marginTop="@dimen/task_manager_icon_preview_space"
         android:background="@drawable/rectangle_task_item_view"
         android:padding="3dp">
 
@@ -42,10 +41,10 @@
 
         <ImageView
             android:id="@+id/task_item_choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/task_manager_choice_size"
+            android:layout_height="@dimen/task_manager_choice_size"
             android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="@dimen/task_manager_choice_margin_bottom"
             android:background="@drawable/ic_taskmanager_choice" />
     </FrameLayout>
 </LinearLayout>

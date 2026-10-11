@@ -5,11 +5,11 @@
     <dimen name="textSize20">20sp</dimen>
     <dimen name="textSize21">21sp</dimen>
 
-    <dimen name="title_layout_height">82dp</dimen>
-    <dimen name="title_layout_margin">56dp</dimen>
-    <dimen name="title_layout_textSize">21sp</dimen>
-    <dimen name="title_layout_icon_size">32dp</dimen>
-    <dimen name="title_layout_icon_space">25dp</dimen>
+    <dimen name="title_layout_height">66dp</dimen>
+    <dimen name="title_layout_margin">32dp</dimen>
+    <dimen name="title_layout_textSize">20sp</dimen>
+    <dimen name="title_layout_icon_size">26dp</dimen>
+    <dimen name="title_layout_icon_space">22dp</dimen>
     <dimen name="title_layout_underline_height">1.5px</dimen>
     <dimen name="title_layout_underline_width">562dp</dimen>
 
@@ -21,7 +21,14 @@
     <dimen name="listview_item_textSize">21sp</dimen>
     <dimen name="listview_item_iconSize">39dp</dimen>
     <dimen name="listview_item_margin">56dp</dimen>
+    <dimen name="wifi_item_height">82dp</dimen>
+    <dimen name="wifi_item_textSize">19sp</dimen>
+    <dimen name="wifi_item_iconSize">26dp</dimen>
     <dimen name="wifi_tips_textSize">21dp</dimen>
 
-    <dimen name="bt_device_item_name_textSize">21sp</dimen>
+    <dimen name="bt_item_height">68dp</dimen>
+    <dimen name="bt_title_margin">38dp</dimen>
+    <dimen name="bt_device_margin">54dp</dimen>
+    <dimen name="bt_device_item_name_textSize">19sp</dimen>
+    <dimen name="bt_setting_icon_size">26dp</dimen>
 </resources>

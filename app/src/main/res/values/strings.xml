@@ -2,7 +2,7 @@
     <string name="app_name">Setting</string>
     <string name="setting">Setting</string>
     <string name="setting_network">Network</string>
-    <string name="setting_network_wifi">Wifi</string>
+    <string name="setting_network_wifi">Wi-Fi</string>
     <string name="setting_network_bt">BT(2.4GHz Wireless)</string>
     <string name="setting_power">Power</string>
     <string name="setting_power_auto_sleep">Auto Sleep Timeout</string>

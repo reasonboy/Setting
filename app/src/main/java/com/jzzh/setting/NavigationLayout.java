@@ -36,7 +36,8 @@ public class NavigationLayout extends LinearLayout{
 
     public void setNavigation(int[] navigationIds) {
         final LinearLayout.LayoutParams tvLp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-        final LinearLayout.LayoutParams ivLp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        final int iconSize = getResources().getDimensionPixelOffset(R.dimen.navi_layout_iconSize);
+        final LinearLayout.LayoutParams ivLp = new LinearLayout.LayoutParams(iconSize, iconSize);
         tvLp.gravity = Gravity.CENTER_VERTICAL;
         ivLp.gravity = Gravity.CENTER_VERTICAL;
         ivLp.setMargins(getResources().getDimensionPixelOffset(R.dimen.navi_layout_view_space), 0,

@@ -29,7 +29,7 @@
                 android:id="@+id/btn_search_alarm_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="10dp"
+                android:layout_marginLeft="@dimen/quick_info_margin_left"
                 android:src="@drawable/ic_info" />
 
             <View
@@ -76,7 +76,7 @@
                 android:id="@+id/btn_bottom_apps_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="10dp"
+                android:layout_marginLeft="@dimen/quick_info_margin_left"
                 android:src="@drawable/ic_info" />
 
             <View
@@ -124,7 +124,7 @@
                 android:id="@+id/btn_left_slide_function_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="10dp"
+                android:layout_marginLeft="@dimen/quick_info_margin_left"
                 android:src="@drawable/ic_info" />
 
             <View

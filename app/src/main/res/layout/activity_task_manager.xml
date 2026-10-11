@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
         android:overScrollMode="never"
         android:scrollbars="none" />
 
@@ -18,13 +16,14 @@
         android:id="@+id/navigation_dot_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="96dp" />
+        android:layout_above="@id/task_action_container"
+        android:layout_marginBottom="@dimen/task_manager_dot_action_space" />
 
     <LinearLayout
+        android:id="@+id/task_action_container"
         android:layout_width="match_parent"
-        android:layout_height="96dp"
-        android:layout_gravity="bottom"
+        android:layout_height="@dimen/task_manager_action_height"
+        android:layout_alignParentBottom="true"
         android:paddingStart="42dp"
         android:paddingEnd="42dp"
         tools:ignore="RtlSymmetry">
@@ -54,7 +53,8 @@
                     android:background="@drawable/task_button_bg"
                     android:minWidth="100dp"
                     android:paddingLeft="5dp"
-                    android:paddingRight="5dp">
+                    android:paddingRight="5dp"
+                    android:visibility="gone">
 
                     <ImageView
                         android:layout_width="32dp"
@@ -77,15 +77,15 @@
                 <LinearLayout
                     android:id="@+id/task_clean"
                     android:layout_width="wrap_content"
-                    android:layout_height="50dp"
+                    android:layout_height="@dimen/task_manager_clear_button_height"
                     android:layout_marginStart="20dp"
                     android:background="@drawable/task_button_bg"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp">
 
                     <ImageView
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
+                        android:layout_width="@dimen/task_manager_clear_icon_size"
+                        android:layout_height="@dimen/task_manager_clear_icon_size"
                         android:layout_gravity="center_vertical"
                         android:background="@drawable/ic_taskmanager_clean" />
 
@@ -101,4 +101,4 @@
             </LinearLayout>
         </FrameLayout>
     </LinearLayout>
-</FrameLayout>
+</RelativeLayout>

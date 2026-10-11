@@ -26,7 +26,7 @@ public class TimeZoneActivity extends BaseActivity implements AdapterView.OnItem
     private ListView mListView;
     private TimeZoneAdapter mAdapter;
     private PageIndication mPageIndication;
-    private int mCurPage = 1,mTotalPage,mListViewItemNum = 9;
+    private int mCurPage = 1,mTotalPage,mListViewItemNum = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,10 +117,10 @@ public class TimeZoneActivity extends BaseActivity implements AdapterView.OnItem
         public View getView(int i, View view, ViewGroup viewGroup) {
             ViewHolder viewHolder;
             if(view == null) {
-                view = LayoutInflater.from(mContext).inflate(R.layout.time_zone_list_item, viewGroup,false);
+                view = LayoutInflater.from(mContext).inflate(R.layout.information_list_item, viewGroup,false);
                 viewHolder = new ViewHolder();
-                viewHolder.city = view.findViewById(R.id.time_zone_city);
-                viewHolder.code = view.findViewById(R.id.time_zone_code);
+                viewHolder.city = view.findViewById(R.id.information_item_title);
+                viewHolder.code = view.findViewById(R.id.information_item_value);
                 view.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder) view.getTag();

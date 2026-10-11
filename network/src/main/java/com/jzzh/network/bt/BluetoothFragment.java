@@ -47,12 +47,15 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
     private Context mContext;
     private ZhCheckBox mBtSwitch;
     private TextView mDeviceName,mDeviceAddress;
+    private TextView mPairedTitle;
     private ListView mPairedListView,mAvailableListView;
     private BluetoothDevicesAdapter mPairedAdapter,mAvailableAdapter;
     private BluetoothAdapter mBluetoothAdapter;
     private ArrayList<BluetoothDevice> mAvailableDevices = new ArrayList<>();
     private BtBroadcaster mBroadcaster;
     private TextView mInSearch;
+    private View mBtContent;
+    private TextView mBtTips;
     private ImageView mIvRefresh;
     private NetTitleLayout mNetTitleLayout;
     private static final int BT_LISTVIEW_AVAILABLE = 0;
@@ -79,6 +82,8 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
             }
         });
         //init BtSwitch
+        mBtContent = view.findViewById(R.id.bt_content);
+        mBtTips = view.findViewById(R.id.bt_tips);
         mBtSwitch = view.findViewById(R.id.title_switch);
         mBtSwitch.setOnZhCheckedChangeListener(new ZhCheckBox.OnZhCheckedChangeListener() {
             @Override
@@ -87,10 +92,12 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
                     mBluetoothAdapter.enable();
                 } else {
                     mBluetoothAdapter.disable();
+                    showBtContent(false);
                 }
             }
         });
         mBtSwitch.setCheck(isBluetoothEnable());
+        showBtContent(isBluetoothEnable());
         //init Self Info
         mDeviceName = view.findViewById(R.id.bt_device_name);
         mDeviceAddress = view.findViewById(R.id.bt_device_address);
@@ -101,8 +108,11 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
                 String.format(getString(R.string.bt_device_address),mBluetoothAdapter.getAddress()));
         view.findViewById(R.id.bt_device_rename).setOnClickListener(this);
         //PairedListView
+        mPairedTitle = view.findViewById(R.id.bt_paired_device_title);
         mPairedListView = view.findViewById(R.id.bt_paired_device_listview);
-        mPairedAdapter = new BluetoothDevicesAdapter(mContext, getPairedDevices(), BT_LISTVIEW_PAIRED);
+        ArrayList<BluetoothDevice> pairedDevices = getPairedDevices();
+        mPairedAdapter = new BluetoothDevicesAdapter(mContext, pairedDevices, BT_LISTVIEW_PAIRED);
+        showPairedTitle(!pairedDevices.isEmpty());
         mPairedAdapter.setOnElementClickListener(new OnElementClickListener() {
             @Override
             public void onBtSetting(int position) {
@@ -123,7 +133,7 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
         mPairedListView.setAdapter(mPairedAdapter);
         mPairedListView.setOnItemClickListener(mOnItemClickListener);
         //AvailableListView
-        mIvRefresh = view.findViewById(R.id.bt_available_device_refresh);
+        mIvRefresh = view.findViewById(R.id.title_function_1);
         mIvRefresh.setOnClickListener(this);
         if(mBluetoothAdapter.isEnabled()) {
             mBluetoothAdapter.startDiscovery();
@@ -349,7 +359,7 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
                 mIvRefresh.setBackground(null);
             } else if(action.equals(BluetoothAdapter.ACTION_DISCOVERY_FINISHED)) {
                 mInSearch.setVisibility(View.GONE);
-                mIvRefresh.setBackgroundResource(R.drawable.settings_refresh);
+                mIvRefresh.setBackgroundResource(R.drawable.reset);
             } else if(action.equals(BluetoothDevice.ACTION_BOND_STATE_CHANGED)) {
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 int bondState = device.getBondState();
@@ -371,8 +381,10 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
                     mBtSwitch.setCheck(false); // 更新switch bar view
                     mAvailableDevices.clear();
                     updateAvailableListView();
+                    showBtContent(false);
                 } else if(newState == BluetoothAdapter.STATE_ON) {
                     mBtSwitch.setCheck(true);
+                    showBtContent(true);
                     mBluetoothAdapter.startDiscovery();
                     getA2dpAdapter();
                 }
@@ -392,8 +404,28 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
     }
 
     private void updatePairedListView() {
-        mPairedAdapter.setDevices(getPairedDevices());
+        ArrayList<BluetoothDevice> pairedDevices = getPairedDevices();
+        mPairedAdapter.setDevices(pairedDevices);
         mPairedAdapter.notifyDataSetChanged();
+        showPairedTitle(!pairedDevices.isEmpty());
+    }
+
+    private void showPairedTitle(boolean show) {
+        if(show) {
+            mPairedTitle.setVisibility(View.VISIBLE);
+        } else {
+            mPairedTitle.setVisibility(View.GONE);
+        }
+    }
+
+    private void showBtContent(boolean show) {
+        if(show) {
+            mBtContent.setVisibility(View.VISIBLE);
+            mBtTips.setVisibility(View.GONE);
+        } else {
+            mBtContent.setVisibility(View.GONE);
+            mBtTips.setVisibility(View.VISIBLE);
+        }
     }
 
     /**
@@ -454,7 +486,7 @@ public class BluetoothFragment extends Fragment implements View.OnClickListener{
                     }
                 }).show();
             }
-        } else if (id == R.id.bt_available_device_refresh) {
+        } else if (id == R.id.title_function_1) {
             scanBluetooth();
         }
     }

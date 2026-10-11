@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/listview_item_height">
+    android:layout_height="@dimen/bt_item_height">
 
     <LinearLayout
         android:id="@+id/ll_bt_text"
@@ -31,19 +31,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/bt_active"
-            android:textColor="@color/gray"
+            android:textColor="@color/black"
             android:textSize="@dimen/textSize17"
             android:visibility="gone" />
     </LinearLayout>
 
     <ImageView
         android:id="@+id/bt_setting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/bt_setting_icon_size"
+        android:layout_height="@dimen/bt_setting_icon_size"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="69dp"
-        android:padding="5dp"
         android:src="@drawable/setting_bt_setting"
         android:visibility="gone" />
 </RelativeLayout>

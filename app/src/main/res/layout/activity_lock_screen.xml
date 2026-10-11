@@ -17,7 +17,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="48dp"
             android:text="@string/set_password"
-            android:textSize="@dimen/textSize19" />
+            android:textSize="@dimen/textSize19"
+            android:textStyle="bold" />
 
         <com.jzzh.tools.ZhCheckBox
             android:id="@+id/zh_lock_screen_switch"

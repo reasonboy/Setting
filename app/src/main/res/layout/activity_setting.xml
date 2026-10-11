@@ -16,11 +16,13 @@
         <com.jzzh.setting.SettingItem
             android:id="@+id/setting_network"
             style="@style/SettingItemStyle"
+            android:layout_marginRight="@dimen/setting_item_space"
             app:icon="@drawable/setting_wifi"
             app:title="@string/setting_network"/>
         <com.jzzh.setting.SettingItem
             android:id="@+id/setting_power"
             style="@style/SettingItemStyle"
+            android:layout_marginRight="@dimen/setting_item_space"
             app:icon="@drawable/setting_power"
             app:title="@string/setting_power"/>
         <com.jzzh.setting.SettingItem
@@ -34,16 +36,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/setting_margin"
+        android:layout_marginTop="@dimen/setting_item_vertical_space"
         android:layout_marginRight="@dimen/setting_margin">
 
         <com.jzzh.setting.SettingItem
             android:id="@+id/setting_light"
             style="@style/SettingItemStyle"
+            android:layout_marginRight="@dimen/setting_item_space"
             app:icon="@drawable/setting_light"
             app:title="@string/setting_light"/>
         <com.jzzh.setting.SettingItem
             android:id="@+id/setting_language_and_keyboard"
             style="@style/SettingItemStyle"
+            android:layout_marginRight="@dimen/setting_item_space"
             app:icon="@drawable/setting_language"
             app:title="@string/setting_language_and_keyboard"/>
         <com.jzzh.setting.SettingItem
@@ -57,16 +62,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/setting_margin"
+        android:layout_marginTop="@dimen/setting_item_vertical_space"
         android:layout_marginRight="@dimen/setting_margin">
 
         <com.jzzh.setting.SettingItem
             android:id="@+id/setting_lock_screen"
             style="@style/SettingItemStyle"
+            android:layout_marginRight="@dimen/setting_item_space"
             app:icon="@drawable/setting_lock"
             app:title="@string/setting_lock_screen"/>
         <com.jzzh.setting.SettingItem
             android:id="@+id/setting_task_manager"
             style="@style/SettingItemStyle"
+            android:layout_marginRight="@dimen/setting_item_space"
             app:icon="@drawable/setting_taskmgr"
             app:title="@string/setting_task_manager"/>
         <com.jzzh.setting.SettingItem
@@ -80,18 +88,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/setting_margin"
+        android:layout_marginTop="@dimen/setting_item_vertical_space"
         android:layout_marginRight="@dimen/setting_margin"
         android:gravity="start">
 
         <com.jzzh.setting.SettingItem
             android:id="@+id/setting_key_and_gesture"
             style="@style/SettingItemStyle"
+            android:layout_marginRight="@dimen/setting_item_space"
             app:icon="@drawable/ic_setting_k_g"
             app:title="@string/setting_key_and_gesture"/>
 
         <com.jzzh.setting.SettingItem
             android:id="@+id/empty1"
-            style="@style/SettingItemStyle"/>
+            style="@style/SettingItemStyle"
+            android:layout_marginRight="@dimen/setting_item_space"/>
 
         <com.jzzh.setting.SettingItem
             android:id="@+id/empty2"

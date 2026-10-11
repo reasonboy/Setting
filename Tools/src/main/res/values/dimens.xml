@@ -4,5 +4,8 @@
     <dimen name="textSize20">20sp</dimen>
     <dimen name="textSize21">21sp</dimen>
     <dimen name="page_size">10dp</dimen>
-    <dimen name="page_indication_marginBottom">50dp</dimen>
+    <dimen name="page_indication_text_size">19sp</dimen>
+    <dimen name="page_indication_marginBottom">5dp</dimen>
+    <dimen name="page_indication_icon_size">26dp</dimen>
+    <dimen name="page_indication_text_space">34dp</dimen>
 </resources>
