@@ -53,7 +53,7 @@ public class WifiUtils {
      * @param eapConfig Enterprise (802.1x) settings, or null for non-Enterprise networks
      * @return whether the network configuration was saved successfully
      */
-    public boolean connectWifi(String targetSsid, String targetPsd, String enc, int meteredType,String ipAssignment,String[] ipSettingsData,String proxySettings,ProxyInfo proxyInfo,WifiEapConfig eapConfig) {
+    public boolean connectWifi(String targetSsid, String targetPsd, String enc, int meteredType,String ipAssignment,String[] ipSettingsData,String proxySettings,ProxyInfo proxyInfo,WifiEapConfig eapConfig, boolean hiddenSsid) {
         // 1、注意热点和密码均包含引号，此处需要需要转义引号
         String ssid = "\"" + targetSsid + "\"";
         String psd = "\"" + targetPsd + "\"";
@@ -61,6 +61,8 @@ public class WifiUtils {
         //2、配置wifi信息
         WifiConfiguration conf = new WifiConfiguration();
         conf.SSID = ssid;
+        // Manual additions must probe for the SSID to find hidden access points.
+        conf.hiddenSSID = hiddenSsid;
         setMeteredOverride(conf,meteredType); // 测试metered
         if(!ipAssignment.isEmpty()){
             setIpAssignment(conf,ipAssignment);
