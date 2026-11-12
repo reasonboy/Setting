@@ -161,7 +161,7 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
             Log.e("lx","name:"+name+" "+address+" is clicked");
             if (!name.equals(mCurConnectSSID)) {
                 if (enc.equals("OPEN") && !isWifiSaved(name)) {
-                    connectWifi(name, "", "OPEN", METERED_OVERRIDE_NONE, "", null,"NONE",null, null);
+                    connectWifi(name, "", "OPEN", METERED_OVERRIDE_NONE, "", null,"NONE",null, null, false);
                 } else {
                     if (isWifiSaved(name)) {
 //                        Log.e(TAG, "已保存的无线网络");
@@ -184,7 +184,7 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
                         new ConnectDialog(mContext, R.style.ZhDialog, new ConnectDialog.DialogCallback() {
                             @Override
                             public void callBackData(String[] data, String key, int meteredType,String ipAssignment,String[] ipSettingsData,String proxySettings,ProxyInfo proxyInfo, WifiEapConfig eapConfig) {
-                                connectWifi(data[0], data[1], data[2], meteredType, ipAssignment, ipSettingsData, proxySettings, proxyInfo, eapConfig);
+                                connectWifi(data[0], data[1], data[2], meteredType, ipAssignment, ipSettingsData, proxySettings, proxyInfo, eapConfig, false);
                             }
                         }, name, enc, false, signalLevel).show();
                     }
@@ -264,9 +264,9 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
      * Notifies the user when the network configuration cannot be saved.
      */
     private void connectWifi(String ssid, String password, String enc, int meteredType, String ipAssignment,
-            String[] ipSettingsData, String proxySettings, ProxyInfo proxyInfo, WifiEapConfig eapConfig) {
+            String[] ipSettingsData, String proxySettings, ProxyInfo proxyInfo, WifiEapConfig eapConfig, boolean hiddenSsid) {
         boolean result = mWifiUtils.connectWifi(ssid, password, enc, meteredType, ipAssignment,
-                ipSettingsData, proxySettings, proxyInfo, eapConfig);
+                ipSettingsData, proxySettings, proxyInfo, eapConfig, hiddenSsid);
         if (!result) {
             Toast.makeText(mContext, R.string.wifi_error_connect_failed, Toast.LENGTH_LONG).show();
         }
@@ -293,7 +293,7 @@ public class WifiFragment extends Fragment implements View.OnClickListener{
                 new AddDialog(mContext, R.style.ZhDialog, new AddDialog.DialogCallback() {
                     @Override
                     public void callBackData(String[] data, int meteredType, String ipAssignment, String[] ipSettingsData, String proxySettings, ProxyInfo proxyInfo, WifiEapConfig eapConfig) {
-                        connectWifi(data[0], data[1], data[2], meteredType, ipAssignment, ipSettingsData, proxySettings, proxyInfo, eapConfig);
+                        connectWifi(data[0], data[1], data[2], meteredType, ipAssignment, ipSettingsData, proxySettings, proxyInfo, eapConfig, true);
                     }
                 }).show();
             }
