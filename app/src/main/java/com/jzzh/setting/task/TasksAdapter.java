@@ -1,8 +1,6 @@
 package com.jzzh.setting.task;
 
-import android.app.ActivityManager;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,9 +65,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskHolder> 
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mState == STATE_NORMAL) {
-                    TaskUtils.moveTaskToFront(mContext, mList.get(position).taskId);
-                }
+                TaskUtils.moveTaskToFront(mContext, mList.get(position).taskId);
             }
         });
         holder.view.setOnLongClickListener(new View.OnLongClickListener() {
@@ -77,6 +73,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskHolder> 
             public boolean onLongClick(View v) {
                 if(mOnLongClickListener != null) {
                     mOnLongClickListener.onLongClick(position);
+                    return true;
                 }
                 return false;
             }
