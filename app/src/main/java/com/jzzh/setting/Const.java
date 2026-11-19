@@ -55,6 +55,7 @@ public class Const {
         BOTTOM_LEFT,
         BOTTOM_MIDDLE,
         BOTTOM_RIGHT,
+        VOL_KEY_LONG_PRESS,
         LEFT,
         RIGHT,
     }

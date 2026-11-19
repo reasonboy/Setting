@@ -33,6 +33,7 @@ public class AppSelectionDialog extends Dialog {
     public static final String BOTTOM_RIGHT_GESTURE_APPLICATION = "bottom_right_gesture_application";
     public static final String LEFT_GESTURE_APPLICATION = "left_gesture_application";
     public static final String RIGHT_GESTURE_APPLICATION = "right_gesture_application";
+    public static final String VOL_KEY_LONG_PRESS_APPLICATION = "vol_key_long_press_application";
 
     private Context mContext;
     private Gesture mGesture;
@@ -145,6 +146,8 @@ public class AppSelectionDialog extends Dialog {
                 return LEFT_GESTURE_APPLICATION;
             case RIGHT:
                 return RIGHT_GESTURE_APPLICATION;
+            case VOL_KEY_LONG_PRESS:
+                return VOL_KEY_LONG_PRESS_APPLICATION;
             default:
                 return BOTTOM_LEFT_GESTURE_APPLICATION;
         }

@@ -17,6 +17,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.jzzh.setting.BaseActivity;
+import com.jzzh.setting.Const.Gesture;
+import com.jzzh.setting.Const.GestureType;
 import com.jzzh.setting.R;
 
 import java.util.ArrayList;
@@ -33,6 +35,7 @@ public class PhysicalKeySettingActivity extends BaseActivity implements View.OnC
     private KeySettingAdapter mAdapter;
     private TextView mReverseKey;
     private KeyGestureItem mShortPressItem;
+    private KeyGestureItem mLongPressItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,8 @@ public class PhysicalKeySettingActivity extends BaseActivity implements View.OnC
 
         mShortPressItem = findViewById(R.id.short_press);
         mShortPressItem.setOnClickListener(this);
+        mLongPressItem = findViewById(R.id.long_press);
+        mLongPressItem.setOnClickListener(this);
         updateShortPressValue();
     }
 
@@ -49,6 +54,7 @@ public class PhysicalKeySettingActivity extends BaseActivity implements View.OnC
     protected void onResume() {
         super.onResume();
         updateShortPressValue();
+        updateLongPressValue();
     }
 
     private void initData() {
@@ -104,6 +110,48 @@ public class PhysicalKeySettingActivity extends BaseActivity implements View.OnC
         mShortPressItem.setValue(mListData.get(position).value);
     }
 
+    private void showLongPressDialog() {
+        GestureActionDialog dialog = new GestureActionDialog(this, Gesture.VOL_KEY_LONG_PRESS);
+        dialog.setOnGestureSelectedListener(gestureType -> updateLongPressValue());
+        dialog.show();
+    }
+
+    private void updateLongPressValue() {
+        int value = Settings.System.getInt(getContentResolver(),
+                GestureActionDialog.VOL_KEY_LONG_PRESS_FUNC, GestureType.NONE.ordinal());
+        GestureType[] gestureTypes = GestureType.values();
+        if (value >= 0 && value < gestureTypes.length) {
+            mLongPressItem.setValue(getGestureTypeName(gestureTypes[value]));
+        } else {
+            mLongPressItem.setValue("");
+        }
+    }
+
+    private String getGestureTypeName(GestureType type) {
+        switch (type) {
+            case NONE:
+                return getString(R.string.gesture_none);
+            case BACK:
+                return getString(R.string.gesture_back);
+            case HOME:
+                return getString(R.string.gesture_home);
+            case REFRESH:
+                return getString(R.string.gesture_refresh);
+            case TASK_MANAGER:
+                return getString(R.string.gesture_task_manager);
+            case EINK_CENTER:
+                return getString(R.string.gesture_eink_center);
+            case KEY_SETTINGS:
+                return getString(R.string.gesture_key_setting);
+            case QUICK_MINI:
+                return getString(R.string.gesture_quick_mini);
+            case USER_APP:
+                return getString(R.string.gesture_user_app);
+            default:
+                return getString(R.string.gesture_none);
+        }
+    }
+
     private void setReverseKeyState() {
         int reverseKey = getKeyReverse();
         if (reverseKey == 1) {
@@ -142,6 +190,8 @@ public class PhysicalKeySettingActivity extends BaseActivity implements View.OnC
     public void onClick(View view) {
         if (view.getId() == R.id.short_press) {
             showShortPressDialog();
+        } else if (view.getId() == R.id.long_press) {
+            showLongPressDialog();
         } else if (view.getId() == R.id.zh_reverse_key_switch) {
             int reverseKey = getKeyReverse();
             if (reverseKey == 1) {

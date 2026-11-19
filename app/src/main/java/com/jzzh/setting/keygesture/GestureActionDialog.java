@@ -24,6 +24,7 @@ public class GestureActionDialog extends Dialog {
     static final String BOTTOM_RIGHT_GESTURE_TYPE = "bottom_right_gesture_type";
     static final String LEFT_GESTURE_TYPE = "left_gesture_type";
     static final String RIGHT_GESTURE_TYPE = "right_gesture_type";
+    public static final String VOL_KEY_LONG_PRESS_FUNC = "vol_key_long_press_func";
 
     private Context mContext;
     private Gesture mGesture;
@@ -120,6 +121,8 @@ public class GestureActionDialog extends Dialog {
                 return LEFT_GESTURE_TYPE;
             case RIGHT:
                 return RIGHT_GESTURE_TYPE;
+            case VOL_KEY_LONG_PRESS:
+                return VOL_KEY_LONG_PRESS_FUNC;
             default:
                 return BOTTOM_LEFT_GESTURE_TYPE;
         }
