@@ -34,26 +34,29 @@
             android:layout_gravity="center">
         </ImageView>
 
-        <androidx.cardview.widget.CardView
+        <FrameLayout
             android:layout_width="@dimen/style_choose_preview_width"
             android:layout_height="@dimen/style_choose_preview_height"
             android:layout_marginRight="23dp"
             android:layout_marginLeft="23dp"
             android:layout_gravity="center_horizontal"
-            app:cardCornerRadius="15dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardElevation="0dp">
+            android:background="@drawable/display_def_apply_frame">
 
-            <ImageView
-                android:id="@+id/def_iv"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"/>
+                android:layout_margin="@dimen/style_choose_preview_image_inset"
+                app:cardCornerRadius="@dimen/style_choose_preview_image_corner_radius"
+                app:cardBackgroundColor="@color/white"
+                app:cardElevation="0dp">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/frame_round_angle"/>
+                <ImageView
+                    android:id="@+id/def_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop" />
+            </androidx.cardview.widget.CardView>
+
             <TextView
                 android:id="@+id/tv_warning"
                 android:layout_width="wrap_content"
@@ -62,7 +65,7 @@
                 android:gravity="center"
                 android:paddingHorizontal="26dp"
                 android:textSize="20sp"/>
-        </androidx.cardview.widget.CardView>
+        </FrameLayout>
 
         <ImageView
             android:id="@+id/btn_next"

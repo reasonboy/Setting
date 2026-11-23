@@ -50,6 +50,8 @@
     <dimen name="style_choose_page_button_size">34dp</dimen>
     <dimen name="style_choose_preview_width">247dp</dimen>
     <dimen name="style_choose_preview_height">454dp</dimen>
+    <dimen name="style_choose_preview_image_inset">4dp</dimen>
+    <dimen name="style_choose_preview_image_corner_radius">6dp</dimen>
     <dimen name="style_choose_dot_margin_top">20dp</dimen>
     <dimen name="style_choose_dot_size">8dp</dimen>
     <dimen name="style_choose_action_button_width">193dp</dimen>
