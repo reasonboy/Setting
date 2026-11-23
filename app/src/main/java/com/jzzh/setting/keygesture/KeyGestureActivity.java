@@ -16,7 +16,7 @@ public class KeyGestureActivity extends BaseActivity  implements View.OnClickLis
         findViewById(R.id.setting_physical_key).setOnClickListener(this);
         findViewById(R.id.setting_inno_key).setOnClickListener(this);
         findViewById(R.id.setting_keypack).setOnClickListener(this);
-        findViewById(R.id.setting_bottom_gesture).setOnClickListener(this);
+        findViewById(R.id.setting_bottom_setting).setOnClickListener(this);
         findViewById(R.id.setting_side_gesture).setOnClickListener(this);
         findViewById(R.id.setting_light_gesture).setOnClickListener(this);
     }
@@ -33,8 +33,8 @@ public class KeyGestureActivity extends BaseActivity  implements View.OnClickLis
             case R.id.setting_keypack:
                 callKeyPackSetting();
                 break;
-            case R.id.setting_bottom_gesture:
-                startActivity(BottomGestureSettingActivity.class);
+            case R.id.setting_bottom_setting:
+                startActivity(BottomSettingActivity.class);
                 break;
             case R.id.setting_side_gesture:
                 startActivity(SideGestureSettingActivity.class);

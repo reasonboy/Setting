@@ -5,12 +5,12 @@ import android.provider.Settings;
 import android.view.View;
 import android.widget.TextView;
 
-import com.jzzh.setting.BaseActivity;
+import com.jzzh.setting.BaseActivityNoNav;
 import com.jzzh.setting.Const.Gesture;
 import com.jzzh.setting.Const.GestureType;
 import com.jzzh.setting.R;
 
-public class BottomGestureSettingActivity extends BaseActivity  implements View.OnClickListener{
+public class BottomGestureSettingActivity extends BaseActivityNoNav implements View.OnClickListener {
     public static final String BOTTOM_LEFT_GESTURE_TYPE = "bottom_left_gesture_type";
     public static final String BOTTOM_MIDDLE_GESTURE_TYPE = "bottom_middle_gesture_type";
     public static final String BOTTOM_RIGHT_GESTURE_TYPE = "bottom_right_gesture_type";
@@ -20,6 +20,7 @@ public class BottomGestureSettingActivity extends BaseActivity  implements View.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_keygesture_bottom);
+        setNavText(getString(R.string.setting_bottom_gesture_card_title));
         findViewById(R.id.left).setOnClickListener(this);
         findViewById(R.id.middle).setOnClickListener(this);
         findViewById(R.id.right).setOnClickListener(this);

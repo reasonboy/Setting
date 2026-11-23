@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="@dimen/bottom_gesture_card_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/navigation_button_page_top_padding"
+        android:paddingBottom="@dimen/navigation_button_page_bottom_padding">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_setting_checkbox_row_height"
+            android:gravity="center_vertical"
+            android:text="@string/setting_navigation_button"
+            android:textSize="@dimen/textSize20"
+            android:textStyle="bold" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_gesture_card_height"
+            android:background="@drawable/frame_round_angle">
+
+            <include
+                android:id="@+id/navigation_button_selected_row"
+                layout="@layout/navigation_button_icon_row"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/navigation_button_tile_size"
+                android:layout_marginStart="@dimen/navigation_button_tile_row_horizontal_margin"
+                android:layout_marginTop="@dimen/navigation_button_tile_row_top_margin"
+                android:layout_marginEnd="@dimen/navigation_button_tile_row_horizontal_margin" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="@dimen/navigation_button_remove_hint_bottom_margin"
+                android:gravity="center"
+                android:text="@string/navigation_button_remove_hint"
+                android:textSize="@dimen/textSize19" />
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_setting_checkbox_row_height"
+            android:layout_marginTop="@dimen/navigation_button_section_spacing"
+            android:gravity="center_vertical"
+            android:text="@string/navigation_button_function"
+            android:textSize="@dimen/textSize20"
+            android:textStyle="bold" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_gesture_card_height"
+            android:background="@drawable/frame_round_angle">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/navigation_button_tile_row_horizontal_margin"
+                android:layout_marginTop="@dimen/navigation_button_tile_row_top_margin"
+                android:layout_marginEnd="@dimen/navigation_button_tile_row_horizontal_margin"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/navigation_button_available_row"
+                    layout="@layout/navigation_button_icon_row" />
+
+                <include
+                    android:id="@+id/navigation_button_available_second_row"
+                    layout="@layout/navigation_button_icon_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/navigation_button_tile_size"
+                    android:layout_marginTop="@dimen/navigation_button_tile_row_spacing"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="@dimen/navigation_button_add_hint_bottom_margin"
+                android:gravity="center"
+                android:text="@string/navigation_button_add_hint"
+                android:textSize="@dimen/textSize19" />
+        </FrameLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/navigation_button_limit_hint_height"
+            android:layout_marginTop="@dimen/bottom_gesture_card_spacing"
+            android:background="@drawable/display_def_apply_frame"
+            android:gravity="center"
+            android:text="@string/navigation_button_limit_hint"
+            android:textSize="@dimen/textSize19" />
+    </LinearLayout>
+</ScrollView>

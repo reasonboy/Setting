@@ -14,7 +14,7 @@
     <dimen name="navi_layout_view_space">10dp</dimen>
     <!-- 导航栏“>”图标大小-->
     <dimen name="navi_layout_iconSize">26dp</dimen>
-    <dimen name="navi_title_margin_left">24dp</dimen>
+    <dimen name="navi_title_margin_left">10dp</dimen>
     <!-- 导航栏下划线粗细-->
     <dimen name="navi_layout_underline_height">1.5dp</dimen>
     <!-- 设置单项宽度-->
@@ -158,6 +158,19 @@
     <dimen name="bottom_gesture_image_margin_bottom">21dp</dimen>
     <dimen name="bottom_gesture_text_row_height">24dp</dimen>
     <dimen name="bottom_gesture_text_margin_bottom">22dp</dimen>
+    <dimen name="bottom_setting_checkbox_row_height">70dp</dimen>
+    <dimen name="bottom_setting_card_margin_top">12dp</dimen>
+
+    <dimen name="navigation_button_page_top_padding">12dp</dimen>
+    <dimen name="navigation_button_page_bottom_padding">16dp</dimen>
+    <dimen name="navigation_button_section_spacing">22dp</dimen>
+    <dimen name="navigation_button_tile_size">44dp</dimen>
+    <dimen name="navigation_button_tile_row_horizontal_margin">33dp</dimen>
+    <dimen name="navigation_button_tile_row_top_margin">38dp</dimen>
+    <dimen name="navigation_button_tile_row_spacing">12dp</dimen>
+    <dimen name="navigation_button_remove_hint_bottom_margin">38dp</dimen>
+    <dimen name="navigation_button_add_hint_bottom_margin">32dp</dimen>
+    <dimen name="navigation_button_limit_hint_height">50dp</dimen>
 
     <dimen name="title_layout_height">66dp</dimen>
     <dimen name="title_layout_margin">32dp</dimen>

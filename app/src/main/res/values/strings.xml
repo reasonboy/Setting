@@ -61,7 +61,16 @@
     <string name="setting_physical_key_dpad_value">DPAD</string>
     <string name="setting_inno_key_setting">INNOKEY Setting</string>
     <string name="setting_keypack_setting">KeyPack Setting</string>
+    <string name="setting_bottom_setting">Bottom Setting</string>
     <string name="setting_bottom_gesture">Bottom Gesture</string>
+    <string name="setting_bottom_gesture_card_title">Bottom Gesture Setting</string>
+    <string name="setting_navigation_button">Navigation Button</string>
+    <string name="setting_navigation_button_card_title">Navigation Button Setting</string>
+    <string name="navigation_button_function">Function</string>
+    <string name="navigation_button_remove_hint">Tap to remove\n(Drag to change position)</string>
+    <string name="navigation_button_add_hint">Tap to add</string>
+    <string name="navigation_button_limit_hint">※ Up to 5 functions can be set</string>
+    <string name="navigation_button_minimum_hint">Keep at least one function</string>
     <string name="setting_side_gesture">Side Gesture</string>
     <string name="setting_left_side_gesture">Left Side Gesture</string>
     <string name="setting_right_side_gesture">Right Side Gesture</string>

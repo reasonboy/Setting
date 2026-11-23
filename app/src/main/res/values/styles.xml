@@ -4,6 +4,12 @@
         <item name="android:layout_height">@dimen/setting_item_height</item>
         <item name="android:gravity">center</item>
     </style>
+    <style name="NavigationButtonIconStyle">
+        <item name="android:layout_width">@dimen/navigation_button_tile_size</item>
+        <item name="android:layout_height">@dimen/navigation_button_tile_size</item>
+        <item name="android:background">@drawable/navigation_button_tile_frame</item>
+        <item name="android:scaleType">center</item>
+    </style>
     <style name="ZhDialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@color/white</item>
         <item name="android:windowFrame">@null</item>

@@ -77,10 +77,10 @@
         android:orientation="vertical">
 
         <com.jzzh.setting.keygesture.KeyGestureItem
-            android:id="@+id/setting_bottom_gesture"
+            android:id="@+id/setting_bottom_setting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="@string/setting_bottom_gesture" />
+            app:title="@string/setting_bottom_setting" />
 
         <View
             android:layout_width="match_parent"

@@ -206,7 +206,13 @@
             android:name=".keygesture.KeyGestureActivity"
             android:screenOrientation="userPortrait" />
         <activity
+            android:name=".keygesture.BottomSettingActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
             android:name=".keygesture.BottomGestureSettingActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
+            android:name=".keygesture.NavigationButtonSettingActivity"
             android:screenOrientation="userPortrait" />
         <activity
             android:name=".keygesture.SideGestureSettingActivity"

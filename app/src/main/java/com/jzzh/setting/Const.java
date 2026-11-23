@@ -15,7 +15,7 @@ import com.jzzh.setting.display.RefreshActivity;
 import com.jzzh.setting.display.SleepImageActivity;
 import com.jzzh.setting.display.WidgetSettingActivity;
 import com.jzzh.setting.display.WidgetTextActivity;
-import com.jzzh.setting.keygesture.BottomGestureSettingActivity;
+import com.jzzh.setting.keygesture.BottomSettingActivity;
 import com.jzzh.setting.keygesture.KeyGestureActivity;
 import com.jzzh.setting.keygesture.LightGestureSettingActivity;
 import com.jzzh.setting.keygesture.PhysicalKeySettingActivity;
@@ -116,7 +116,7 @@ public class Const {
             KeyGestureActivity.class,
             PhysicalKeySettingActivity.class,
             SideGestureSettingActivity.class,
-            BottomGestureSettingActivity.class,
+            BottomSettingActivity.class,
             LightGestureSettingActivity.class
     };
 
@@ -164,7 +164,7 @@ public class Const {
             {R.string.setting,R.string.setting_key_and_gesture},
             {R.string.setting,R.string.setting_key_and_gesture, R.string.setting_physical_key_setting},
             {R.string.setting,R.string.setting_key_and_gesture, R.string.setting_side_gesture},
-            {R.string.setting,R.string.setting_key_and_gesture, R.string.setting_bottom_gesture},
+            {R.string.setting,R.string.setting_key_and_gesture, R.string.setting_bottom_setting},
             {R.string.setting,R.string.setting_key_and_gesture, R.string.setting_light_gesture},
     };
 }

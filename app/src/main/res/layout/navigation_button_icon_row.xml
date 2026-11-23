@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/navigation_button_tile_size"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/navigation_button_icon_1"
+        style="@style/NavigationButtonIconStyle" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <ImageView
+        android:id="@+id/navigation_button_icon_2"
+        style="@style/NavigationButtonIconStyle" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <ImageView
+        android:id="@+id/navigation_button_icon_3"
+        style="@style/NavigationButtonIconStyle" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <ImageView
+        android:id="@+id/navigation_button_icon_4"
+        style="@style/NavigationButtonIconStyle" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <ImageView
+        android:id="@+id/navigation_button_icon_5"
+        style="@style/NavigationButtonIconStyle" />
+</LinearLayout>
