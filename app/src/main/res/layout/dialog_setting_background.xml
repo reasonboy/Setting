@@ -2,21 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_gravity="center"
-    android:gravity="center">
+    android:gravity="top|center_horizontal">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="25dp"
-        android:background="@drawable/bg_thumbnail">
+    <FrameLayout
+        android:layout_width="@dimen/home_background_alpha_preview_width"
+        android:layout_height="@dimen/home_background_alpha_preview_height"
+        android:layout_marginTop="@dimen/home_background_alpha_preview_margin_top"
+        android:layout_marginBottom="@dimen/home_background_alpha_preview_margin_bottom"
+        android:foreground="@drawable/bg_thumbnail"
+        android:foregroundGravity="fill"
+        android:padding="1dp">
         <ImageView
             android:id="@+id/background_preview"
-            android:layout_width="290dp"
-            android:layout_height="386dp" />
-    </LinearLayout>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
 
     <TextView
         android:layout_width="match_parent"
@@ -26,37 +29,35 @@
         android:textColor="#000000"
         android:textSize="21sp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="86dp"
-        android:layout_marginVertical="10dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+    <FrameLayout
+        android:layout_width="@dimen/home_background_alpha_controls_width"
+        android:layout_height="@dimen/home_background_alpha_icon_size"
+        android:layout_marginTop="@dimen/home_background_alpha_controls_margin_top"
+        android:layout_marginBottom="@dimen/home_background_alpha_controls_margin_bottom">
 
         <ImageView
             android:id="@+id/background_setting_alpha_minus"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="@dimen/home_background_alpha_icon_size"
+            android:layout_height="@dimen/home_background_alpha_icon_size"
+            android:layout_gravity="start|center_vertical"
             android:src="@drawable/setting_display_opacity_0" />
 
         <com.jzzh.tools.ZhSeekBar
             android:id="@+id/background_setting_alpha"
             android:layout_width="wrap_content"
-            android:layout_height="82dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginHorizontal="22dp"
-            app:bg_width="300dp"
+            app:bg_width="@dimen/home_background_alpha_seekbar_width"
             app:bg_height="2dp"
-            app:thumb_size="14dp"
-            app:touchable_height="30dp" />
+            app:thumb_size="@dimen/home_background_alpha_seekbar_height"
+            app:touchable_height="@dimen/home_background_alpha_seekbar_height" />
 
         <ImageView
             android:id="@+id/background_setting_alpha_plus"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="@dimen/home_background_alpha_icon_size"
+            android:layout_height="@dimen/home_background_alpha_icon_size"
+            android:layout_gravity="end|center_vertical"
             android:src="@drawable/setting_display_opacity_100" />
-    </LinearLayout>
+    </FrameLayout>
 
 </LinearLayout>

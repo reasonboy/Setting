@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -129,12 +128,9 @@ public class HomeBackgroundSettingActivity extends BaseActivityNoNav {
 
         Window window = dialogs.getWindow();
         if (window != null) {
-            WindowManager.LayoutParams params = window.getAttributes();
-            int widthPx = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 492, getResources().getDisplayMetrics());
-            int heightPx = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 667, getResources().getDisplayMetrics());
-            params.width = widthPx;
-            params.height = heightPx;
-            window.setAttributes(params);
+            int width = getResources().getDimensionPixelSize(R.dimen.home_background_alpha_dialog_width);
+            window.setBackgroundDrawableResource(R.drawable.home_background_alpha_dialog_background);
+            window.setLayout(width, WindowManager.LayoutParams.WRAP_CONTENT);
         }
     }
 }

@@ -74,6 +74,19 @@
     <dimen name="light_adjust_button_size">26dp</dimen>
     <dimen name="light_adjust_seekbar_width">239dp</dimen>
 
+    <dimen name="home_background_alpha_dialog_width">367dp</dimen>
+    <dimen name="home_background_alpha_preview_width">193dp</dimen>
+    <dimen name="home_background_alpha_preview_height">314dp</dimen>
+    <dimen name="home_background_alpha_preview_margin_top">10dp</dimen>
+    <dimen name="home_background_alpha_preview_margin_bottom">27dp</dimen>
+    <dimen name="home_background_alpha_seekbar_width">239dp</dimen>
+    <dimen name="home_background_alpha_seekbar_height">14dp</dimen>
+    <dimen name="home_background_alpha_icon_size">26dp</dimen>
+    <!-- 239dp track, two 26dp icons, and a 10dp gap on each side. -->
+    <dimen name="home_background_alpha_controls_width">311dp</dimen>
+    <dimen name="home_background_alpha_controls_margin_top">21dp</dimen>
+    <dimen name="home_background_alpha_controls_margin_bottom">21dp</dimen>
+
     <dimen name="time_setting_summary_margin_top">2dp</dimen>
     <dimen name="time_setting_large_item_height">106dp</dimen>
     <dimen name="time_setting_regular_item_height">76dp</dimen>
