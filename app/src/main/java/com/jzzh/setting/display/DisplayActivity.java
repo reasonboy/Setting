@@ -13,6 +13,7 @@ public class DisplayActivity extends BaseActivity  implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
         findViewById(R.id.setting_display_refresh).setOnClickListener(this);
+        findViewById(R.id.setting_display_font_size).setOnClickListener(this);
         findViewById(R.id.setting_display_poi).setOnClickListener(this);
         findViewById(R.id.setting_display_si).setOnClickListener(this);
         findViewById(R.id.setting_display_home_screen_style).setOnClickListener(this);
@@ -25,6 +26,9 @@ public class DisplayActivity extends BaseActivity  implements View.OnClickListen
         switch (view.getId()) {
             case R.id.setting_display_refresh:
                 startActivity(RefreshActivity.class);
+                break;
+            case R.id.setting_display_font_size:
+                startActivity(FontSizeActivity.class);
                 break;
             case R.id.setting_display_poi:
                 startActivity(PowerOffImageActivity.class);

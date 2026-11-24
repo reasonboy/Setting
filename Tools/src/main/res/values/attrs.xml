@@ -5,6 +5,7 @@
         <attr name="disable_color" format="color"/>
         <attr name="bg_color" format="color"/>
         <attr name="thumb_size" format="dimension"/>
+        <attr name="tick_size" format="dimension"/>
         <attr name="bg_width" format="dimension"/>
         <attr name="bg_height" format="dimension"/>
         <attr name="touchable_height" format="dimension"/>

@@ -76,6 +76,20 @@
     <dimen name="light_adjust_button_size">26dp</dimen>
     <dimen name="light_adjust_seekbar_width">239dp</dimen>
 
+    <dimen name="font_size_reset_width">84dp</dimen>
+    <dimen name="font_size_reset_height">28dp</dimen>
+    <dimen name="font_size_preview_height">89dp</dimen>
+    <dimen name="font_size_preview_label_margin_top">22dp</dimen>
+    <dimen name="font_size_preview_margin_top">16dp</dimen>
+    <dimen name="font_size_adjust_margin_top">48dp</dimen>
+    <dimen name="font_size_controls_margin_top">38dp</dimen>
+    <dimen name="font_size_control_spacing">10dp</dimen>
+    <dimen name="font_size_seekbar_width">270dp</dimen>
+    <dimen name="font_size_seekbar_touch_height">56dp</dimen>
+    <dimen name="font_size_seekbar_tick_size">6dp</dimen>
+    <dimen name="font_size_seekbar_thumb_size">14dp</dimen>
+    <dimen name="font_size_notice_margin_top">30dp</dimen>
+
     <dimen name="home_background_alpha_dialog_width">367dp</dimen>
     <dimen name="home_background_alpha_preview_width">193dp</dimen>
     <dimen name="home_background_alpha_preview_height">314dp</dimen>

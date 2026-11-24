@@ -9,6 +9,7 @@ import com.jzzh.setting.device.GSFActivity;
 import com.jzzh.setting.device.LicenseInfo;
 import com.jzzh.setting.device.SystemUpdateActivity;
 import com.jzzh.setting.display.DisplayActivity;
+import com.jzzh.setting.display.FontSizeActivity;
 import com.jzzh.setting.display.HomeScreenStyleActivity;
 import com.jzzh.setting.display.PowerOffImageActivity;
 import com.jzzh.setting.display.RefreshActivity;
@@ -86,6 +87,7 @@ public class Const {
 
             DisplayActivity.class,
             RefreshActivity.class,
+            FontSizeActivity.class,
             PowerOffImageActivity.class,
             SleepImageActivity.class,
             HomeScreenStyleActivity.class,
@@ -134,6 +136,7 @@ public class Const {
 
             {R.string.setting,R.string.setting_display},
             {R.string.setting,R.string.setting_display,R.string.setting_display_refresh},
+            {R.string.setting,R.string.setting_display,R.string.setting_display_font_size},
             {R.string.setting,R.string.setting_display,R.string.setting_display_poi},
             {R.string.setting,R.string.setting_display,R.string.setting_display_si},
             {R.string.setting,R.string.setting_display,R.string.setting_display_home_screen_style},

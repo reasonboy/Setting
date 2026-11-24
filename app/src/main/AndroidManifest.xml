@@ -103,6 +103,9 @@
             android:name=".display.RefreshActivity"
             android:screenOrientation="userPortrait" />
         <activity
+            android:name=".display.FontSizeActivity"
+            android:screenOrientation="userPortrait" />
+        <activity
             android:name=".display.PowerOffImageActivity"
             android:screenOrientation="userPortrait" />
         <activity

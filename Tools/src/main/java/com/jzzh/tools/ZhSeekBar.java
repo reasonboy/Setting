@@ -18,11 +18,13 @@ public class ZhSeekBar extends View {
     private Bitmap mBackground;//滑动条
     private int mEnableColor,mDisableColor,mFrontColor,mBackgroundColor;
     private float mThumbSize,mWidthBg,mHeightBg;//小球直径，滑动条长度，滑动条高度
+    private float mTickSize;
     private int mTouchableHeight;//触控区域(也就是控件的高度)
     private int mMaxValue,mMinValue,mCurValue;
     private float mSlideDistance;
     private float mBgX,mBgY;//滑动条X,Y左上角坐标
     private float mRadius;//小球半径
+    private int mValueBeforeTouch;
     private boolean mEnable = true;
     private OnZhSeekBarChangeListener mOnZhSeekBarChangeListener;
 
@@ -37,6 +39,7 @@ public class ZhSeekBar extends View {
         mDisableColor = typedArray.getColor(R.styleable.ZhSeekBar_disable_color,Color.GRAY);
         mBackgroundColor = typedArray.getColor(R.styleable.ZhSeekBar_bg_color,0xFFDDDDDD);
         mThumbSize = typedArray.getDimensionPixelOffset(R.styleable.ZhSeekBar_thumb_size, 0);
+        mTickSize = typedArray.getDimensionPixelSize(R.styleable.ZhSeekBar_tick_size, 0);
         mWidthBg = typedArray.getDimensionPixelOffset(R.styleable.ZhSeekBar_bg_width, 0);
         mHeightBg = typedArray.getDimensionPixelOffset(R.styleable.ZhSeekBar_bg_height, 0);
         mTouchableHeight = typedArray.getDimensionPixelOffset(R.styleable.ZhSeekBar_touchable_height, 0);
@@ -46,6 +49,7 @@ public class ZhSeekBar extends View {
         mMaxValue = typedArray.getInteger(R.styleable.ZhSeekBar_max_value,0);
         mMinValue = typedArray.getInteger(R.styleable.ZhSeekBar_min_value,0);
         mCurValue = typedArray.getInteger(R.styleable.ZhSeekBar_default_value,-1);
+        typedArray.recycle();
         mBackground = Bitmap.createBitmap((int)mWidthBg,(int)mHeightBg, Bitmap.Config.ARGB_8888);
         mFrontColor = mEnableColor;
         mPaint = new Paint();
@@ -126,7 +130,15 @@ public class ZhSeekBar extends View {
         super.onDraw(canvas);
         canvas.save();
         canvas.drawBitmap(mBackground, mBgX, mBgY, null);
-        canvas.drawCircle(mRadius + mSlideDistance,mTouchableHeight/2,mRadius,mPaint);
+        int centerY = mTouchableHeight / 2;
+        if (mTickSize > 0 && mMaxValue > mMinValue) {
+            float tickSpacing = mWidthBg / (mMaxValue - mMinValue);
+            for (int value = mMinValue; value <= mMaxValue; value++) {
+                float x = mBgX + (value - mMinValue) * tickSpacing;
+                canvas.drawCircle(x, centerY, mTickSize / 2, mPaint);
+            }
+        }
+        canvas.drawCircle(mRadius + mSlideDistance, centerY, mRadius, mPaint);
         canvas.restore();
     }
 
@@ -134,6 +146,18 @@ public class ZhSeekBar extends View {
     public boolean onTouchEvent(MotionEvent event) {
         if(!mEnable) {
             return true;
+        }
+        int action = event.getActionMasked();
+        if (mTickSize > 0) {
+            if (action == MotionEvent.ACTION_DOWN) {
+                mValueBeforeTouch = mCurValue;
+            } else if (action == MotionEvent.ACTION_CANCEL) {
+                setValue(mValueBeforeTouch);
+                if (mOnZhSeekBarChangeListener != null) {
+                    mOnZhSeekBarChangeListener.onProgressChanged(mCurValue);
+                }
+                return true;
+            }
         }
         int recordValue = mCurValue;
         float x = event.getX();
@@ -151,6 +175,10 @@ public class ZhSeekBar extends View {
             }
             updateView();
         }
+        if (mTickSize > 0 && action == MotionEvent.ACTION_UP
+                && mOnZhSeekBarChangeListener != null) {
+            mOnZhSeekBarChangeListener.onStopTrackingTouch(mCurValue);
+        }
         return true;
     }
 
@@ -162,6 +190,9 @@ public class ZhSeekBar extends View {
 
     public interface OnZhSeekBarChangeListener {
         public void onProgressChanged(int value);
+
+        default void onStopTrackingTouch(int value) {
+        }
     }
 
     public void setOnZhSeekBarChangeListener(OnZhSeekBarChangeListener l) {
