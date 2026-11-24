@@ -1,10 +1,15 @@
 package com.jzzh.setting.display;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.Window;
+import android.widget.CheckedTextView;
 
 import com.jzzh.setting.BaseActivity;
 import com.jzzh.setting.R;
@@ -25,8 +30,14 @@ public class SleepImageActivity extends BaseActivity {
     public static final int STANDBY_LOGO_TAG_DEF = 0;
     public static final int STANDBY_LOGO_TAG_USER = 1;
     public static final int STANDBY_LOGO_TAG_CUR_SCREEN = 2;
+    private static final String SLEEP_SCREEN_MODE = "sleep_screen_mode";
+    private static final int SLEEP_SCREEN_MODE_CLOCK = 2;
+    private static final String EINK_SLEEP_CLOCK_STYLE = "eink_sleep_clock_style";
+    private static final int CLOCK_STYLE_WHITE = 0;
+    private static final int CLOCK_STYLE_BLACK = 1;
     private Bitmap mPreviewBitmapDef,mPreviewBitmapUser;
     private List<StyleChooseView.PageData> mPages = new ArrayList<>();
+    private StyleChooseView.PageData mClockPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +55,7 @@ public class SleepImageActivity extends BaseActivity {
 
     private void updateView() {
         int logoTag = getStandbyTag();
+        boolean clockApplied = getSleepScreenMode() == SLEEP_SCREEN_MODE_CLOCK;
         //page0设置图片
         File defTagFile = new File(DEF_LOGO_TAG_PATH);
         mPreviewBitmapDef = BitmapFactory.decodeFile("/vendor/media/standby.png");
@@ -54,7 +66,7 @@ public class SleepImageActivity extends BaseActivity {
         defaultPage.setImage(mPreviewBitmapDef);
         //page0设置右按钮
         String rightButtonText = null;
-        if(logoTag == STANDBY_LOGO_TAG_DEF) {
+        if(!clockApplied && logoTag == STANDBY_LOGO_TAG_DEF) {
             rightButtonText = getString(R.string.setting_display_applied);
             defaultPage.setRightButtonSelected(true);
         } else {
@@ -72,7 +84,7 @@ public class SleepImageActivity extends BaseActivity {
         StyleChooseView.PageData customPage = mPages.get(1);
         customPage.setImage(mPreviewBitmapUser);
         //page1设置右按钮
-        if(logoTag == STANDBY_LOGO_TAG_USER) {
+        if(!clockApplied && logoTag == STANDBY_LOGO_TAG_USER) {
             rightButtonText = getString(R.string.setting_display_applied);
             customPage.setRightButtonSelected(true);
         } else {
@@ -83,7 +95,7 @@ public class SleepImageActivity extends BaseActivity {
 
         //page2设置右按钮
         StyleChooseView.PageData curScreenPage = mPages.get(2);
-        if(logoTag == STANDBY_LOGO_TAG_CUR_SCREEN) {
+        if(!clockApplied && logoTag == STANDBY_LOGO_TAG_CUR_SCREEN) {
             rightButtonText = getString(R.string.setting_display_applied);
             curScreenPage.setRightButtonSelected(true);
         } else {
@@ -91,6 +103,14 @@ public class SleepImageActivity extends BaseActivity {
             curScreenPage.setRightButtonSelected(false);
         }
         curScreenPage.setRightButton(rightButtonText);
+
+        if (clockApplied) {
+            mClockPage.setRightButton(getString(R.string.setting_display_applied));
+        } else {
+            mClockPage.setRightButton(getString(R.string.setting_display_apply));
+        }
+        mClockPage.setRightButtonSelected(clockApplied);
+        updateClockPreview(getClockStyle());
         mStyleChooseView.updatePageDisplay();
     }
 
@@ -120,10 +140,76 @@ public class SleepImageActivity extends BaseActivity {
         curScreenPage.setRightButton("", () -> {
             setcurScreenLogo();
         });
+
+        mClockPage = new StyleChooseView.PageData();
+        mClockPage.setTitle(getString(R.string.setting_display_sleep_clock));
+        mClockPage.setLeftButton(getString(R.string.sleep_clock_color_mode), this::showColorModeDialog);
+        mClockPage.setRightButton(getString(R.string.setting_display_apply), this::applyClock);
+
         mPages.add(defaultPage);
         mPages.add(customPage);
         mPages.add(curScreenPage);
+        mPages.add(mClockPage);
         mStyleChooseView.setPages(mPages);
+    }
+
+    private void showColorModeDialog() {
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setContentView(R.layout.dialog_sleep_clock_color_mode);
+
+        CheckedTextView lightMode = dialog.findViewById(R.id.sleep_clock_light_mode);
+        CheckedTextView darkMode = dialog.findViewById(R.id.sleep_clock_dark_mode);
+        updateColorModeOptions(lightMode, darkMode);
+
+        lightMode.setOnClickListener(view -> selectClockStyle(CLOCK_STYLE_WHITE, lightMode, darkMode));
+        darkMode.setOnClickListener(view -> selectClockStyle(CLOCK_STYLE_BLACK, lightMode, darkMode));
+        dialog.findViewById(R.id.exit).setOnClickListener(view -> dialog.dismiss());
+        dialog.show();
+    }
+
+    private void selectClockStyle(int style, CheckedTextView lightMode, CheckedTextView darkMode) {
+        if (Settings.System.putInt(getContentResolver(), EINK_SLEEP_CLOCK_STYLE, style)) {
+            updateColorModeOptions(lightMode, darkMode);
+            updateClockPreview(style);
+            mStyleChooseView.updatePageDisplay();
+            if (getSleepScreenMode() == SLEEP_SCREEN_MODE_CLOCK) {
+                sendBroadcast(new Intent("zhihe.action.UPDATE_STANDBY"));
+            }
+        }
+    }
+
+    private void updateColorModeOptions(CheckedTextView lightMode, CheckedTextView darkMode) {
+        if (getClockStyle() == CLOCK_STYLE_BLACK) {
+            lightMode.setChecked(false);
+            lightMode.setCheckMarkDrawable(R.drawable.check_off);
+            darkMode.setChecked(true);
+            darkMode.setCheckMarkDrawable(R.drawable.check_on);
+        } else {
+            lightMode.setChecked(true);
+            lightMode.setCheckMarkDrawable(R.drawable.check_on);
+            darkMode.setChecked(false);
+            darkMode.setCheckMarkDrawable(R.drawable.check_off);
+        }
+    }
+
+    private int getClockStyle() {
+        return Settings.System.getInt(getContentResolver(), EINK_SLEEP_CLOCK_STYLE, CLOCK_STYLE_WHITE);
+    }
+
+    private void updateClockPreview(int style) {
+        if (style == CLOCK_STYLE_BLACK) {
+            mClockPage.imageResId = R.drawable.clock_black;
+        } else {
+            mClockPage.imageResId = R.drawable.clock_white;
+        }
+    }
+
+    private void applyClock() {
+        setSleepScreenMode(SLEEP_SCREEN_MODE_CLOCK);
+        sendBroadcast(new Intent("zhihe.action.UPDATE_STANDBY"));
+        updateView();
     }
 
     private int getStandbyTag() {
@@ -136,11 +222,11 @@ public class SleepImageActivity extends BaseActivity {
     }
 
     private void setSleepScreenMode(int mode) {
-        Settings.System.putInt(getContentResolver(),"sleep_screen_mode",mode);
+        Settings.System.putInt(getContentResolver(), SLEEP_SCREEN_MODE, mode);
     }
 
-    private void getSleepScreenMode() {
-        Settings.System.putInt(getContentResolver(),"sleep_screen_mode",0);
+    private int getSleepScreenMode() {
+        return Settings.System.getInt(getContentResolver(), SLEEP_SCREEN_MODE, 0);
     }
 
     private void setcurScreenLogo() {

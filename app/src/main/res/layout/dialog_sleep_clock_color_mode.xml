@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/sleep_clock_color_dialog_width"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_round"
+    android:orientation="vertical"
+    android:paddingTop="18dp"
+    android:paddingBottom="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/exit"
+            android:text="@string/sleep_clock_color_mode"
+            android:textSize="@dimen/textSize20"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@id/exit"
+            android:layout_width="@dimen/dialog_close_icon_size"
+            android:layout_height="@dimen/dialog_close_icon_size"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_exit" />
+    </RelativeLayout>
+
+    <CheckedTextView
+        android:id="@+id/sleep_clock_light_mode"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/setting_sub_item_height"
+        android:layout_marginStart="@dimen/setting_select_item_margin"
+        android:layout_marginEnd="@dimen/setting_select_item_margin"
+        android:checkMark="@drawable/check_off"
+        android:gravity="center_vertical"
+        android:text="@string/sleep_clock_light_mode"
+        android:textSize="@dimen/setting_select_item_textSize" />
+
+    <CheckedTextView
+        android:id="@+id/sleep_clock_dark_mode"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/setting_sub_item_height"
+        android:layout_marginStart="@dimen/setting_select_item_margin"
+        android:layout_marginEnd="@dimen/setting_select_item_margin"
+        android:checkMark="@drawable/check_off"
+        android:gravity="center_vertical"
+        android:text="@string/sleep_clock_dark_mode"
+        android:textSize="@dimen/setting_select_item_textSize" />
+</LinearLayout>

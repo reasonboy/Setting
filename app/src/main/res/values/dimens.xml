@@ -61,6 +61,7 @@
     <dimen name="style_choose_action_button_stroke_width">1.5dp</dimen>
     <dimen name="style_choose_action_button_corner_radius">10dp</dimen>
     <dimen name="style_choose_action_button_text_size">19sp</dimen>
+    <dimen name="sleep_clock_color_dialog_width">367dp</dimen>
 
     <dimen name="widget_text_title_margin">34dp</dimen>
     <dimen name="widget_text_divider_space">25dp</dimen>
